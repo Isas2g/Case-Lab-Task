@@ -6,9 +6,19 @@ export default class Track {
     this.data = data;
   }
   
-  get getProperty(value) {
-    if (this[value]) {
-      return this[value];
-    } else return 'No such property in this class';
+  get id() {
+      return this.id;
+  }
+  
+  get status() {
+    return this.status;
+  }
+  
+  get assigned() {
+    return this.assigned;
+  }
+  
+  get data() {
+    return this.data;
   }
 }

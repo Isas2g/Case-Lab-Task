@@ -7,9 +7,23 @@ export default class Notification {
     this.data = data;
   }
   
-  get getProperty(value) {
-    if (this[value]) {
-      return this[value];
-    } else return 'No such property in this class';
+  get id() {
+    return this.id;
+  }
+  
+  get datetime() {
+    return this.datetime;
+  }
+  
+  get text() {
+    return this.text;
+  }
+  
+  get looked() {
+    return this.looked;
+  }
+  
+  get data() {
+    return this.data;
   }
 }

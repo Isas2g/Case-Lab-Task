@@ -6,9 +6,19 @@ export default class User {
     this.data = data;
   }
   
-  get getProperty(value) {
-    if (this[value]) {
-      return this[value];
-    } else return 'No such property in this class';
+  get id() {
+    return this.id;
+  }
+  
+  get login() {
+    return this.login;
+  }
+  
+  get fullName() {
+    return this.fullName;
+  }
+  
+  get data() {
+    return this.data;
   }
 }
