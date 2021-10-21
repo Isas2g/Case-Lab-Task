@@ -9,9 +9,15 @@ export default class Track {
   get id() {
       return this.id;
   }
+  set id(uid){
+    this.id = uid;
+  }
   
   get status() {
     return this.status;
+  }
+  set status(ustatus){
+    this.status = ustatus;
   }
   
   get assigned() {

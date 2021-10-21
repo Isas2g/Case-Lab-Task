@@ -1,5 +1,25 @@
+// noinspection InfiniteRecursionJS
 export default class TrackDetail {
-  constructor(id, trackId, finished, assigned, epilogId, epilogFinished, entityName, entityDuration, data) {
+  id;
+  trackId;
+  finished;
+  assigned;
+  epilogId;
+  epilogFinished;
+  entityName;
+  entityDuration;
+  data;
+  constructor({
+      id,
+      trackId,
+      finished,
+      assigned,
+      epilogId,
+      epilogFinished,
+      entityName,
+      entityDuration,
+      data
+  }){
     this.id = id;
     this.trackId = trackId;
     this.finished = finished;
@@ -10,7 +30,7 @@ export default class TrackDetail {
     this.entityDuration = entityDuration;
     this.data = data;
   }
-  
+
   get id() {
     return this.id;
   }

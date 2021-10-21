@@ -1,0 +1,16 @@
+export const GET_ALL_TRACKS = "GET_ALL_TRACKS";
+export const GET_TRACK = "GET_TRACK";
+export const CREATE_TRACK = "CREATE_TRACK";
+export const UPDATE_TRACK = "UPDATE_TRACK";
+export const DELETE_TRACK = "DELETE_TRACK";
+export const GET_ASSIGN = "GET_ASSIGN";
+export const CREATE_ASSIGN = "CREATE_ASSIGN";
+export const PATCH_ASSIGN = "PATCH_ASSIGN";
+export const DELETE_ASSIGN = "DELETE_ASSIGN";
+export const GET_ALL_DETAILS = "GET_ALL_DETAILS";
+export const GET_DETAIL = "GET_DETAIL";
+export const CREATE_DETAIL = "CREATE_DETAIL";
+export const UPDATE_DETAIL = "UPDATE_DETAIL";
+export const DELETE_DETAIL = "DELETE_DETAIL";
+export const LOGIN_T = "LOGIN_T";
+export const LOGIN_S = "LOGIN_S";
