@@ -1,14 +1,14 @@
 export default class Event {
   constructor(id, name) {
-    this.id = id;
-    this.name = name;
+    this._id = id;
+    this._name = name;
   }
   
   get id() {
-    return this.id;
+    return this._id;
   }
   
   get name() {
-    return this.name;
+    return this._name;
   }
 }

@@ -11,77 +11,74 @@ export default class TrackDetail {
       entityDuration,
       data
   }){
-    this.id = id;
-    this.trackId = trackId;
-    this.finished = finished;
-    this.assigned = assigned;
-    this.epilogId = epilogId;
-    this.epilogFinished = epilogFinished;
-    this.entityName = entityName;
-    this.entityDuration = entityDuration;
-    this.data = data;
+    this._id = id;
+    this._trackId = trackId;
+    this._finished = finished;
+    this._assigned = assigned;
+    this._epilogId = epilogId;
+    this._epilogFinished = epilogFinished;
+    this._entityName = entityName;
+    this._entityDuration = entityDuration;
+    this._data = data;
   }
 
   get id() {
-    return this.id;
-  }
-  set id(input){
-    this.id = input;
+    return this._id;
   }
   
   get trackId() {
-    return this.trackId;
+    return this._trackId;
   }
   set trackId(input){
-    this.trackId = input;
+    this._trackId = input;
   }
   
   get finished() {
-    return this.finished;
+    return this._finished;
   }
   set finished(input){
-    this.finished = input;
+    this._finished = input;
   }
   
   get assigned() {
-    return this.assigned;
+    return this._assigned;
   }
   set assigned(input){
-    this.assigned = input;
+    this._assigned = input;
   }
   
   get epilogId() {
-    return this.epilogId;
+    return this._epilogId;
   }
   set epilogId(input){
-    this.epilogId = input;
+    this._epilogId = input;
   }
   
   get epilogFinished() {
-    return this.epilogFinished;
+    return this._epilogFinished;
   }
   set epilogFinished(input){
-    this.epilogFinished = input;
+    this._epilogFinished = input;
   }
   
   get entityName() {
-    return this.entityName;
+    return this._entityName;
   }
   set entityName(input){
-    this.entityName = input;
+    this._entityName = input;
   }
   
   get entityDuration() {
-    return this.entityDuration;
+    return this._entityDuration;
   }
   set entityDuration(input){
-    this.entityDuration = input;
+    this._entityDuration = input;
   }
   
   get data() {
-    return this.data;
+    return this._data;
   }
   set data(input){
-    this.data = input;
+    this._data = input;
   }
 }

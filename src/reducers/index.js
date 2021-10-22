@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import tutorials from "./tracks";
+import tracks from "./tracks";
 import auth from "./auth";
 
 export default combineReducers({
-    tutorials,
+    tracks,
     auth
 });

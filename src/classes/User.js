@@ -1,24 +1,24 @@
 export default class User {
   constructor(id, login, fullName, data) {
-    this.id = id;
-    this.login = login;
-    this.fullName = fullName;
-    this.data = data;
+    this._id = id;
+    this._login = login;
+    this._fullName = fullName;
+    this._data = data;
   }
   
   get id() {
-    return this.id;
+    return this._id;
   }
   
   get login() {
-    return this.login;
+    return this._login;
   }
   
   get fullName() {
-    return this.fullName;
+    return this._fullName;
   }
   
   get data() {
-    return this.data;
+    return this._data;
   }
 }

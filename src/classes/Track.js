@@ -1,36 +1,32 @@
 export default class Track {
   constructor({id, status, assigned, data}) {
-    this.id = id;
-    this.status = status;
-    this.assigned = assigned;
-    this.data = data;
+    this._id = id;
+    this._status = status;
+    this._assigned = assigned;
+    this._data = data;
   }
   
   get id() {
-      return this.id;
+      return this._id;
   }
-  set id(seid){
-    this.id = seid;
-  }
-  
   get status() {
-    return this.status;
+    return this._status;
   }
-  set status(sestatus){
-    this.status = sestatus;
+  set status(value){
+    this._status = value;
   }
   
   get assigned() {
-    return this.assigned;
+    return this._assigned;
   }
-  set assigned(seassigned){
-    this.status = seassigned;
+  set assigned(value){
+    this._status = value;
   }
   
   get data() {
-    return this.data;
+    return this._data;
   }
-  set data(sedata){
-    this.status = sedata;
+  set data(value){
+    this._status = value;
   }
 }

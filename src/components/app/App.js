@@ -16,27 +16,32 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.wrapper = React.createRef();
+        this.token = localStorage.getItem('token');
+        if (this.token === null) {
+            this.token = false;
+        }
     }
+
     render() {
-        let token = localStorage.getItem('token');
-        if (token === null) {
-            token = false;
-        }
-        if (!token) {
-            if (window.location.pathname != '/login') {
-                return <Router><Redirect to="/login" /></Router>
-            }
-        }
+        // if (!this.token) {
+        //     if (window.location.pathname != '/login') {
+        //         return <Router><Redirect push to="/login" /></Router>
+        //     }
+        // }
         return (
             <div className="App" ref={this.wrapper}>
                 <Router>
                     <Header />
                     <Switch>
-                        <Route exact path="/" component={Tracks} />
+                        <Route exact path="/" component={Tracks}>
+                            {this.token ? <Route exact path="/" component={Tracks} />:<Redirect to="/login" />}
+                        </Route>
                         {/*<Route exact path="/tracks" component={TrackCatalog} />*/}
                         {/*<Route exact path="/tracks/owned" component={MyTracks} />*/}
                         <Route exact path="/login" component={LogIn} />
-                        <Route component={Error} />
+                        <Route component={Error}>
+                            {this.token ? <Route component={Error} />:<Redirect to="/login" />}
+                        </Route>
                     </Switch>
                     <Footer />
                 </Router>

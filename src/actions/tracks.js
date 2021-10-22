@@ -21,17 +21,18 @@ import Track from "../classes/Track";
 export const getAllTracks = () => async (dispatch) => {
     try {
         const res = await new TracksService().tracks();
+        const data = res.data.data.map( (item) => {
+            return new Track(item);
+        } );
+        console.log(data);
 
         dispatch({
             type: GET_ALL_TRACKS,
-            payload: res.data
+            payload: data
         });
 
-        let data = res.data.data
-        let abc = new Track(data[0])
-        console.log(abc)
-        return Promise.resolve(data)/*Promise.resolve(data)*/
+        return Promise.resolve(data);
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 };

@@ -17,16 +17,16 @@ import {
 
 const initialState = [];
 
-function tutorialReducer(tutorials = initialState, action) {
+function trackReducer(tracks = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
         case GET_ALL_TRACKS:
-            return [...tutorials, payload];
+            return [...tracks, payload];
 
         default:
-            return tutorials;
+            return tracks;
     }
 }
 
-export default tutorialReducer;
+export default trackReducer;
