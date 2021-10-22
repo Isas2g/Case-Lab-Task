@@ -22,7 +22,7 @@ function trackReducer(tracks = initialState, action) {
 
     switch (type) {
         case GET_ALL_TRACKS:
-            return [...tracks, payload];
+            return payload;
 
         default:
             return tracks;

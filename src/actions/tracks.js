@@ -21,10 +21,33 @@ import Track from "../classes/Track";
 export const getAllTracks = () => async (dispatch) => {
     try {
         const res = await new TracksService().tracks();
+        if (res.data.success) {
+            console.log(res.data.message + " received successful.");
+        }
         const data = res.data.data.map( (item) => {
             return new Track(item);
         } );
-        console.log(data);
+
+        dispatch({
+            type: GET_ALL_TRACKS,
+            payload: data
+        });
+
+        return Promise.resolve(data);
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const getTrack = (trackId) => async (dispatch) => {
+    try {
+        const res = await new TracksService().trackGet(trackId);
+        if (res.data.success) {
+            console.log(res.data.message + " received successful.");
+        }
+        const data = res.data.data.map( (item) => {
+            return new Track(item);
+        } );
 
         dispatch({
             type: GET_ALL_TRACKS,
