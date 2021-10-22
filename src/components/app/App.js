@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import Error from "../Error";
-import LogIn from "../LogIn/LogIn";
+import LogIn from "../login/LogIn";
 import Tracks from "../tracks/Tracks";
 
 import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter} from "react-router-dom";

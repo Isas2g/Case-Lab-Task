@@ -28,10 +28,8 @@ export const getAllTracks = () => async (dispatch) => {
         });
 
         let data = res.data.data
-        let abc = new Track()
-        console.log(data.map( (item) => {
-            return abc
-        }))
+        let abc = new Track(data[0])
+        console.log(abc)
         return Promise.resolve(data)/*Promise.resolve(data)*/
     } catch (err) {
         console.log(err)
