@@ -2,9 +2,6 @@ import React from 'react';
 import {getAllTracks} from "../../actions/tracks";
 import { connect } from "react-redux";
 
-import store from "../../store/store";
-import Track from "../../classes/Track";
-
 class Tracks extends React.Component {
     constructor(props) {
         super(props);
@@ -16,7 +13,7 @@ class Tracks extends React.Component {
     }
 
     render() {
-        const { tracks } = this.props;
+        const { tracks } = this.props.tracks;
         //console.log(tracks);
         return (
             <div>

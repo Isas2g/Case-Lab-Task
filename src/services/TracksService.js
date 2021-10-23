@@ -36,66 +36,44 @@ class TrackService {
 //track контроллеры
 
     trackGet(trackId) {
-        let data = {};
-        api.get(
-            '/track/${trackId}',
+        return api.get(
+            `/track/${trackId}`,
             {
-                headers: authHeader()
-            }
-        ).then( (response) => {
-            console.log(response.data.data);
-            data = response.data.data;
-        }).catch((er) => this.catchError(er));
-        return new Track(
-            data.id,
-            data.status,
-            data.assigned,
-            data.data
-        );
+                headers: {...authHeader()}
+            })
     }
 
     trackCreate(data) {
-        let receivedData = {};
-        api.post(
+        return api.post(
             '/track/',
             data,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
-            console.log(response.data.data);
-            receivedData = response.data.data;
-        }).catch((er) => this.catchError(er));
-        return this.trackGet(receivedData.id);
+        )
     }
 
     trackUpdate(track) {
-        let success = false;
-        api.put(
-            '/track/${track.id}',
+        return api.put(
+            `/track/${track.id}`,
             track.data,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
-            console.log(response.data);
-            success = response.data.success;
-        }).catch((er) => this.catchError(er));
-        return success;
+        )
     }
 
     trackDelete(track) {
-        let success = false;
-        api.delete(
-            '/track/${track.id}',
+        return api.delete(
+            `/track/${track.id}`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
+        )/*.then( (response) => {
             console.log(response.data);
             success = response.data.success;
         }).catch((er) => this.catchError(er));
-        return success;
+        return success;*/
     }
 
 //trackAssign контроллер
@@ -103,12 +81,12 @@ class TrackService {
     trackAssign(assignId, newStatus) {
         let success = false;
         api.patch(
-            '/trackAssign/${assignId}',
+            `/trackAssign/${assignId}`,
             {
                 "status": newStatus
             },
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }).then( (response) => {
                 console.log(response.data);
                 success = response.data.success;
@@ -122,9 +100,9 @@ class TrackService {
     trackAssigns(track) {
         let data = [];
         api.get(
-            '/track/${track.id}/trackAssigns',
+            `/track/${track.id}/trackAssigns`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
         ).then( (response) => {
             console.log(response.data.data);
@@ -141,10 +119,10 @@ class TrackService {
             }
         })
         api.post(
-            '/track/${track.id}/trackAssigns',
+            `/track/${track.id}/trackAssigns`,
             transferredData,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
         ).then( (response) => {
             console.log(response.data.data);
@@ -156,9 +134,9 @@ class TrackService {
     trackAssignsDelete(track, assignsIdList) {
         let success = false;
         api.delete(
-            '/track/${track.id}/trackAssigns',
+            `/track/${track.id}/trackAssigns`,
             {
-                headers: authHeader(),
+                headers: {...authHeader()},
                 data: {
                     assignsIdList
                 }
@@ -175,9 +153,9 @@ class TrackService {
     trackDetails(track) {
         let data = [];
         api.get(
-            '/track/${track.id}/details',
+            `/track/${track.id}/details`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
         ).then( (response) => {
             console.log(response.data.data);
@@ -204,9 +182,9 @@ class TrackService {
     trackDetailGet(detailId) {
         let data = {};
         api.get(
-            '/track/detail/${detailId}',
+            `/track/detail/${detailId}`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
         ).then( (response) => {
             console.log(response.data.data);
@@ -228,10 +206,10 @@ class TrackService {
     trackDetailCreate(detailData){
         let data = {};
         api.post(
-            '/track/${detail.trackId}/detail',
+            `/track/${detail.trackId}/detail`,
             detailData,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
         ).then( (response) => {
             console.log(response.data.data);
@@ -243,10 +221,10 @@ class TrackService {
     trackDetailUpdate(detail){
         let data = {};
         api.put(
-            '/track/detail/${detail.id}',
+            `/track/detail/${detail.id}`,
             detail.data,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
         ).then( (response) => {
             console.log(response.data.data);
@@ -258,9 +236,9 @@ class TrackService {
     trackDetailDelete(detail){
         let success = false;
         api.delete(
-            '/track/detail/{detail.id}',
+            `/track/detail/${detail.id}`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
         ).then( (response) => {
             console.log(response.data);
