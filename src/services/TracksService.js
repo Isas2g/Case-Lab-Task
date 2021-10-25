@@ -30,156 +30,130 @@ class TrackService {
             '/tracks',
             {
                 headers: {...authHeader()}
-            })
+            }
+        );
     }
 
 //track контроллеры
 
     trackGet(trackId) {
-        let data = {};
-        api.get(
-            '/track/${trackId}',
+        return api.get(
+            `/track/${trackId}`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
-            console.log(response.data.data);
-            data = response.data.data;
-        }).catch((er) => this.catchError(er));
-        return new Track(
-            data.id,
-            data.status,
-            data.assigned,
-            data.data
         );
     }
 
     trackCreate(data) {
-        let receivedData = {};
-        api.post(
+        return api.post(
             '/track/',
             data,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
-            console.log(response.data.data);
-            receivedData = response.data.data;
-        }).catch((er) => this.catchError(er));
-        return this.trackGet(receivedData.id);
+        );
     }
 
     trackUpdate(track) {
-        let success = false;
-        api.put(
-            '/track/${track.id}',
+        return api.put(
+            `/track/${track.id}`,
             track.data,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
-            console.log(response.data);
-            success = response.data.success;
-        }).catch((er) => this.catchError(er));
-        return success;
+        );
     }
 
     trackDelete(track) {
-        let success = false;
-        api.delete(
-            '/track/${track.id}',
+        return api.delete(
+            `/track/${track.id}`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
+        );/*.then( (response) => {
             console.log(response.data);
             success = response.data.success;
         }).catch((er) => this.catchError(er));
-        return success;
+        return success;*/
     }
 
 //trackAssign контроллер
 
     trackAssign(assignId, newStatus) {
-        let success = false;
-        api.patch(
-            '/trackAssign/${assignId}',
+        return api.patch(
+            `/trackAssign/${assignId}`,
             {
                 "status": newStatus
             },
             {
-                headers: authHeader()
-            }).then( (response) => {
+                headers: {...authHeader()}
+            });/*.then( (response) => {
                 console.log(response.data);
                 success = response.data.success;
             }).catch((er) => this.catchError(er));
-        return success;
-
+        return success;*/
     }
 
 //trackAssigns контроллеры
 
     trackAssigns(track) {
-        let data = [];
-        api.get(
-            '/track/${track.id}/trackAssigns',
+        return api.get(
+            `/track/${track.id}/trackAssigns`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
+        );/*.then( (response) => {
             console.log(response.data.data);
             data = response.data.data;
         }).catch((er) => this.catchError(er));
-        return data;
+        return data;*/
     }
 
     trackAssignsAdd(track, usersList) {
-        let data = [];
-        let transferredData = usersList.map( (item) => {
+        const transferredData = usersList.map( (item) => {
             return {
                 "userId": item
             }
-        })
-        api.post(
-            '/track/${track.id}/trackAssigns',
+        });
+        return api.post(
+            `/track/${track.id}/trackAssigns`,
             transferredData,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
+        );/*.then( (response) => {
             console.log(response.data.data);
             data = response.data.data;
         }).catch((er) => this.catchError(er));
-        return data;
+        return data;*/
     }
 
     trackAssignsDelete(track, assignsIdList) {
-        let success = false;
-        api.delete(
-            '/track/${track.id}/trackAssigns',
+        return api.delete(
+            `/track/${track.id}/trackAssigns`,
             {
-                headers: authHeader(),
+                headers: {...authHeader()},
                 data: {
                     assignsIdList
                 }
             }
-        ).then( (response) => {
+        );/*.then( (response) => {
             console.log(response.data);
             success = response.data.success;
         }).catch((er) => this.catchError(er));
-        return success;
+        return success;*/
     }
 
 //trackDetails контроллер
 
     trackDetails(track) {
-        let data = [];
-        api.get(
-            '/track/${track.id}/details',
+        return api.get(
+            `/track/${track.id}/details`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
+        );/*.then( (response) => {
             console.log(response.data.data);
             data = response.data.data;
         }).catch((er) => this.catchError(er));
@@ -196,19 +170,18 @@ class TrackService {
                     data: item.data
                 });
             }
-        );
+        );*/
     }
 
 //trackDetail контроллеры
 
     trackDetailGet(detailId) {
-        let data = {};
-        api.get(
-            '/track/detail/${detailId}',
+        return api.get(
+            `/track/detail/${detailId}`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
+        );/*.then( (response) => {
             console.log(response.data.data);
             data = response.data.data;
         }).catch((er) => this.catchError(er));
@@ -222,51 +195,48 @@ class TrackService {
             entityName: data.entityName,
             entityDuration: data.entityDuration,
             data: data.data
-        })
+        });*/
     }
 
     trackDetailCreate(detailData){
-        let data = {};
-        api.post(
-            '/track/${detail.trackId}/detail',
+        return api.post(
+            `/track/${detailData.trackId}/detail`,
             detailData,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
+        );/*.then( (response) => {
             console.log(response.data.data);
             data = response.data.data;
         }).catch((er) => this.catchError(er));
-        return data;
+        return data;*/
     }
 
     trackDetailUpdate(detail){
-        let data = {};
-        api.put(
-            '/track/detail/${detail.id}',
+        return api.put(
+            `/track/detail/${detail.id}`,
             detail.data,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
+        )/*.then( (response) => {
             console.log(response.data.data);
             data = response.data.data;
         }).catch((er) => this.catchError(er));
-        return data;
+        return data;*/
     }
 
     trackDetailDelete(detail){
-        let success = false;
-        api.delete(
-            '/track/detail/{detail.id}',
+        return api.delete(
+            `/track/detail/${detail.id}`,
             {
-                headers: authHeader()
+                headers: {...authHeader()}
             }
-        ).then( (response) => {
+        )/*.then( (response) => {
             console.log(response.data);
             success = response.data.success;
         }).catch((er) => this.catchError(er));
-        return success;
+        return success;*/
     }
 
 //trackDetailEpilog контроллеры
