@@ -5,6 +5,8 @@ interface Track {
   data: TrackData; 
 }
 
+type Status = 'not_started' | 'processed' | 'finished';
+
 interface TrackData {
   name: string;
   previewText: string;
