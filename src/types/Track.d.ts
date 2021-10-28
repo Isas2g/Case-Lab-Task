@@ -16,13 +16,3 @@ interface TrackData {
   dateTimeFinish: number;
   mode: 'free' | 'consistent';
 }
-
-type GetAllTracks = () => void;
-
-type GetTrack = (trackId: integer) => void;
-
-type CreateTrack = (trackData: TrackData) => void;
-
-type UpdateTrack = (track: Track) => void;
-
-type DeleteTrack = (track: Track) => void;
