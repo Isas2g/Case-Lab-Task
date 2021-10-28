@@ -1,11 +1,8 @@
 import React from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 
-interface Props {
-  
-}
 
-export const Login: React.FC<Props> = (props) => {
+const Login: React.FC = (props) => {
   
   const student = () => {
     localStorage.setItem("token", "00k488okc8c804ocw8w80s4c0kg8g4ow04ssgk4k");
@@ -26,3 +23,5 @@ export const Login: React.FC<Props> = (props) => {
     </>
   );
 }
+
+export default Login;

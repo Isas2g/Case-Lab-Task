@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import store from "../../store"
-import {Redirect, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
+
 
 const CreateTrack: React.FC = () => {
 
@@ -18,7 +19,7 @@ const CreateTrack: React.FC = () => {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        store.addTrack(newTrack);
+        const query = store.addTrack(newTrack);
         history.push('/tracks');
     }
 
@@ -63,7 +64,7 @@ const CreateTrack: React.FC = () => {
                 <br />
                 <label>
                     Опубликовать?&nbsp;
-                    <input name="published" type="checkbox" checked={newTrack.published} onChange={handleInputs} />
+                    <input name="published" type="checkbox" defaultChecked={newTrack.published} onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
@@ -83,8 +84,7 @@ const CreateTrack: React.FC = () => {
                     mode:
                     <select onChange={handleInputs}>
                         <option value="free">free</option>
-                        <option value="coconut">coconut</option>
-                        <option value="mango">mango</option>
+                        <option value="consistent">consistent</option>
                     </select>
                 </label>
                 <br />
