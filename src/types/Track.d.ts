@@ -1,6 +1,6 @@
 interface Track {
   id: integer;
-  status: 'not_started' | 'processed' | 'finished';
+  status: Status;
   assigned: boolean;
   data: TrackData; 
 }
