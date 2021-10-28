@@ -3,12 +3,12 @@ import {observer} from 'mobx-react-lite';
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import './assets/App.scss';
 
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { Tracks } from './components/Tracks';
-import { CreateTrack } from './components/CreateTrack';
-import { GetTrack } from './components/GetTrack';
-import { Login } from './components/Login';
+import Header from './components/Header';
+//import { Footer } from './components/Footer';
+import Tracks from './modules/Tracks';
+import CreateTrack from './modules/Tracks/components/CreateTrack';
+//import { GetTrack } from './modules/Tracks/components/GetTrack';
+import { Login } from './modules/Login';
 import { Error } from './components/Error';
 
 export const App: React.FC = observer(() => {
@@ -20,21 +20,11 @@ export const App: React.FC = observer(() => {
     <Router>
       <Header />
       <Switch>
-          <Route exact path="/tracks" component={Tracks}>
-              {token ? <Route exact path="/tracks" component={Tracks} />:<Redirect to="/login" />}
-          </Route>
-          <Route exact path="/new/track" component={CreateTrack}>
-              {token ? <Route exact path="/new/track" component={CreateTrack} />:<Redirect to="/login" />}
-          </Route>
-          <Route exact path="/tracks/:id" component={GetTrack}>
-              {token ? <Route exact path="/tracks/:id" component={GetTrack} />:<Redirect to="/login" />}
-          </Route>
-          <Route exact path="/login" component={Login} />
-          <Route component={Error}>
-              {token ? <Route component={Error} />:<Redirect to="/login" />}
-          </Route>
+        <Route exact path="/tracks" component={token ? Tracks : Login} />
+        <Route exact path="/tracks/new" component={token ? CreateTrack : Login} />
+        <Route exact path="/login" component={Login} />
+        <Route component={token ? Error : Login} />
       </Switch>
-      <Footer />
-  </Router>
+    </Router>
   );
 })

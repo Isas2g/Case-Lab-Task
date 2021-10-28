@@ -1,10 +1,9 @@
-import api from './api';
-import { authHeader } from './auth-header';
+import api from '../../../shared/services/api';
+import { authHeader } from '../../../shared/services/auth-header';
 
-export const TrackService = {
-  //обработчик ошибок axios
+//обработчик ошибок axios
 
-  catchError: (error: any) =>  {
+const catchError = (error: any) =>  {
     if (error.response) {
         console.log(error.response.data);
         console.log(error.response.status);
@@ -15,9 +14,9 @@ export const TrackService = {
         console.log('Error', error.message);
     }
     console.log(error.config);
+}
 
-    return null;
-  },
+export const TrackService = {
   
   //tracks контроллер
   
@@ -27,51 +26,54 @@ export const TrackService = {
           {
               headers: {...authHeader()}
           }
-      );
+      ).then(
+          (response) =>
+              response.data.data
+      ).catch((er) => catchError(er));
   },
   
   //track контроллеры
   
-  trackGet: (trackId: string) => {
+  trackGet: (trackId: number) => {
       return api.get(
           `/track/${trackId}`,
           {
               headers: {...authHeader()}
           }
-      );
+      ).then(
+          (response) => response.data.data
+      ).catch((er) => catchError(er));
   },
   
   trackCreate: (data: TrackData) => {
-      return api.post(
+      api.post(
           '/track/',
           data,
           {
               headers: {...authHeader()}
           }
-      );
+      ).then((response) =>
+          console.log(`${response.data.message} track "${data.name}"`)
+      ).catch((er) => catchError(er));
   },
   
   trackUpdate: (track: Track) => {
-      return api.put(
+      api.put(
           `/track/${track.id}`,
           track.data,
           {
               headers: {...authHeader()}
           }
-      );
+      ).catch((er) => catchError(er));
   },
   
   trackDelete: (track: Track) => {
-      return api.delete(
+      api.delete(
           `/track/${track.id}`,
           {
               headers: {...authHeader()}
           }
-      );/*.then( (response) => {
-          console.log(response.data);
-          success = response.data.success;
-      }).catch((er) => this.catchError(er));
-      return success;*/
+      ).catch((er) => catchError(er));
   },
   
   //trackAssign контроллер
