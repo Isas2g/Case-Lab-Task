@@ -1,43 +1,22 @@
-import store from "../../store";
-import { SetStateAction, useEffect, useState } from "react";
+import store from "../../store"
+import React from "react";
+import {Edit, StateList} from "./style";
+import {observer} from "mobx-react-lite";
 
-import { Modal } from '../../../../shared/components/Modal';
-interface Props {
-  trackId: number;
-  isModalOpen: boolean;
-  setIsModalOpen: ModalFunc;
+const State = observer(() => <StateList track={store.track} />)
+
+const EditButton = observer(() => <Edit track={store.track} />)
+
+const GetTrack = (props: any) => {
+    const query = store.getTrack(props.match.params.id);
+    const token = localStorage.getItem('role');
+    return (
+        <>
+            <h3>Track {props.match.params.id} states</h3>
+            <State/>
+            {token === `teacher` ? <EditButton /> : ''}
+        </>
+    )
 }
 
-type ModalFunc = (isModalOpen: boolean) => void;
-
-export const GetTrack: React.FC<Props> = ({trackId, isModalOpen, setIsModalOpen}) => {
-
-    const [data, setData] = useState({
-      name: '',
-      previewPicture: '',
-      previewText: '',
-      published: false,
-      dateTimeStart: 0,
-      dateTimeFinish: 0,
-      mode: 'free'
-    });
-    
-    useEffect(() => {
-      const fetchData = async () => {
-        setData((await store.getTrack(trackId)).data);
-        console.log(data);
-      };
-      fetchData();
-    }, []);
-    
-    return (
-        <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} title={data.name}>
-          <p>PreviewPicture: {data.previewPicture}</p>
-          <p>PreviewText: {data.previewText}</p>
-          <p>Published: {data.published}</p>
-          <p>dateTimeStart: {data.dateTimeStart}</p>
-          <p>dateTimeFinish: {data.dateTimeFinish}</p>
-          <p>Mode: {data.mode}</p>
-        </Modal>
-    )
-};
+export default GetTrack;

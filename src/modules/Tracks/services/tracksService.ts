@@ -41,7 +41,8 @@ export const TrackService = {
               headers: {...authHeader()}
           }
       ).then(
-          (response) => response.data.data
+          (response) =>
+              response.data.data
       ).catch((er) => catchError(er));
   },
   

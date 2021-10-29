@@ -1,12 +1,12 @@
 import store from "../../store"
 import React from "react";
-import {TrackList, NewTrack} from "./style"
+import {TrackList} from "./style"
+import {NewTrack} from "./style/NewTrackButton";
 
 
 
 function TrackListComponent() {
     const tracks = store.getTracks();
-    
     const role = localStorage.getItem("role");
     return(
         <div className="container">

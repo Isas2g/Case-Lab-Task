@@ -1,49 +1,42 @@
-import React, { ChangeEvent, FormEvent } from "react";
+import React, {ChangeEvent, FormEvent, useState} from "react";
 import store from "../../store"
 import {useHistory} from "react-router-dom";
+import {observer} from "mobx-react-lite";
 
 
-const CreateTrack: React.FC = () => {
+const inputDate = (date : number) => new Date(date * 1000).toISOString().slice(0,16)
 
+const handleInputs = (event: any) => {
+    const target = event.target;
+    const value = target.type === 'checkbox'
+        ? target.checked
+        : target.type === 'file'
+            ? 'url'//this.uploadImage(target.value)
+            : target.type === 'datetime-local'
+                ? new Date(target.value).getTime() / 1000
+                : target.value;
+    const name = target.name;
+    console.log(target.value);
+    store.track.data = {
+        ...store.track.data,
+        [name]: value
+    }
+}
+
+
+
+
+const EditTrack = observer(()=>{
     const history = useHistory();
-
-    let newTrack: TrackData = {
-        name: "[ERROR: EMPTY NAME!]",
-        previewText: "string",
-        previewPicture: "string",
-        published: true,
-        dateTimeStart: 0,
-        dateTimeFinish: 0,
-        mode: "free"
-    };
-
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const query = store.addTrack(newTrack);
-        history.push('/tracks');
+        const query = store.updateTrack(store.track);
+        history.push(`/tracks/${store.track.id}`);
     }
-
-    const handleInputs = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | any> ) => {
-        const target = event.target;
-        const value = target.type === 'checkbox'
-            ? target.checked
-            : target.type === 'file'
-                ? 'url'//this.uploadImage(target.value)
-                : target.type === 'datetime-local'
-                    ? new Date(target.value).getTime() / 1000
-                    : target.value;
-        const name = target.name;
-
-        newTrack = {
-            ...newTrack,
-            [name]: value
-        }
-    }
-
-    return (
-        <div className="container align-center">
-            <h4>Create a new track!</h4>
-            <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
+    return(
+    <div className="container">
+    <h4>Edit Track number {store.track.id}!</h4>
+    <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
                 <label>
                     Название:
                     <input className="form-control" name="name" type="text" onChange={handleInputs} />
@@ -64,7 +57,7 @@ const CreateTrack: React.FC = () => {
                 <br />
                 <label>
                     Опубликовать?&nbsp;
-                    <input className="form-check-input" name="published" type="checkbox" defaultChecked={newTrack.published} onChange={handleInputs} />
+                    <input className="form-check-input" name="published" type="checkbox" defaultChecked={store.track.data.published} onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
@@ -91,9 +84,15 @@ const CreateTrack: React.FC = () => {
                 <br />
                 <input className="btn btn-primary" type="submit" value="Отправить" />
             </form>
-        </div>
+</div>
+    )})
+
+const UpdateTrack =  (props: any) => {
+    const query = store.getTrack(props.match.params.id)
+    return (
+        <EditTrack />
     );
-};
+}
 
 
-export default CreateTrack;
+export default UpdateTrack;

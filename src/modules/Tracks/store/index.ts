@@ -21,35 +21,34 @@ const deleteTrack = (tracks: Array<Track>, delTrack: Track): Array<Track> =>
         TrackService.trackDelete(delTrack);
         return tracks.filter((track) => track.id !== delTrack.id);
     }
+
+const getTrack = async (id: number) => {
+    let track: Track;
+    track = await TrackService.trackGet(id);
+    return track;
+}
+
 const getTracks = async () => {
-    //console.log('started method');
     let tracks: Array<Track>;
     tracks = await TrackService.tracks();
-    //console.log(tracks);
     return tracks;
-}
-const getTrack = async (trackId: number) => {
-    const track: Track = await TrackService.trackGet(trackId);
-    
-    console.log(track);
-    return track;
 }
 
 class Store {
     tracks: Array<Track> = [];
     track: Track = {
-        id: 0,
-        status: 'not_started',
-        assigned: false,
-        data: {
-            name: '',
-            previewText: '',
-            previewPicture: '',
+        "id": 0,
+        "status": "not_started",
+        "assigned": false,
+        "data": {
+            name: "[]",
+            previewText: 'string',
+            previewPicture: 'string',
             published: false,
             dateTimeStart: 0,
             dateTimeFinish: 0,
-            mode: "free"
-        }
+            mode: 'free',
+        },
     };
 
     constructor() {
@@ -62,19 +61,22 @@ class Store {
     }
 
     async getTracks() {
-        //console.log('getTracks');
         this.tracks = await getTracks();
         return this.tracks;
-    }
-    
-    async getTrack(trackId: number) {
-        this.track = await getTrack(trackId);
-        
-        return this.track;
     }
 
     deleteTrack(track: Track) {
         this.tracks = deleteTrack(this.tracks, track);
+    }
+
+    async getTrack(id: number) {
+        this.track = await getTrack(id);
+        return this.track;
+    }
+    updateTrack(track: Track) {
+        const query = updateTrack(this.tracks, track);
+        this.track = track;
+        return this.track;
     }
 }
 
