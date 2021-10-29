@@ -40,42 +40,42 @@ const CreateTrack: React.FC = () => {
     }
 
     return (
-        <div>
+        <div className="container align-center">
             <h4>Create a new track!</h4>
-            <form onSubmit={handleSubmit}>
+            <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
                 <label>
                     Название:
-                    <input name="name" type="text" onChange={handleInputs} />
+                    <input className="form-control" name="name" type="text" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
                 <label>
                     Описание:
-                    <textarea name="previewText" onChange={handleInputs} />
+                    <textarea className="form-control" name="previewText" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
                 <label>
                     Картинка:
-                    <input name="previewPicture" type="file" onChange={handleInputs} />
+                    <input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
                 <label>
                     Опубликовать?&nbsp;
-                    <input name="published" type="checkbox" checked={newTrack.published} onChange={handleInputs} />
+                    <input className="form-check-input" name="published" type="checkbox" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
                 <label>
                     dateTimeStart:
-                    <input name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
+                    <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
                 <label>
                     dateTimeFinish:
-                    <input name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
+                    <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
@@ -83,13 +83,12 @@ const CreateTrack: React.FC = () => {
                     mode:
                     <select onChange={handleInputs}>
                         <option value="free">free</option>
-                        <option value="coconut">coconut</option>
-                        <option value="mango">mango</option>
+                        <option value="consistent">consistent</option>
                     </select>
                 </label>
                 <br />
                 <br />
-                <input type="submit" value="Отправить" />
+                <input className="btn btn-primary" type="submit" value="Отправить" />
             </form>
         </div>
     );

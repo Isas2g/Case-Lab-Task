@@ -10,6 +10,8 @@ import CreateTrack from './modules/Tracks/components/CreateTrack';
 //import { GetTrack } from './modules/Tracks/components/GetTrack';
 import { Login } from './modules/Login';
 import { Error } from './components/Error';
+import 'react-bootstrap';
+
 
 export const App: React.FC = observer(() => {
   

@@ -19,7 +19,7 @@ const addTrack = async (newData: TrackData) =>
 const deleteTrack = (tracks: Array<Track>, delTrack: Track): Array<Track> =>
     {
         TrackService.trackDelete(delTrack);
-        return tracks.filter((track) => track.id != delTrack.id);
+        return tracks.filter((track) => track.id !== delTrack.id);
     }
 const getTracks = async () => {
     //console.log('started method');
@@ -28,9 +28,29 @@ const getTracks = async () => {
     //console.log(tracks);
     return tracks;
 }
+const getTrack = async (trackId: number) => {
+    const track: Track = await TrackService.trackGet(trackId);
+    
+    console.log(track);
+    return track;
+}
 
 class Store {
     tracks: Array<Track> = [];
+    track: Track = {
+        id: 0,
+        status: 'not_started',
+        assigned: false,
+        data: {
+            name: '',
+            previewText: '',
+            previewPicture: '',
+            published: false,
+            dateTimeStart: 0,
+            dateTimeFinish: 0,
+            mode: "free"
+        }
+    };
 
     constructor() {
         makeAutoObservable(this);
@@ -45,6 +65,12 @@ class Store {
         //console.log('getTracks');
         this.tracks = await getTracks();
         return this.tracks;
+    }
+    
+    async getTrack(trackId: number) {
+        this.track = await getTrack(trackId);
+        
+        return this.track;
     }
 
     deleteTrack(track: Track) {

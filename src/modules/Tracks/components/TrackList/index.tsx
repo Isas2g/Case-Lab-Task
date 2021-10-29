@@ -6,12 +6,14 @@ import {TrackList, NewTrack} from "./style"
 
 function TrackListComponent() {
     const tracks = store.getTracks();
+    
+    const role = localStorage.getItem("role");
     return(
-        <>
+        <div className="container">
             <h3>Track list</h3>
             <TrackList />
-            <NewTrack />
-        </>
+            {role === "teacher" ? <NewTrack /> : ""}
+        </div>
     )
 }
 

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import store from "../../../store";
-import React from "react";
+import React, {useState} from "react";
 import {observer} from "mobx-react-lite";
 import {useHistory} from "react-router-dom";
 
+import classes from './style.module.css';
+import { GetTrack } from '../../GetTrack';
 
 const ListElem = styled.li`
     list-style: none;
@@ -16,17 +18,23 @@ const Cross = styled.b`
     cursor: pointer;
 `
 
-const ListItem = (props: any) =>
-    <ListElem {...props} key={props.key}>
-        {props.track.data.name}
-        <Cross className="close" onClick={() => store.deleteTrack(props.track)}>✖</Cross>
-    </ListElem>
-
+const ListItem = (props: any) => {
+    
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    
+    return (<ListElem className={classes.track} {...props}>
+        <p className={"align-bottom " + classes['track-title']}>
+            <span data-toggle="modal" data-target="#trackModal" onClick={() => setIsModalOpen(true)}>{props.track.data.name}</span>
+            <Cross className="close" onClick={() => store.deleteTrack(props.track)}>✖</Cross>
+        </p>
+        {isModalOpen ? <GetTrack isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} trackId={props.track.id} /> : ''}
+    </ListElem>);
+}
 
 export const TrackList: React.FC = observer( () => {
     //console.log(store);
     return(
-        <ul>
+        <ul className={classes['track-list']}>
             {store.tracks.map((track) => (
                 <ListItem key={track.id} track={track} />
             ))}
