@@ -18,13 +18,17 @@ export const ListItem = (props: any) => {
     const role = localStorage.getItem("role");
     
     const [isModalOpen, setIsModalOpen] = useState(false);
-    
-    return (<ListElem className={classes.track} {...props}>
-        <p className={"align-bottom " + classes['track-title']}>
-            <span data-toggle="modal" data-target="#trackModal" onClick={() => setIsModalOpen(true)}>{props.track.data.name}</span>
-            <Cross className="close" onClick={() => store.deleteTrack(props.track)}>✖</Cross>
-        </p>
-        {isModalOpen ? <TrackModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} trackId={props.track.id} /> : ''}
-    </ListElem>);
+
+    return (
+        <>
+            <ListElem className={classes.track} {...props} onClick={() => setIsModalOpen(true)}>
+                <p className={"align-bottom " + classes['track-title']}>
+                    <span data-toggle="modal" data-target="#trackModal">{props.track.data.name}</span>
+                    {role === "teacher" ? <Cross className="close" onClick={() => store.deleteTrack(props.track)}>✖</Cross> : ""}
+                </p>
+            </ListElem>
+            {isModalOpen ? <TrackModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} track={props.track} /> : ''}
+        </>
+    );
 }
 

@@ -1,17 +1,17 @@
 import store from "../../store";
 import { SetStateAction, useEffect, useState } from "react";
-
+import React from "react";
 import { Modal } from '../../../../shared/components/Modal';
 import { Link } from "react-router-dom";
 interface Props {
-  trackId: number;
+  track: Track;
   isModalOpen: boolean;
   setIsModalOpen: ModalFunc;
 }
 
 type ModalFunc = (isModalOpen: boolean) => void;
 
-export const TrackModal: React.FC<Props> = ({trackId, isModalOpen, setIsModalOpen}) => {
+export const TrackModal: React.FC<Props> = ({track, isModalOpen, setIsModalOpen}) => {
 
     const [data, setData] = useState({
       name: '',
@@ -24,9 +24,9 @@ export const TrackModal: React.FC<Props> = ({trackId, isModalOpen, setIsModalOpe
     });
     
     useEffect(() => {
-      const fetchData = async () => {
-        setData((await store.getTrack(trackId)).data);
-        console.log(data);
+      const fetchData = () => {
+        setData(track.data);
+        //console.log(data);
       };
       fetchData();
     }, []);
@@ -40,7 +40,7 @@ export const TrackModal: React.FC<Props> = ({trackId, isModalOpen, setIsModalOpe
           <p>dateTimeFinish: {data.dateTimeFinish}</p>
           <p>Mode: {data.mode}</p>
           
-          <Link to={'/tracks/' + trackId}>See track</Link>
+          <Link to={'/tracks/' + track.id}>See track</Link>
           
         </Modal>
     )
