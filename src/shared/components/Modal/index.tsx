@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type Props = {
     title: string;
     isModalOpen: boolean;
@@ -7,6 +9,12 @@ type Props = {
 type ModalFunc = (isModalOpen: boolean) => void;
 
 export const Modal: React.FC<Props> = ({title, isModalOpen, setIsModalOpen, children}) => {
+    
+    const [show, setShow] = useState(false);
+
+      const handleClose = () => setShow(false);
+      const handleShow = () => setShow(true);
+    
     return (
         <div className="modal fade show" role="dialog" style={{display: 'block'}}>
             <div className="modal-dialog" role="document">

@@ -11,11 +11,11 @@ const GetTrack = (props: any) => {
     const query = store.getTrack(props.match.params.id);
     const token = localStorage.getItem('role');
     return (
-        <>
+        <div className="container">
             <h3>Track {props.match.params.id} states</h3>
             <State/>
             {token === `teacher` ? <EditButton /> : ''}
-        </>
+        </div>
     )
 }
 

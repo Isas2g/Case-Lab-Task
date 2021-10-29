@@ -1,6 +1,13 @@
 import { useHistory } from "react-router";
 
-export const Profile = () => {
+interface Props {
+  token: string;
+  setToken: TokenFunc; 
+}
+
+type TokenFunc = (str: string) => void;
+
+export const Profile: React.FC<Props> = ({token, setToken}) => {
   
   const role = localStorage.getItem('role');
   const history = useHistory();
@@ -9,6 +16,7 @@ export const Profile = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     
+    setToken('');
     history.push('/login');
   }
   
