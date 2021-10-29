@@ -14,6 +14,8 @@ const Cross = styled.b`
 `
 
 export const ListItem = (props: any) => {
+
+    const role = localStorage.getItem("role");
     
     const [isModalOpen, setIsModalOpen] = useState(false);
     
