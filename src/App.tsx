@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {observer} from 'mobx-react-lite';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './assets/App.scss';
@@ -15,9 +15,8 @@ import { Main } from './modules/Main';
 import { Profile } from './modules/Profile';
 
 export const App: React.FC = observer(() => {
-  const [token, setToken] = useState('');
   
-  const tokenCode = localStorage.getItem('token');
+  const [token, setToken]:any = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '');
   
   const loginPage = (props: any) => <Login token={token} setToken={setToken} />
   

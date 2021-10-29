@@ -16,11 +16,12 @@ const Cross = styled.b`
 export const ListItem = (props: any) => {
     
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const role = localStorage.getItem('role')
     
     return (<ListElem className={classes.track} {...props}>
         <p className={"align-bottom " + classes['track-title']}>
             <span data-toggle="modal" data-target="#trackModal" onClick={() => setIsModalOpen(true)}>{props.track.data.name}</span>
-            <Cross className="close" onClick={() => store.deleteTrack(props.track)}>✖</Cross>
+            {role === 'teacher' ? <Cross className="close" onClick={() => store.deleteTrack(props.track)}>✖</Cross> : ''}
         </p>
         {isModalOpen ? <TrackModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} trackId={props.track.id} /> : ''}
     </ListElem>);
