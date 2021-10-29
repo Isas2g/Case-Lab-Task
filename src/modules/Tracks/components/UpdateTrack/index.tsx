@@ -36,54 +36,54 @@ const EditTrack = observer(()=>{
     return(
     <div className="container">
     <h4>Edit Track number {store.track.id}!</h4>
-    <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
-                <label>
-                    Название:
-                    <input className="form-control" name="name" type="text" onChange={handleInputs} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Описание:
-                    <textarea className="form-control" name="previewText" onChange={handleInputs} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Картинка:
-                    <input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Опубликовать?&nbsp;
-                    <input className="form-check-input" name="published" type="checkbox" defaultChecked={store.track.data.published} onChange={handleInputs} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    dateTimeStart:
-                    <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    dateTimeFinish:
-                    <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    mode:
-                    <select onChange={handleInputs}>
-                        <option value="free">free</option>
-                        <option value="consistent">consistent</option>
-                    </select>
-                </label>
-                <br />
-                <br />
-                <input className="btn btn-primary" type="submit" value="Отправить" />
-            </form>
+        <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
+            <label>
+                Название:
+                <input className="form-control" name="name" type="text" onChange={handleInputs} value={store.track.data.name} />
+            </label>
+            <br />
+            <br />
+            <label>
+                Описание:
+                <textarea className="form-control" name="previewText" onChange={handleInputs} value={store.track.data.previewText} />
+            </label>
+            <br />
+            <br />
+            <label>
+                Картинка:
+                <input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
+            </label>
+            <br />
+            <br />
+            <label>
+                Опубликовать?&nbsp;
+                <input className="form-check-input" name="published" type="checkbox" checked={store.track.data.published} onChange={handleInputs} />
+            </label>
+            <br />
+            <br />
+            <label>
+                dateTimeStart:
+                <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeStart)} />
+            </label>
+            <br />
+            <br />
+            <label>
+                dateTimeFinish:
+                <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeFinish)} />
+            </label>
+            <br />
+            <br />
+            <label>
+                mode:
+                <select name="mode" onChange={handleInputs} value={store.track.data.mode}>
+                    <option value="free">free</option>
+                    <option value="consistent">consistent</option>
+                </select>
+            </label>
+            <br />
+            <br />
+            <input className="btn btn-primary" type="submit" value="Отправить" />
+        </form>
 </div>
     )})
 
