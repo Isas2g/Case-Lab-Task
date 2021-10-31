@@ -1,47 +1,30 @@
-import store from "../../store";
-import { SetStateAction, useEffect, useState } from "react";
 import React from "react";
-import { Modal } from '../../../../shared/components/Modal';
+import { ModalComponent } from '../../../../shared/components/Modal';
 import { Link } from "react-router-dom";
 interface Props {
-  track: Track;
-  isModalOpen: boolean;
-  setIsModalOpen: ModalFunc;
+  trackId: number;
+  show: boolean;
+  onHide: ModalFunc;
+  data: TrackData;
 }
 
-type ModalFunc = (isModalOpen: boolean) => void;
+type ModalFunc = () => void;
 
-export const TrackModal: React.FC<Props> = ({track, isModalOpen, setIsModalOpen}) => {
-
-    const [data, setData] = useState({
-      name: '',
-      previewPicture: '',
-      previewText: '',
-      published: false,
-      dateTimeStart: 0,
-      dateTimeFinish: 0,
-      mode: 'free'
-    });
+export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data}) => {
     
-    useEffect(() => {
-      const fetchData = () => {
-        setData(track.data);
-        //console.log(data);
-      };
-      fetchData();
-    }, []);
+    const {name, previewPicture, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;
     
     return (
-        <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} title={data.name}>
-          <p>PreviewPicture: {data.previewPicture}</p>
-          <p>PreviewText: {data.previewText}</p>
-          <p>Published: {data.published}</p>
-          <p>dateTimeStart: {data.dateTimeStart}</p>
-          <p>dateTimeFinish: {data.dateTimeFinish}</p>
-          <p>Mode: {data.mode}</p>
+        <ModalComponent show={show} onHide={onHide} title={name} heading="Трек">
+          <p>PreviewPicture: {previewPicture}</p>
+          <p>PreviewText: {previewText}</p>
+          <p>Published: {published}</p>
+          <p>dateTimeStart: {dateTimeStart}</p>
+          <p>dateTimeFinish: {dateTimeFinish}</p>
+          <p>Mode: {mode}</p>
           
-          <Link to={'/tracks/' + track.id}>See track</Link>
+          <Link to={'/tracks/' + trackId}>See track</Link>
           
-        </Modal>
+        </ModalComponent>
     )
 };

@@ -3,16 +3,20 @@ import React from "react";
 import {TrackList} from "./style"
 import {NewTrack} from "./style/NewTrackButton";
 
+interface Props {
+    my: boolean;
+}
 
-
-function TrackListComponent() {
+const TrackListComponent:React.FC<Props> = ({my}) => {
     const tracks = store.getTracks();
     const role = localStorage.getItem("role");
     return(
         <div className="container">
-            <h3>Track list</h3>
-            {role === "teacher" ? <NewTrack /> : ""}
-            <TrackList />
+            <div className="container d-flex align-items-center">
+                <h3 className={"d-flex p-3"}>Каталог треков</h3>
+                {role === "teacher" ? <NewTrack /> : ""}
+            </div>
+            <TrackList my={my} />
         </div>
     )
 }
