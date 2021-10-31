@@ -1,5 +1,6 @@
 import { useHistory } from "react-router";
 import {Avatar} from "./style";
+import React from "react";
 
 interface Props {
   token: string;
