@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import logo from "../../../shared/assets/logo.png"
-import brand from "../../../shared/assets/brand.png"
 import {UserCard} from "./UserCard";
 import {Bell} from "./Bell";
 import {useLocation} from "react-router";
@@ -15,8 +14,6 @@ interface Props {
 }
 
 export const MainMenu:React.FC<Props> = ({token, setToken}) => {
-    const location = useLocation()
-
     return (
         <Navbar bg="light" expand="lg" sticky="top">
             <Container>

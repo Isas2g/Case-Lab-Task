@@ -1,7 +1,6 @@
 import {Card} from "react-bootstrap";
 import avatar from "../../../shared/assets/user-icon.png";
 import {Link} from "react-router-dom";
-import bell from "../../../shared/assets/notification-icon.png";
 import React from "react";
 import {useHistory} from "react-router";
 
