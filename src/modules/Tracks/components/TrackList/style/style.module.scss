@@ -23,3 +23,25 @@
     flex-wrap: wrap;
     align-items: center;
 }
+
+.contrast {
+    color: #fff;
+    text-shadow: 1px 0 1px #000,
+    0 1px 1px #000,
+    -1px 0 1px #000,
+    0 -1px 1px #000;
+}
+
+.bright:hover {
+    .contrast {
+        text-shadow: 2px 0 2px #000,
+        0 2px 2px #000,
+        -2px 0 2px #000,
+        0 -2px 2px #000 !important;
+    }
+    opacity: 1 !important;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
