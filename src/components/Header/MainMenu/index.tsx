@@ -19,10 +19,7 @@ export const MainMenu:React.FC<Props> = ({token, setToken}) => {
     return (
         <Navbar bg="light" expand="lg" sticky="top">
             <Container>
-                {location.pathname === "/" || location.pathname === "/login" || !token
-                    ? ''
-                    : <Navbar.Brand href="/"><img src={logo} alt="Logo" height="50"/></Navbar.Brand>
-                }
+                <Navbar.Brand href="/"><img src={logo} alt="Logo" height="50"/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
