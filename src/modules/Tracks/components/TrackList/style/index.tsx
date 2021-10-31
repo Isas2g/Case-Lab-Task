@@ -6,10 +6,16 @@ import {useHistory} from "react-router-dom";
 import classes from './style.module.css';
 import {ListItem} from "./ListItem";
 
-export const TrackList: React.FC = observer( () => {
+interface Props {
+    my: boolean;
+}
+
+export const TrackList: React.FC<Props> = observer( ({my}) => {
+    const tracks = my ? store.tracks.filter(item => item.assigned) : store.tracks;
+    //console.log(tracks)
     return(
         <ul className={classes['track-list']}>
-            {store.tracks.map((track) => (
+            {tracks.map((track) => (
                 <ListItem track={track} key={track.id}/>
             ))}
         </ul>
