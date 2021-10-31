@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import {observer} from 'mobx-react-lite';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './assets/App.scss';
@@ -18,14 +18,14 @@ export const App: React.FC = observer(() => {
   
   const [token, setToken]:any = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '');
   
-  const loginPage = (props: any) => <Login token={token} setToken={setToken} />
+  const loginPage = () => <Login token={token} setToken={setToken} />
   
   return (
     <Router>
       {token ? <Header /> : ''}
       <Switch>
         <Route exact path="/" component={token ? Main : loginPage} />
-        <Route exact path="/profile" component={token ? (props: any) => <Profile token={token} setToken={setToken} /> : loginPage} />
+        <Route exact path="/profile" component={token ? () => <Profile token={token} setToken={setToken} /> : loginPage} />
         <Route exact path="/tracks" component={token ? Tracks : loginPage} />
         <Route exact path="/tracks/new" component={token ? CreateTrack : loginPage} />
         <Route exact path="/tracks/:id" component={token ? GetTrack : loginPage} />
