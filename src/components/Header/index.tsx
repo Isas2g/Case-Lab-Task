@@ -16,13 +16,13 @@ export const Header:React.FC<Props> = ({token, setToken}) => {
 
   return (
     <>
-      {location.pathname === "/" || location.pathname === "/login" || !token
-        ? <header className="App-header p-2">
+      {location.pathname === "/login" || !token
+        ? <header className="bg-light text-center p-2">
             <Image src={banner}/>
           </header>
         : ''
       }
-      {token
+      {token && !(location.pathname === "/login")
         ? <MainMenu token={token} setToken={setToken} />
         : ''
       }
