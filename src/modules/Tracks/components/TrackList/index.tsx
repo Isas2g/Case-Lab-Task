@@ -11,8 +11,8 @@ function TrackListComponent() {
     return(
         <div className="container">
             <h3>Track list</h3>
-            <TrackList />
             {role === "teacher" ? <NewTrack /> : ""}
+            <TrackList />
         </div>
     )
 }

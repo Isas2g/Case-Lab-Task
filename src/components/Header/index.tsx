@@ -1,6 +1,8 @@
 import { MainMenu } from "./MainMenu";
 import React, {useState} from "react";
 import {useLocation} from "react-router";
+import {Image} from "react-bootstrap";
+import banner from "../../shared/assets/banner.png";
 
 type TokenFunc = (str: string) => void;
 
@@ -16,7 +18,7 @@ export const Header:React.FC<Props> = ({token, setToken}) => {
     <>
       {location.pathname === "/" || location.pathname === "/login" || !token
         ? <header className="App-header p-2">
-            HEADER
+            <Image src={banner}/>
           </header>
         : ''
       }

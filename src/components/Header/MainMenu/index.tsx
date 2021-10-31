@@ -4,6 +4,7 @@ import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import logo from "../../../shared/assets/logo.png"
 import {UserCard} from "./UserCard";
 import {Bell} from "./Bell";
+import {useLocation} from "react-router";
 
 type TokenFunc = (str: string) => void;
 
@@ -13,10 +14,15 @@ interface Props {
 }
 
 export const MainMenu:React.FC<Props> = ({token, setToken}) => {
+    const location = useLocation()
+
     return (
         <Navbar bg="light" expand="lg" sticky="top">
             <Container>
-                <Navbar.Brand href="/"><img src={logo} alt="Logo" height="50"/></Navbar.Brand>
+                {location.pathname === "/" || location.pathname === "/login" || !token
+                    ? ''
+                    : <Navbar.Brand href="/"><img src={logo} alt="Logo" height="50"/></Navbar.Brand>
+                }
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
