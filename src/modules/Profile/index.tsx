@@ -1,4 +1,5 @@
 import { useHistory } from "react-router";
+import {Avatar} from "./style";
 
 interface Props {
   token: string;
@@ -22,9 +23,7 @@ export const Profile: React.FC<Props> = ({token, setToken}) => {
   
   return (
     <div className="container d-flex">
-      <div className="m-2" style={{width: 200, height: 200, background: "#f0f0f0"}}>
-          <img style={{width: 200, height: 200}} src="[url]" />
-      </div>
+      <Avatar src='url'/>
       <div>
         <p>Role: {role}</p>
         <button onClick={leave} className="btn btn-primary">Выйти из аккаунта</button>
