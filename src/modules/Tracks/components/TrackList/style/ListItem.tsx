@@ -1,32 +1,39 @@
 import styled from "styled-components";
 import store from "../../../store";
 import React, { useState } from "react";
-
-import classes from './style.module.css';
+import style from "./style.module.scss";
 import { TrackModal } from "../../TrackModal";
-
-const ListElem = styled.li`
-    list-style: none;
-`
+import {Button, Card, Col } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 const Cross = styled.b`
     cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 `
 
 export const ListItem = (props: any) => {
-
     const role = localStorage.getItem("role");
-    
-    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <>
-            <ListElem className={classes.track} {...props} onClick={() => setIsModalOpen(true)}>
-                <p className={"align-bottom " + classes['track-title']}>
-                    <span data-toggle="modal" data-target="#trackModal">{props.track.data.name}</span>
-                    {role === "teacher" ? <Cross className="close" onClick={() => store.deleteTrack(props.track)}>✖</Cross> : ""}
-                </p>
-            </ListElem>
-            {isModalOpen ? <TrackModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} track={props.track} /> : ''}
+            <Col>
+                <Card className={"bg-dark text-white " + style.pointer + ' ' + style.bright} onClick={() => setModalShow(true)}>
+                    <Card.Img src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={230} />
+                    <Card.ImgOverlay className={"d-flex align-items-end"}>
+                        <Card.Title className={style.contrast}>{props.track.data.name}</Card.Title>
+                        {role === "teacher" ? <Cross className="close" onClick={() => store.deleteTrack(props.track)}>✖</Cross> : ""}
+                    </Card.ImgOverlay>
+                </Card>
+                <TrackModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                    data={props.track.data}
+                    trackId={props.track.id}
+                />
+            </Col>
         </>
     );
 }
