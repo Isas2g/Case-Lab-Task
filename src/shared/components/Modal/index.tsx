@@ -1,15 +1,17 @@
 import { Modal, Button } from "react-bootstrap";
+import React from "react";
 
 interface Props {
     title: string;
     heading: string;
     show: boolean;
     onHide: ModalFunc;
+    trackId: number;
 }
 
 type ModalFunc = () => void;
 
-export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  children}) => {
+export const ModalComponent: React.FC<Props> = ({title, trackId, show, onHide, heading,  children}) => {
     
     return (
         <Modal
@@ -29,7 +31,7 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
                 {children}
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={onHide}>Close</Button>
+                <Button variant="warning" size="lg" href={'/tracks/'+ trackId}>Перейти к треку</Button>
             </Modal.Footer>
         </Modal>
     )
