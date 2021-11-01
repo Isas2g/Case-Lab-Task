@@ -2,24 +2,36 @@ import store from "../../store"
 import React from "react";
 import {Edit, StateList} from "./style";
 import {observer} from "mobx-react-lite";
+import {Button, ButtonGroup} from "react-bootstrap";
 
-interface Props {
-    id: number;
-}
+const State = observer(() => <StateList track={store.track} />);
 
-const State = observer(() => <StateList track={store.track} />)
-const EditButton = observer(() => <Edit track={store.track} />)
+const EditButton = observer(() => <Edit track={store.track} />);
 
-const GetTrack: React.FC<Props> = ({id}) => {
-    const query = store.getTrack(id);
+//TODO
+
+// const StudentButton = observer(() => <Student track={store.student}/>);
+// previewPicture and progress
+
+const GetTrack = (props: any) => {
+    const query = store.getTrack(props.match.params.id);
     const token = localStorage.getItem('role');
     return (
         <div className="container">
-            <h3>Track {id} states</h3>
+            <img src={props.match.params.previewPicture} />
+            <h3> Трек [id:{props.match.params.id}] </h3>
             <State/>
-            {token === `teacher` ? <EditButton /> : ''}
-        </div>
-    )
+            {token === `teacher` ?
+                <ButtonGroup>
+                    <EditButton />
+                    <Button>
+                        Ученики трека
+                    </Button>
+                    {/*<StudentButton />*/}
+                </ButtonGroup> :
+                <div> Прогресс прохождения трека: {props.match.params.progress} </div>
+            }
+        </div>)
 }
 
 export default GetTrack;

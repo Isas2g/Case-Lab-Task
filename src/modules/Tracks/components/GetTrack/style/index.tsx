@@ -39,3 +39,18 @@ export const Edit = (props: any) => {
         <ButtonNew className="btn btn-primary" onClick={moveToUpdate}>Edit Track</ButtonNew>
     )
 }
+
+//TODO
+
+/* export const Student = (props: any) => {
+
+    const history = useHistory();
+
+    const moveToUpdate = () => {
+        //сделать ссылку на поиск студентов history.push('');
+    }
+
+    return(
+        <ButtonNew className="btn btn-primary" onClick={moveToUpdate}> Ученики трека </ButtonNew>
+    )
+}*/
