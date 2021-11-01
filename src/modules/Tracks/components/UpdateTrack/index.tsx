@@ -35,7 +35,7 @@ const EditTrack = observer(()=>{
     }
     return(
     <div className="container">
-    <h4>Edit Track number {store.track.id}!</h4>
+    <h4>Изменить трек [{store.track.id}]</h4>
         <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
             <label>
                 Название:
@@ -62,22 +62,22 @@ const EditTrack = observer(()=>{
             <br />
             <br />
             <label>
-                dateTimeStart:
+                Дата начала:
                 <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeStart)} />
             </label>
             <br />
             <br />
             <label>
-                dateTimeFinish:
+                Дата окончания:
                 <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeFinish)} />
             </label>
             <br />
             <br />
             <label>
-                mode:
+                Режим:
                 <select name="mode" onChange={handleInputs} value={store.track.data.mode}>
-                    <option value="free">free</option>
-                    <option value="consistent">consistent</option>
+                    <option value="free">свободный</option>
+                    <option value="consistent">последовательный</option>
                 </select>
             </label>
             <br />
