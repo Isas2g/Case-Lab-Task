@@ -61,9 +61,9 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
         }
         return `${date.getDay()} ${monthName} ${date.getFullYear()} в ${date.getHours()< 10 ? '0'+date.getHours() : date.getHours()}:${date.getMinutes()< 10 ? '0'+date.getMinutes() : date.getMinutes()} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
     }
-    
+
     return (
-        <ModalComponent show={show} onHide={onHide} title={name} heading={"Трек " + trackId} trackId={trackId}>
+        <ModalComponent track={undefined} remove={false} show={show} onHide={onHide} title={name} heading={"Трек " + trackId} trackId={trackId}>
           {/*<p>PreviewPicture: {previewPicture}</p>*/}
           <p>{previewText}</p>
           {role === 'teacher' ? <p>Опубликовано: {published ? "да" : "нет"}</p> : ''}
@@ -71,6 +71,7 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
           <p>Дата закрытия трека: {dateFromUnix(dateTimeFinish)}</p>
           <p>Режим прохождения: {mode === "free" ? "свободный" : "последовательный"}</p>
           {/*<Link to={'/tracks/' + trackId}>See track</Link>*/}
+
         </ModalComponent>
     )
 };
