@@ -1,35 +1,36 @@
-import { useState } from "react";
+import { Modal, Button } from "react-bootstrap";
 
-type Props = {
+interface Props {
     title: string;
-    isModalOpen: boolean;
-    setIsModalOpen: ModalFunc;
+    heading: string;
+    show: boolean;
+    onHide: ModalFunc;
 }
 
-type ModalFunc = (isModalOpen: boolean) => void;
+type ModalFunc = () => void;
 
-export const Modal: React.FC<Props> = ({title, isModalOpen, setIsModalOpen, children}) => {
-    
-    const [show, setShow] = useState(false);
-
-      const handleClose = () => setShow(false);
-      const handleShow = () => setShow(true);
+export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  children}) => {
     
     return (
-        <div className="modal fade show" role="dialog" style={{display: 'block'}}>
-            <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title">{title}</h5>
-                        <button type="button" className="close" onClick={() => setIsModalOpen(false)}>
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-                        {children}
-                    </div>
-                </div>
-            </div>
-      </div>
+        <Modal
+            show={show}
+            onHide={onHide}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    {heading}
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <h4>{title}</h4>
+                {children}
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
     )
 }

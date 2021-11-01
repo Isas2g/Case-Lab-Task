@@ -6,21 +6,20 @@ interface Props {
 }
 
 const AvatarImage = styled.img`
-    width: 200px;
-    height: 200px;
-
+  width: 200px;
+  height: 200px;
 `
+
 const AvatarDiv = styled.div`
-    width: 200px; 
-    height: 200px; 
-    background: #f0f0f0;
-
+  width: 200px;
+  height: 200px;
+  background: #f0f0f0;
 `
 
-const Avatar: React.FC<Props> = ({src}) => {
-    return(<AvatarDiv className="m-2">
-        <AvatarImage src={src} />
-    </AvatarDiv>)
+export const Avatar: React.FC<Props> = ({src}) => {
+    return(
+        <AvatarDiv className="m-2">
+            <AvatarImage src={src} />
+        </AvatarDiv>
+    )
 }
-
-export default Avatar;

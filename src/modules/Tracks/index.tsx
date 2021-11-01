@@ -1,8 +1,13 @@
 import TrackList from "./components/TrackList";
+import React from "react";
 
-function Tracks() {
+interface Props {
+    my: boolean;
+}
+
+const Tracks:React.FC<Props> = ({my}) => {
     return(
-        <TrackList />
+        <TrackList my={my} />
     )
 }
 

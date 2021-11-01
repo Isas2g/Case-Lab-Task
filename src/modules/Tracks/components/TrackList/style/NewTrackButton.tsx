@@ -15,6 +15,6 @@ export const NewTrack: React.FC = () => {
     }
 
     return(
-        <ButtonNew className="btn btn-primary" onClick={moveToNew}>Create new Track</ButtonNew>
+        <ButtonNew className={"btn btn-primary"} onClick={moveToNew}><b>+</b></ButtonNew>
 )
 }
