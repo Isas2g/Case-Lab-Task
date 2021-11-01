@@ -3,16 +3,19 @@ import React from "react";
 import {Edit, StateList} from "./style";
 import {observer} from "mobx-react-lite";
 
-const State = observer(() => <StateList track={store.track} />)
+interface Props {
+    id: number;
+}
 
+const State = observer(() => <StateList track={store.track} />)
 const EditButton = observer(() => <Edit track={store.track} />)
 
-const GetTrack = (props: any) => {
-    const query = store.getTrack(props.match.params.id);
+const GetTrack: React.FC<Props> = ({id}) => {
+    const query = store.getTrack(id);
     const token = localStorage.getItem('role');
     return (
         <div className="container">
-            <h3>Track {props.match.params.id} states</h3>
+            <h3>Track {id} states</h3>
             <State/>
             {token === `teacher` ? <EditButton /> : ''}
         </div>
