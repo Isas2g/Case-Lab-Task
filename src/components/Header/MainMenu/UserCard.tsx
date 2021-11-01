@@ -3,6 +3,8 @@ import avatar from "../../../shared/assets/user-icon.png";
 import {Link} from "react-router-dom";
 import React from "react";
 import {useHistory} from "react-router";
+import {UserCardWrapper, CardBootstrap} from "./style"
+
 
 type TokenFunc = (str: string) => void;
 
@@ -23,8 +25,8 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
     }
 
     return(
-        <div className="d-flex align-items-center">
-            <Card className="p-1">
+        <UserCardWrapper className="d-flex align-items-center">
+            <CardBootstrap className="p-1">
                 <a className="dropdown" id="profileScrollingDropdown" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <div className="d-flex align-items-center">
@@ -50,7 +52,7 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                         <a className="dropdown-item" onClick={leave}>Выйти из аккаунта</a>
                     </li>
                 </ul>
-            </Card>
-        </div>
+            </CardBootstrap>
+        </UserCardWrapper>
     )
 }

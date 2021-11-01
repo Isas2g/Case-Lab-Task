@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 interface Props {
     src: string;
+    role: string | null;
 }
 
 const AvatarImage = styled.img`
@@ -15,11 +16,20 @@ const AvatarDiv = styled.div`
   height: 200px;
   background: #f0f0f0;
 `
+const Role = styled.p`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: black;
+  
+  
+`
 
-export const Avatar: React.FC<Props> = ({src}) => {
+export const Avatar: React.FC<Props> = ({src, role}) => {
     return(
-        <AvatarDiv className="m-2">
-            <AvatarImage src={src} />
-        </AvatarDiv>
+        <div className="d-flex flex-column align-items-center">
+            <AvatarDiv className="m-2">
+                <AvatarImage src={src} />
+            </AvatarDiv>
+            <Role className="role">Role: {role}</Role>
+        </div>
     )
 }
