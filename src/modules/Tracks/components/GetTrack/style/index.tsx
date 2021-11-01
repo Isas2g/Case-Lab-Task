@@ -36,7 +36,7 @@ export const Edit = (props: any) => {
     }
 
     return(
-        <ButtonNew className="btn btn-primary" onClick={moveToUpdate}>Edit Track</ButtonNew>
+        <ButtonNew className="btn btn-primary" onClick={moveToUpdate}> Изменить трек </ButtonNew>
     )
 }
 

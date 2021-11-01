@@ -42,7 +42,7 @@ const CreateTrack: React.FC = () => {
 
     return (
         <div className="container align-center">
-            <h4>Create a new track!</h4>
+            <h4>Create a new track</h4>
             <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
                 <label>
                     Название:
