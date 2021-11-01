@@ -1,15 +1,16 @@
 import { Modal, Button } from "react-bootstrap";
+import store from "../../../modules/Tracks/store";
 
 interface Props {
     title: string;
     heading: string;
     show: boolean;
     onHide: ModalFunc;
+    remove: boolean;
+    track: Track | undefined;
 }
 
-type ModalFunc = () => void;
-
-export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  children}) => {
+export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  children, remove, track}) => {
     
     return (
         <Modal
@@ -29,7 +30,8 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
                 {children}
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={onHide}>Close</Button>
+                <Button onClick={onHide}>Отмена</Button>
+                {remove && track !== undefined ? <Button onClick={() => store.deleteTrack(track)}>Удалить</Button> : ''}
             </Modal.Footer>
         </Modal>
     )

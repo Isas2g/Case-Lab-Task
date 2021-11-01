@@ -8,14 +8,13 @@ interface Props {
   data: TrackData;
 }
 
-type ModalFunc = () => void;
 
 export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data}) => {
     
     const {name, previewPicture, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;
     
     return (
-        <ModalComponent show={show} onHide={onHide} title={name} heading="Трек">
+        <ModalComponent track={undefined} remove={false} show={show} onHide={onHide} title={name} heading="Трек">
           <p>PreviewPicture: {previewPicture}</p>
           <p>PreviewText: {previewText}</p>
           <p>Published: {published}</p>
