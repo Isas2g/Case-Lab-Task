@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import {useHistory} from "react-router-dom"
 import styled from "styled-components";
 
@@ -15,6 +16,6 @@ export const NewTrack: React.FC = () => {
     }
 
     return(
-        <ButtonNew className={"btn btn-primary"} onClick={moveToNew}><b>+</b></ButtonNew>
+        <Button variant="warning"  onClick={moveToNew}><b>+</b></Button>
 )
 }
