@@ -3,6 +3,12 @@ import React from "react";
 import {Edit, StateList} from "./style";
 import {observer} from "mobx-react-lite";
 import {Button, ButtonGroup} from "react-bootstrap";
+import styled from "styled-components";
+
+const h3 = styled.h3`
+    font-size: large;
+    background: yellowgreen;
+`
 
 const State = observer(() => <StateList track={store.track} />);
 
