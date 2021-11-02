@@ -1,4 +1,5 @@
 import { Modal, Button } from "react-bootstrap";
+import "./style/style.css"
 
 interface Props {
     title: string;
@@ -25,8 +26,8 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>{title}</h4>
-                {children}
+                <h4 className="cardTitle">{title}</h4>
+                <div>{children}</div>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={onHide}>Close</Button>
