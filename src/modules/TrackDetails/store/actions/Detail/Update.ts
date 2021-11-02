@@ -1,4 +1,4 @@
-import DetailService from "../../../../TrackDetails/services/detailsService";
+import DetailService from "../../../services/detailsService";
 
 const updateTrackDetail = (trackDetail:TrackDetail, trackDetails:Array<TrackDetail>): Array<TrackDetail> =>
 {

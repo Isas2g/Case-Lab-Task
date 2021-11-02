@@ -4,15 +4,9 @@ import createTrack from "./actions/Track/Create";
 import getTrack from "./actions/Track/ReadOne";
 import getTracks from "./actions/Track/Read";
 import deleteTrack from "./actions/Track/Delete";
-import updateTrackDetail from "./actions/Detail/Update";
-import createTrackDetail from "./actions/Detail/Create";
-import getTrackDetail from "./actions/Detail/ReadOne";
-import getTrackDetails from "./actions/Detail/Read";
-import deleteTrackDetail from "./actions/Detail/Delete";
 
 class Store {
     tracks: Array<Track> = [];
-    details: Array<TrackDetail> = [];
     track: Track = {
         "id": 0,
         "status": "not_started",
@@ -72,27 +66,7 @@ class Store {
     }
 
 
-    //TrackDetails
-    async addTrackDetail(data:TrackDetailData, trackId:number) {
-        this.details = await createTrackDetail(data, trackId);
-        return this.details;
-    }
-    async getTrackDetails(trackId: number) {
-        this.details = await getTrackDetails(trackId);
-        return this.details;
-    }
-    deleteTrackDetail(trackDetail: TrackDetail) {
-        this.details = deleteTrackDetail(this.details, trackDetail);
-    }
-    async getTrackDetail(id: number) {
-        this.detail = await getTrackDetail(id);
-        return this.detail;
-    }
-    updateTrackDetail(trackDetail: TrackDetail) {
-        const query = updateTrackDetail(trackDetail, this.details);
-        this.detail = trackDetail;
-        return this.detail;
-    }
+
 }
 
 export default new Store();

@@ -1,4 +1,4 @@
-import DetailService from "../../../../TrackDetails/services/detailsService";
+import DetailService from "../../../services/detailsService";
 
 const getTrackDetails = async (id:number) => {
     let trackDetails: Array<TrackDetail>;
