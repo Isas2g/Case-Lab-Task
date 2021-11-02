@@ -1,4 +1,4 @@
-import {TrackService} from "../../../services/tracksService";
+import TrackService from "../../../services/tracksService";
 
 const updateTrack = (tracks: Array<Track>, updTrack: Track): Array<Track> =>
 {

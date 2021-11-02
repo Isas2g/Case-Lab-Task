@@ -1,8 +1,8 @@
-import {TrackService} from "../../../services/tracksService";
+import DetailService from "../../../../TrackDetails/services/detailsService";
 
 const deleteTrackDetail = (trackDetails: Array<TrackDetail>, delTrackDetail: TrackDetail): Array<TrackDetail> =>
 {
-    TrackService.trackDetailDelete(delTrackDetail);
+    DetailService.trackDetailDelete(delTrackDetail);
     return trackDetails.filter((detail) => detail.id !== delTrackDetail.id);
 }
 

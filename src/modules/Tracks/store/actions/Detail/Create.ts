@@ -1,9 +1,9 @@
-import {TrackService} from "../../../services/tracksService";
+import DetailService from "../../../../TrackDetails/services/detailsService";
 import getTrackDetails from "./Read";
 
 const createTrackDetail = async (detail:TrackDetailData, trackId:number) =>
 {
-    await TrackService.trackDetailCreate(detail, trackId);
+    await DetailService.trackDetailCreate(detail, trackId);
     return getTrackDetails(trackId);
 }
 

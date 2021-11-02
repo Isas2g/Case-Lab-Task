@@ -1,4 +1,4 @@
-import {TrackService} from "../../../services/tracksService";
+import TrackService from "../../../services/tracksService";
 
 const deleteTrack = (tracks: Array<Track>, delTrack: Track): Array<Track> =>
 {

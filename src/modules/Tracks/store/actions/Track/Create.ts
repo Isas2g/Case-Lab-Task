@@ -1,4 +1,4 @@
-import {TrackService} from "../../../services/tracksService";
+import TrackService from "../../../services/tracksService";
 import getTracks from "./Read";
 const createTrack = async (newData: TrackData) =>
 {

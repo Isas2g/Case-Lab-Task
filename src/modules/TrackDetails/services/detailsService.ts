@@ -4,6 +4,20 @@ import catchError from "../../../shared/services/catchError";
 
 const DetailService = {
 
+    //trackDetails контроллер
+
+    trackDetails: (trackId: number) => {
+        return api.get(
+            `/track/${trackId}/details`,
+            {
+                headers: {...authHeader()}
+            }
+        ).then(
+            (response) =>
+                response.data.data
+        ).catch((er) => catchError(er));
+    },
+
     //trackDetail контроллеры
 
     trackDetailGet: (detailId: number) => {
