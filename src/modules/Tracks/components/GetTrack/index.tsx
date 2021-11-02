@@ -5,7 +5,7 @@ import {observer} from "mobx-react-lite";
 import {Button, ButtonGroup} from "react-bootstrap";
 import styled from "styled-components";
 
-const h3 = styled.h3`
+const H3 = styled.h3`
     font-size: large;
     background: yellowgreen;
 `
@@ -25,7 +25,7 @@ const GetTrack = (props: any) => {
     return (
         <div className="container">
             <img src={props.match.params.previewPicture} />
-            <h3> Трек [id:{props.match.params.id}] </h3>
+            <H3> Трек [id:{props.match.params.id}] </H3>
             <State/>
             {token === `teacher` ?
                 <ButtonGroup>

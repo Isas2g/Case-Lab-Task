@@ -3,7 +3,7 @@ import React from "react";
 import {useHistory} from "react-router-dom";
 
 
-const spoiler = styled.div`
+const Spoiler = styled.div`
     border: 1px solid #e0e0e0;
     padding: 0 1em;
   
@@ -30,11 +30,11 @@ const spoiler = styled.div`
 }
 `
 
-const li = styled.li`
+const Li = styled.li`
     list-style-type: none;
 `
 
-const h1 = styled.h1`
+const H2 = styled.h2`
     font-size: 20px;
 `
 
@@ -48,18 +48,18 @@ const Cross = styled.b`
 export const StateList = (props: any) => {
     return(
         <ul>
-            <li key={'name'}>
-                <h2>{props.track.data.name}</h2>
-            </li>
+            <Li key={'name'}>
+                <H2>{props.track.data.name}</H2>
+            </Li>
             <br/>
-            <li key={'published'}>Опубликован?  -  {props.track.data.published ? 'Да' : 'Нет'}</li>
+            <Li key={'published'}>Опубликован?  -  {props.track.data.published ? 'Да' : 'Нет'}</Li>
             <br/>
-            <div className="spoiler">
+            <Spoiler>
                 <details>
                     <summary>Описание</summary>
                     <div>{props.track.data.previewText}</div>
                 </details>
-            </div>
+            </Spoiler>
             <br />
         </ul>
     )
