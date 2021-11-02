@@ -83,7 +83,6 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
           <p>Дата закрытия трека: {dateFromUnix(dateTimeFinish)}</p>
           <p>Режим прохождения: {mode === "free" ? "свободный" : "последовательный"}</p>
           {/*<Link to={'/tracks/' + trackId}>See track</Link>*/}
-          <Button variant="warning" size="lg" href={'/tracks/'+ trackId}>Перейти к треку</Button>
         </ModalComponent>
     )
 };

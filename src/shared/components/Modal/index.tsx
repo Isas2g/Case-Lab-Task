@@ -32,7 +32,10 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
                 {children}
             </Modal.Body>
             <Modal.Footer>
-                {remove && track !== undefined ? <Button onClick={() => store.deleteTrack(track)}>Удалить</Button> : ''}
+                {remove && track !== undefined
+                    ? <Button onClick={() => store.deleteTrack(track)}>Удалить</Button>
+                    : <Button variant="warning" size="lg" href={'/tracks/'+ heading.substring(5)}>Перейти к треку</Button>
+                }
             </Modal.Footer>
         </Modal>
     )
