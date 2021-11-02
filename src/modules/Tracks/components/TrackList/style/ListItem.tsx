@@ -3,8 +3,7 @@ import store from "../../../store";
 import React, { useState } from "react";
 import style from "./style.module.scss";
 import { TrackModal } from "../../TrackModal";
-import {Button, Card, Col } from "react-bootstrap";
-import { Modal } from "react-bootstrap";
+import {Card, Col } from "react-bootstrap";
 import { DeleteModal } from "../../DeleteModal";
 const Cross = styled.b`
     cursor: pointer;
@@ -14,7 +13,7 @@ const Cross = styled.b`
 `
 
 export const ListItem = (props: any) => {
-    const role = localStorage.getItem("role");
+    const role :string|null = localStorage.getItem("role");
 
     const [modalShow, setModalShow] = React.useState(false);
     const [deleteModalShow, setDeleteModalShow] = React.useState(false);
@@ -34,6 +33,7 @@ export const ListItem = (props: any) => {
                     onHide={() => setModalShow(false)}
                     data={props.track.data}
                     trackId={props.track.id}
+                    role = {role}
                 />
                 <DeleteModal 
                     show={deleteModalShow}

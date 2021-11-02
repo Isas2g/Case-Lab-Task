@@ -1,5 +1,7 @@
 import { Modal, Button } from "react-bootstrap";
+import { NumberLiteralType } from "typescript";
 import store from "../../../modules/Tracks/store";
+import React from "react";
 
 interface Props {
     title: string;
@@ -30,7 +32,6 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
                 {children}
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={onHide}>Отмена</Button>
                 {remove && track !== undefined ? <Button onClick={() => store.deleteTrack(track)}>Удалить</Button> : ''}
             </Modal.Footer>
         </Modal>
