@@ -1,23 +1,7 @@
 import { Modal, Button } from "react-bootstrap";
-import React from "react";
-import styled from "styled-components";
+import { NumberLiteralType } from "typescript";
 import store from "../../../modules/Tracks/store";
-
-interface ImgProps {
-    picture: string;
-}
-
-const BlackBack = styled.div`
-  background-color: #000;
-`;
-
-const ImageBack = styled.div.attrs((props:ImgProps) => ({
-    picture: props.picture,
-}))<ImgProps>`
-  background: url(${props => 'https://tml10.rosatom.ru/'+props.picture}) no-repeat center bottom;
-  background-size: cover;
-  opacity: 0.7;
-`;
+import React from "react";
 
 interface Props {
     title: string;
@@ -26,15 +10,10 @@ interface Props {
     onHide: ModalFunc;
     remove: boolean;
     track: Track | undefined;
-    trackId: number;
-    previewText: string;
-    previewPicture: string;
 }
 
-type ModalFunc = () => void;
-
-export const ModalComponent: React.FC<Props> = ({title, trackId, show, onHide, heading, children, previewText, previewPicture, remove, track}) => {
-
+export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  children, remove, track}) => {
+    
     return (
         <Modal
             show={show}
@@ -43,39 +22,17 @@ export const ModalComponent: React.FC<Props> = ({title, trackId, show, onHide, h
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            {remove && track !== undefined
-                ?   <>
-                        <Modal.Header closeButton style={{opacity: 1}}>
-                            <Modal.Title id="contained-modal-title-vcenter">
-                                {heading}
-                            </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <h4>{title}</h4>
-                            <p>{previewText}</p>
-                        </Modal.Body>
-                    </>
-                :   <BlackBack>
-                        <ImageBack picture={previewPicture}>
-                            <Modal.Header closeButton style={{opacity: 1}}>
-                                <Modal.Title id="contained-modal-title-vcenter">
-                                    {heading}
-                                </Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <h4>{title}</h4>
-                                <p>{previewText}</p>
-                            </Modal.Body>
-                        </ImageBack>
-                    </BlackBack>
-            }
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    {heading}
+                </Modal.Title>
+            </Modal.Header>
             <Modal.Body>
+                <h4>{title}</h4>
                 {children}
             </Modal.Body>
             <Modal.Footer>
-                {remove && track !== undefined
-                    ? <Button onClick={() => store.deleteTrack(track)}>Удалить</Button>
-                    : <Button variant="warning" size="lg" href={'/tracks/'+ trackId}>Перейти к треку</Button>}
+                {remove && track !== undefined ? <Button onClick={() => store.deleteTrack(track)}>Удалить</Button> : ''}
             </Modal.Footer>
         </Modal>
     )
