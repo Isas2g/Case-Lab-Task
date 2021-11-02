@@ -1,0 +1,28 @@
+.itemNav {
+    /* color: red !important; */
+    font-size: 1.5vw;
+    padding: 0px;
+    margin: 0px;
+    height: 63px;
+    border-right: 2px solid #f5f5f5;
+}
+
+.itemNav :hover {
+    background-color: #fcfcfc;
+    box-shadow: 2px 2px 5px 1px #00000033;
+}
+
+.navbarCollapse {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.nav-link {
+    padding: 17px !important;
+}
+
+.dropdown-item :hover {
+    background-color: #e9ecef !important;
+    box-shadow: none !important;
+}
