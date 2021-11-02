@@ -43,19 +43,32 @@ export const ModalComponent: React.FC<Props> = ({title, trackId, show, onHide, h
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <BlackBack>
-            <ImageBack picture={previewPicture}>
-                <Modal.Header closeButton style={{opacity: 1}}>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        {heading}
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <h4>{title}</h4>
-                    <p>{previewText}</p>
-                </Modal.Body>
-            </ImageBack>
-            </BlackBack>
+            {remove && track !== undefined
+                ?   <>
+                        <Modal.Header closeButton style={{opacity: 1}}>
+                            <Modal.Title id="contained-modal-title-vcenter">
+                                {heading}
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <h4>{title}</h4>
+                            <p>{previewText}</p>
+                        </Modal.Body>
+                    </>
+                :   <BlackBack>
+                        <ImageBack picture={previewPicture}>
+                            <Modal.Header closeButton style={{opacity: 1}}>
+                                <Modal.Title id="contained-modal-title-vcenter">
+                                    {heading}
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <h4>{title}</h4>
+                                <p>{previewText}</p>
+                            </Modal.Body>
+                        </ImageBack>
+                    </BlackBack>
+            }
             <Modal.Body>
                 {children}
             </Modal.Body>
