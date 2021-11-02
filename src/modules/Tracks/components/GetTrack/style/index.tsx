@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import React from "react";
 import {useHistory} from "react-router-dom";
 
@@ -11,15 +11,17 @@ const Spoiler = styled.div`
 const Summary = styled.summary`
   font-size: 30px;
   font-family: "Helvetica Neue";
-`
 
-//     &.details[open] div {
-//     animation: spoiler 1s;
-// }
-//     @keyframes Spoiler {
-//     0%   {max-height: 0;}
-//     100% {max-height: 10em;}
-// }
+
+&.details[open] div{
+    animation: spoiler 1s;
+}
+
+@keyframes Spoiler {
+  0 % {max-height: 0;}
+  100 % {max-height: 10em;}
+}
+`
 
 const Details = styled.details`
   padding: 1em 0;
@@ -63,6 +65,11 @@ export const StudentButton = styled.button`
   font-size: 16px;
 `
 
+const Image = styled.img`
+  height: 100px;
+  width: 100%;
+`
+
 
 const Cross = styled.b`
     cursor: pointer;
@@ -72,7 +79,7 @@ export const StateList = (props: any) => {
     return(
         <ul>
             <Li key={'name'}>
-                {/*<img src={"https://tml10.rosatom.ru/" + props.track.data.previewPicture} className="background"/>*/}
+                <Image src={"https://tml10.rosatom.ru/" + props.track.data.previewPicture} className="background"/>
                 <H2>{props.track.data.name}</H2>
                 {/*<div>Время трека: {props.track.data.dateTimeStart} - {props.track.data.dateTimeFinish}</div>*/}
             </Li>
