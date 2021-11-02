@@ -1,11 +1,14 @@
 import bell from "../../../shared/assets/notification-icon.png";
 import React from "react";
+import {BellButton} from "./style"
+//import style from 'smth.css'
 
 
 export const Bell = () => {
     return(
-        <div className="notifications align-items-center" style={{marginLeft: 40,}}>
+        // <BellButton src={bell}></BellButton>
+        <BellButton className="notifications align-items-center">
             <img width="40" src={bell} alt="Notification Bell" />
-        </div>
+        </BellButton>
     )
 }
