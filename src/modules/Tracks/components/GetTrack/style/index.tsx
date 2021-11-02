@@ -37,7 +37,6 @@ const H2 = styled.h2`
   vertical-align: middle;
   height: 300px;
   width: 600px;
-  background-color: #ECECEC;
 `
 
 export const EditButton = styled.button`
@@ -73,6 +72,7 @@ export const StateList = (props: any) => {
     return(
         <ul>
             <Li key={'name'}>
+                {/*<img src={"https://tml10.rosatom.ru/" + props.track.data.previewPicture} className="background"/>*/}
                 <H2>{props.track.data.name}</H2>
                 {/*<div>Время трека: {props.track.data.dateTimeStart} - {props.track.data.dateTimeFinish}</div>*/}
             </Li>
@@ -105,7 +105,7 @@ export const Edit = (props: any) => {
 }
 
 //TODO
-//StudentButton date's format
+//StudentButton, date's format, image
 
 export const Student = (props: any) => {
 
