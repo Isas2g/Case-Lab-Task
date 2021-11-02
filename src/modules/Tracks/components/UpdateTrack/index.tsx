@@ -2,21 +2,25 @@ import React, {ChangeEvent, FormEvent, useState} from "react";
 import store from "../../store"
 import {useHistory} from "react-router-dom";
 import {observer} from "mobx-react-lite";
+import {TrackService} from "../../services/tracksService";
 
 
 const inputDate = (date : number) => new Date(date * 1000).toISOString().slice(0,16)
 
-const handleInputs = (event: any) => {
+
+
+const handleInputs = async (event: any) => {
     const target = event.target;
     const value = target.type === 'checkbox'
         ? target.checked
         : target.type === 'file'
-            ? 'url'//this.uploadImage(target.value)
+            ? await TrackService.trackPreview(target.files[0])
             : target.type === 'datetime-local'
                 ? new Date(target.value).getTime() / 1000
                 : target.value;
+    console.log(value);
     const name = target.name;
-    console.log(target.value);
+    const reader = new FileReader()
     store.track.data = {
         ...store.track.data,
         [name]: value

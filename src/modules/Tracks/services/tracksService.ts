@@ -33,6 +33,22 @@ export const TrackService = {
   },
   
   //track контроллеры
+
+  trackPreview: async (fileData:any) => {
+      let formData = new FormData()
+      formData.append('file', fileData)
+      const fileUrl = await api.post(
+          '/track/preview',
+          formData,
+          {
+              headers: {...authHeader()}
+          }
+      ).then(
+          (response) =>
+              response.data.data.file.url
+      ).catch((er) => catchError(er));
+      return fileUrl;
+  },
   
   trackGet: (trackId: number) => {
       return api.get(
