@@ -162,69 +162,42 @@ export const TrackService = {
   
   //trackDetails контроллер
   
-  trackDetails: (track: Track) => {
+  trackDetails: (trackId: number) => {
       return api.get(
-          `/track/${track.id}/details`,
+          `/track/${trackId}/details`,
           {
               headers: {...authHeader()}
           }
-      );/*.then( (response) => {
-          console.log(response.data.data);
-          data = response.data.data;
-      }).catch((er) => this.catchError(er));
-      return data.map( (item) => {
-              return new TrackDetail({
-                  id: item.id,
-                  trackId: item.trackId,
-                  finished: item.finished,
-                  assigned: item.assigned,
-                  epilogId: item.epilogId,
-                  epilogFinished: item.epilogFinished,
-                  entityName: item.entityName,
-                  entityDuration: item.entityDuration,
-                  data: item.data
-              });
-          }
-      );*/
+      ).then(
+          (response) =>
+            response.data.data
+      ).catch((er) => catchError(er));
   },
   
   //trackDetail контроллеры
   
-  trackDetailGet: (detailId: string) => {
+  trackDetailGet: (detailId: number) => {
       return api.get(
           `/track/detail/${detailId}`,
           {
               headers: {...authHeader()}
           }
-      );/*.then( (response) => {
-          console.log(response.data.data);
-          data = response.data.data;
-      }).catch((er) => this.catchError(er));
-      return new TrackDetail({
-          id: data.id,
-          trackId: data.trackId,
-          finished: data.finished,
-          assigned: data.assigned,
-          epilogId: data.epilogId,
-          epilogFinished: data.epilogFinished,
-          entityName: data.entityName,
-          entityDuration: data.entityDuration,
-          data: data.data
-      });*/
+      ).then(
+          (response) =>
+          response.data.data
+      ).catch((er) => catchError(er))
   }, 
   
-  trackDetailCreate: (detailData: TrackDetail) => {
+  trackDetailCreate: (detailData: TrackDetailData, trackId:number) => {
       return api.post(
-          `/track/${detailData.trackId}/detail`,
+          `/track/${trackId}/detail`,
           detailData,
           {
               headers: {...authHeader()}
           }
-      );/*.then( (response) => {
-          console.log(response.data.data);
-          data = response.data.data;
-      }).catch((er) => this.catchError(er));
-      return data;*/
+      ).then( (response) =>
+          response.data.data
+      ).catch((er) => catchError(er));
   },
   
   trackDetailUpdate: (detail: TrackDetail) => {
@@ -234,11 +207,7 @@ export const TrackService = {
           {
               headers: {...authHeader()}
           }
-      )/*.then( (response) => {
-          console.log(response.data.data);
-          data = response.data.data;
-      }).catch((er) => this.catchError(er));
-      return data;*/
+      ).catch((er) => catchError(er));
   },
   
   trackDetailDelete: (detail: TrackDetail) =>{
@@ -247,11 +216,9 @@ export const TrackService = {
           {
               headers: {...authHeader()}
           }
-      )/*.then( (response) => {
-          console.log(response.data);
-          success = response.data.success;
-      }).catch((er) => this.catchError(er));
-      return success;*/
+      ).then( (response) =>
+          response.data.success
+      ).catch((er) => catchError(er));
   }
 
 //trackDetailEpilog контроллеры
