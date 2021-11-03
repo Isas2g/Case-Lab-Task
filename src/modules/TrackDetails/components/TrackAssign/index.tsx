@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button } from "react-bootstrap"
 import { ModalComponent } from "../../../../shared/components/Modal";
-import { UserList } from "../UserList";
+import { UserList } from "../../../Search/Users";
 
 interface Props {
   trackId: number;

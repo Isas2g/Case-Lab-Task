@@ -42,11 +42,10 @@ class Store {
     }
     async getTrackDetail(id: number) {
         this.detail = await getTrackDetail(id);
-        return this.detail;
     }
-    updateTrackDetail(trackDetail: TrackDetail) {
-        const query = updateTrackDetail(trackDetail, this.details);
-        this.detail = trackDetail;
+    updateTrackDetail(trackDetail: TrackDetailData, detailId: number) {
+        const query = updateTrackDetail(trackDetail, this.details, detailId);
+        getTrackDetail(detailId).then();
         return this.detail;
     }
 }

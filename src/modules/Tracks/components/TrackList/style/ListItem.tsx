@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import style from "./style.module.scss";
 import { TrackModal } from "../../TrackModal";
-import { DeleteModal } from "../../DeleteModal";
+import { DeleteModal } from "../../DeleteTrackModal";
 import {Card, Col} from "react-bootstrap";
 import "./style.module.css"
 

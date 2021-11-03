@@ -2,8 +2,8 @@ import store from "../../store"
 import React from "react";
 import {Edit, StateList, Student, StudentBtn} from "./style";
 import {observer} from "mobx-react-lite";
-import { TrackDetailList } from "../TrackDetailList";
-import { TrackAssign } from "../TrackAssign";
+import { TrackDetailList } from "../../../TrackDetails/components/TrackDetailList";
+import { TrackAssign } from "../../../TrackDetails/components/TrackAssign";
 import {Button, ButtonGroup} from "react-bootstrap";
 import styled from "styled-components";
 
@@ -39,12 +39,12 @@ const StudentButton = observer(() => <Student track={store.track}/>);
 const GetTrack = (props: any) => {
     const query = store.getTrack(props.match.params.id);
     const role = localStorage.getItem('role');
-    return (
+    return (<>
         <Back className="container">
             <img src={props.match.params.previewPicture} />
             <H3> Трек [id:{props.match.params.id}] </H3>
             <State/>
-            {token === `teacher` ?
+            {role === `teacher` ?
                 <ButtonGroup>
                     {role === `teacher` ? <EditButton />: ''}
                     <StudentButton />
@@ -52,7 +52,10 @@ const GetTrack = (props: any) => {
                 </ButtonGroup> :
                 <Progress> Прогресс прохождения трека: {props.match.params.progress} </Progress>
             }
-        </Back>)
+        </Back>
+            <TrackDetailList trackId={props.match.params.id} />
+        </>
+    )
 }
 
 export default GetTrack;

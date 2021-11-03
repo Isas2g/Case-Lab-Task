@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { NewTrackDetail } from '../NewTrackDetail';
 
-interface Props {
+interface TrackDetailListProps {
   trackId: number;
 }
 
-export const TrackDetailList: React.FC<Props> = ({trackId}) => {
+export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element => {
   const [trackDetails, setTrackDetails]:any = useState([]);
   const [mutated, setMutated] = useState(0);
   const role = localStorage.getItem('role');
@@ -21,7 +21,7 @@ export const TrackDetailList: React.FC<Props> = ({trackId}) => {
     fetchData();
   }, [mutated]);
   
-  const finishedCount = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.finished === true).length;
+  const finishedCount = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.finished).length;
   
   const progressValue = (finishedCount / trackDetails.length) * 100;
   
