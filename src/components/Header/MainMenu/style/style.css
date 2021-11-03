@@ -1,0 +1,90 @@
+.itemNav {
+    /* color: red !important; */
+    font-size: 1.5vw;
+    padding: 0px;
+    margin: 0px;
+    height: 63px;
+    border-right: 2px solid #f5f5f5;
+}
+
+.itemNav :hover {
+    background-color: #fcfcfc;
+    box-shadow: 2px 2px 5px 1px #00000033;
+}
+
+.containerNavbar {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.nav-link {
+    padding: 17px !important;
+}
+
+.dropdown-item :hover {
+    background-color: #e9ecef !important;
+    box-shadow: none !important;
+}
+
+.aCard {
+    text-decoration: none;
+}
+
+@media (max-width: 977px) {
+    .navDropdownItems {
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        font-size: 2.5vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .itemNav {
+        border-right: none;
+        border-bottom: 2px solid #f5f5f5;
+        width: 100%;
+    }
+
+    .navWrapper {
+        width: 100%;
+
+    }
+
+    .navbarCollapse {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    
+    .userCardBell {
+        order: -1;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        border-bottom: 2px solid #f5f5f5;
+        border-top: 2px solid #f5f5f5;
+        border-left: none
+    }
+
+    .userProfileWrapper, .CardBootstrap {
+        width: 100%;
+    }
+
+    .CardBootstrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .NameUserProfile {
+        font-size: 2.5vw !important;
+    }
+
+}

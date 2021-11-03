@@ -3,8 +3,11 @@ import store from "../../../store";
 import React, { useState } from "react";
 import style from "./style.module.scss";
 import { TrackModal } from "../../TrackModal";
-import {Card, Col } from "react-bootstrap";
 import { DeleteModal } from "../../DeleteModal";
+import {Button, Card, Col } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import "./style.module.css"
+
 const Cross = styled.b`
     cursor: pointer;
     position: absolute;
@@ -24,6 +27,9 @@ export const ListItem = (props: any) => {
                 <Card className={"bg-dark text-white " + style.pointer + ' ' + style.bright}>
                     <Card.Img src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={230} />
                     <Card.ImgOverlay onClick={() => setModalShow(true)} className={"d-flex align-items-end"}>
+                <Card className={"bg-dark text-white" + style.pointer + ' ' + style.bright} onClick={() => setModalShow(true)}>
+                    <Card.Img className="cardImage" src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={230} />
+                    <Card.ImgOverlay className={"d-flex align-items-end"}>
                         <Card.Title className={style.contrast}>{props.track.data.name}</Card.Title>
                     </Card.ImgOverlay>
                     {role === "teacher" ? <Cross className="close" onClick={() => setDeleteModalShow(true)}>✖</Cross> : ""}
@@ -35,7 +41,7 @@ export const ListItem = (props: any) => {
                     trackId={props.track.id}
                     role = {role}
                 />
-                <DeleteModal 
+                <DeleteModal
                     show={deleteModalShow}
                     onHide={() => setDeleteModalShow(false)}
                     title={`Удалить трек ${props.track.data.name}?`}

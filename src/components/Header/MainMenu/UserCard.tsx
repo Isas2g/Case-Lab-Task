@@ -1,8 +1,10 @@
-import {Card} from "react-bootstrap";
+// import {Card} from "react-bootstrap";
 import avatar from "../../../shared/assets/user-icon.png";
 import {Link} from "react-router-dom";
 import React from "react";
 import {useHistory} from "react-router";
+import {UserProfileWrapper, CardBootstrap, NameUserProfile} from "./style"
+
 
 type TokenFunc = (str: string) => void;
 
@@ -23,20 +25,20 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
     }
 
     return(
-        <div className="d-flex align-items-center">
-            <Card className="p-1">
-                <a className="dropdown" id="profileScrollingDropdown" role="button"
+        <UserProfileWrapper className="d-flex align-items-center userProfileWrapper">
+            <CardBootstrap className="p-1 CardBootstrap">
+                <a className="dropdown aCard" id="profileScrollingDropdown" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <div className="d-flex align-items-center">
                         <div className="image">
                             <img className="m-1 rounded" height="40" width="40" src={avatar} alt="User's Avatar" />
                         </div>
                         <div className="ml-3 w-100">
-                            <h4 className="mb-0 mt-0">[Имя пользователя]</h4>
+                            <NameUserProfile className="mb-0 mt-0 NameUserProfile">[Имя пользователя]</NameUserProfile>
                         </div>
                     </div>
                 </a>
-                <ul className="dropdown-menu" aria-labelledby="profileScrollingDropdown">
+                <ul className="dropdown-menu shadow" aria-labelledby="profileScrollingDropdown">
                     <li>
                         <Link to="/profile" className="dropdown-item">Мой профиль</Link>
                     </li>
@@ -50,7 +52,7 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                         <a className="dropdown-item" onClick={leave}>Выйти из аккаунта</a>
                     </li>
                 </ul>
-            </Card>
-        </div>
+            </CardBootstrap>
+        </UserProfileWrapper>
     )
 }

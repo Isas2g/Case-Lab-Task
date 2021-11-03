@@ -8,10 +8,10 @@ export const Profile: React.FC = () => {
   
   return (
     <div className="container d-flex">
-      <Avatar src='url'/>
-      <div>
-        <p>Role: {role}</p>
-      </div>
+      <Avatar role={role} src="url"/>
+      {/* <div>
+        <p className="role">Role: {role}</p>
+      </div> */}
     </div>
   )
 }
