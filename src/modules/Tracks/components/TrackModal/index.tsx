@@ -13,7 +13,7 @@ interface Props {
 
 export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role}) => {
     
-    const {name, previewPicture, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;
+    const {name, published, dateTimeStart, dateTimeFinish, mode} = data;
     const history = useHistory();
 
     const dateFromUnix = (timestamp: number) => {

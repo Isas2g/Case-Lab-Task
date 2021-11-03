@@ -10,7 +10,7 @@ export const Profile: React.FC = () => {
     <div className="container d-flex">
       <Avatar src='url'/>
       <div>
-        <p>Role: {role}</p>
+        <p>Роль: {role === "teacher" ? 'Преподаватель' : 'Ученик'}</p>
       </div>
     </div>
   )
