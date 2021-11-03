@@ -1,6 +1,6 @@
 import store from "../../store"
 import React from "react";
-import {Edit, StateList, StudentButton} from "./style";
+import {Edit, StateList, Student, StudentBtn} from "./style";
 import {observer} from "mobx-react-lite";
 import {Button, ButtonGroup} from "react-bootstrap";
 import styled from "styled-components";
@@ -31,7 +31,7 @@ const EditButton = observer(() => <Edit track={store.track} />);
 
 //TODO
 
-// const StudentButton = observer(() => <Student track={store.student}/>);
+const StudentButton = observer(() => <Student track={store.track}/>);
 // previewPicture and progress
 
 const GetTrack = (props: any) => {

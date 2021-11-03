@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import React from "react";
 import {useHistory} from "react-router-dom";
 
@@ -11,15 +11,17 @@ const Spoiler = styled.div`
 const Summary = styled.summary`
   font-size: 30px;
   font-family: "Helvetica Neue";
-`
 
-//     &.details[open] div {
-//     animation: spoiler 1s;
-// }
-//     @keyframes Spoiler {
-//     0%   {max-height: 0;}
-//     100% {max-height: 10em;}
-// }
+
+&.details[open] div{
+    animation: spoiler 1s;
+}
+
+@keyframes Spoiler {
+  0 % {max-height: 0;}
+  100 % {max-height: 10em;}
+}
+`
 
 const Details = styled.details`
   padding: 1em 0;
@@ -37,7 +39,6 @@ const H2 = styled.h2`
   vertical-align: middle;
   height: 300px;
   width: 600px;
-  background-color: #ECECEC;
 `
 
 export const EditButton = styled.button`
@@ -52,7 +53,7 @@ export const EditButton = styled.button`
   font-size: 16px;
 `
 
-export const StudentButton = styled.button`
+export const StudentBtn = styled.button`
   background-color: darkorange;
   border: 1px solid black;
   border-radius: 10px;
@@ -64,6 +65,11 @@ export const StudentButton = styled.button`
   font-size: 16px;
 `
 
+const Image = styled.img`
+  height: 100px;
+  width: 100%;
+`
+
 
 const Cross = styled.b`
     cursor: pointer;
@@ -73,6 +79,7 @@ export const StateList = (props: any) => {
     return(
         <ul>
             <Li key={'name'}>
+                <Image src={"https://tml10.rosatom.ru/" + props.track.data.previewPicture} className="background"/>
                 <H2>{props.track.data.name}</H2>
                 {/*<div>Время трека: {props.track.data.dateTimeStart} - {props.track.data.dateTimeFinish}</div>*/}
             </Li>
@@ -85,7 +92,7 @@ export const StateList = (props: any) => {
             </Spoiler>
             <br />
             <Li key={'published'}>Опубликован?  -  {props.track.data.published ? 'Да' : 'Нет'}</Li>
-            <Li key={'published'}>Режим  -  {props.track.data.mode === 'consistent' ? 'Последовательный' : 'Свободный'}</Li>
+            <Li key={'mode'}>Режим  -  {props.track.data.mode === 'consistent' ? 'Последовательный' : 'Свободный'}</Li>
             <br/>
         </ul>
     )
@@ -105,7 +112,7 @@ export const Edit = (props: any) => {
 }
 
 //TODO
-//StudentButton date's format
+//StudentButton, date's format, image
 
 export const Student = (props: any) => {
 
@@ -113,9 +120,10 @@ export const Student = (props: any) => {
 
     const moveToUpdate = () => {
         //сделать ссылку на список студентов history.push('');
+        history.push(`/tracks/students/${props.track.id}`)
     }
 
     return(
-        <StudentButton className="btn btn-primary" onClick={moveToUpdate}> Ученики трека </StudentButton>
+        <StudentBtn className="btn btn-primary" onClick={moveToUpdate}> Ученики трека </StudentBtn>
     )
 }
