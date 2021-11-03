@@ -219,6 +219,17 @@ export const TrackService = {
       ).then( (response) =>
           response.data.success
       ).catch((er) => catchError(er));
+  },
+  
+  usersSearchGet: (searchQuery: string) => {
+    return api.get(
+        `/search/users?q=${searchQuery}`,
+        {
+            headers: {...authHeader()}
+        }
+    ).then( (response) => 
+        response.data
+    ).catch((er) => catchError(er));
   }
 
 //trackDetailEpilog контроллеры

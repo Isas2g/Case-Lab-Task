@@ -9,6 +9,7 @@ import createTrackDetail from "./actions/Detail/Create";
 import getTrackDetail from "./actions/Detail/ReadOne";
 import getTrackDetails from "./actions/Detail/Read";
 import deleteTrackDetail from "./actions/Detail/Delete";
+import getUsersByQuery from "./actions/Search/Users";
 
 class Store {
     tracks: Array<Track> = [];
@@ -43,6 +44,7 @@ class Store {
             "required": false,
         },
     };
+    users: Array<User> = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -92,6 +94,12 @@ class Store {
         const query = updateTrackDetail(trackDetailData, trackDetailId);
         // this.detail = trackDetail;
         return this.detail;
+    }
+    
+    async getUsersBySearch(searchQuery: string) {
+        const users = await getUsersByQuery(searchQuery);
+        this.users = users;
+        return this.users;
     }
 }
 
