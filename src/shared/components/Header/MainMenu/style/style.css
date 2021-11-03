@@ -6,7 +6,9 @@
     height: 63px;
     border-right: 2px solid #f5f5f5;
 }
-
+#basic-nav-dropdown::after{
+    display: none;
+}
 .itemNav :hover {
     background-color: #fcfcfc;
     box-shadow: 2px 2px 5px 1px #00000033;

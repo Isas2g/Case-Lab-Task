@@ -1,9 +1,9 @@
 // import {Card} from "react-bootstrap";
-import avatar from "../../../shared/assets/user-icon.png";
+import avatar from "../../../../assets/user-icon.png";
 import {Link} from "react-router-dom";
 import React from "react";
 import {useHistory} from "react-router";
-import {UserProfileWrapper, CardBootstrap, NameUserProfile} from "./style"
+import {UserProfileWrapper, CardBootstrap, NameUserProfile} from "../style"
 
 
 type TokenFunc = (str: string) => void;
@@ -34,7 +34,7 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                             <img className="m-1 rounded" height="40" width="40" src={avatar} alt="User's Avatar" />
                         </div>
                         <div className="ml-3 w-100">
-                            <NameUserProfile className="mb-0 mt-0 NameUserProfile">[Имя пользователя]</NameUserProfile>
+                            <NameUserProfile className="mb-0 mt-0 NameUserProfile">{localStorage.getItem('role') === "teacher" ? "Учитель" : "Ученик"}</NameUserProfile>
                         </div>
                     </div>
                 </a>
@@ -42,9 +42,6 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                     <li>
                         <Link to="/profile" className="dropdown-item">Мой профиль</Link>
                     </li>
-                    {/* <li>
-                        <a className="dropdown-item" href="#">Another action</a>
-                    </li> */}
                     <li>
                         <hr className="dropdown-divider" />
                     </li>

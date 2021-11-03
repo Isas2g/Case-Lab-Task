@@ -12,7 +12,7 @@ interface Props {
 export const TrackList: React.FC<Props> = observer( ({my}) => {
     const tracks = my ? store.tracks.filter(item => item.assigned) : store.tracks;
     const toMatrix = (arr:any[], width:number) =>
-        arr.reduce((rows, key:Track, index) => (index % width == 0 ? rows.push([key])
+        arr.reduce((rows, key:Track, index) => (index % width === 0 ? rows.push([key])
             : rows[rows.length-1].push(key)) && rows, []);
     const tracksTable = toMatrix(tracks, 3)
     return(

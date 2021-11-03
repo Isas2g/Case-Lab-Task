@@ -1,6 +1,6 @@
-import bell from "../../../shared/assets/notification-icon.png";
+import bell from "../../../../assets/notification-icon.png";
 import React from "react";
-import {BellButton} from "./style"
+import {BellButton} from "../style"
 //import style from 'smth.css'
 
 

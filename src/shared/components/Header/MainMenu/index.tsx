@@ -1,11 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import logo from "../../../shared/assets/logo.png"
-import {UserCard} from "./UserCard";
-import {Bell} from "./Bell";
-import {useLocation} from "react-router";
+import logo from "../../../assets/logo.png"
+import {UserCard} from "./subcomponents/UserCard";
+import {Bell} from "./subcomponents/Bell";
+import {IndexLinkContainer, LinkContainer} from "react-router-bootstrap";
 import { Link } from 'react-router-dom';
+import { BsChevronDown } from "react-icons/bs";
 import "./style/style.css"
 
 type TokenFunc = (str: string) => void;
@@ -23,10 +24,16 @@ export const MainMenu:React.FC<Props> = ({token, setToken}) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to="/">Главная</Link>
-                        <NavDropdown title="Треки" id="basic-nav-dropdown">
-                            <NavDropdown.Item><Link to="/tracks">Каталог</Link></NavDropdown.Item>
-                            <NavDropdown.Item><Link to="/tracks/my">Мои треки</Link></NavDropdown.Item>
+                        <IndexLinkContainer to={'/'}>
+                                <Nav.Link>Главная</Nav.Link>
+                        </IndexLinkContainer>
+                        <NavDropdown title={<span>Треки <BsChevronDown /></span>} id="basic-nav-dropdown">
+                            <IndexLinkContainer to={'/tracks'}>
+                                <NavDropdown.Item>Каталог</NavDropdown.Item>
+                            </IndexLinkContainer>
+                            <IndexLinkContainer to={'/tracks/my'}>
+                                <NavDropdown.Item>Мои треки</NavDropdown.Item>
+                            </IndexLinkContainer>
                         </NavDropdown>
                     </Nav>
                     <div className="d-flex align-items-center userCardBell">

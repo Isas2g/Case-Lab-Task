@@ -3,13 +3,13 @@ import {observer} from 'mobx-react-lite';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './shared/assets/App.scss';
 
-import {Header} from './components/Header';
-import { Footer } from './components/Footer';
+import {Header} from './shared/components/Header';
+import { Footer } from './shared/components/Footer';
 import Tracks from './modules/Tracks';
 import CreateTrack from './modules/Tracks/components/CreateTrack';
 import GetTrack from './modules/Tracks/components/GetTrack';
 import { Login } from './modules/Login';
-import Error from './components/Error';
+import Error from './shared/components/Error';
 import UpdateTrack from "./modules/Tracks/components/UpdateTrack";
 import { Main } from './modules/MainPage';
 import { Profile } from './modules/Profile';

@@ -14,7 +14,7 @@ const TrackListComponent:React.FC<Props> = ({my}) => {
         <div className="container">
             <div className="container d-flex align-items-center">
                 <h3 className={"d-flex p-3"}>{my ? "Мои треки" : "Каталог треков"}</h3>
-                {role === "teacher" ? <NewTrack /> : ""}
+                {role === "teacher" && !my ? <NewTrack /> : ""}
             </div>
             <TrackList my={my} />
         </div>

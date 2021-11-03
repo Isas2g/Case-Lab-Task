@@ -9,7 +9,8 @@ class Store {
     }
 
     async getUsersBySearch(searchQuery: string) {
-        this.users = await getUsersByQuery(searchQuery);
+        const items: User[] = await getUsersByQuery(searchQuery)
+        this.users = items;
     }
 }
 
