@@ -2,6 +2,7 @@ import store from "../../store"
 import React from "react";
 import {Edit, StateList} from "./style";
 import {observer} from "mobx-react-lite";
+import { TrackDetailList } from "../TrackDetailList";
 
 const State = observer(() => <StateList track={store.track} />)
 
@@ -15,6 +16,8 @@ const GetTrack = (props: any) => {
             <h3>Track {props.match.params.id} states</h3>
             <State/>
             {token === `teacher` ? <EditButton /> : ''}
+            
+            <TrackDetailList trackId={props.match.params.id} />
         </div>
     )
 }

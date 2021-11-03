@@ -5,6 +5,7 @@ import logo from "../../../shared/assets/logo.png"
 import {UserCard} from "./UserCard";
 import {Bell} from "./Bell";
 import {useLocation} from "react-router";
+import { Link } from 'react-router-dom';
 
 type TokenFunc = (str: string) => void;
 
@@ -17,14 +18,14 @@ export const MainMenu:React.FC<Props> = ({token, setToken}) => {
     return (
         <Navbar bg="light" expand="lg" sticky="top">
             <Container>
-                <Navbar.Brand href="/"><img src={logo} alt="Logo" height="50"/></Navbar.Brand>
+                <Navbar.Brand><Link to="/"><img src={logo} alt="Logo" height="50"/></Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Главная</Nav.Link>
+                        <Link to="/">Главная</Link>
                         <NavDropdown title="Треки" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/tracks">Каталог</NavDropdown.Item>
-                            <NavDropdown.Item href="/tracks/my">Мои треки</NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/tracks">Каталог</Link></NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/tracks/my">Мои треки</Link></NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <div className="d-flex align-items-center">
