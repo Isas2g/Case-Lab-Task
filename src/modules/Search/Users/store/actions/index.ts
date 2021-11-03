@@ -1,9 +1,13 @@
 import SearchService from "../../../services/searchServices";
 
-const getUsersByQuery = async (searchQuery: string) => {
-    let users: Array<User>;
-    users = await SearchService.usersSearchGet(searchQuery);
-    return users;
+export const getUsersByQuery = async (searchQuery: string, dep: string, company: string) => {
+    return await SearchService.usersSearchGet(searchQuery, dep, company);
 }
 
-export default getUsersByQuery;
+export const getDeps = async () => {
+    return await SearchService.corporationDepartments();
+}
+
+export const getCompany = async (dep:string) => {
+    return await SearchService.corporationCompanies(dep);
+}

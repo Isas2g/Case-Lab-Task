@@ -1,19 +1,22 @@
 import {Button, Col, Form, Row} from "react-bootstrap";
 import {useState} from "react";
 import store from "../../../../Search/Users/store";
+import Departments from "./Departments";
+import Companies from "./Companies";
 
 const UserForm = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
-    const [printUsers, setPrintUsers] = useState('');
     const [department, setDepartment] = useState('');
     const [company, setCompany] = useState('');
     const [toggleButton, setToggleButton] = useState(true);
 
+    store.getDepartments().then();
+    if (department != '') store.getCompanies(department).then();
+
     const handleForm = (button:any) => {
-        setPrintUsers(searchQuery);
         setToggleButton(false);
-        store.getUsersBySearch(searchQuery).then(() => setToggleButton(true));
+        store.getUsersBySearch(searchQuery, department, company).then(() => setToggleButton(true));
     }
 
     return (
@@ -32,8 +35,7 @@ const UserForm = () => {
                     <Form.Group controlId="department">
                         <Form.Label>Департамент:</Form.Label>
                         <Form.Control as="select" onChange={(event) => setDepartment(event.target.value)}>
-                            <option></option>
-                            {/*<Departments />*/}
+                            <Departments />
                         </Form.Control>
                     </Form.Group>
                 </Col>
@@ -42,7 +44,7 @@ const UserForm = () => {
                         <Form.Label>Компания:</Form.Label>
                         <Form.Control as="select" onChange={(event) => setCompany(event.target.value)}>
                             <option></option>
-                            {/*<Companies dep={department} />*/}
+                            <Companies />
                         </Form.Control>
                     </Form.Group>
                 </Col>

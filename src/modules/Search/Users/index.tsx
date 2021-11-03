@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import store from "./store";
 import { UserItem } from "./components/UserItem";
 import {observer} from "mobx-react-lite";

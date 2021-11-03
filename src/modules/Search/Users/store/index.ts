@@ -1,16 +1,25 @@
 import {makeAutoObservable} from "mobx";
-import getUsersByQuery from "./actions";
+import {getCompany, getDeps, getUsersByQuery} from "./actions";
 
 class Store {
     users: Array<User> = [];
+    departments: Array<String> = [];
+    companies: Array<String> = [];
 
     constructor() {
         makeAutoObservable(this);
     }
 
-    async getUsersBySearch(searchQuery: string) {
-        const items: User[] = await getUsersByQuery(searchQuery)
-        this.users = items;
+    async getUsersBySearch(searchQuery: string, dep: string, company:string) {
+        this.users = await getUsersByQuery(searchQuery, dep, company);
+    }
+
+    async getDepartments() {
+        this.departments = await getDeps();
+    }
+
+    async getCompanies(dep:string) {
+        this.companies = await getCompany(dep);
     }
 }
 
