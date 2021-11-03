@@ -35,6 +35,7 @@ const UserForm = () => {
                     <Form.Group controlId="department">
                         <Form.Label>Департамент:</Form.Label>
                         <Form.Control as="select" onChange={(event) => setDepartment(event.target.value)}>
+                            <option />
                             <Departments />
                         </Form.Control>
                     </Form.Group>
@@ -43,6 +44,7 @@ const UserForm = () => {
                     <Form.Group controlId="department">
                         <Form.Label>Компания:</Form.Label>
                         <Form.Control as="select" onChange={(event) => setCompany(event.target.value)} disabled={department ? false : true}>
+                            <option />
                             <Companies />
                         </Form.Control>
                     </Form.Group>

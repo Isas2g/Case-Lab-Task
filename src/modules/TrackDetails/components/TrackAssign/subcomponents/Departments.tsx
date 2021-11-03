@@ -5,7 +5,7 @@ const Departments = observer(():JSX.Element => {
 
     return(
         <>
-            {store.departments.map( (dep, index) => <option key={index}>{dep}</option>)}
+            {store.departments.map( (dep, index) => dep ? <option key={index}>{dep}</option>: '')}
         </>
     )
 })
