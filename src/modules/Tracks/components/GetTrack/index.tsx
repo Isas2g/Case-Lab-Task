@@ -1,22 +1,55 @@
 import store from "../../store"
 import React from "react";
-import {Edit, StateList} from "./style";
+import {Edit, StateList, Student, StudentBtn} from "./style";
 import {observer} from "mobx-react-lite";
+import {Button, ButtonGroup} from "react-bootstrap";
+import styled from "styled-components";
 
-const State = observer(() => <StateList track={store.track} />)
+const Back = styled.div`
+  background-color: #ECECEC;
+`
 
-const EditButton = observer(() => <Edit track={store.track} />)
+const H3 = styled.h3`
+    font-size: large;
+    background: #ECECEC;
+`
+
+const Progress = styled.h5`
+  background-color: darkorange;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+`
+
+const State = observer(() => <StateList track={store.track} />);
+
+const EditButton = observer(() => <Edit track={store.track} />);
+
+//TODO
+
+const StudentButton = observer(() => <Student track={store.track}/>);
+// previewPicture and progress
 
 const GetTrack = (props: any) => {
     const query = store.getTrack(props.match.params.id);
     const token = localStorage.getItem('role');
     return (
-        <div className="container">
-            <h3>Track {props.match.params.id} states</h3>
+        <Back className="container">
+            <img src={props.match.params.previewPicture} />
+            <H3> Трек [id:{props.match.params.id}] </H3>
             <State/>
-            {token === `teacher` ? <EditButton /> : ''}
-        </div>
-    )
+            {token === `teacher` ?
+                <ButtonGroup>
+                    <EditButton />
+                    <StudentButton />
+                </ButtonGroup> :
+                <Progress> Прогресс прохождения трека: {props.match.params.progress} </Progress>
+            }
+        </Back>)
 }
 
 export default GetTrack;

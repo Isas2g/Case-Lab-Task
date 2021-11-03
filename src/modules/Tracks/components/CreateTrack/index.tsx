@@ -1,6 +1,8 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import store from "../../store"
 import {useHistory} from "react-router-dom";
+import TrackService from "../../services/tracksService";
+import DetailService from "../../../TrackDetails/services/detailsService";
 
 
 const CreateTrack: React.FC = () => {
@@ -23,12 +25,12 @@ const CreateTrack: React.FC = () => {
         history.push('/tracks');
     }
 
-    const handleInputs = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | any> ) => {
+    const handleInputs = async (event: any) => {
         const target = event.target;
         const value = target.type === 'checkbox'
             ? target.checked
             : target.type === 'file'
-                ? 'url'//this.uploadImage(target.value)
+                ? await TrackService.trackPreview(target.files[0])
                 : target.type === 'datetime-local'
                     ? new Date(target.value).getTime() / 1000
                     : target.value;
@@ -41,8 +43,9 @@ const CreateTrack: React.FC = () => {
     }
 
     return (
+        <>
         <div className="container align-center">
-            <h4>Create a new track!</h4>
+            <h4>Create a new track</h4>
             <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
                 <label>
                     Название:
@@ -92,6 +95,7 @@ const CreateTrack: React.FC = () => {
                 <input className="btn btn-primary" type="submit" value="Отправить" />
             </form>
         </div>
+        </>
     );
 };
 

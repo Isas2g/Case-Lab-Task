@@ -10,6 +10,6 @@ interface UserData {
   lastName: string;
   secondName: string;
   avatarUrl: string;
-  departament: string;
+  department: string;
   company: string;
 }

@@ -1,22 +1,8 @@
 import api from '../../../shared/services/api';
 import { authHeader } from '../../../shared/services/auth-header';
+import catchError from "../../../shared/services/catchError";
 
-//обработчик ошибок axios
-
-const catchError = (error: any) =>  {
-    if (error.response) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-    } else if (error.request) {
-        console.log(error.request);
-    } else {
-        console.log('Error', error.message);
-    }
-    console.log(error.config);
-}
-
-export const TrackService = {
+const TrackService = {
   
   //tracks контроллер
   
@@ -33,6 +19,22 @@ export const TrackService = {
   },
   
   //track контроллеры
+
+  trackPreview: async (fileData:any) => {
+      let formData = new FormData()
+      formData.append('file', fileData)
+      const fileUrl = await api.post(
+          '/track/preview',
+          formData,
+          {
+              headers: {...authHeader()}
+          }
+      ).then(
+          (response) =>
+              response.data.data.file.url
+      ).catch((er) => catchError(er));
+      return fileUrl;
+  },
   
   trackGet: (trackId: number) => {
       return api.get(
@@ -143,101 +145,6 @@ export const TrackService = {
       }).catch((er) => this.catchError(er));
       return success;*/
   },
-  
-  //trackDetails контроллер
-  
-  trackDetails: (track: Track) => {
-      return api.get(
-          `/track/${track.id}/details`,
-          {
-              headers: {...authHeader()}
-          }
-      );/*.then( (response) => {
-          console.log(response.data.data);
-          data = response.data.data;
-      }).catch((er) => this.catchError(er));
-      return data.map( (item) => {
-              return new TrackDetail({
-                  id: item.id,
-                  trackId: item.trackId,
-                  finished: item.finished,
-                  assigned: item.assigned,
-                  epilogId: item.epilogId,
-                  epilogFinished: item.epilogFinished,
-                  entityName: item.entityName,
-                  entityDuration: item.entityDuration,
-                  data: item.data
-              });
-          }
-      );*/
-  },
-  
-  //trackDetail контроллеры
-  
-  trackDetailGet: (detailId: string) => {
-      return api.get(
-          `/track/detail/${detailId}`,
-          {
-              headers: {...authHeader()}
-          }
-      );/*.then( (response) => {
-          console.log(response.data.data);
-          data = response.data.data;
-      }).catch((er) => this.catchError(er));
-      return new TrackDetail({
-          id: data.id,
-          trackId: data.trackId,
-          finished: data.finished,
-          assigned: data.assigned,
-          epilogId: data.epilogId,
-          epilogFinished: data.epilogFinished,
-          entityName: data.entityName,
-          entityDuration: data.entityDuration,
-          data: data.data
-      });*/
-  }, 
-  
-  trackDetailCreate: (detailData: TrackDetail) => {
-      return api.post(
-          `/track/${detailData.trackId}/detail`,
-          detailData,
-          {
-              headers: {...authHeader()}
-          }
-      );/*.then( (response) => {
-          console.log(response.data.data);
-          data = response.data.data;
-      }).catch((er) => this.catchError(er));
-      return data;*/
-  },
-  
-  trackDetailUpdate: (detail: TrackDetail) => {
-      return api.put(
-          `/track/detail/${detail.id}`,
-          detail.data,
-          {
-              headers: {...authHeader()}
-          }
-      )/*.then( (response) => {
-          console.log(response.data.data);
-          data = response.data.data;
-      }).catch((er) => this.catchError(er));
-      return data;*/
-  },
-  
-  trackDetailDelete: (detail: TrackDetail) =>{
-      return api.delete(
-          `/track/detail/${detail.id}`,
-          {
-              headers: {...authHeader()}
-          }
-      )/*.then( (response) => {
-          console.log(response.data);
-          success = response.data.success;
-      }).catch((er) => this.catchError(er));
-      return success;*/
-  }
+}
 
-//trackDetailEpilog контроллеры
-
-};
+export default TrackService;

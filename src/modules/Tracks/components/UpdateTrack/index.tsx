@@ -1,22 +1,26 @@
-import React, {ChangeEvent, FormEvent, useState} from "react";
+import React, {FormEvent} from "react";
 import store from "../../store"
 import {useHistory} from "react-router-dom";
 import {observer} from "mobx-react-lite";
+import TrackService from "../../services/tracksService";
 
 
 const inputDate = (date : number) => new Date(date * 1000).toISOString().slice(0,16)
 
-const handleInputs = (event: any) => {
+
+
+const handleInputs = async (event: any) => {
     const target = event.target;
     const value = target.type === 'checkbox'
         ? target.checked
         : target.type === 'file'
-            ? 'url'//this.uploadImage(target.value)
+            ? await TrackService.trackPreview(target.files[0])
             : target.type === 'datetime-local'
                 ? new Date(target.value).getTime() / 1000
                 : target.value;
+    console.log(value);
     const name = target.name;
-    console.log(target.value);
+    const reader = new FileReader()
     store.track.data = {
         ...store.track.data,
         [name]: value
@@ -35,7 +39,7 @@ const EditTrack = observer(()=>{
     }
     return(
     <div className="container">
-    <h4>Edit Track number {store.track.id}!</h4>
+    <h4>Изменить трек [{store.track.id}]</h4>
         <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
             <label>
                 Название:
@@ -62,22 +66,22 @@ const EditTrack = observer(()=>{
             <br />
             <br />
             <label>
-                dateTimeStart:
+                Дата начала:
                 <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeStart)} />
             </label>
             <br />
             <br />
             <label>
-                dateTimeFinish:
+                Дата окончания:
                 <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeFinish)} />
             </label>
             <br />
             <br />
             <label>
-                mode:
+                Режим:
                 <select name="mode" onChange={handleInputs} value={store.track.data.mode}>
-                    <option value="free">free</option>
-                    <option value="consistent">consistent</option>
+                    <option value="free">свободный</option>
+                    <option value="consistent">последовательный</option>
                 </select>
             </label>
             <br />
