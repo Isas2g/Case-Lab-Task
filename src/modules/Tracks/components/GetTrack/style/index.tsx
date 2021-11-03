@@ -53,7 +53,7 @@ export const EditButton = styled.button`
   font-size: 16px;
 `
 
-export const StudentButton = styled.button`
+export const StudentBtn = styled.button`
   background-color: darkorange;
   border: 1px solid black;
   border-radius: 10px;
@@ -92,7 +92,7 @@ export const StateList = (props: any) => {
             </Spoiler>
             <br />
             <Li key={'published'}>Опубликован?  -  {props.track.data.published ? 'Да' : 'Нет'}</Li>
-            <Li key={'published'}>Режим  -  {props.track.data.mode === 'consistent' ? 'Последовательный' : 'Свободный'}</Li>
+            <Li key={'mode'}>Режим  -  {props.track.data.mode === 'consistent' ? 'Последовательный' : 'Свободный'}</Li>
             <br/>
         </ul>
     )
@@ -120,9 +120,10 @@ export const Student = (props: any) => {
 
     const moveToUpdate = () => {
         //сделать ссылку на список студентов history.push('');
+        history.push(`/tracks/students/${props.track.id}`)
     }
 
     return(
-        <StudentButton className="btn btn-primary" onClick={moveToUpdate}> Ученики трека </StudentButton>
+        <StudentBtn className="btn btn-primary" onClick={moveToUpdate}> Ученики трека </StudentBtn>
     )
 }
