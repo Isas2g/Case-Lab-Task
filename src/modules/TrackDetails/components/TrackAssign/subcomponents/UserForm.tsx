@@ -42,7 +42,7 @@ const UserForm = () => {
                 <Col md>
                     <Form.Group controlId="department">
                         <Form.Label>Компания:</Form.Label>
-                        <Form.Control as="select" onChange={(event) => setCompany(event.target.value)}>
+                        <Form.Control as="select" onChange={(event) => setCompany(event.target.value)} disabled={department ? false : true}>
                             <Companies />
                         </Form.Control>
                     </Form.Group>
