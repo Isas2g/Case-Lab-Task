@@ -36,18 +36,16 @@
     .contrast {
         transition: .2s;
         font-size: 1.5vw !important;
-        color: black !important;
     } 
 
     .bright {
         height: 140px !important;
     }
 }
-@media (max-width: 752px) and (min-width: 501px) {
+@media (max-width: 752px) {
     .contrast {
         transition: .2s;
         font-size: 1.3vw !important;
-        color: rgb(98, 0, 255) !important;
     } 
 
     .bright {
@@ -55,34 +53,9 @@
     }
 }
 
-@media (max-width: 500px)and (min-width: 351px) {
-    .contrast {
-        transition: .2s;
-        font-size: 1.2vw !important;
-        color: rgb(255, 0, 255) !important;
-    } 
-
-    .bright {
-        height: 80px !important;
-    }
-}
-
-@media (max-width: 350px){
-    .contrast {
-        transition: .2s;
-        font-size: 1.1vw !important;
-        color: rgb(0, 255, 85) !important;
-    } 
-
-    .bright {
-        height: 60px !important;
-    }
-}
-
-
 .contrast {
     transition: .2s;
-    color: red;
+    color: rgb(255, 255, 255);
     font-weight: 600;
     font-size: 1.7vw;
 } 
