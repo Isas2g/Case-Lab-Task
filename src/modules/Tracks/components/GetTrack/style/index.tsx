@@ -70,7 +70,6 @@ const Image = styled.img`
   width: 100%;
 `
 
-
 const Cross = styled.b`
     cursor: pointer;
 `

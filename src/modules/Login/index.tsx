@@ -7,10 +7,10 @@ export const Login: React.FC = () => {
   return (
       <ButtonGroup className="gap-3 d-flex justify-content-center" size="lg">
         <Button className={"m-2"} variant={"success"} onClick={AuthService.loginStudent} href={"/"}>
-          Log In As Student
+          Войти как ученик
         </Button>
         <Button className={"m-2"} variant={"primary"} onClick={AuthService.loginTeacher} href={"/"}>
-          Log In As Teacher
+          Войти как преподаватель
         </Button>
       </ButtonGroup>
   );

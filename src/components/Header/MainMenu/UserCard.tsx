@@ -42,9 +42,9 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                     <li>
                         <Link to="/profile" className="dropdown-item">Мой профиль</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <a className="dropdown-item" href="#">Another action</a>
-                    </li>
+                    </li> */}
                     <li>
                         <hr className="dropdown-divider" />
                     </li>

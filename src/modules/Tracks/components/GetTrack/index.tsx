@@ -2,6 +2,8 @@ import store from "../../store"
 import React from "react";
 import {Edit, StateList, Student, StudentBtn} from "./style";
 import {observer} from "mobx-react-lite";
+import { TrackDetailList } from "../TrackDetailList";
+import { TrackAssign } from "../TrackAssign";
 import {Button, ButtonGroup} from "react-bootstrap";
 import styled from "styled-components";
 
@@ -36,7 +38,7 @@ const StudentButton = observer(() => <Student track={store.track}/>);
 
 const GetTrack = (props: any) => {
     const query = store.getTrack(props.match.params.id);
-    const token = localStorage.getItem('role');
+    const role = localStorage.getItem('role');
     return (
         <Back className="container">
             <img src={props.match.params.previewPicture} />
@@ -44,8 +46,9 @@ const GetTrack = (props: any) => {
             <State/>
             {token === `teacher` ?
                 <ButtonGroup>
-                    <EditButton />
+                    {role === `teacher` ? <EditButton />: ''}
                     <StudentButton />
+                    {role === `teacher` ? <TrackAssign trackId={props.match.params.id} /> : ''}
                 </ButtonGroup> :
                 <Progress> Прогресс прохождения трека: {props.match.params.progress} </Progress>
             }
