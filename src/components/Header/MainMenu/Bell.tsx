@@ -8,7 +8,7 @@ export const Bell = () => {
     return(
         // <BellButton src={bell}></BellButton>
         <BellButton className="notifications align-items-center">
-            <img width="40" src={bell} alt="Notification Bell" />
+            <img width="30" src={bell} alt="Notification Bell" />
         </BellButton>
     )
 }

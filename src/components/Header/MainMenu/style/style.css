@@ -1,3 +1,8 @@
+.notifications {
+    padding-top: 15px !important;
+    padding-bottom: 14px !important;
+}
+
 .itemNav {
     /* color: red !important; */
     font-size: 1.5vw;
@@ -5,6 +10,7 @@
     margin: 0px;
     height: 63px;
     border-right: 2px solid #f5f5f5;
+    width: 10rem;
 }
 
 .itemNav :hover {
@@ -18,8 +24,21 @@
     margin-top: 0px;
 }
 
+.dropdown-menu {
+    border-radius: 0 !important;
+    margin: 0px !important;
+    width: 100%;
+}
+
 .nav-link {
     padding: 17px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-item {
+    width: 100% !important;
 }
 
 .dropdown-item :hover {

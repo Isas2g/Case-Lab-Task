@@ -16,7 +16,7 @@ interface Props {
 
 export const MainMenu:React.FC<Props> = ({token, setToken}) => {
     return (
-        <Navbar bg="light" expand="lg" sticky="top" className="shadow p-3 mb-5 bg-light ">
+        <Navbar bg="light" expand="lg" sticky="top"className="p-0">
             <Container className={"containerNavbar"}>
                 <Navbar.Brand href="/"><img src={logo} alt="Logo" height="50"/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
