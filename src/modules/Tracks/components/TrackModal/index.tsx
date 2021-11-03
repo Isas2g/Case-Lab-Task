@@ -3,6 +3,8 @@ import { ModalComponent } from '../../../../shared/components/Modal';
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./style/style.css"
+import {storeAnnotation} from "mobx/dist/api/decorators";
+import store from "../../store";
 
 interface Props {
   trackId: number;
@@ -14,6 +16,9 @@ interface Props {
 
 
 export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role}) => {
+
+    const query = store.getTrack(trackId)
+    const track = store.track
     
     const {name, previewPicture, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;
 
@@ -65,15 +70,12 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
     }
 
     return (
-        <ModalComponent show={show} onHide={onHide} title={name} heading="Трек">
+        <ModalComponent show={show} onHide={onHide} title={name} heading={"Трек " + trackId} remove={false} track={track}>
           <p className="cardPreviewText cardContent">{previewText}</p>
             {role === 'teacher' ? <p className="cardPublished cardContent">Опубликовано: {published ? "да" : "нет"}</p> : ''}
           <p className="cardContent">Дата открытия трека: {dateFromUnix(dateTimeStart)}</p>
           <p className="cardContent">Дата закрытия трека: {dateFromUnix(dateTimeFinish)}</p>
           <p className="cardContent">Режим прохождения: {mode === "free" ? "свободный" : "последовательный"}</p>
-          
-          <Link to={'/tracks/' + trackId}>See track</Link>
-          
         </ModalComponent>
     )
 };
