@@ -42,43 +42,43 @@ const EditTrack = observer(()=>{
     <h4>Изменить трек [{store.track.id}]</h4>
         <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
             <label>
-                Название:
+                Название
                 <input className="form-control" name="name" type="text" onChange={handleInputs} value={store.track.data.name} />
             </label>
             <br />
             <br />
             <label>
-                Описание:
+                Описание
                 <textarea className="form-control" name="previewText" onChange={handleInputs} value={store.track.data.previewText} />
             </label>
             <br />
             <br />
             <label>
-                Картинка:
+                Картинка
                 <input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
             </label>
             <br />
             <br />
             <label>
-                Опубликовать?&nbsp;
+                Опубликовать &nbsp;
                 <input className="form-check-input" name="published" type="checkbox" checked={store.track.data.published} onChange={handleInputs} />
             </label>
             <br />
             <br />
             <label>
-                Дата начала:
+                Дата начала
                 <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeStart)} />
             </label>
             <br />
             <br />
             <label>
-                Дата окончания:
+                Дата окончания
                 <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeFinish)} />
             </label>
             <br />
             <br />
             <label>
-                Режим:
+                Режим
                 <select name="mode" onChange={handleInputs} value={store.track.data.mode}>
                     <option value="free">свободный</option>
                     <option value="consistent">последовательный</option>
@@ -86,7 +86,7 @@ const EditTrack = observer(()=>{
             </label>
             <br />
             <br />
-            <input className="btn btn-primary" type="submit" value="Отправить" />
+            <input className="btn btn-primary" type="submit" value="Подтвердить" />
         </form>
 </div>
     )})
