@@ -1,0 +1,8 @@
+.searchItem {
+  cursor: pointer;
+  transition: .2s;
+  
+  &:hover {
+    background: #f0f0f0;
+  }
+}

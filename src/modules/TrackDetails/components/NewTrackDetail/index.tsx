@@ -2,20 +2,31 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import store from "../../store";
 
+import classes from './style/index.module.css';
+import { CreateCourseModal } from "./subcomponents/CreateCourseModal";
+import { CreateEventModal } from "./subcomponents/CreateEventModal";
+
 interface Props {
   trackId: number;
   mutated: number;
   setMutated: SetMutatedFunc;
+  lastIndex: number;
 }
 
 type SetMutatedFunc = (num: number) => void;
 
-export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated}) => {
+export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, lastIndex}) => {
     
     const [createMode, setCreateMode] = useState(false);
+    const [chooseMode, setChooseMode] = useState(false);
     
     const [type, setType] = useState('');
     const [required, setRequired] = useState(false);
+    const [entityId, setEntityId] = useState(0);
+    
+    const [modalCourseShow, setModalCourseShow] = useState(false);
+    const [modalEventShow, setModalEventShow] = useState(false);
+    
     
     // type: 'course' | 'event' | 'entryTest' | 'pdf';
     // entityId: integer;
@@ -31,8 +42,8 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated}) 
         ) {
             store.addTrackDetail({
                 type, 
-                entityId: 0,
-                sortIndex: 0,
+                entityId,
+                sortIndex: lastIndex,
                 required
             }, trackId);
           }
@@ -41,24 +52,48 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated}) 
     }
     
     return <div>
-        <Button onClick={() => setCreateMode(true)}>Создать элемент трека</Button>
+        <Button onClick={() => setChooseMode(!chooseMode)}>Создать элемент трека</Button>
+        
+        {chooseMode ?
+            <div className={classes.chooseType}>
+                <p onClick={() => {setType('course'); setChooseMode(false); setCreateMode(true);}}>Курс</p>
+                <p onClick={() => {setType('event'); setChooseMode(false); setCreateMode(true);}}>Событие</p>
+            </div>
+            :
+            ''
+        }
+        
         {createMode ? 
             <Form onSubmit={createDetail} className="form">
-                <Form.Label htmlFor="type">Тип</Form.Label>
-                <Form.Select onChange={(event: ChangeEvent<HTMLSelectElement>) => setType(event.target.value)} placeholder="Имя элемента" id="type">
-                    <option value="course">Курс</option>
-                    <option value="event">Событие</option>
-                    <option value="entryTest">Тест</option>
-                    <option value="pdf">PDF документ</option>
-                </Form.Select>
-                <Form.Label htmlFor="required">Обязательный</Form.Label>
-                <Form.Select onChange={(event: ChangeEvent<HTMLSelectElement>) => setRequired(!!event.target.value)} id="required">
-                  <option value="">Нет</option>
-                  <option value="1">Да</option>
-                </Form.Select>
+                
+                {
+                    type === 'course' ? 
+                    <div>
+                        <p onClick={() => setModalCourseShow(true)} className={classes.createTrackDetailLink}>Выберите курс из доступных</p>
+                        <CreateCourseModal setEntityId={setEntityId} show={modalCourseShow} onHide={() => setModalCourseShow(false)} trackId={trackId} />
+                    </div>
+                :
+                ''
+                }
+                {
+                    type === 'event' ?
+                    <div>
+                        <p onClick={() => setModalEventShow(true)} className={classes.createTrackDetailLink}>Выберите мероприятие из доступных</p>
+                        <CreateEventModal setEntityId={setEntityId} show={modalEventShow} onHide={() => setModalEventShow(false)} trackId={trackId} />
+                    </div>
+                    :
+                    ''
+                }
+                
+                <Form.Check
+                    label="Обязательный"
+                    type="checkbox"
+                    onChange={() => {setRequired(!required)}}
+                />
                 
                 <Button type="submit">Создать</Button>
             </Form>
+            
             :
             ''
         }

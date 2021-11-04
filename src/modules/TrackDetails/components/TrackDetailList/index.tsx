@@ -16,7 +16,7 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
 
   useEffect(() => {
     const fetchData = async () => {
-      setTrackDetails((await store.getTrackDetails(trackId)));
+      setTrackDetails((await store.getTrackDetails(trackId)).sort((a: TrackDetail, b: TrackDetail) => a.data.sortIndex - b.data.sortIndex));
     };
     fetchData();
   }, [mutated]);
@@ -33,7 +33,7 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
             </div>
               <div className="container d-flex align-items-center">
                   <h3 className={"d-flex p-3"}>Элементы трека</h3>
-                  {role === "teacher" ? <NewTrackDetail mutated={mutated} setMutated={setMutated} trackId={trackId} /> : ""}
+                  {role === "teacher" ? <NewTrackDetail lastIndex={trackDetails.length} mutated={mutated} setMutated={setMutated} trackId={trackId} /> : ""}
               </div>
               { trackDetails ? trackDetails.map((trackDetail:TrackDetail) => 
                   <Container fluid className={"p-3"} key={trackDetail.id}>

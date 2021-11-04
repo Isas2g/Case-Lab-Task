@@ -63,6 +63,29 @@ const DetailService = {
         ).then( (response) =>
             response.data.success
         ).catch((er) => catchError(er));
+    },
+    
+    trackDetailCoursesGet: (searchQuery: string) => {
+        return api.get(
+            `/search/courses?q=${searchQuery}`,
+            {
+                headers: {...authHeader()}
+            }
+        ).then( (response) =>
+            response.data
+        ).catch((er) => catchError(er));
+        
+    },
+    
+    trackDetailEventsGet: (searchQuery: string) => {
+        return api.get(
+            `/search/events?q=${searchQuery}`,
+            {
+                headers: {...authHeader()}
+            }
+        ).then( (response) =>
+            response.data
+        ).catch((er) => catchError(er));
     }
 }
 
