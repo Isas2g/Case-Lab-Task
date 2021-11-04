@@ -34,7 +34,7 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                             <img className="m-1 rounded" height="40" width="40" src={avatar} alt="User's Avatar" />
                         </div>
                         <div className="ml-3 w-100">
-                            <NameUserProfile className="mb-0 mt-0 NameUserProfile">[Имя пользователя]</NameUserProfile>
+                            <NameUserProfile className="mb-0 mt-0 NameUserProfile">Иван Иванов</NameUserProfile>
                         </div>
                     </div>
                 </a>

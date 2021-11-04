@@ -1,9 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
 .helloWrapper {
     display: flex;
     align-items: center;
     height: 100%;
+    justify-content: center;
 }
 
-/* .hello {
+.hello {
+    font-family: 'Roboto', sans-serif;
+    width: 815px;
+}
 
-} */
+.main-image {
+    width: 100%;
+}
+
+.main-wrapper {
+    background-color: #ffffff69;
+    padding-top: 6px;
+    padding-bottom: 2px;
+    border-radius: 4px;
+}
+
+.main {
+    background-color: #e9eef2;
+
+}
