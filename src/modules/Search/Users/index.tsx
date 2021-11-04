@@ -10,7 +10,7 @@ export const UserList = observer(({trackId}:Props): JSX.Element => {
 
   return (
     <div>
-      {store.users.map( (user: User) => <UserItem trackId={trackId} user={user} key={user.id} />)}
+      {store.users.map( (user: User) => <UserItem user={user} trackId={trackId} key={user.id} />)}
     </div>
   )
 })

@@ -46,23 +46,19 @@ class Store {
     //Track
     async addTrack(data:TrackData) {
         this.tracks = await createTrack(data);
-        return this.tracks;
     }
     async getTracks() {
         this.tracks = await getTracks();
-        return this.tracks;
     }
     deleteTrack(track: Track) {
         this.tracks = deleteTrack(this.tracks, track);
     }
     async getTrack(id: number) {
         this.track = await getTrack(id);
-        return this.track;
     }
     updateTrack(track: Track) {
         const query = updateTrack(this.tracks, track);
         this.track = track;
-        return this.track;
     }
 
 

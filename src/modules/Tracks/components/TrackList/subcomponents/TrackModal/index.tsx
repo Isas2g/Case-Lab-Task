@@ -1,10 +1,10 @@
 import React from "react";
-import { ModalComponent } from '../../../../shared/components/Modal';
+import { ModalComponent } from '../../../../../../shared/components/Modal';
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./style/style.css"
 import {storeAnnotation} from "mobx/dist/api/decorators";
-import store from "../../store";
+import store from "../../../../store";
 
 interface Props {
   trackId: number;
