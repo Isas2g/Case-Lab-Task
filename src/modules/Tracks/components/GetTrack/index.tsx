@@ -4,7 +4,7 @@ import {Edit, StateList, Student, StudentBtn} from "./style";
 import {observer} from "mobx-react-lite";
 import { TrackDetailList } from "../../../TrackDetails/components/TrackDetailList";
 import { TrackAssign } from "../TrackAssign";
-import {Button, ButtonGroup} from "react-bootstrap";
+import {ButtonGroup} from "react-bootstrap";
 import styled from "styled-components";
 
 const Back = styled.div`
@@ -15,26 +15,13 @@ const H3 = styled.h3`
     font-size: large;
     background: #ECECEC;
 `
-
-const Progress = styled.h5`
-  background-color: darkorange;
-  border: 1px solid black;
-  border-radius: 10px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-`
-
 const State = observer(() => <StateList track={store.track} />);
 
 const EditButton = observer(() => <Edit track={store.track} />);
 
-//TODO
+//TODO previewPicture
 
 const StudentButton = observer(() => <Student track={store.track}/>);
-// previewPicture and progress
 
 const GetTrack = (props: any) => {
     const query = store.getTrack(props.match.params.id);
@@ -49,8 +36,7 @@ const GetTrack = (props: any) => {
                     {role === `teacher` ? <EditButton />: ''}
                     <StudentButton />
                     {role === `teacher` ? <TrackAssign trackId={props.match.params.id} /> : ''}
-                </ButtonGroup> :
-                <Progress> Прогресс прохождения трека: {props.match.params.progress} </Progress>
+                </ButtonGroup> : ''
             }
         </Back>
             <TrackDetailList trackId={props.match.params.id} />

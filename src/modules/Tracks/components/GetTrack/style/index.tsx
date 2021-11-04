@@ -11,12 +11,7 @@ const Spoiler = styled.div`
 const Summary = styled.summary`
   font-size: 30px;
   font-family: "Helvetica Neue";
-
-
-&.details[open] div{
-    animation: spoiler 1s;
-}
-
+  
 @keyframes Spoiler {
   0 % {max-height: 0;}
   100 % {max-height: 10em;}
@@ -26,6 +21,9 @@ const Summary = styled.summary`
 const Details = styled.details`
   padding: 1em 0;
   border-top: 5px solid darkorange;
+  &.details[open] div{
+    animation: spoiler 1s;
+  }
 `
 
 const Li = styled.li`
@@ -75,12 +73,19 @@ const Cross = styled.b`
 `
 
 export const StateList = (props: any) => {
+    const date1 = new Date(props.track.data.dateTimeStart*1000).toUTCString()
+    const date2 = new Date(props.track.data.dateTimeFinish*1000).toUTCString()
+    const duration  = 0;
     return(
         <ul>
             <Li key={'name'}>
                 <Image src={"https://tml10.rosatom.ru/" + props.track.data.previewPicture} className="background"/>
                 <H2>{props.track.data.name}</H2>
-                {/*<div>Время трека: {props.track.data.dateTimeStart} - {props.track.data.dateTimeFinish}</div>*/}
+                <div>Время трека: {date1} - {date2}</div>
+                <div>Продолжительность трека: {duration}</div>
+                <script>
+
+                </script>
             </Li>
             <br/>
             <Spoiler>
@@ -110,16 +115,14 @@ export const Edit = (props: any) => {
     )
 }
 
-//TODO
-//StudentButton, date's format, image
+//TODO StudentButton, duration, image
 
 export const Student = (props: any) => {
 
     const history = useHistory();
 
     const moveToUpdate = () => {
-        //сделать ссылку на список студентов history.push('');
-        history.push(`/tracks/students/${props.track.id}`)
+        history.push(`/tracks/students/${props.track.id}`);
     }
 
     return(
