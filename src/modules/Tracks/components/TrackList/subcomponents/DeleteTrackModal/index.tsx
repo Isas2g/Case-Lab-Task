@@ -1,4 +1,4 @@
-import { ModalComponent } from "../../../../shared/components/Modal"
+import { ModalComponent } from "../../../../../../shared/components/Modal"
 import React from "react";
 
 interface Props {

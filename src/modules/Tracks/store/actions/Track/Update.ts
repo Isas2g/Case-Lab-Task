@@ -1,7 +1,7 @@
 import TrackService from "../../../services/tracksService";
 
-const updateTrack = (tracks: Array<Track>, updTrack: Track): Array<Track> =>
-{
+const updateTrack = (tracks: Array<Track>, updTrack: Track): Array<Track> => {
+
     TrackService.trackUpdate(updTrack);
     return tracks.map((track) => ({
         ...track,

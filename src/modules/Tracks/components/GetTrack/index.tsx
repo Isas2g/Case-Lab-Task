@@ -3,7 +3,7 @@ import React from "react";
 import {Edit, StateList, Student, StudentBtn} from "./style";
 import {observer} from "mobx-react-lite";
 import { TrackDetailList } from "../../../TrackDetails/components/TrackDetailList";
-import { TrackAssign } from "../../../TrackDetails/components/TrackAssign";
+import { TrackAssign } from "../TrackAssign";
 import {Button, ButtonGroup} from "react-bootstrap";
 import styled from "styled-components";
 

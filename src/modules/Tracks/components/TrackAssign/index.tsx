@@ -1,9 +1,9 @@
 import { useState } from "react"
-import {Form, Col, Row, Button, ToggleButton} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { ModalComponent } from "../../../../shared/components/Modal";
 import { UserList } from "../../../Search/Users";
-import {observer} from "mobx-react-lite";
-import store from "../../../Search/Users/store";
+import { observer } from "mobx-react-lite";
+import store from "../TrackAssign/store";
 import UserForm from "./subcomponents/UserForm";
 
 interface Props {
@@ -11,7 +11,9 @@ interface Props {
 }
 
 export const TrackAssign = observer(({trackId}:Props): JSX.Element => {
-  
+
+  store.readTrackAssigns(trackId).then();
+
   const [show, setModalShow] = useState(false);
   
   return (
@@ -20,7 +22,6 @@ export const TrackAssign = observer(({trackId}:Props): JSX.Element => {
       
         <ModalComponent show={show} onHide={() => setModalShow(false)} heading="Ученики трека" title="" remove={false} track={undefined}>
           <h4>Список студентов:</h4>
-          {/*<StudentList trackId={trackId}/>*/}
           <UserForm />
           <UserList trackId={trackId} />
         </ModalComponent>

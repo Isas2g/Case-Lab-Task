@@ -1,7 +1,15 @@
 import SearchService from "../../../services/searchServices";
 
 export const getUsersByQuery = async (searchQuery: string, dep: string, company: string) => {
-    return await SearchService.usersSearchGet(searchQuery, dep, company);
+    const userList: Array<User> = await SearchService.usersSearchGet(searchQuery, dep, company)
+    return   userList.map(
+        (item) => {
+            return {
+                ...item,
+                id: parseInt(String(item.id)),
+            }
+        }
+    );
 }
 
 export const getDeps = async () => {
