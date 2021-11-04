@@ -1,8 +1,7 @@
 import { Modal, Button } from "react-bootstrap";
-import { NumberLiteralType } from "typescript";
-import store from "../../../modules/Tracks/store";
 import React from "react";
 import "./style/style.css"
+import store from "../../../modules/Tracks/store";
 
 interface Props {
     title: string;

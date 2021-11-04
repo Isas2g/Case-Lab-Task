@@ -45,7 +45,7 @@ const CreateTrack: React.FC = () => {
     return (
         <>
         <div className="container align-center">
-            <h4>Create a new track</h4>
+            <h4>Создайте новый трек!</h4>
             <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
                 <label>
                     Название:
@@ -72,22 +72,22 @@ const CreateTrack: React.FC = () => {
                 <br />
                 <br />
                 <label>
-                    dateTimeStart:
+                    Дата начала:
                     <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
                 <label>
-                    dateTimeFinish:
+                    Дата окончания:
                     <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
                 <label>
-                    mode:
+                    Последовательность:
                     <select onChange={handleInputs}>
-                        <option value="free">free</option>
-                        <option value="consistent">consistent</option>
+                        <option value="free">Непоследовательный</option>
+                        <option value="consistent">Последовательный</option>
                     </select>
                 </label>
                 <br />

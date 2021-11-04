@@ -2,7 +2,7 @@ import { MainMenu } from "./MainMenu";
 import React from "react";
 import {useLocation} from "react-router";
 import {Image} from "react-bootstrap";
-import banner from "../../shared/assets/banner.png";
+import banner from "../../assets/banner.png";
 
 type TokenFunc = (str: string) => void;
 

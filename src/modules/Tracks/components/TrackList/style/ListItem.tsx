@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import React from "react";
 import style from "./style.module.scss";
-import { TrackModal } from "../../TrackModal";
-import { DeleteModal } from "../../DeleteModal";
+import { TrackModal } from "../subcomponents/TrackModal";
+import { DeleteModal } from "../subcomponents/DeleteTrackModal";
 import {Card, Col} from "react-bootstrap";
 
 const Cross = styled.b`

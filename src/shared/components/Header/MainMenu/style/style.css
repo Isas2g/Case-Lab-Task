@@ -20,12 +20,18 @@
     background-color: #fcfcfc;
 }
 
+.withoutHover :hover {
+    box-shadow: none !important;
+}
+
 .drop :hover{
     color: #1e2125;
     background-color: #e9ecef !important;
     box-shadow: none !important;
 }
-
+#basic-nav-dropdown::after{
+    display: none;
+}
 .itemNav :hover {
     background-color: #ffffff; 
     box-shadow: 5px 0 5px -5px rgba(51, 51, 51, 0.4), -5px 0 5px -5px rgba(51, 51, 51, 0.4);

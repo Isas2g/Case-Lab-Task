@@ -1,10 +1,10 @@
 import React from "react";
-import { ModalComponent } from '../../../../shared/components/Modal';
-import { Link } from "react-router-dom";
+import { ModalComponent } from '../../../../../../shared/components/Modal';
+import { Link, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./style/style.css"
 import {storeAnnotation} from "mobx/dist/api/decorators";
-import store from "../../store";
+import store from "../../../../store";
 
 interface Props {
   trackId: number;
@@ -19,8 +19,9 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
 
     const query = store.getTrack(trackId)
     const track = store.track
-    
-    const {name, previewPicture, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;
+
+    const {name, published, dateTimeStart, dateTimeFinish, mode} = data;
+    const history = useHistory();
 
     const dateFromUnix = (timestamp: number) => {
         const date:Date = new Date(timestamp*1000);
@@ -69,13 +70,21 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
         return `${date.getDay()} ${monthName} ${date.getFullYear()} в ${date.getHours()< 10 ? '0'+date.getHours() : date.getHours()}:${date.getMinutes()< 10 ? '0'+date.getMinutes() : date.getMinutes()} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
     }
 
+    const goToTrack = () => {
+        // '/tracks/'+ trackId
+
+        history.push('/tracks/'+ trackId);
+        return;
+    }
+
     return (
         <ModalComponent show={show} onHide={onHide} title={name} heading={"Трек " + trackId} remove={false} track={track}>
-          <p className="cardPreviewText cardContent">{previewText}</p>
-            {role === 'teacher' ? <p className="cardPublished cardContent">Опубликовано: {published ? "да" : "нет"}</p> : ''}
-          <p className="cardContent">Дата открытия трека: {dateFromUnix(dateTimeStart)}</p>
-          <p className="cardContent">Дата закрытия трека: {dateFromUnix(dateTimeFinish)}</p>
-          <p className="cardContent">Режим прохождения: {mode === "free" ? "свободный" : "последовательный"}</p>
+          {role === 'teacher' ? <p>Опубликовано: {published ? "да" : "нет"}</p> : ''}
+          <p>Дата открытия трека: {dateFromUnix(dateTimeStart)}</p>
+          <p>Дата закрытия трека: {dateFromUnix(dateTimeFinish)}</p>
+          <p>Режим прохождения: {mode === "free" ? "свободный" : "последовательный"}</p>
+          {/*<Link to={'/tracks/' + trackId}>See track</Link>*/}
+          <Button variant="warning" size="lg" onClick={goToTrack}>Перейти к треку</Button>
         </ModalComponent>
     )
 };

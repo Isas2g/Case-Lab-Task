@@ -1,11 +1,11 @@
 import DetailService from "../../../services/detailsService";
 
-const updateTrackDetail = (trackDetail:TrackDetail, trackDetails:Array<TrackDetail>): Array<TrackDetail> =>
+const updateTrackDetail = (detailData:TrackDetailData, trackDetails:Array<TrackDetail>, detailId:number): Array<TrackDetail> =>
 {
-    DetailService.trackDetailUpdate(trackDetail);
+    DetailService.trackDetailUpdate(detailData, detailId).then();
     return trackDetails.map((detail) => ({
         ...detail,
-        data: detail.id === trackDetail.id ? trackDetail.data : detail.data,
+        data: detail.id === detailId ? detailData : detail.data,
     }))
 }
 

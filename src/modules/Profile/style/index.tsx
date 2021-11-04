@@ -30,7 +30,7 @@ export const Avatar: React.FC<Props> = ({src, role}) => {
             <AvatarDiv className="m-2">
                 <AvatarImage src={src} />
             </AvatarDiv>
-            <Role className="role">Role: {role}</Role>
+            <Role className="role">Роль: {role === "teacher"? "учитель." : "ученик."}</Role>
         </div>
     )
 }

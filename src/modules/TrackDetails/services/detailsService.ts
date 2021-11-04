@@ -44,10 +44,10 @@ const DetailService = {
         ).catch((er) => catchError(er));
     },
 
-    trackDetailUpdate: (detail: TrackDetail) => {
+    trackDetailUpdate: (detail: TrackDetailData, detailId: number) => {
         return api.put(
-            `/track/detail/${detail.id}`,
-            detail.data,
+            `/track/detail/${detailId}`,
+            detail,
             {
                 headers: {...authHeader()}
             }
