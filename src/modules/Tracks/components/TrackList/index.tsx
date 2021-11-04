@@ -15,7 +15,7 @@ const TrackListComponent:React.FC<Props> = ({my}) => {
     return(
         <div className={style.trackListContainer}>  
             <img src={image} className={style.trackImage}/>
-            <div>
+            <div className="w-100">
                 <div className={"container d-flex align-items-center " + style.titleContainer}>
                     <h3 className={"d-flex p-3 " + style.trackTitle}>{my ? "Мои треки" : "Каталог треков"}</h3>
                     {role === "teacher" ? <NewTrack /> : ""}

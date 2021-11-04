@@ -4,6 +4,7 @@
     0 1px 1px #000,
     -1px 0 1px #000,
     0 -1px 1px #000;
+    padding-bottom: 0px;
 }
 
 .wrapperMiniCard {
@@ -52,7 +53,7 @@
 .bright {
     
     img {
-        // opacity: .25;
+        opacity: .25;
         transition: .2s;
     }
 
@@ -61,7 +62,7 @@
     }
     &:hover  {
         img {
-            // opacity: 0.8;
+            opacity: 0.9;
         }
         transition: transform 0.3s;
         -webkit-transform: scale(1.05);
@@ -103,12 +104,35 @@
     margin-bottom: 0;
     background-color: #262827;
     color: #e7e7e7;
-    box-shadow: inset 0px -11px 4px -8px #ffffffad, inset -15px 0px 8px -8px #9af7ab, inset 0px 15px 8px -1px #004e0329;
+    // box-shadow: inset 0px -11px 4px -8px #ffffffad, inset -15px 0px 8px -8px #9af7ab, inset 0px 15px 8px -1px #004e0329;
+    box-shadow: inset 0px -11px 4px -8px #ffffffad, inset -15px 0px 8px -8px #ebebeb, inset 0px 15px 8px -1px #004e0329;
+
 }
 
 .titleContainer {
     padding-left: 0;
-    background-color: #6bf383ad;
-    box-shadow: inset 0px 15px 8px -1px #004e0329;
+    // background-color: #6bf383ad;
+    // box-shadow: inset 0px 15px 8px -1px #004e0329;
+    background-color: #ebebeb;
+    margin-bottom: 60px;
+    box-shadow: inset 0px -11px 4px -8px #fdfdfd;
 
+}
+
+.addTrackButton {
+    margin-left: 2%;
+    color: #fdfdfd;
+    width: 5%;
+    background-color: #ebebeb;
+    border: 3px solid #f1f1f1;
+}
+
+.rowT {
+    margin-right: 4rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+
+.cardBody {
+    height: 2rem;
 }
