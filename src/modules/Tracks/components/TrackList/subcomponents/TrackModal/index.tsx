@@ -79,10 +79,11 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
 
     return (
         <ModalComponent show={show} onHide={onHide} title={name} heading={"Трек " + trackId} remove={false} track={track}>
-            {role === 'teacher' ? <p>Опубликовано: {published ? "да" : "нет"}</p> : ''}
-            <p>Дата открытия трека: {dateFromUnix(dateTimeStart)}</p>
-            <p>Дата закрытия трека: {dateFromUnix(dateTimeFinish)}</p>
-            <p>Режим прохождения: {mode === "free" ? "свободный" : "последовательный"}</p>
+            <p><b>Описание:</b> {track.data.previewText}</p>
+            <p><b>Дата открытия трека:</b> {dateFromUnix(dateTimeStart)}</p>
+            <p><b>Дата закрытия трека:</b> {dateFromUnix(dateTimeFinish)}</p>
+            <p><b>Режим прохождения:</b> {mode === "free" ? "свободный" : "последовательный"}</p>
+            {role === 'teacher' ? <p><b>Опубликовано:</b> {published ? "да" : "нет"}</p> : ''}
             {/*<Link to={'/tracks/' + trackId}>See track</Link>*/}
         </ModalComponent>
     )
