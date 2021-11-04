@@ -67,7 +67,7 @@ const CreateTrack: React.FC = () => {
                 <label>
                     Обложка трека
                     <br/>
-                    {/*<label htmlFor="files" className="btn">Выбрать обложку</label>*/}
+                    {/*<label htmlFor="files" className="btn">Выбрать обложку</label>*/ }
                     <Input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
                 </label>
                 <br />
