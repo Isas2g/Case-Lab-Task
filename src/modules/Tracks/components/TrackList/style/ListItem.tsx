@@ -4,7 +4,6 @@ import style from "./style.module.scss";
 import { TrackModal } from "../subcomponents/TrackModal";
 import { DeleteModal } from "../subcomponents/DeleteTrackModal";
 import {Card, Col} from "react-bootstrap";
-import "./style.module.css"
 
 const Cross = styled.b`
     cursor: pointer;
@@ -21,13 +20,13 @@ export const ListItem = (props: any) => {
 
     return (
         <>
-            <Col>
+            <Col className="wrapperMiniCard">
                 <Card className={"bg-dark text-white" + style.pointer + ' ' + style.bright} onClick={() => setModalShow(true)}>
                     <Card.Img className="cardImage" src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={230} />
                     <Card.ImgOverlay onClick={() => setModalShow(true)} className={"d-flex align-items-end"}>
                         <Card.Title className={style.contrast}>{props.track.data.name}</Card.Title>
                     </Card.ImgOverlay>
-                    {role === "teacher" ? <Cross className="close" onClick={() => setDeleteModalShow(true)}>✖</Cross> : ""}
+                    {role === "teacher" ? <Cross className="close mx-1" onClick={() => setDeleteModalShow(true)}>✖</Cross> : ""}
                 </Card>
                 <TrackModal
                     show={modalShow}

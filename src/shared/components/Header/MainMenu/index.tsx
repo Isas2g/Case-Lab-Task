@@ -16,25 +16,32 @@ interface Props {
     setToken: TokenFunc;
 }
 
+
 export const MainMenu:React.FC<Props> = ({token, setToken}) => {
     return (
-        <Navbar bg="light" expand="lg" sticky="top">
-            <Container>
+        <Navbar bg="light" expand="lg" sticky="top"className="p-0 navbarShadow">
+            <Container className={"containerNavbar"}>
                 <Navbar.Brand><Link to="/"><img src={logo} alt="Logo" height="50"/></Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                <Navbar.Collapse id="basic-navbar-nav"  className="navbarCollapse" >
+                    <Nav className="me-auto navWrapper">
+                    <div className="itemNav">
                         <IndexLinkContainer to={'/'}>
                                 <Nav.Link>Главная</Nav.Link>
                         </IndexLinkContainer>
-                        <NavDropdown title={<span>Треки <BsChevronDown /></span>} id="basic-nav-dropdown">
-                            <IndexLinkContainer to={'/tracks'}>
-                                <NavDropdown.Item>Каталог</NavDropdown.Item>
-                            </IndexLinkContainer>
-                            <IndexLinkContainer to={'/tracks/my'}>
-                                <NavDropdown.Item>Мои треки</NavDropdown.Item>
-                            </IndexLinkContainer>
-                        </NavDropdown>
+                    </div>
+                        <div className="itemNav">
+                            <NavDropdown className="withoutHover p-0" title={<span className="withoutHover">Треки <BsChevronDown /></span>} id="basic-nav-dropdown">
+                                <div className="shadow py-2 drop">
+                                    <IndexLinkContainer className="navDropdownItems" to={'/tracks'}>
+                                        <NavDropdown.Item>Каталог</NavDropdown.Item>
+                                    </IndexLinkContainer>
+                                    <IndexLinkContainer className="navDropdownItems" to={'/tracks/my'}>
+                                        <NavDropdown.Item>Мои треки</NavDropdown.Item>
+                                    </IndexLinkContainer>
+                                </div>
+                            </NavDropdown>
+                        </div>
                     </Nav>
                     <div className="d-flex align-items-center userCardBell">
                         <UserCard token={token} setToken={setToken} />

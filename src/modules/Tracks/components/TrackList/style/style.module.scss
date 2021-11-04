@@ -4,6 +4,22 @@
     0 1px 1px #000,
     -1px 0 1px #000,
     0 -1px 1px #000;
+    padding-bottom: 0px;
+}
+
+.wrapperMiniCard {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    background-color: red !important;
+}
+
+.cardImage {
+    background-color:rgba(0,0,0,.8);
+    height:100%;
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
 }
 
 @media (max-width: 977px) and (min-width: 753px) {
@@ -37,7 +53,7 @@
 .bright {
     
     img {
-        opacity: .75;
+        opacity: .25;
         transition: .2s;
     }
 
@@ -46,7 +62,7 @@
     }
     &:hover  {
         img {
-            opacity: 0.96;
+            opacity: 0.9;
         }
         transition: transform 0.3s;
         -webkit-transform: scale(1.05);
@@ -72,4 +88,51 @@
 
 .pointer {
     cursor: pointer !important;
+}
+
+.trackListContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.trackImage {
+    width: 20%;
+}
+
+.trackTitle {
+    font-weight: 600;
+    margin-bottom: 0;
+    background-color: #262827;
+    color: #e7e7e7;
+    // box-shadow: inset 0px -11px 4px -8px #ffffffad, inset -15px 0px 8px -8px #9af7ab, inset 0px 15px 8px -1px #004e0329;
+    box-shadow: inset 0px -11px 4px -8px #ffffffad, inset -15px 0px 8px -8px #ebebeb, inset 0px 15px 8px -1px #004e0329;
+
+}
+
+.titleContainer {
+    padding-left: 0;
+    // background-color: #6bf383ad;
+    // box-shadow: inset 0px 15px 8px -1px #004e0329;
+    background-color: #ebebeb;
+    margin-bottom: 60px;
+    box-shadow: inset 0px -11px 4px -8px #fdfdfd;
+
+}
+
+.addTrackButton {
+    margin-left: 2%;
+    color: #fdfdfd;
+    width: 5%;
+    background-color: #ebebeb;
+    border: 3px solid #f1f1f1;
+}
+
+.rowT {
+    margin-right: 4rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+
+.cardBody {
+    height: 2rem;
 }
