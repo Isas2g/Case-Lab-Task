@@ -52,7 +52,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
     }
     
     return <div>
-        <Button onClick={() => setChooseMode(!chooseMode)}>Создать элемент трека</Button>
+        <Button onClick={() => setChooseMode(!chooseMode)}>Добавить деталь трека</Button>
         
         {chooseMode ?
             <div className={classes.chooseType}>
