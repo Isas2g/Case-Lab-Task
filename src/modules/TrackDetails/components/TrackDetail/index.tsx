@@ -31,10 +31,9 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
     }
     
     return (
-        <Col className="m-2 ">
-            <Card style={{width: "18rem"}} className={"bg-dark text-white " + style['edit-trackDetail']}>
+            <Card style={{width: "320px", minHeight: '300px', padding: '15px', position: 'relative'}} className={"bg-dark text-white m-3 " + style['edit-trackDetail']}>
             {role === "teacher" ? <Cross className="close" onClick={() => setDeleteModalShow(true)}>✖</Cross> : ""}
-                <Card.Title >{trackDetail.entityName} 
+                <Card.Title >{trackDetail.entityName} <br />
                     {role === "teacher" ? 
                         <Badge
                             className={style['edit-btn']}
@@ -53,7 +52,7 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
                 <Card.Text>Закончен: {trackDetail.epilogFinished ? 'да' : 'нет'}</Card.Text>
                 <Card.Text>Обязателен: {trackDetail.data.required ? 'да' : 'нет'}</Card.Text>
                 
-                <Card.Text><IndexLinkContainer to={'/tracks/trackDetail/' + trackDetail.id}><Button>Перейти</Button></IndexLinkContainer></Card.Text>
+                <Card.Text style={{position: 'absolute', bottom: '15px', left: '15px'}}><IndexLinkContainer to={'/tracks/trackDetail/' + trackDetail.id}><Button>Перейти</Button></IndexLinkContainer></Card.Text>
                 
                 <DetailDeleteModal 
                     show={deleteModalShow}
@@ -73,6 +72,5 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
                 />
                 {/* {role ? <Button onClick={makeFinished}>Завершить элемент</Button> : ''} */}
             </Card>
-        </Col>
     );
 }
