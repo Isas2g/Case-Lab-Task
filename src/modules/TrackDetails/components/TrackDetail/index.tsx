@@ -9,8 +9,8 @@ import { DetailDeleteModal } from "../DetailDeleteModal";
 const Cross = styled.b`
     cursor: pointer;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0.25rem;
+    right: 0.5rem;
 `;
 
 interface Props {
@@ -49,14 +49,14 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
           setType(event.target.value);
         }
     }
-    
+    // bg-dark text-white
     return (
         <Col className="m-2 ">
-            <Card style={{width: "18rem"}} className={"bg-dark text-white "}>
+            <Card className={style['detailCard']}>
             {role === "teacher" ? <Cross className="close" onClick={() => setDeleteModalShow(true)}>✖</Cross> : ""}
-                <Card.Title >{trackDetail.entityName}</Card.Title>
-                <Card.Text>Номер: {trackDetail.id}</Card.Text>
-                <Card.Text>Продолжительность: {trackDetail.entityDuration}</Card.Text>
+                <Card.Title className={style['detailTextTitle']}>{trackDetail.entityName}</Card.Title>
+                <Card.Text className={style['detailText']}>Номер: {trackDetail.id}</Card.Text>
+                <Card.Text className={style['detailText']}>Продолжительность: {trackDetail.entityDuration}</Card.Text>
                 <Card.Text className={style['edit-trackDetail']}>Тип: {editMode ?
                     <p>
                     <select onChange={editing} className="form-control" placeholder="Имя элемента">

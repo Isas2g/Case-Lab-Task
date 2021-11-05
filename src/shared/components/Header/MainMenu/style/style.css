@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+/* .image {
+    margin-left: 5px;
+} */
+
 .navbarShadow {
     box-shadow: 0 5px 5px -5px rgba(51, 51, 51, 0.25);
 }
@@ -10,7 +14,6 @@
 }
 
 .itemNav {
-    /* color: red !important; */
     font-size: 1.5vw;
     padding: 0px;
     margin: 0px;
@@ -75,6 +78,15 @@
     text-decoration: none;
 }
 
+.userProfileWrapper {
+    min-width: 10rem;
+}
+
+.CardBootstrap {
+    width: 100%;
+}
+
+
 @media (max-width: 977px) {
     .navDropdownItems {
         width: 100%;
@@ -120,6 +132,10 @@
     .userProfileWrapper, .CardBootstrap {
         width: 100%;
     }
+
+    /* .userProfileWrapper {
+        min-width: 10rem !important;
+    } */
 
     .CardBootstrap {
         display: flex;

@@ -9,6 +9,7 @@ import styled from "styled-components";
 
 const Back = styled.div`
   background-color: #ECECEC;
+  padding:45px;
 `
 
 const H3 = styled.h3`
@@ -17,7 +18,7 @@ const H3 = styled.h3`
 `
 
 const Progress = styled.h5`
-  background-color: darkorange;
+  /* background-color: darkorange; */
   border: 1px solid black;
   border-radius: 10px;
   color: white;
@@ -25,6 +26,7 @@ const Progress = styled.h5`
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  margin-top: 20px;
 `
 
 const State = observer(() => <StateList track={store.track} />);

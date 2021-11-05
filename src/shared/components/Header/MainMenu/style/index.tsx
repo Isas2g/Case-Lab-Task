@@ -17,13 +17,14 @@ export const UserProfileWrapper = styled.div`
     border-right: 2px solid #f5f5f5;
     border-left: 2px solid #f5f5f5;
     font-family: 'Roboto', sans-serif;
+    min-width: 10rem;
 `
 export const CardBootstrap = styled.div`
     /* background-color: #f8f9fa; */
     background-color: #fcfcfc;
     position: relative;
     height: 100%;
-
+    width: 100%;
     padding-top: 7px !important;
     padding-bottom: 8px !important;
     
