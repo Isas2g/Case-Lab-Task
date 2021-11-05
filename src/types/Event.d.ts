@@ -1,4 +1,4 @@
 interface Event {
-  id: integer;
-  name: string;
+  id: integer
+  name: string
 }

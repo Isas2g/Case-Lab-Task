@@ -1,5 +1,5 @@
 interface Course {
-  id: integer;
-  name: string;
-  duration: string;
+  id: integer
+  name: string
+  duration: string
 }

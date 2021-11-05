@@ -1,14 +1,12 @@
-import TrackList from "./components/TrackList";
-import React from "react";
+import TrackList from './components/TrackList'
+import React from 'react'
 
 interface Props {
-    my: boolean;
+  my: boolean
 }
 
-const Tracks:React.FC<Props> = ({my}) => {
-    return(
-        <TrackList my={my} />
-    )
+const Tracks: React.FC<Props> = ({ my }) => {
+  return <TrackList my={my} />
 }
 
-export default Tracks;
+export default Tracks

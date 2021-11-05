@@ -1,1 +1,1 @@
-type ModalFunc = () => void;
+type ModalFunc = () => void

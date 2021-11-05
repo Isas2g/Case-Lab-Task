@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 const Error = () => {
-  return(
+  return (
     <>
-        <h1>Ошибка 404: страница не найдена</h1>
+      <h1>Ошибка 404: страница не найдена</h1>
     </>
-  );
+  )
 }
 
-export default Error;
+export default Error
