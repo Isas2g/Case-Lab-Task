@@ -1,7 +1,7 @@
-import { observer } from 'mobx-react-lite'
-import { ChangeEvent, useEffect, useState } from 'react'
-import { ModalComponent } from '../../../../../../shared/components/Modal'
-import store from '../../../../store'
+import { observer } from "mobx-react-lite";
+import { useEffect, useState } from "react";
+import { ModalComponent } from "../../../../../../shared/components/Modal"
+import store from "../../../../store";
 
 interface Props {
   show: boolean

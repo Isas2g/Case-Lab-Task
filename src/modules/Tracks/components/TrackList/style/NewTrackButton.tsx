@@ -1,9 +1,8 @@
-import React from 'react'
-import { Button } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom'
-import styled from 'styled-components'
 
-const ButtonNew = styled.button``
+import React from "react";
+import { Button } from "react-bootstrap";
+import {useHistory} from "react-router-dom";
+
 
 export const NewTrack: React.FC = () => {
   const history = useHistory()
@@ -12,9 +11,7 @@ export const NewTrack: React.FC = () => {
     history.push('/tracks/new')
   }
 
-  return (
-    <Button variant="warning" onClick={moveToNew}>
-      <b>+</b>
-    </Button>
-  )
+    return(
+        <Button variant="warning"  onClick={moveToNew}><b>Создать трек</b></Button>
+)
 }

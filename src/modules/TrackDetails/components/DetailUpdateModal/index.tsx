@@ -1,8 +1,8 @@
-import { observer } from 'mobx-react-lite'
-import { ChangeEvent, useEffect, useState } from 'react'
-import { ModalComponent } from '../../../../shared/components/Modal'
-import store from '../../store'
-import style from './style/index.module.css'
+import { observer } from "mobx-react-lite";
+import {  useEffect, useState } from "react";
+import { ModalComponent } from "../../../../shared/components/Modal"
+import store from "../../store";
+import style from './style/index.module.css';
 
 interface Props {
   show: boolean
@@ -35,18 +35,17 @@ export const DetailUpdateModal = observer(
         store.getTrackDetailEvents(searchQuery)
         setSearches(store.events)
       }
-    }, [searchQuery])
-
-    const changeEntity = async (id: number) => {
-      await store.updateTrackDetail(
-        {
-          ...trackDetail.data,
-          entityId: id,
-        },
-        trackDetail.id,
-      )
-      onHide()
-      setMutated(mutated + 1)
+    }, [searchQuery, type])
+      
+    
+    
+    const changeEntity = async(id: number) => {
+      await store.updateTrackDetail({
+        ...trackDetail.data,
+        entityId: id
+      }, trackDetail.id);
+      onHide();
+      setMutated(mutated + 1);
     }
 
     return (

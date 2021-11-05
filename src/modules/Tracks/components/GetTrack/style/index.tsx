@@ -1,6 +1,13 @@
-import styled, { keyframes } from 'styled-components'
-import React from 'react'
-import { useHistory } from 'react-router-dom'
+
+import styled from 'styled-components';
+import React, { useState } from "react";
+import {useHistory} from "react-router-dom";
+import {observer} from "mobx-react-lite";
+import store from "../../TrackAssign/store";
+import {ModalComponent} from "../../../../../shared/components/Modal";
+import UserForm from "../../TrackAssign/subcomponents/UserForm";
+import {UserList} from "../../../../Search/Users";
+
 
 const Spoiler = styled.div`
   border: 1px solid #e0e0e0;
@@ -66,53 +73,34 @@ export const StudentBtn = styled.button`
   font-size: 16px;
 `
 
-const Image = styled.img`
-  height: 100px;
-  width: 100%;
-`
-
-const Cross = styled.b`
-  cursor: pointer;
-`
 
 export const StateList = (props: any) => {
-  const date1 = new Date(props.track.data.dateTimeStart * 1000).toUTCString()
-  const date2 = new Date(props.track.data.dateTimeFinish * 1000).toUTCString()
-  const duration = 0
-  return (
-    <ul>
-      <Li key={'name'}>
-        <Image
-          src={'https://tml10.rosatom.ru/' + props.track.data.previewPicture}
-          className="background"
-        />
-        <H2>{props.track.data.name}</H2>
-        <div>
-          Время трека: {date1} - {date2}
-        </div>
-        <div>Продолжительность трека: {duration}</div>
-        <script></script>
-      </Li>
-      <br />
-      <Spoiler>
-        <Details>
-          <Summary>Описание</Summary>
-          <div>{props.track.data.previewText}</div>
-        </Details>
-      </Spoiler>
-      <br />
-      <Li key={'published'}>
-        Опубликован? - {props.track.data.published ? 'Да' : 'Нет'}
-      </Li>
-      <Li key={'mode'}>
-        Режим -{' '}
-        {props.track.data.mode === 'consistent'
-          ? 'Последовательный'
-          : 'Свободный'}
-      </Li>
-      <br />
-    </ul>
-  )
+    const date1 = new Date(props.track.data.dateTimeStart*1000).toUTCString()
+    const date2 = new Date(props.track.data.dateTimeFinish*1000).toUTCString()
+    const duration  = 0;
+    return(
+        <ul>
+            <Li key={'name'}>
+                <H2>{props.track.data.name}</H2>
+                <div>Время трека: {date1} - {date2}</div>
+                <div>Продолжительность трека: {duration}</div>
+                <script>
+
+                </script>
+            </Li>
+            <br/>
+            <Spoiler>
+                <Details>
+                    <Summary>Описание</Summary>
+                    <div>{props.track.data.previewText}</div>
+                </Details>
+            </Spoiler>
+            <br />
+            <Li key={'published'}>Опубликован?  -  {props.track.data.published ? 'Да' : 'Нет'}</Li>
+            <Li key={'mode'}>Режим  -  {props.track.data.mode === 'consistent' ? 'Последовательный' : 'Свободный'}</Li>
+            <br/>
+        </ul>
+    )
 }
 
 export const Edit = (props: any) => {
@@ -132,17 +120,27 @@ export const Edit = (props: any) => {
 
 //TODO StudentButton, duration, image
 
-export const Student = (props: any) => {
-  const history = useHistory()
 
-  const moveToUpdate = () => {
-    history.push(`/tracks/students/${props.track.id}`)
-  }
-
-  return (
-    <StudentBtn className="btn btn-primary" onClick={moveToUpdate}>
-      {' '}
-      Ученики трека{' '}
-    </StudentBtn>
-  )
+interface StudentProps {
+    trackId: number;
 }
+
+export const Student = observer(({trackId}:StudentProps): JSX.Element => {
+
+    store.readTrackAssigns(trackId).then();
+
+    const [show, setModalShow] = useState(false);
+
+    return (
+        <>
+            <StudentBtn className="btn" onClick={() => setModalShow(true)}> Ученики трека </StudentBtn>
+
+            <ModalComponent show={show} onHide={() => setModalShow(false)} heading="Ученики трека" title=""
+                            remove={false} track={undefined}>
+                <h4>Список студентов:</h4>
+                <UserForm/>
+                <UserList trackId={trackId}/>
+            </ModalComponent>
+        </>
+    )
+})

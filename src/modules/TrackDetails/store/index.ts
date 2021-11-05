@@ -33,32 +33,33 @@ class Store {
     makeAutoObservable(this)
   }
 
-  //TrackDetails
-  async addTrackDetail(data: TrackDetailData, trackId: number) {
-    this.details = await createTrackDetail(data, trackId)
-    return this.details
-  }
-  async getTrackDetails(trackId: number) {
-    this.details = await getTrackDetails(trackId)
-    return this.details
-  }
-  deleteTrackDetail(trackDetail: TrackDetail) {
-    this.details = deleteTrackDetail(this.details, trackDetail)
-  }
-  async getTrackDetail(id: number) {
-    this.detail = await getTrackDetail(id)
-  }
-  updateTrackDetail(trackDetail: TrackDetailData, detailId: number) {
-    const query = updateTrackDetail(trackDetail, this.details, detailId)
-    getTrackDetail(detailId).then()
-    return this.detail
-  }
-  async getTrackDetailCourses(searchQuery: string) {
-    this.courses = await getTrackDetailCourses(searchQuery)
-  }
-  async getTrackDetailEvents(searchQuery: string) {
-    this.events = await getTrackDetailEvents(searchQuery)
-  }
+
+    //TrackDetails
+    async addTrackDetail(data:TrackDetailData, trackId:number) {
+        this.details = await createTrackDetail(data, trackId);
+        return this.details;
+    }
+    async getTrackDetails(trackId: number) {
+        this.details = await getTrackDetails(trackId);
+        return this.details;
+    }
+    deleteTrackDetail(trackDetail: TrackDetail) {
+        this.details = deleteTrackDetail(this.details, trackDetail);
+    }
+    async getTrackDetail(id: number) {
+        this.detail = await getTrackDetail(id);
+    }
+    updateTrackDetail(trackDetail: TrackDetailData, detailId: number) {
+        updateTrackDetail(trackDetail, this.details, detailId);
+        getTrackDetail(detailId).then();
+        return this.detail;
+    }
+    async getTrackDetailCourses(searchQuery: string) {
+        this.courses = await getTrackDetailCourses(searchQuery);
+    }
+    async getTrackDetailEvents(searchQuery: string) {
+        this.events = await getTrackDetailEvents(searchQuery);
+    }
 }
 
 export default new Store()

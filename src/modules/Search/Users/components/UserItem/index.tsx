@@ -1,7 +1,5 @@
-import { observer } from 'mobx-react-lite'
-import { useState } from 'react'
-import { Form } from 'react-bootstrap'
-import store from '../../../../Tracks/components/TrackAssign/store'
+import { Form } from "react-bootstrap";
+import store from "../../../../Tracks/components/TrackAssign/store"
 
 interface Props {
   user: User

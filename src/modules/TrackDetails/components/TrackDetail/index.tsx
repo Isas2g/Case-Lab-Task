@@ -1,17 +1,17 @@
-import styled from 'styled-components'
-import { useState } from 'react'
-import { Badge, Button, Card, Col } from 'react-bootstrap'
-import { IndexLinkContainer } from 'react-router-bootstrap'
-import style from './style/index.module.css'
-import { DetailDeleteModal } from '../DetailDeleteModal'
-import { DetailUpdateModal } from '../DetailUpdateModal'
+import styled from "styled-components";
+import { useState } from "react";
+import { Badge, Button, Card } from "react-bootstrap";
+import { IndexLinkContainer } from 'react-router-bootstrap';
+import style from './style/index.module.css';
+import { DetailDeleteModal } from "../DetailDeleteModal";
+import { DetailUpdateModal } from "../DetailUpdateModal";
 
 const Cross = styled.b`
-  cursor: pointer;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-`
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+`;
 
 interface Props {
   trackDetail: TrackDetail

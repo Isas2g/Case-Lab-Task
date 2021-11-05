@@ -1,6 +1,6 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
-import store from '../../store'
+import { FormEvent, useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import store from "../../store";
 
 import classes from './style/index.module.css'
 import { CreateCourseModal } from './subcomponents/CreateCourseModal'
@@ -54,44 +54,15 @@ export const NewTrackDetail: React.FC<Props> = ({
         trackId,
       )
     }
-    setCreateMode(false)
-    setMutated(mutated + 1)
-  }
 
-  return (
-    <div>
-      <Button onClick={() => setChooseMode(!chooseMode)}>
-        Создать элемент трека
-      </Button>
-
-      {chooseMode ? (
-        <div className={classes.chooseType}>
-          <p
-            onClick={() => {
-              setType('course')
-              setChooseMode(false)
-              setCreateMode(true)
-            }}
-          >
-            Курс
-          </p>
-          <p
-            onClick={() => {
-              setType('event')
-              setChooseMode(false)
-              setCreateMode(true)
-            }}
-          >
-            Событие
-          </p>
-        </div>
-      ) : (
-        ''
-      )}
-
-      {createMode ? (
-        <Form onSubmit={createDetail} className="form">
-          {type === 'course' ? (
+    return <div>
+        <Button onClick={() => setChooseMode(!chooseMode)}>Добавить деталь трека</Button>
+        
+        {chooseMode ?
+            <div className={classes.chooseType}>
+                <p onClick={() => {setType('course'); setChooseMode(false); setCreateMode(true);}}>Курс</p>
+                <p onClick={() => {setType('event'); setChooseMode(false); setCreateMode(true);}}>Событие</p>
+                  {type === 'course' ? (
             <div>
               <p
                 onClick={() => setModalCourseShow(true)}
