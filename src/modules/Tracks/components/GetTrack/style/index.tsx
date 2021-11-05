@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 import React from "react";
 import {useHistory} from "react-router-dom";
 
@@ -68,10 +68,6 @@ export const StudentBtn = styled.button`
 const Image = styled.img`
   height: 100px;
   width: 100%;
-`
-
-const Cross = styled.b`
-    cursor: pointer;
 `
 
 export const StateList = (props: any) => {

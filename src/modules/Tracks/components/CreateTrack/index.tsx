@@ -1,8 +1,7 @@
-import React, { ChangeEvent, FormEvent } from "react";
+import React, { FormEvent } from "react";
 import store from "../../store"
 import {useHistory} from "react-router-dom";
 import TrackService from "../../services/tracksService";
-import DetailService from "../../../TrackDetails/services/detailsService";
 
 
 const CreateTrack: React.FC = () => {
@@ -21,7 +20,7 @@ const CreateTrack: React.FC = () => {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const query = store.addTrack(newTrack);
+        store.addTrack(newTrack);
         history.push('/tracks');
     }
 

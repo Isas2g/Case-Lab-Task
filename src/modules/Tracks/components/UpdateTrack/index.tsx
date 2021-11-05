@@ -20,7 +20,7 @@ const handleInputs = async (event: any) => {
                 : target.value;
     console.log(value);
     const name = target.name;
-    const reader = new FileReader()
+    new FileReader()
     store.track.data = {
         ...store.track.data,
         [name]: value
@@ -34,7 +34,7 @@ const EditTrack = observer(()=>{
     const history = useHistory();
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const query = store.updateTrack(store.track);
+        store.updateTrack(store.track);
         history.push(`/tracks/${store.track.id}`);
     }
     return(
@@ -92,7 +92,7 @@ const EditTrack = observer(()=>{
     )})
 
 const UpdateTrack =  (props: any) => {
-    const query = store.getTrack(props.match.params.id)
+    store.getTrack(props.match.params.id)
     return (
         <EditTrack />
     );

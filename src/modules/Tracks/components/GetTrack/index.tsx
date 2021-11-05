@@ -1,10 +1,10 @@
 import store from "../../store"
 import React from "react";
-import {Edit, StateList, Student, StudentBtn} from "./style";
+import { Edit, StateList, Student } from "./style";
 import {observer} from "mobx-react-lite";
 import { TrackDetailList } from "../../../TrackDetails/components/TrackDetailList";
 import { TrackAssign } from "../TrackAssign";
-import {Button, ButtonGroup} from "react-bootstrap";
+import { ButtonGroup } from "react-bootstrap";
 import styled from "styled-components";
 
 const Back = styled.div`
@@ -37,11 +37,11 @@ const StudentButton = observer(() => <Student track={store.track}/>);
 // previewPicture and progress
 
 const GetTrack = (props: any) => {
-    const query = store.getTrack(props.match.params.id);
+    store.getTrack(props.match.params.id);
     const role = localStorage.getItem('role');
     return (<>
         <Back className="container">
-            <img src={props.match.params.previewPicture} />
+            <img src={props.match.params.previewPicture} alt="Картинка трека" />
             <H3> Трек [id:{props.match.params.id}] </H3>
             <State/>
             {role === `teacher` ?

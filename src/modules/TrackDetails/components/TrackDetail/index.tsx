@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { Badge, Button, Card, Col } from "react-bootstrap";
+import { Badge, Button, Card } from "react-bootstrap";
 import { IndexLinkContainer } from 'react-router-bootstrap';
 import style from './style/index.module.css';
 import { DetailDeleteModal } from "../DetailDeleteModal";

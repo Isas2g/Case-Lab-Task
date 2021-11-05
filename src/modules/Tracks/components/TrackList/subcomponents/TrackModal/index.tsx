@@ -1,9 +1,6 @@
 import React from "react";
 import { ModalComponent } from '../../../../../../shared/components/Modal';
-import { Link, useHistory } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import "./style/style.css"
-import {storeAnnotation} from "mobx/dist/api/decorators";
 import store from "../../../../store";
 
 interface Props {
@@ -17,11 +14,10 @@ interface Props {
 
 export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role}) => {
 
-    const query = store.getTrack(trackId)
+    store.getTrack(trackId)
     const track = store.track
 
     const {name, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;
-    const history = useHistory();
 
     const dateFromUnix = (timestamp: number) => {
         const date:Date = new Date(timestamp*1000);
@@ -68,13 +64,6 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
                 alert('Ошибка даты!');
         }
         return `${date.getDay()} ${monthName} ${date.getFullYear()} в ${date.getHours()< 10 ? '0'+date.getHours() : date.getHours()}:${date.getMinutes()< 10 ? '0'+date.getMinutes() : date.getMinutes()} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
-    }
-
-    const goToTrack = () => {
-        // '/tracks/'+ trackId
-
-        history.push('/tracks/'+ trackId);
-        return;
     }
 
     return (
