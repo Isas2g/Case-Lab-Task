@@ -9,8 +9,8 @@ import { DetailUpdateModal } from "../DetailUpdateModal";
 const Cross = styled.b`
     cursor: pointer;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
 `;
 
 interface Props {
