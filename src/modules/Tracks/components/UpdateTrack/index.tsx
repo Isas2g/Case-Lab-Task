@@ -39,7 +39,7 @@ const EditTrack = observer(()=>{
     }
     return(
     <div className="container">
-    <h4>Изменить трек [{store.track.id}]</h4>
+    <h4>Настройки трека [{store.track.id}]</h4>
         <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
             <label>
                 Название
