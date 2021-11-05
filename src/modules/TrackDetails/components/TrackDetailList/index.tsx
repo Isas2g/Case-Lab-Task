@@ -51,12 +51,12 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
                   <h3 className={"d-flex p-3"}>Элементы трека</h3>
                   {role === "teacher" ? <NewTrackDetail lastIndex={trackDetails.length} mutated={mutated} setMutated={setMutated} trackId={trackId} /> : ""}
               </div>
-              { trackDetails ? trackDetails.map((trackDetail:TrackDetail) => 
-                  <Container fluid className={"p-3"} key={trackDetail.id}>
-                      <TrackDetail mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
-                  </Container>
-                  )
-                : '...'}
+              <div className="d-flex justify-content-center align-items-center flex-wrap">
+                { trackDetails ? trackDetails.map((trackDetail:TrackDetail) => 
+                        <TrackDetail key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
+                    )
+                  : '...'}
+              </div>
       </div>
   )
 }
