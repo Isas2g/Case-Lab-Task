@@ -1,11 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import {useHistory} from "react-router-dom"
-import styled from "styled-components";
+import {useHistory} from "react-router-dom";
 
-
-const ButtonNew = styled.button`
-`
 
 export const NewTrack: React.FC = () => {
 

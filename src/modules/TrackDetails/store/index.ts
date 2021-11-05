@@ -46,7 +46,7 @@ class Store {
         this.detail = await getTrackDetail(id);
     }
     updateTrackDetail(trackDetail: TrackDetailData, detailId: number) {
-        const query = updateTrackDetail(trackDetail, this.details, detailId);
+        updateTrackDetail(trackDetail, this.details, detailId);
         getTrackDetail(detailId).then();
         return this.detail;
     }

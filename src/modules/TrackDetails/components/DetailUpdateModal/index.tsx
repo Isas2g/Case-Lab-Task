@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { ChangeEvent, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { ModalComponent } from "../../../../shared/components/Modal"
 import store from "../../store";
 import style from './style/index.module.css';
@@ -29,7 +29,7 @@ export const DetailUpdateModal = observer(({show, onHide, type, mutated, setMuta
         setSearches(store.events);
       }
       
-    }, [searchQuery])
+    }, [searchQuery, type])
       
     
     

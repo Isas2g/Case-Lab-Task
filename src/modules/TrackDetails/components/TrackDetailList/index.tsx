@@ -1,7 +1,6 @@
 import { TrackDetail } from '../TrackDetail';
 import store from "../../store";
 import { useEffect, useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
 import { NewTrackDetail } from '../NewTrackDetail';
 import styled from "styled-components";
 
@@ -13,14 +12,13 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
   const [trackDetails, setTrackDetails]:any = useState([]);
   const [mutated, setMutated] = useState(0);
   const role = localStorage.getItem('role');
-  const details = store.details;
 
   useEffect(() => {
     const fetchData = async () => {
       setTrackDetails((await store.getTrackDetails(trackId)).sort((a: TrackDetail, b: TrackDetail) => a.data.sortIndex - b.data.sortIndex));
     };
     fetchData();
-  }, [mutated]);
+  }, [mutated, trackId]);
 
     const finishedCount = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.finished).length;
 

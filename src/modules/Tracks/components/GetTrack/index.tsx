@@ -1,6 +1,6 @@
 import store from "../../store"
 import React, {useState} from "react";
-import {Edit, StateList, Student, StudentBtn} from "./style";
+import { Edit, StateList, Student } from "./style";
 import {observer} from "mobx-react-lite";
 import { TrackDetailList } from "../../../TrackDetails/components/TrackDetailList";
 import {ButtonGroup} from "react-bootstrap";

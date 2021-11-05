@@ -1,9 +1,8 @@
-import styled, {keyframes} from 'styled-components';
-import React, {useState} from "react";
+import styled from 'styled-components';
+import React, { useState } from "react";
 import {useHistory} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import store from "../../TrackAssign/store";
-import {Button} from "react-bootstrap";
 import {ModalComponent} from "../../../../../shared/components/Modal";
 import UserForm from "../../TrackAssign/subcomponents/UserForm";
 import {UserList} from "../../../../Search/Users";
@@ -67,15 +66,6 @@ export const StudentBtn = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-`
-
-const Image = styled.img`
-  height: 100px;
-  width: 100%;
-`
-
-const Cross = styled.b`
-    cursor: pointer;
 `
 
 export const StateList = (props: any) => {

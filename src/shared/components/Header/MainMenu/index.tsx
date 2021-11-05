@@ -4,7 +4,7 @@ import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import logo from "../../../assets/logo.png"
 import {UserCard} from "./subcomponents/UserCard";
 import {Bell} from "./subcomponents/Bell";
-import {IndexLinkContainer, LinkContainer} from "react-router-bootstrap";
+import {IndexLinkContainer} from "react-router-bootstrap";
 import { Link } from 'react-router-dom';
 import { BsChevronDown } from "react-icons/bs";
 import "./style/style.css"

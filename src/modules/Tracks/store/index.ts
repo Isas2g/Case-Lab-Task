@@ -57,7 +57,7 @@ class Store {
         this.track = await getTrack(id);
     }
     updateTrack(track: Track) {
-        const query = updateTrack(this.tracks, track);
+        updateTrack(this.tracks, track);
         this.track = track;
     }
 
