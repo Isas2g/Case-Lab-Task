@@ -92,7 +92,7 @@ const EditTrack = observer(()=>{
     )})
 
 const UpdateTrack =  (props: any) => {
-    const query = store.getTrack(props.match.params.id)
+    store.getTrack(props.match.params.id).then();
     return (
         <EditTrack />
     );

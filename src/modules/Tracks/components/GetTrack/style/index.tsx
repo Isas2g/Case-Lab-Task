@@ -1,6 +1,12 @@
 import styled, {keyframes} from 'styled-components';
-import React from "react";
+import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
+import {observer} from "mobx-react-lite";
+import store from "../../TrackAssign/store";
+import {Button} from "react-bootstrap";
+import {ModalComponent} from "../../../../../shared/components/Modal";
+import UserForm from "../../TrackAssign/subcomponents/UserForm";
+import {UserList} from "../../../../Search/Users";
 
 
 const Spoiler = styled.div`
@@ -79,7 +85,6 @@ export const StateList = (props: any) => {
     return(
         <ul>
             <Li key={'name'}>
-                <Image src={"https://tml10.rosatom.ru/" + props.track.data.previewPicture} className="background"/>
                 <H2>{props.track.data.name}</H2>
                 <div>Время трека: {date1} - {date2}</div>
                 <div>Продолжительность трека: {duration}</div>
@@ -117,15 +122,27 @@ export const Edit = (props: any) => {
 
 //TODO StudentButton, duration, image
 
-export const Student = (props: any) => {
 
-    const history = useHistory();
-
-    const moveToUpdate = () => {
-        history.push(`/tracks/students/${props.track.id}`);
-    }
-
-    return(
-        <StudentBtn className="btn btn-primary" onClick={moveToUpdate}> Ученики трека </StudentBtn>
-    )
+interface StudentProps {
+    trackId: number;
 }
+
+export const Student = observer(({trackId}:StudentProps): JSX.Element => {
+
+    store.readTrackAssigns(trackId).then();
+
+    const [show, setModalShow] = useState(false);
+
+    return (
+        <>
+            <StudentBtn className="btn" onClick={() => setModalShow(true)}> Ученики трека </StudentBtn>
+
+            <ModalComponent show={show} onHide={() => setModalShow(false)} heading="Ученики трека" title=""
+                            remove={false} track={undefined}>
+                <h4>Список студентов:</h4>
+                <UserForm/>
+                <UserList trackId={trackId}/>
+            </ModalComponent>
+        </>
+    )
+})
