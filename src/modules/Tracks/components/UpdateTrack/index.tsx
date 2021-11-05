@@ -3,6 +3,7 @@ import store from "../../store"
 import {useHistory} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import TrackService from "../../services/tracksService";
+import styled from "styled-components";
 
 
 const inputDate = (date : number) => new Date(date * 1000).toISOString().slice(0,16)
@@ -27,7 +28,19 @@ const handleInputs = async (event: any) => {
     }
 }
 
+export const Div = styled.div`
+  width: 50%;
+`
 
+export const Div1 = styled.div`
+  float: left;
+  width: 25%;
+`
+
+export const Div2 = styled.div`
+  float: right;
+  width: 25%;
+`
 
 
 const EditTrack = observer(()=>{
@@ -38,7 +51,7 @@ const EditTrack = observer(()=>{
         history.push(`/tracks/${store.track.id}`);
     }
     return(
-    <div className="container">
+    <Div className="container">
     <h4>Настройки трека [{store.track.id}]</h4>
         <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
             <label>
@@ -65,16 +78,16 @@ const EditTrack = observer(()=>{
             </label>
             <br />
             <br />
-            <label>
+            <Div1><label>
                 Дата начала
                 <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeStart)} />
-            </label>
+            </label></Div1>
             <br />
             <br />
-            <label>
+            <Div2><label>
                 Дата окончания
                 <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeFinish)} />
-            </label>
+            </label></Div2>
             <br />
             <br />
             <label>
@@ -88,7 +101,7 @@ const EditTrack = observer(()=>{
             <br />
             <input className="btn btn-primary" type="submit" value="Подтвердить" />
         </form>
-</div>
+</Div>
     )})
 
 const UpdateTrack =  (props: any) => {

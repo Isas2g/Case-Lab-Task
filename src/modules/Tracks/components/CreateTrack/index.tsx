@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import TrackService from "../../services/tracksService";
 import DetailService from "../../../TrackDetails/services/detailsService";
 import styled from "styled-components";
+import {Div, Div1, Div2} from "../UpdateTrack";
 
 
 const CreateTrack: React.FC = () => {
@@ -46,10 +47,14 @@ const CreateTrack: React.FC = () => {
     const Input = styled.input`
       //visibility: hidden;
     `
+    const P = styled.p`
+      font-size: 10px;
+      color: #6c757d;
+    `
 
     return (
         <>
-        <div className="container align-center">
+        <Div className="container align-center">
             <h4>Создание трека</h4>
             <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
                 <label>
@@ -67,28 +72,27 @@ const CreateTrack: React.FC = () => {
                 <label>
                     Обложка трека
                     <br/>
-                    {/*<label htmlFor="files" className="btn">Выбрать обложку</label>*/ }
                     <Input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
-                <label>
+                <Div1><label>
                     Дата начала
                     <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
-                </label>
+                </label></Div1>
                 <br />
                 <br />
-                <label>
+                <Div2><label>
                     Дата окончания
                     <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
-                </label>
+                </label></Div2>
                 <br />
                 <br />
                 <label>
                     Последовательное прохождение трека &nbsp;
                     <input className="form-check-input" name="published" type="checkbox" defaultChecked={newTrack.published} onChange={handleInputs} />
                     <br/>
-                    Примечание: Поставьте галочку, если хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке
+                    <P>Примечание: поставьте галочку, если хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке.</P>
                 </label>
                 <br />
                 <br />
@@ -96,13 +100,13 @@ const CreateTrack: React.FC = () => {
                     Опубликовать &nbsp;
                     <input className="form-check-input" name="published" type="checkbox" defaultChecked={newTrack.published} onChange={handleInputs} />
                     <br/>
-                    Примечание: опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку
+                    <P>Примечание: опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
                 </label>
                 <br />
                 <br />
                 <input className="btn btn-primary" type="submit" value="Подтвердить" />
             </form>
-        </div>
+        </Div>
         </>
     );
 };
