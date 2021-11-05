@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 import TrackService from "../../services/tracksService";
 import DetailService from "../../../TrackDetails/services/detailsService";
 import styled from "styled-components";
-import {Div, Div1, Div2} from "../UpdateTrack";
+import {Div, Div1, Div2, P} from "../UpdateTrack";
 
 
 const CreateTrack: React.FC = () => {
@@ -46,10 +46,6 @@ const CreateTrack: React.FC = () => {
 
     const Input = styled.input`
       //visibility: hidden;
-    `
-    const P = styled.p`
-      font-size: 10px;
-      color: #6c757d;
     `
 
     return (

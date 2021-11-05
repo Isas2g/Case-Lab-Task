@@ -41,7 +41,10 @@ export const Div2 = styled.div`
   float: right;
   width: 25%;
 `
-
+export const P = styled.p`
+      font-size: 10px;
+      color: #6c757d;
+    `
 
 const EditTrack = observer(()=>{
     const history = useHistory();
@@ -75,6 +78,7 @@ const EditTrack = observer(()=>{
             <label>
                 Опубликовать &nbsp;
                 <input className="form-check-input" name="published" type="checkbox" checked={store.track.data.published} onChange={handleInputs} />
+                <P>Примечание: опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
             </label>
             <br />
             <br />
@@ -96,6 +100,7 @@ const EditTrack = observer(()=>{
                     <option value="free">свободный</option>
                     <option value="consistent">последовательный</option>
                 </select>
+                <P>Примечание: поставьте галочку, если хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке.</P>
             </label>
             <br />
             <br />
