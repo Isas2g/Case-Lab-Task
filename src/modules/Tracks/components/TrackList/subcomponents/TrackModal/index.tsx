@@ -20,7 +20,7 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
     const query = store.getTrack(trackId)
     const track = store.track
 
-    const {name, published, dateTimeStart, dateTimeFinish, mode} = data;
+    const {name, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;
     const history = useHistory();
 
     const dateFromUnix = (timestamp: number) => {
@@ -79,7 +79,7 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
 
     return (
         <ModalComponent show={show} onHide={onHide} title={name} heading={"Трек " + trackId} remove={false} track={track}>
-            <p><b>Описание:</b> {track.data.previewText}</p>
+            <p><b>Описание:</b> {previewText}</p>
             <p><b>Дата открытия трека:</b> {dateFromUnix(dateTimeStart)}</p>
             <p><b>Дата закрытия трека:</b> {dateFromUnix(dateTimeFinish)}</p>
             <p><b>Режим прохождения:</b> {mode === "free" ? "свободный" : "последовательный"}</p>
