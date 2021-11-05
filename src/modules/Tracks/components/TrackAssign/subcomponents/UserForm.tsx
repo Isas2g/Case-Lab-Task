@@ -1,15 +1,17 @@
-import {Button, Col, Form, Row} from "react-bootstrap";
-import {useState} from "react";
-import store from "../../../../Search/Users/store";
-import Departments from "./Departments";
-import Companies from "./Companies";
+import { Button, Col, Form, Row } from 'react-bootstrap'
+import { useState } from 'react'
+import store from '../../../../Search/Users/store'
+import Departments from './Departments'
+import Companies from './Companies'
 
 const UserForm = () => {
+  const [searchQuery, setSearchQuery] = useState('')
+  const [department, setDepartment] = useState('')
+  const [company, setCompany] = useState('')
+  const [toggleButton, setToggleButton] = useState(true)
 
-    const [searchQuery, setSearchQuery] = useState('');
-    const [department, setDepartment] = useState('');
-    const [company, setCompany] = useState('');
-    const [toggleButton, setToggleButton] = useState(true);
+  store.getDepartments().then()
+  if (department != '') store.getCompanies(department).then()
 
     store.getDepartments().then();
     if (department !== '') 
@@ -58,4 +60,4 @@ const UserForm = () => {
     )
 }
 
-export default UserForm;
+export default UserForm

@@ -1,10 +1,9 @@
-import DetailService from "../../../services/detailsService";
-import getTrackDetails from "./Read";
+import DetailService from '../../../services/detailsService'
+import getTrackDetails from './Read'
 
-const createTrackDetail = async (detail:TrackDetailData, trackId:number) =>
-{
-    await DetailService.trackDetailCreate(detail, trackId);
-    return getTrackDetails(trackId);
+const createTrackDetail = async (detail: TrackDetailData, trackId: number) => {
+  await DetailService.trackDetailCreate(detail, trackId)
+  return getTrackDetails(trackId)
 }
 
-export default createTrackDetail;
+export default createTrackDetail

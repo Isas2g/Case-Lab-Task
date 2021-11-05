@@ -1,11 +1,12 @@
-import store from "../../store"
-import React from "react";
-import {TrackList} from "./style"
-import {NewTrack} from "./style/NewTrackButton";
+import store from '../../store'
+import React from 'react'
+import { TrackList } from './style'
+import { NewTrack } from './style/NewTrackButton'
 
 interface Props {
-    my: boolean;
+  my: boolean
 }
+
 
 const TrackListComponent:React.FC<Props> = ({my}) => {
     store.getTracks();
@@ -21,4 +22,4 @@ const TrackListComponent:React.FC<Props> = ({my}) => {
     )
 }
 
-export default TrackListComponent;
+export default TrackListComponent

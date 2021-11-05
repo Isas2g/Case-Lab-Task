@@ -1,3 +1,4 @@
+
 import React, {FormEvent} from "react";
 import store from "../../store"
 import {useHistory} from "react-router-dom";
@@ -9,6 +10,8 @@ import styled from "styled-components";
 const inputDate = (date : number) => new Date(date * 1000).toISOString().slice(0,16)
 
 
+const inputDate = (date: number) =>
+  new Date(date * 1000).toISOString().slice(0, 16)
 
 const handleInputs = async (event: any) => {
     const target = event.target;
@@ -116,5 +119,4 @@ const UpdateTrack =  (props: any) => {
     );
 }
 
-
-export default UpdateTrack;
+export default UpdateTrack

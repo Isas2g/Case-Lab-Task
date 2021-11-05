@@ -1,18 +1,31 @@
+
 import React from "react";
 import { ModalComponent } from '../../../../../../shared/components/Modal';
 import "./style/style.css"
 import store from "../../../../store";
 
 interface Props {
-  trackId: number;
-  show: boolean;
-  onHide: ModalFunc;
-  data: TrackData;
-  role: string|null;
+  trackId: number
+  show: boolean
+  onHide: ModalFunc
+  data: TrackData
+  role: string | null
 }
 
+export const TrackModal: React.FC<Props> = ({
+  trackId,
+  show,
+  onHide,
+  data,
+  role,
+}) => {
+  const query = store.getTrack(trackId)
+  const track = store.track
 
-export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role}) => {
+  const { name, previewText, published, dateTimeStart, dateTimeFinish, mode } =
+    data
+  const history = useHistory()
+
 
     store.getTrack(trackId).then();
     const track = store.track
@@ -65,6 +78,13 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
         }
         return `${date.getDay()} ${monthName} ${date.getFullYear()} в ${date.getHours()< 10 ? '0'+date.getHours() : date.getHours()}:${date.getMinutes()< 10 ? '0'+date.getMinutes() : date.getMinutes()} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
     }
+    return `${date.getDay()} ${monthName} ${date.getFullYear()} в ${
+      date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+    }:${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()} ${
+      Intl.DateTimeFormat().resolvedOptions().timeZone
+    }`
+  }
+
 
     return (
         <ModalComponent show={show} onHide={onHide} title={name} heading={"Трек " + trackId} remove={false} track={track}>

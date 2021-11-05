@@ -1,34 +1,38 @@
-import {makeAutoObservable} from "mobx";
-import updateTrackDetail from "../../TrackDetails/store/actions/Detail/Update";
-import createTrackDetail from "../../TrackDetails/store/actions/Detail/Create";
-import getTrackDetail from "../../TrackDetails/store/actions/Detail/ReadOne";
-import getTrackDetails, { getTrackDetailCourses, getTrackDetailEvents } from "../../TrackDetails/store/actions/Detail/Read";
-import deleteTrackDetail from "../../TrackDetails/store/actions/Detail/Delete";
+import { makeAutoObservable } from 'mobx'
+import updateTrackDetail from '../../TrackDetails/store/actions/Detail/Update'
+import createTrackDetail from '../../TrackDetails/store/actions/Detail/Create'
+import getTrackDetail from '../../TrackDetails/store/actions/Detail/ReadOne'
+import getTrackDetails, {
+  getTrackDetailCourses,
+  getTrackDetailEvents,
+} from '../../TrackDetails/store/actions/Detail/Read'
+import deleteTrackDetail from '../../TrackDetails/store/actions/Detail/Delete'
 
 class Store {
-    details: Array<TrackDetail> = [];
-    detail: TrackDetail = {
-        "id": 0,
-        "trackId": 0,
-        "finished": false,
-        "assigned": false,
-        "epilogId": 0,
-        "epilogFinished": false,
-        "entityName": '',
-        "entityDuration": '',
-        "data": {
-            "type": 'event',
-            "entityId": 0,
-            "sortIndex": 0,
-            "required": false,
-        },
-    };
-    courses: Array<Course> = [];
-    events: Array<Event> = [];
+  details: Array<TrackDetail> = []
+  detail: TrackDetail = {
+    id: 0,
+    trackId: 0,
+    finished: false,
+    assigned: false,
+    epilogId: 0,
+    epilogFinished: false,
+    entityName: '',
+    entityDuration: '',
+    data: {
+      type: 'event',
+      entityId: 0,
+      sortIndex: 0,
+      required: false,
+    },
+  }
+  courses: Array<Course> = []
+  events: Array<Event> = []
 
-    constructor() {
-        makeAutoObservable(this);
-    }
+  constructor() {
+    makeAutoObservable(this)
+  }
+
 
     //TrackDetails
     async addTrackDetail(data:TrackDetailData, trackId:number) {
@@ -58,4 +62,4 @@ class Store {
     }
 }
 
-export default new Store();
+export default new Store()

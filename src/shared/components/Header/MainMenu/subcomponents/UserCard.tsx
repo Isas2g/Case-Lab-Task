@@ -1,28 +1,28 @@
 // import {Card} from "react-bootstrap";
-import avatar from "../../../../assets/user-icon.png";
-import {Link} from "react-router-dom";
-import React from "react";
-import {useHistory} from "react-router";
-import {UserProfileWrapper, CardBootstrap, NameUserProfile} from "../style"
+import avatar from '../../../../assets/user-icon.png'
+import { Link } from 'react-router-dom'
+import React from 'react'
+import { useHistory } from 'react-router'
+import { UserProfileWrapper, CardBootstrap, NameUserProfile } from '../style'
 
-
-type TokenFunc = (str: string) => void;
+type TokenFunc = (str: string) => void
 
 interface Props {
-    token: string;
-    setToken: TokenFunc;
+  token: string
+  setToken: TokenFunc
 }
 
-export const UserCard: React.FC<Props> = ({token, setToken}) => {
-    const history = useHistory();
+export const UserCard: React.FC<Props> = ({ token, setToken }) => {
+  const history = useHistory()
 
-    const leave = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('role');
+  const leave = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('role')
 
-        setToken('');
-        history.push('/login');
-    }
+    setToken('')
+    history.push('/login')
+  }
+
 
     return(
         <UserProfileWrapper className="d-flex align-items-center userProfileWrapper">

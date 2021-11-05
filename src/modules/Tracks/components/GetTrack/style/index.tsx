@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 import React, { useState } from "react";
 import {useHistory} from "react-router-dom";
@@ -11,22 +12,26 @@ import {UserList} from "../../../../Search/Users";
 const Spoiler = styled.div`
   border: 1px solid #e0e0e0;
   padding: 0 1em;
- `
+`
 
 const Summary = styled.summary`
   font-size: 30px;
-  font-family: "Helvetica Neue";
-  
-@keyframes Spoiler {
-  0 % {max-height: 0;}
-  100 % {max-height: 10em;}
-}
+  font-family: 'Helvetica Neue';
+
+  @keyframes Spoiler {
+    0 % {
+      max-height: 0;
+    }
+    100 % {
+      max-height: 10em;
+    }
+  }
 `
 
 const Details = styled.details`
   padding: 1em 0;
   border-top: 5px solid darkorange;
-  &.details[open] div{
+  &.details[open] div {
     animation: spoiler 1s;
   }
 `
@@ -68,6 +73,7 @@ export const StudentBtn = styled.button`
   font-size: 16px;
 `
 
+
 export const StateList = (props: any) => {
     const date1 = new Date(props.track.data.dateTimeStart*1000).toUTCString()
     const date2 = new Date(props.track.data.dateTimeFinish*1000).toUTCString()
@@ -98,16 +104,18 @@ export const StateList = (props: any) => {
 }
 
 export const Edit = (props: any) => {
+  const history = useHistory()
 
-    const history = useHistory();
+  const moveToUpdate = () => {
+    history.push(`/tracks/edit/${props.track.id}`)
+  }
 
-    const moveToUpdate = () => {
-        history.push(`/tracks/edit/${props.track.id}`);
-    }
-
-    return(
-        <EditButton className="btn btn-primary" onClick={moveToUpdate}> Изменить трек </EditButton>
-    )
+  return (
+    <EditButton className="btn btn-primary" onClick={moveToUpdate}>
+      {' '}
+      Изменить трек{' '}
+    </EditButton>
+  )
 }
 
 //TODO StudentButton, duration, image

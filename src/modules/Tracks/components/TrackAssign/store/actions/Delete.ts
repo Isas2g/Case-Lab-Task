@@ -1,8 +1,7 @@
-import TrackAssignService from "../../../../services/trackAssignServices";
+import TrackAssignService from '../../../../services/trackAssignServices'
 
 const deleteTrackAssign = async (trackId: number, assignId: number) => {
-
-    return await TrackAssignService.deleteTrackAssign(trackId, assignId).then();
+  return await TrackAssignService.deleteTrackAssign(trackId, assignId).then()
 }
 
-export default deleteTrackAssign;
+export default deleteTrackAssign

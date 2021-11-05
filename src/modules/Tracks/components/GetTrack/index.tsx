@@ -1,3 +1,4 @@
+
 import store from "../../store"
 import React, {useState} from "react";
 import { Edit, StateList, Student } from "./style";
@@ -13,14 +14,15 @@ const Back = styled.div`
 `
 
 const H3 = styled.h3`
-    font-size: large;
-    background: #ECECEC;
+  font-size: large;
+  background: #ececec;
 `
-const State = observer(() => <StateList track={store.track} />);
+const State = observer(() => <StateList track={store.track} />)
 
-const EditButton = observer(() => <Edit track={store.track} />);
+const EditButton = observer(() => <Edit track={store.track} />)
 
 //TODO previewPicture
+
 
 const GetTrack = (props: any) => {
     const [previewPic, setPreviewPic] = useState('');
@@ -44,4 +46,4 @@ const GetTrack = (props: any) => {
     )
 }
 
-export default GetTrack;
+export default GetTrack

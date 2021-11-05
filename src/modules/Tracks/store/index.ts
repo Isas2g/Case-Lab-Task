@@ -1,11 +1,12 @@
-import {makeAutoObservable} from "mobx";
-import updateTrack from "./actions/Track/Update";
-import createTrack from "./actions/Track/Create";
-import getTrack from "./actions/Track/ReadOne";
-import getTracks from "./actions/Track/Read";
-import deleteTrack from "./actions/Track/Delete";
+import { makeAutoObservable } from 'mobx'
+import updateTrack from './actions/Track/Update'
+import createTrack from './actions/Track/Create'
+import getTrack from './actions/Track/ReadOne'
+import getTracks from './actions/Track/Read'
+import deleteTrack from './actions/Track/Delete'
 
 class Store {
+
     tracks: Array<Track> = [];
     track: Track = {
         "id": 0,
@@ -62,7 +63,27 @@ class Store {
     }
 
 
+  constructor() {
+    makeAutoObservable(this)
+  }
 
+  //Track
+  async addTrack(data: TrackData) {
+    this.tracks = await createTrack(data)
+  }
+  async getTracks() {
+    this.tracks = await getTracks()
+  }
+  deleteTrack(track: Track) {
+    this.tracks = deleteTrack(this.tracks, track)
+  }
+  async getTrack(id: number) {
+    this.track = await getTrack(id)
+  }
+  updateTrack(track: Track) {
+    const query = updateTrack(this.tracks, track)
+    this.track = track
+  }
 }
 
-export default new Store();
+export default new Store()
