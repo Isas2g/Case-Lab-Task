@@ -21,8 +21,8 @@ export const Div2 = styled.div`
   width: 25%;
 `
 export const P = styled.p`
-      font-size: 10px;
-      color: darkgray;
+  font-size: 10px;
+  color: darkgray;
     `
 
 const EditTrack = observer(()=>{
@@ -54,16 +54,20 @@ const EditTrack = observer(()=>{
             </label>
             <br />
             <br />
-            <Div1><label>
+            <Div1>
+                <label>
                 Дата начала
                 <input required className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeStart)} />
-            </label></Div1>
+                </label>
+            </Div1>
             <br />
             <br />
-            <Div2><label>
+            <Div2>
+                <label>
                 Дата окончания
                 <input required className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeFinish)} />
-            </label></Div2>
+                </label>
+            </Div2>
             <br />
             <br />
             <label>
