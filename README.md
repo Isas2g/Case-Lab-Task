@@ -11,6 +11,10 @@ The project is created with:
 * [React](https://reactjs.org) — 17.0.2
 * [TypeScript](https://www.typescriptlang.org) — 4.4.4
 
+## Configuration
+
+Configuration is stored in `.env`, for examples see `.env.example`.
+
 ## Development setup
 
 Install requirements:

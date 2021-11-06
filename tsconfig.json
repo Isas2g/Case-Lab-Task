@@ -10,7 +10,8 @@
     "esModuleInterop": true,
     "lib": [
       "es2018",
-      "esnext.asynciterable"
+      "esnext.asynciterable",
+      "dom"
     ],
     "moduleResolution": "node",
     "removeComments": true,
