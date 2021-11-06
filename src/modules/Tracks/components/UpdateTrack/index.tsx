@@ -7,7 +7,6 @@ import styled from "styled-components";
 import {inputDate} from "../../../../shared/utils/timestampToInputFormat";
 import {handleInputs} from "../../../../shared/utils/handleInputsUpdate&Create";
 
-
 export const Div = styled.div`
   width: 50%;
 `
@@ -68,10 +67,13 @@ const EditTrack = observer(()=>{
             <br />
             <br />
             <label>
-                Последовательное прохождение трека &nbsp;
-                <input className="form-check-input" name="published" type="checkbox" defaultChecked={store.track.data.published} onChange={handleInputs} />
+                Последовательное прохождение трека
+                <select name="mode">
+                    <option value="free">свободный</option>
+                    <option value="consistent">последовательный</option>
+                </select>
                 <br/>
-                <P>Примечание: поставьте галочку, если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке.</P>
+                <P>Если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите "последовательный.</P>
             </label>
             <br />
             <br />
