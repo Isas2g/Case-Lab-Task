@@ -23,12 +23,12 @@ const EditButton = observer(() => <Edit track={store.track} />);
 //TODO previewPicture
 
 const GetTrack = (props: any) => {
-    const [previewPic, setPreviewPic] = useState('');
+    const [previewPic, setPreviewPic] = useState("");
     store.getTrack(props.match.params.id).then(() => setPreviewPic(store.track.data.previewPicture));
-    const role = localStorage.getItem('role');
+    const role = localStorage.getItem("role");
     return (
         <>
-            <Back className="container bg-image" style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}}>
+            <Back className="container bg-image" style={{backgroundImage: `url("https://tml10.rosatom.ru/${previewPic}")`,}}>
                 <H3> Трек [id:{props.match.params.id}] </H3>
                 <State/>
                 {role === `teacher`
@@ -36,7 +36,7 @@ const GetTrack = (props: any) => {
                         <EditButton />
                         <Student trackId={props.match.params.id}/>
                     </ButtonGroup>
-                    : ''
+                    : ""
                 }
             </Back>
             <TrackDetailList trackId={props.match.params.id} />

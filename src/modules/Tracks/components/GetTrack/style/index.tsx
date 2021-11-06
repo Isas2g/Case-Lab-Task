@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import React, { useState } from "react";
 import {useHistory} from "react-router-dom";
 import {observer} from "mobx-react-lite";
@@ -74,7 +74,7 @@ export const StateList = (props: any) => {
     const duration  = 0;
     return(
         <ul>
-            <Li key={'name'}>
+            <Li key={"name"}>
                 <H2>{props.track.data.name}</H2>
                 <div>Время трека: {date1} - {date2}</div>
                 <div>Продолжительность трека: {duration}</div>
@@ -90,8 +90,8 @@ export const StateList = (props: any) => {
                 </Details>
             </Spoiler>
             <br />
-            <Li key={'published'}>Опубликован?  -  {props.track.data.published ? 'Да' : 'Нет'}</Li>
-            <Li key={'mode'}>Режим  -  {props.track.data.mode === 'consistent' ? 'Последовательный' : 'Свободный'}</Li>
+            <Li key={"published"}>Опубликован?  -  {props.track.data.published ? "Да" : "Нет"}</Li>
+            <Li key={"mode"}>Режим  -  {props.track.data.mode === "consistent" ? "Последовательный" : "Свободный"}</Li>
             <br/>
         </ul>
     )

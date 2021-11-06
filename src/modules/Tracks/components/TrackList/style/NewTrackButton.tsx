@@ -8,7 +8,7 @@ export const NewTrack: React.FC = () => {
     const history = useHistory();
 
     const moveToNew = () => {
-        history.push('/tracks/new');
+        history.push("/tracks/new");
     }
 
     return(

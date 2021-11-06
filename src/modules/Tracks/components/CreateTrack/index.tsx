@@ -23,16 +23,16 @@ const CreateTrack: React.FC = () => {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         store.addTrack(newTrack);
-        history.push('/tracks');
+        history.push("/tracks");
     }
 
     const handleInputs = async (event: any) => {
         const target = event.target;
-        const value = target.type === 'checkbox'
+        const value = target.type === "checkbox"
             ? target.checked
-            : target.type === 'file'
+            : target.type === "file"
                 ? await TrackService.trackPreview(target.files[0])
-                : target.type === 'datetime-local'
+                : target.type === "datetime-local"
                     ? new Date(target.value).getTime() / 1000
                     : target.value;
         const name = target.name;

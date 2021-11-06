@@ -5,6 +5,6 @@ export default axios.create({
   headers: {
     "Accept": "application/json",
     "Access-Control-Allow-Headers": "x-access-token",
-    'Access-Control-Allow-Origin': '*'
+    "Access-Control-Allow-Origin": "*"
   }
 });

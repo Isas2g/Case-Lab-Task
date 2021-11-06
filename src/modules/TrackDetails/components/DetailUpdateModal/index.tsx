@@ -2,12 +2,12 @@ import { observer } from "mobx-react-lite";
 import {  useEffect, useState } from "react";
 import { ModalComponent } from "../../../../shared/components/Modal"
 import store from "../../store";
-import style from './style/index.module.css';
+import style from "./style/index.module.css";
 
 interface Props {
     show: boolean;
     onHide: ModalFunc;
-    type: 'course' | 'event' | 'entryTest' | 'pdf';
+    type: "course" | "event" | "entryTest" | "pdf";
     mutated: number;
     setMutated: SetMutatedFunc;
     trackDetail: TrackDetail;
@@ -18,10 +18,10 @@ type SetMutatedFunc = (num: number) => void;
 export const DetailUpdateModal = observer(({show, onHide, type, mutated, setMutated, trackDetail}: Props): JSX.Element => {
     
     const [searches, setSearches]: any = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     
     useEffect(() => {
-      if (type === 'course') {
+      if (type === "course") {
         store.getTrackDetailCourses(searchQuery);
         setSearches(store.courses);
       } else {

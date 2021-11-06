@@ -15,7 +15,7 @@ type setEntityIdFunc = (num: number) => void;
 export const CreateCourseModal = observer(({show, onHide, trackId, setEntityId}: Props): JSX.Element => {
     
     const [courses, setCourses]: any = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     
     useEffect(() => {
       store.getTrackDetailCourses(searchQuery);

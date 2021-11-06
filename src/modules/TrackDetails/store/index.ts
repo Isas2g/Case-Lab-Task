@@ -14,10 +14,10 @@ class Store {
         "assigned": false,
         "epilogId": 0,
         "epilogFinished": false,
-        "entityName": '',
-        "entityDuration": '',
+        "entityName": "",
+        "entityDuration": "",
         "data": {
-            "type": 'event',
+            "type": "event",
             "entityId": 0,
             "sortIndex": 0,
             "required": false,

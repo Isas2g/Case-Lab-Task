@@ -1,5 +1,5 @@
-import api from '../../../shared/services/api';
-import { authHeader } from '../../../shared/services/auth-header';
+import api from "../../../shared/services/api";
+import { authHeader } from "../../../shared/services/auth-header";
 import catchError from "../../../shared/services/catchError";
 
 const TrackAssignService = {

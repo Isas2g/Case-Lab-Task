@@ -20,11 +20,11 @@ export const Header:React.FC<Props> = ({token, setToken}) => {
         ? <header className="bg-light text-center p-2">
             <Image src={banner}/>
           </header>
-        : ''
+        : ""
       }
       {token && !(location.pathname === "/login")
         ? <MainMenu token={token} setToken={setToken} />
-        : ''
+        : ""
       }
     </header>
   );

@@ -6,13 +6,13 @@ import Companies from "./Companies";
 
 const UserForm = () => {
 
-    const [searchQuery, setSearchQuery] = useState('');
-    const [department, setDepartment] = useState('');
-    const [company, setCompany] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
+    const [department, setDepartment] = useState("");
+    const [company, setCompany] = useState("");
     const [toggleButton, setToggleButton] = useState(true);
 
     store.getDepartments().then();
-    if (department !== '') 
+    if (department !== "") 
         store.getCompanies(department).then();
 
     const handleForm = (button:any) => {
@@ -44,14 +44,14 @@ const UserForm = () => {
                 <Col md>
                     <Form.Group controlId="department">
                         <Form.Label>Компания:</Form.Label>
-                        <Form.Control as="select" onChange={(event) => setCompany(event.target.value)} disabled={department ? false : true} value={!department ? '' : company}>
+                        <Form.Control as="select" onChange={(event) => setCompany(event.target.value)} disabled={department ? false : true} value={!department ? "" : company}>
                             <option />
                             <Companies />
                         </Form.Control>
                     </Form.Group>
                 </Col>
             </Row>
-            <Button variant={"warning"} className={toggleButton ? 'float-end' : 'float-end disabled'} onClick={handleForm}>
+            <Button variant={"warning"} className={toggleButton ? "float-end" : "float-end disabled"} onClick={handleForm}>
                 Поиск
             </Button>
         </Form>

@@ -6,7 +6,7 @@ const SearchService = {
 
     usersSearchGet: (searchQuery: string, dep: string, company: string) => {
         return api.get(
-            '/search/users',
+            "/search/users",
             {
                 headers: {...authHeader()},
                 params: {
@@ -22,7 +22,7 @@ const SearchService = {
 
     corporationDepartments: () => {
         return api.get(
-            '/corporation/departments',
+            "/corporation/departments",
             {
                 headers: {...authHeader()}
             }
@@ -33,7 +33,7 @@ const SearchService = {
 
     corporationCompanies: (dep: string) => {
         return api.get(
-            '/corporation/companies',
+            "/corporation/companies",
             {
                 headers: {...authHeader()},
                 params:{

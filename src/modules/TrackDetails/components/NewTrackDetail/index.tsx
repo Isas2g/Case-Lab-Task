@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import store from "../../store";
 
-import classes from './style/index.module.css';
+import classes from "./style/index.module.css";
 import { CreateCourseModal } from "./subcomponents/CreateCourseModal";
 import { CreateEventModal } from "./subcomponents/CreateEventModal";
 
@@ -20,7 +20,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
     const [createMode, setCreateMode] = useState(false);
     const [chooseMode, setChooseMode] = useState(false);
     
-    const [type, setType] = useState('');
+    const [type, setType] = useState("");
     const [required, setRequired] = useState(false);
     const [entityId, setEntityId] = useState(0);
     
@@ -28,17 +28,17 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
     const [modalEventShow, setModalEventShow] = useState(false);
     
     
-    // type: 'course' | 'event' | 'entryTest' | 'pdf';
+    // type: "course" | "event" | "entryTest" | "pdf";
     // entityId: integer;
     // sortIndex: integer;
     // required: boolean;
     
     const createDetail = (event: FormEvent) => {
       event.preventDefault();
-      if (type === 'course' ||
-            type === 'event' ||
-            type === 'entryTest' ||
-            type === 'pdf'
+      if (type === "course" ||
+            type === "event" ||
+            type === "entryTest" ||
+            type === "pdf"
         ) {
             store.addTrackDetail({
                 type, 
@@ -56,33 +56,33 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
         
         {chooseMode ?
             <div className={classes.chooseType}>
-                <p onClick={() => {setType('course'); setChooseMode(false); setCreateMode(true);}}>Курс</p>
-                <p onClick={() => {setType('event'); setChooseMode(false); setCreateMode(true);}}>Событие</p>
+                <p onClick={() => {setType("course"); setChooseMode(false); setCreateMode(true);}}>Курс</p>
+                <p onClick={() => {setType("event"); setChooseMode(false); setCreateMode(true);}}>Событие</p>
             </div>
             :
-            ''
+            ""
         }
         
         {createMode ? 
             <Form onSubmit={createDetail} className="form">
                 
                 {
-                    type === 'course' ? 
+                    type === "course" ? 
                     <div>
                         <p onClick={() => setModalCourseShow(true)} className={classes.createTrackDetailLink}>Выберите курс из доступных</p>
                         <CreateCourseModal setEntityId={setEntityId} show={modalCourseShow} onHide={() => setModalCourseShow(false)} trackId={trackId} />
                     </div>
                 :
-                ''
+                ""
                 }
                 {
-                    type === 'event' ?
+                    type === "event" ?
                     <div>
                         <p onClick={() => setModalEventShow(true)} className={classes.createTrackDetailLink}>Выберите мероприятие из доступных</p>
                         <CreateEventModal setEntityId={setEntityId} show={modalEventShow} onHide={() => setModalEventShow(false)} trackId={trackId} />
                     </div>
                     :
-                    ''
+                    ""
                 }
                 
                 <Form.Check
@@ -95,7 +95,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
             </Form>
             
             :
-            ''
+            ""
         }
     </div>;
 };

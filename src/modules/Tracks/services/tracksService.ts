@@ -1,5 +1,5 @@
-import api from '../../../shared/services/api';
-import { authHeader } from '../../../shared/services/auth-header';
+import api from "../../../shared/services/api";
+import { authHeader } from "../../../shared/services/auth-header";
 import catchError from "../../../shared/services/catchError";
 
 const TrackService = {
@@ -8,7 +8,7 @@ const TrackService = {
   
   tracks: () => {
       return api.get(
-          '/tracks',
+          "/tracks",
           {
               headers: {...authHeader()}
           }
@@ -22,9 +22,9 @@ const TrackService = {
 
   trackPreview: async (fileData:any) => {
       let formData = new FormData()
-      formData.append('file', fileData)
+      formData.append("file", fileData)
       const fileUrl = await api.post(
-          '/track/preview',
+          "/track/preview",
           formData,
           {
               headers: {...authHeader()}
@@ -50,7 +50,7 @@ const TrackService = {
   
   trackCreate: (data: TrackData) => {
       api.post(
-          '/track/',
+          "/track/",
           data,
           {
               headers: {...authHeader()}

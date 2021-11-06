@@ -1,7 +1,7 @@
-import { TrackDetail } from '../TrackDetail';
+import { TrackDetail } from "../TrackDetail";
 import store from "../../store";
-import { useEffect, useState } from 'react';
-import { NewTrackDetail } from '../NewTrackDetail';
+import { useEffect, useState } from "react";
+import { NewTrackDetail } from "../NewTrackDetail";
 import styled from "styled-components";
 
 interface TrackDetailListProps {
@@ -11,7 +11,7 @@ interface TrackDetailListProps {
 export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element => {
   const [trackDetails, setTrackDetails]:any = useState([]);
   const [mutated, setMutated] = useState(0);
-  const role = localStorage.getItem('role');
+  const role = localStorage.getItem("role");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,10 +41,10 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
 
   return (
       <div className="container">
-          {role === 'student' ?
+          {role === "student" ?
             <Progress className="row">
                 Прогресс трека: {progressValue}%
-            </Progress> : ''}
+            </Progress> : ""}
               <div className="container d-flex align-items-center">
                   <h3 className={"d-flex p-3"}>Элементы трека</h3>
                   {role === "teacher" ? <NewTrackDetail lastIndex={trackDetails.length} mutated={mutated} setMutated={setMutated} trackId={trackId} /> : ""}
@@ -53,7 +53,7 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
                 { trackDetails ? trackDetails.map((trackDetail:TrackDetail) => 
                         <TrackDetail key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
                     )
-                  : '...'}
+                  : "..."}
               </div>
       </div>
   )

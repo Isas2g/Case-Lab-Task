@@ -6,7 +6,7 @@ const Companies = observer(():JSX.Element => {
 
     return(
         <>
-            {store.companies ? store.companies.map( (company, index) => <option key={index}>{company}</option>): ''}
+            {store.companies ? store.companies.map( (company, index) => <option key={index}>{company}</option>): ""}
         </>
     )
 })

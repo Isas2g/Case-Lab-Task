@@ -15,7 +15,7 @@ type setEntityIdFunc = (num: number) => void;
 export const CreateEventModal = observer(({show, onHide, trackId, setEntityId}: Props): JSX.Element => {
     
     const [events, setEvents]: any = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     
     useEffect(() => {
       store.getTrackDetailEvents(searchQuery);

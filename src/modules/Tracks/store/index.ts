@@ -13,12 +13,12 @@ class Store {
         "assigned": false,
         "data": {
             name: "[]",
-            previewText: 'string',
-            previewPicture: 'string',
+            previewText: "string",
+            previewPicture: "string",
             published: false,
             dateTimeStart: 0,
             dateTimeFinish: 0,
-            mode: 'free',
+            mode: "free",
         },
     };
     detail: TrackDetail = {
@@ -28,10 +28,10 @@ class Store {
         "assigned": false,
         "epilogId": 0,
         "epilogFinished": false,
-        "entityName": '',
-        "entityDuration": '',
+        "entityName": "",
+        "entityDuration": "",
         "data": {
-           "type": 'event',
+           "type": "event",
             "entityId": 0,
             "sortIndex": 0,
             "required": false,

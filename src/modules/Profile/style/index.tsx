@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 interface Props {
     src: string;
@@ -17,7 +17,7 @@ const AvatarDiv = styled.div`
   background: #f0f0f0;
 `
 const Role = styled.p`
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   color: black;
   
   

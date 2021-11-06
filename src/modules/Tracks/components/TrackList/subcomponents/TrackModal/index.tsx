@@ -1,5 +1,5 @@
 import React from "react";
-import { ModalComponent } from '../../../../../../shared/components/Modal';
+import { ModalComponent } from "../../../../../../shared/components/Modal";
 import "./style/style.css"
 import store from "../../../../store";
 
@@ -22,48 +22,48 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
     const dateFromUnix = (timestamp: number) => {
         const date:Date = new Date(timestamp*1000);
         const month:number = date.getMonth();
-        let monthName:string = '';
+        let monthName:string = "";
         switch (month) {
             case 0:
-                monthName = 'января';
+                monthName = "января";
                 break;
             case 1:
-                monthName = 'февраля';
+                monthName = "февраля";
                 break;
             case 2:
-                monthName = 'марта';
+                monthName = "марта";
                 break;
             case 3:
-                monthName = 'апреля';
+                monthName = "апреля";
                 break;
             case 4:
-                monthName = 'мая';
+                monthName = "мая";
                 break;
             case 5:
-                monthName = 'июня';
+                monthName = "июня";
                 break;
             case 6:
-                monthName = 'июля';
+                monthName = "июля";
                 break;
             case 7:
-                monthName = 'августа';
+                monthName = "августа";
                 break;
             case 8:
-                monthName = 'сентября';
+                monthName = "сентября";
                 break;
             case 9:
-                monthName = 'октября';
+                monthName = "октября";
                 break;
             case 10:
-                monthName = 'ноября';
+                monthName = "ноября";
                 break;
             case 11:
-                monthName = 'декабря';
+                monthName = "декабря";
                 break;
             default:
-                alert('Ошибка даты!');
+                alert("Ошибка даты!");
         }
-        return `${date.getDay()} ${monthName} ${date.getFullYear()} в ${date.getHours()< 10 ? '0'+date.getHours() : date.getHours()}:${date.getMinutes()< 10 ? '0'+date.getMinutes() : date.getMinutes()} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
+        return `${date.getDay()} ${monthName} ${date.getFullYear()} в ${date.getHours()< 10 ? "0"+date.getHours() : date.getHours()}:${date.getMinutes()< 10 ? "0"+date.getMinutes() : date.getMinutes()} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
     }
 
     return (
@@ -72,8 +72,8 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
             <p><b>Дата открытия трека:</b> {dateFromUnix(dateTimeStart)}</p>
             <p><b>Дата закрытия трека:</b> {dateFromUnix(dateTimeFinish)}</p>
             <p><b>Режим прохождения:</b> {mode === "free" ? "свободный" : "последовательный"}</p>
-            {role === 'teacher' ? <p><b>Опубликовано:</b> {published ? "да" : "нет"}</p> : ''}
-            {/*<Link to={'/tracks/' + trackId}>See track</Link>*/}
+            {role === "teacher" ? <p><b>Опубликовано:</b> {published ? "да" : "нет"}</p> : ""}
+            {/*<Link to={"/tracks/" + trackId}>See track</Link>*/}
         </ModalComponent>
     )
 };

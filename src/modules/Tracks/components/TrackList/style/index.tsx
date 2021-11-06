@@ -25,11 +25,11 @@ export const TrackList: React.FC<Props> = observer( ({my}) => {
                     ))}
                     {trackRow.length < 3
                         ? <Col key={"col3"}></Col>
-                        : ''
+                        : ""
                     }
                     {trackRow.length < 2
                         ? <Col key={"col2"}></Col>
-                        : ''
+                        : ""
                     }
                     </Row>
                 </Container>
