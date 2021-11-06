@@ -19,7 +19,7 @@ interface Props {
 
 export const MainMenu:React.FC<Props> = ({token, setToken}) => {
     return (
-        <Navbar bg="light" expand="lg" sticky="top"className="p-0 navbarShadow">
+        <Navbar bg="dark" variant="dark" expand="lg" sticky="top"className="p-0 navbarShadow">
             <Container className={"containerNavbar"}>
                 <Navbar.Brand><Link to="/"><img src={logo} alt="Logo" height="50"/></Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -31,7 +31,7 @@ export const MainMenu:React.FC<Props> = ({token, setToken}) => {
                         </IndexLinkContainer>
                     </div>
                         <div className="itemNav">
-                            <NavDropdown className="withoutHover p-0" title={<span className="withoutHover">Треки <BsChevronDown /></span>} id="basic-nav-dropdown">
+                            <NavDropdown className="withoutHover p-0" menuVariant="dark" title={<span className="withoutHover">Треки <BsChevronDown /></span>} id="basic-nav-dropdown">
                                 <div className="shadow py-2 drop">
                                     <IndexLinkContainer className="navDropdownItems" to={'/tracks'}>
                                         <NavDropdown.Item>Каталог</NavDropdown.Item>

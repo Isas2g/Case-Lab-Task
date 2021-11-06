@@ -93,6 +93,7 @@
 .trackListContainer {
     display: flex;
     flex-direction: row;
+    background-color: #1d2024;
 }
 
 .trackImage {
@@ -102,10 +103,9 @@
 .trackTitle {
     font-weight: 600;
     margin-bottom: 0;
-    background-color: #262827;
+    background-color: rgb(26, 29, 32);
     color: #e7e7e7;
-    // box-shadow: inset 0px -11px 4px -8px #ffffffad, inset -15px 0px 8px -8px #9af7ab, inset 0px 15px 8px -1px #004e0329;
-    box-shadow: inset 0px -11px 4px -8px #ffffffad, inset -15px 0px 8px -8px #ebebeb, inset 0px 15px 8px -1px #004e0329;
+
 
 }
 

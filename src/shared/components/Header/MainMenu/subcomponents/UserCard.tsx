@@ -38,7 +38,7 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                         </div>
                     </div>
                 </a>
-                <ul className="dropdown-menu shadow" aria-labelledby="profileScrollingDropdown">
+                <ul className="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="profileScrollingDropdown">
                     <li>
                         <Link to="/profile" className="dropdown-item">Мой профиль</Link>
                     </li>
