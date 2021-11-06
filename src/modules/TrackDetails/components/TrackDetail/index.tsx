@@ -9,8 +9,8 @@ import { DetailUpdateModal } from "../DetailUpdateModal";
 const Cross = styled.b`
     cursor: pointer;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 0.25rem;
+    right: 0.5rem;
 `;
 
 interface Props {
@@ -29,7 +29,7 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
     const editClick = () => {
         setEditModalShow(true);
     }
-    
+    // bg-dark text-white
     return (
             <Card style={{width: "320px", minHeight: '300px', padding: '15px', position: 'relative'}} className={"bg-dark text-white m-3 " + style['edit-trackDetail']}>
             {role === "teacher" ? <Cross className="close" onClick={() => setDeleteModalShow(true)}>✖</Cross> : ""}
@@ -46,7 +46,6 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
                 <Card.Text>Номер: {trackDetail.id}</Card.Text>
                 <Card.Text>Продолжительность: {trackDetail.entityDuration}</Card.Text>
                 <Card.Text>Тип: {trackDetail.data.type}
-                    
                     
                 </Card.Text>
                 <Card.Text>Закончен: {trackDetail.epilogFinished ? 'да' : 'нет'}</Card.Text>

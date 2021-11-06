@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 interface Props {
     src: string;
     role: string | null;
@@ -17,7 +18,7 @@ const AvatarDiv = styled.div`
   background: #f0f0f0;
 `
 const Role = styled.p`
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Roboto', sans-serif; 
   color: black;
   
   
