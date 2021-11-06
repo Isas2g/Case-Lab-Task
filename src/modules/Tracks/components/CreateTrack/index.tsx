@@ -67,10 +67,13 @@ const CreateTrack: React.FC = () => {
                 <br />
                 <br />
                 <label>
-                    Последовательное прохождение трека &nbsp;
-                    <input className="form-check-input" name="published" type="checkbox" defaultChecked={store.track.data.published} onChange={handleInputs} />
+                    Последовательное прохождение трека
+                    <select name="mode">
+                        <option value="free">свободный</option>
+                        <option value="consistent">последовательный</option>
+                    </select>
                     <br/>
-                    <P>Примечание: поставьте галочку, если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке.</P>
+                    <P>Если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
                 </label>
                 <br />
                 <br />
@@ -78,7 +81,7 @@ const CreateTrack: React.FC = () => {
                     Опубликовать &nbsp;
                     <input className="form-check-input" name="published" type="checkbox" defaultChecked={store.track.data.published} onChange={handleInputs} />
                     <br/>
-                    <P>Примечание: опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
+                    <P>Опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
                 </label>
                 <br />
                 <br />

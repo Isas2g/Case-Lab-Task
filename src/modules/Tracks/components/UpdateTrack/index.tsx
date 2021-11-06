@@ -22,7 +22,7 @@ export const Div2 = styled.div`
 `
 export const P = styled.p`
       font-size: 10px;
-      color: #6c757d;
+      color: darkgray;
     `
 
 const EditTrack = observer(()=>{
@@ -73,14 +73,14 @@ const EditTrack = observer(()=>{
                     <option value="consistent">последовательный</option>
                 </select>
                 <br/>
-                <P>Если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите "последовательный.</P>
+                <P>Если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
             </label>
             <br />
             <br />
             <label>
                 Опубликовать &nbsp;
                 <input className="form-check-input" name="published" type="checkbox" checked={store.track.data.published} onChange={handleInputs} />
-                <P>Примечание: опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
+                <P>Опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
             </label>
             <br />
             <br />
