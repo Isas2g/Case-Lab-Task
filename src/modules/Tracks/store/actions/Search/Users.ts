@@ -1,0 +1,7 @@
+import SearchService from "../../../../Search/services/searchServices";
+
+const getUsersByQuery = async (searchQuery: string, dep: string, company: string) => {
+    return SearchService.usersSearchGet(searchQuery, dep, company);
+}
+
+export default getUsersByQuery;

@@ -1,0 +1,50 @@
+.track{
+    display:block;
+    width:200px;
+    height:200px;
+    text-align:center;
+    background:#f0f0f0;
+    margin:10px;
+    border-radius:8px;
+    padding:0 0 15px 0
+}
+
+.track-title {
+    padding:5px;
+    background:rgba(0,0,0,.2);
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+
+.track-list {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center
+}
+
+.contrast {
+    color:#fff;
+    text-shadow:1px 0 1px #000,0 1px 1px #000,-1px 0 1px #000,0 -1px 1px #000
+}
+
+.bright img{
+    opacity:.75;transition:.2s
+}
+
+.bright .contrast{
+    transition:.2s
+}
+
+.bright:hover img{
+    opacity:1
+}
+
+.bright:hover .contrast{
+    text-shadow:2px 0 2px #000,0 2px 2px #000,-2px 0 2px #000,0 -2px 2px #000 !important
+}
+
+.pointer {
+    cursor:pointer !important
+}

@@ -1,0 +1,1 @@
+type ModalFunc = () => void;
