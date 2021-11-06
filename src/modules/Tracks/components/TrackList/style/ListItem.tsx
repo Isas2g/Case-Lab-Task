@@ -10,6 +10,11 @@ const Cross = styled.b`
     position: absolute;
     top: 0px;
     right: 0px;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+    color: #575757;
+    /* text-shadow: #FC0 1px 0 10px; */
+
 `
 
 export const ListItem = (props: any) => {
@@ -23,6 +28,7 @@ export const ListItem = (props: any) => {
             <Col className="wrapperMiniCard">
                 <Card className={"bg-dark text-white" + style.pointer + ' ' + style.bright} onClick={() => setModalShow(true)}>
                     <Card.Img className="cardImage" src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={230} />
+                    <div className="gradient"></div>
                     <Card.ImgOverlay onClick={() => setModalShow(true)} className={"d-flex align-items-end"}>
                         <Card.Title className={style.contrast}>{props.track.data.name}</Card.Title>
                     </Card.ImgOverlay>

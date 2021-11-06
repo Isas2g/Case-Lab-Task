@@ -76,6 +76,17 @@
     font-family: 'Roboto', sans-serif;
 }
 
+
+
+
+.userItemTop {
+    margin-top: 10px;
+}
+
+.userItemButtom {
+    margin-bottom: 10px;
+}
+
 /* .dropdown-item :hover {
     background-color: #e9ecef !important;
     box-shadow: none !important;

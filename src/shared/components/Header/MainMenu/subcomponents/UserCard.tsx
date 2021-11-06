@@ -40,13 +40,13 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="profileScrollingDropdown">
                     <li>
-                        <Link to="/profile" className="dropdown-item">Мой профиль</Link>
+                        <Link to="/profile" className="dropdown-item userItemTop">Мой профиль</Link>
                     </li>
                     <li>
                         <hr className="dropdown-divider" />
                     </li>
                     <li>
-                        <a className="dropdown-item" onClick={leave}>Выйти из аккаунта</a>
+                        <a className="dropdown-item userItemButtom" onClick={leave}>Выйти из аккаунта</a>
                     </li>
                 </ul>
             </CardBootstrap>

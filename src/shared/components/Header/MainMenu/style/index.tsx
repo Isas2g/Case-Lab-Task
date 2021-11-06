@@ -4,13 +4,11 @@ import styled from 'styled-components';
 
 export const BellButton = styled.div`
 padding: 10px;
-/* border-right: 2px solid #f5f5f5;
-background-color: #fcfcfc; */
 background-color: #212529;
-&:hover {
+/* &:hover {
     background-color: #ffffff;
     box-shadow: 5px 0 5px -5px rgba(51, 51, 51, 0.4), -5px 0 5px -5px rgba(51, 51, 51, 0.4) !important;
-}
+} */
 `
 
 export const UserProfileWrapper = styled.div`
