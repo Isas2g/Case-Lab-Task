@@ -42,7 +42,6 @@ const Li = styled.li`
 `
 
 const H2 = styled.h2`
-  
   font-weight: bold;
   text-align: left;
   vertical-align: middle;
