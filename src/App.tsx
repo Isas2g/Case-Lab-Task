@@ -22,7 +22,7 @@ export const App: React.FC = observer(() => {
   return (
     <Router>
       <Header token={token} setToken={setToken} />
-      <main className="flex-shrink-0">
+      <main className="align-middle mt-auto">
         <Switch>
           <Route exact path="/" component={token ? Main : Login} />
           <Route exact path="/profile" component={token ? Profile : Login} />

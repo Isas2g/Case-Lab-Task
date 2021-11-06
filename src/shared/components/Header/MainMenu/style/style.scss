@@ -1,36 +1,53 @@
 .itemNav {
     /* color: red !important; */
     font-size: 1.5vw;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     height: 63px;
-    border-right: 2px solid #f5f5f5;
+    border-right: 2px solid #2c3034 !important;
 }
 #basic-nav-dropdown::after{
     display: none;
 }
 .itemNav :hover {
-    background-color: #fcfcfc;
+    background-color: #2c3034 !important;
     box-shadow: 2px 2px 5px 1px #00000033;
 }
 
 .containerNavbar {
-    padding-bottom: 0px;
-    padding-top: 0px;
-    margin-top: 0px;
+    padding-bottom: 0;
+    padding-top: 0;
+    margin-top: 0;
 }
 
 .nav-link {
     padding: 17px !important;
 }
 
-.dropdown-item :hover {
-    background-color: #e9ecef !important;
+.dropdown-item{
+    background-color: #232b2f;
+    color: #c5c9cc;
+}
+
+.dropdown-item.active{
+    background-color: #272e34 !important;
+}
+
+.dropdown-menu{
+    background-color: #232b2f;
+    color: #c5c9cc !important;
+}
+
+.dropdown-item:hover {
+    background-color: #2c3034 !important;
     box-shadow: none !important;
+    color: #ffffff;
 }
 
 .aCard {
     text-decoration: none;
+    background-color: #2c3034 !important;
+    color: #c5c9cc !important;
 }
 
 @media (max-width: 977px) {
@@ -49,7 +66,7 @@
 
     .itemNav {
         border-right: none;
-        border-bottom: 2px solid #f5f5f5;
+        border-bottom: 2px solid #2c3034 !important;
         width: 100%;
     }
 
@@ -70,9 +87,10 @@
         width: 100%;
         display: flex;
         justify-content: flex-end;
-        border-bottom: 2px solid #f5f5f5;
-        border-top: 2px solid #f5f5f5;
-        border-left: none
+        border-bottom: 2px solid #2c3034 !important;
+        border-top: 2px solid #2c3034 !important;
+        border-left: none;
+        background-color: #2c3034 !important;
     }
 
     .userProfileWrapper, .CardBootstrap {
