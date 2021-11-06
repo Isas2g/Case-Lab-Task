@@ -37,13 +37,13 @@ const CreateTrack: React.FC = () => {
             <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
                 <label>
                     Название
-                    <input className="form-control" name="name" type="text" onChange={handleInputs} />
+                    <input required className="form-control" name="name" type="text" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
                 <label>
                     Описание
-                    <textarea className="form-control" name="previewText" onChange={handleInputs} />
+                    <textarea required className="form-control" name="previewText" onChange={handleInputs} />
                 </label>
                 <br />
                 <br />
@@ -56,13 +56,13 @@ const CreateTrack: React.FC = () => {
                 <br />
                 <Div1><label>
                     Дата начала
-                    <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
+                    <input required className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
                 </label></Div1>
                 <br />
                 <br />
                 <Div2><label>
                     Дата окончания
-                    <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
+                    <input required className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
                 </label></Div2>
                 <br />
                 <br />

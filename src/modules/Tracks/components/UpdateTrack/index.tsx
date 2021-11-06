@@ -39,13 +39,13 @@ const EditTrack = observer(()=>{
         <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
             <label>
                 Название
-                <input className="form-control" name="name" type="text" onChange={handleInputs} value={store.track.data.name} />
+                <input required className="form-control" name="name" type="text" onChange={handleInputs} value={store.track.data.name} />
             </label>
             <br />
             <br />
             <label>
                 Описание
-                <textarea className="form-control" name="previewText" onChange={handleInputs} value={store.track.data.previewText} />
+                <textarea required className="form-control" name="previewText" onChange={handleInputs} value={store.track.data.previewText} />
             </label>
             <br />
             <br />
@@ -64,13 +64,13 @@ const EditTrack = observer(()=>{
             <br />
             <Div1><label>
                 Дата начала
-                <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeStart)} />
+                <input required className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeStart)} />
             </label></Div1>
             <br />
             <br />
             <Div2><label>
                 Дата окончания
-                <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeFinish)} />
+                <input required className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeFinish)} />
             </label></Div2>
             <br />
             <br />
