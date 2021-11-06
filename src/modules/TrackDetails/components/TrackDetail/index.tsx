@@ -34,7 +34,7 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
             <Card style={{width: "320px", minHeight: '300px', padding: '15px', position: 'relative'}} className={"bg-dark text-white m-3 " + style['edit-trackDetail']}>
             {role === "teacher" ? <Cross className="close" onClick={() => setDeleteModalShow(true)}>✖</Cross> : ""}
                 <Card.Title >{trackDetail.entityName} <br />
-                    {role === "teacher" ? 
+                    {role === "teacher" && trackDetail.data.type !== 'entry_test' ? 
                         <Badge
                             className={style['edit-btn']}
                             bg="secondary"
