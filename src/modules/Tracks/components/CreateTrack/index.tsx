@@ -72,7 +72,7 @@ const CreateTrack: React.FC = () => {
                 <br />
                 <label>
                     Последовательность прохождения трека
-                    <select name="mode">
+                    <select name="mode" onChange={handleInputs}>
                         <option value="free">непоследовательный</option>
                         <option value="consistent">последовательный</option>
                     </select>
