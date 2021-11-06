@@ -22,7 +22,7 @@ export const DetailDeleteModal: React.FC<Props> = ({show, onHide, title, trackDe
   }
   
   return (
-    <ModalComponent track={undefined} remove={true} title={title} show={show} onHide={onHide} heading="Удаление элемента трека" >
+    <ModalComponent track={undefined} remove={true} title={title} show={show} onHide={onHide} heading="" >
       <p>Вы уверены, что хотите удалить элемент трека "{trackDetail.entityName}"?</p>
       
       <Button onClick={removeTrackDetail}>Удалить</Button> 

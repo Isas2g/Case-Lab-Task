@@ -12,7 +12,8 @@ const UserForm = () => {
     const [toggleButton, setToggleButton] = useState(true);
 
     store.getDepartments().then();
-    if (department != '') store.getCompanies(department).then();
+    if (department !== '') 
+        store.getCompanies(department).then();
 
     const handleForm = (button:any) => {
         setToggleButton(false);
@@ -43,7 +44,7 @@ const UserForm = () => {
                 <Col md>
                     <Form.Group controlId="department">
                         <Form.Label>Компания:</Form.Label>
-                        <Form.Control as="select" onChange={(event) => setCompany(event.target.value)} disabled={department ? false : true}>
+                        <Form.Control as="select" onChange={(event) => setCompany(event.target.value)} disabled={department ? false : true} value={!department ? '' : company}>
                             <option />
                             <Companies />
                         </Form.Control>

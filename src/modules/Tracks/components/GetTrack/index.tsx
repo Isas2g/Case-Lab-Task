@@ -1,14 +1,15 @@
 import store from "../../store"
-import React from "react";
-import {Edit, StateList, Student, StudentBtn} from "./style";
+import React, {useState} from "react";
+import { Edit, StateList, Student } from "./style";
 import {observer} from "mobx-react-lite";
 import { TrackDetailList } from "../../../TrackDetails/components/TrackDetailList";
-import { TrackAssign } from "../TrackAssign";
-import {Button, ButtonGroup} from "react-bootstrap";
+import {ButtonGroup} from "react-bootstrap";
 import styled from "styled-components";
 
 const Back = styled.div`
   background-color: #ECECEC;
+  background-size: cover;
+  background-repeat: no-repeat;
   padding:45px;
 `
 
@@ -28,33 +29,29 @@ const Progress = styled.h5`
   display: inline-block;
   margin-top: 20px;
 `
-
 const State = observer(() => <StateList track={store.track} />);
 
 const EditButton = observer(() => <Edit track={store.track} />);
 
-//TODO
-
-const StudentButton = observer(() => <Student track={store.track}/>);
-// previewPicture and progress
+//TODO previewPicture
 
 const GetTrack = (props: any) => {
-    const query = store.getTrack(props.match.params.id);
+    const [previewPic, setPreviewPic] = useState('');
+    store.getTrack(props.match.params.id).then(() => setPreviewPic(store.track.data.previewPicture));
     const role = localStorage.getItem('role');
-    return (<>
-        <Back className="container">
-            <img src={props.match.params.previewPicture} />
-            <H3> Трек [id:{props.match.params.id}] </H3>
-            <State/>
-            {role === `teacher` ?
-                <ButtonGroup>
-                    {role === `teacher` ? <EditButton />: ''}
-                    <StudentButton />
-                    {role === `teacher` ? <TrackAssign trackId={props.match.params.id} /> : ''}
-                </ButtonGroup> :
-                <Progress> Прогресс прохождения трека: {props.match.params.progress} </Progress>
-            }
-        </Back>
+    return (
+        <>
+            <Back className="container bg-image" style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}}>
+                <H3> Трек [id:{props.match.params.id}] </H3>
+                <State/>
+                {role === `teacher`
+                    ? <ButtonGroup>
+                        <EditButton />
+                        <Student trackId={props.match.params.id}/>
+                    </ButtonGroup>
+                    : ''
+                }
+            </Back>
             <TrackDetailList trackId={props.match.params.id} />
         </>
     )

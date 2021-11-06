@@ -27,7 +27,7 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
     return(
         <UserProfileWrapper className="d-flex align-items-center userProfileWrapper">
             <CardBootstrap className="p-1 CardBootstrap">
-                <a className="dropdown aCard" id="profileScrollingDropdown" role="button"
+                <span className="dropdown aCard" id="profileScrollingDropdown" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <div className="d-flex align-items-center">
                         <div className="image">
@@ -37,7 +37,7 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                             <NameUserProfile className="mb-0 mt-0 NameUserProfile">{localStorage.getItem('role') === "teacher" ? "Учитель" : "Ученик"}</NameUserProfile>
                         </div>
                     </div>
-                </a>
+                </span>
                 <ul className="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="profileScrollingDropdown">
                     <li>
                         <Link to="/profile" className="dropdown-item userItemTop">Мой профиль</Link>
@@ -46,7 +46,7 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                         <hr className="dropdown-divider" />
                     </li>
                     <li>
-                        <a className="dropdown-item userItemButtom" onClick={leave}>Выйти из аккаунта</a>
+                        <span className="dropdown-item userItemButtom" onClick={leave}>Выйти из аккаунта</span>
                     </li>
                 </ul>
             </CardBootstrap>

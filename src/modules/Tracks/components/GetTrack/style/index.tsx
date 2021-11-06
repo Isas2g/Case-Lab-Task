@@ -1,6 +1,12 @@
-import styled, {keyframes} from 'styled-components';
-import React from "react";
+import styled from 'styled-components';
+import React, { useState } from "react";
 import {useHistory} from "react-router-dom";
+import {observer} from "mobx-react-lite";
+import store from "../../TrackAssign/store";
+import {ModalComponent} from "../../../../../shared/components/Modal";
+import UserForm from "../../TrackAssign/subcomponents/UserForm";
+import {UserList} from "../../../../Search/Users";
+import {dateFromUnix} from "../../../../../shared/utils/timestampToHumanFormat";
 
 
 const Spoiler = styled.div`
@@ -27,6 +33,9 @@ const Summary = styled.summary`
 const Details = styled.details`
   padding: 1em 0;
   border-top: 5px solid darkorange;
+  &.details[open] div{
+    animation: spoiler 1s;
+  }
 `
 
 const Li = styled.li`
@@ -69,6 +78,7 @@ export const StudentBtn = styled.button`
   font-size: 16px;
 `
 
+
 const Image = styled.img`
   height: 100px;
   width: 100%;
@@ -83,12 +93,16 @@ const UlContentTrack = styled.ul`
 `
 
 export const StateList = (props: any) => {
+    const date1 = dateFromUnix(props.track.data.dateTimeStart)
+    const date2 = dateFromUnix(props.track.data.dateTimeFinish)
+    const duration  = '?';
     return(
         <UlContentTrack>
             <Li key={'name'}>
-                <Image src={"https://tml10.rosatom.ru/" + props.track.data.previewPicture} className="background"/>
                 <H2>{props.track.data.name}</H2>
-                {/*<div>Время трека: {props.track.data.dateTimeStart} - {props.track.data.dateTimeFinish}</div>*/}
+                <div>Начало трека: {date1}</div>
+                <div>Конец трека: {date2}</div>
+                <div>Продолжительность трека: {duration}</div>
             </Li>
             <br/>
             <Spoiler>
@@ -118,19 +132,29 @@ export const Edit = (props: any) => {
     )
 }
 
-//TODO
-//StudentButton, date's format, image
+//TODO StudentButton, duration, image
 
-export const Student = (props: any) => {
 
-    const history = useHistory();
-
-    const moveToUpdate = () => {
-        //сделать ссылку на список студентов history.push('');
-        history.push(`/tracks/students/${props.track.id}`)
-    }
-
-    return(
-        <StudentBtn className="btn btn-primary" onClick={moveToUpdate}> Ученики трека </StudentBtn>
-    )
+interface StudentProps {
+    trackId: number;
 }
+
+export const Student = observer(({trackId}:StudentProps): JSX.Element => {
+
+    store.readTrackAssigns(trackId).then();
+
+    const [show, setModalShow] = useState(false);
+
+    return (
+        <>
+            <StudentBtn className="btn" onClick={() => setModalShow(true)}> Ученики трека </StudentBtn>
+
+            <ModalComponent show={show} onHide={() => setModalShow(false)} heading="Ученики трека" title=""
+                            remove={false} track={undefined}>
+                <h4>Список студентов:</h4>
+                <UserForm/>
+                <UserList trackId={trackId}/>
+            </ModalComponent>
+        </>
+    )
+})

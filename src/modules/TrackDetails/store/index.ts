@@ -2,7 +2,7 @@ import {makeAutoObservable} from "mobx";
 import updateTrackDetail from "../../TrackDetails/store/actions/Detail/Update";
 import createTrackDetail from "../../TrackDetails/store/actions/Detail/Create";
 import getTrackDetail from "../../TrackDetails/store/actions/Detail/ReadOne";
-import getTrackDetails from "../../TrackDetails/store/actions/Detail/Read";
+import getTrackDetails, { getTrackDetailCourses, getTrackDetailEvents } from "../../TrackDetails/store/actions/Detail/Read";
 import deleteTrackDetail from "../../TrackDetails/store/actions/Detail/Delete";
 
 class Store {
@@ -23,6 +23,8 @@ class Store {
             "required": false,
         },
     };
+    courses: Array<Course> = [];
+    events: Array<Event> = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -44,9 +46,15 @@ class Store {
         this.detail = await getTrackDetail(id);
     }
     updateTrackDetail(trackDetail: TrackDetailData, detailId: number) {
-        const query = updateTrackDetail(trackDetail, this.details, detailId);
+        updateTrackDetail(trackDetail, this.details, detailId);
         getTrackDetail(detailId).then();
         return this.detail;
+    }
+    async getTrackDetailCourses(searchQuery: string) {
+        this.courses = await getTrackDetailCourses(searchQuery);
+    }
+    async getTrackDetailEvents(searchQuery: string) {
+        this.events = await getTrackDetailEvents(searchQuery);
     }
 }
 

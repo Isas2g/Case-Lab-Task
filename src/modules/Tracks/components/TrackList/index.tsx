@@ -10,7 +10,7 @@ interface Props {
 }
 
 const TrackListComponent:React.FC<Props> = ({my}) => {
-    const tracks = store.getTracks();
+    store.getTracks();
     const role = localStorage.getItem("role");
     return(
         <div className={style.trackListContainer}>  

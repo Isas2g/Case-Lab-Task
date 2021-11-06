@@ -31,12 +31,22 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
                 <h4 className="cardTitle">{title}</h4>
                 <div>{children}</div>
             </Modal.Body>
-            <Modal.Footer>
-                {remove && track !== undefined
-                    ? <Button onClick={() => store.deleteTrack(track)}>Удалить</Button>
-                    : <Button variant="warning" size="lg" href={'/tracks/'+ heading.substring(5)}>Перейти к треку</Button>
+            {remove && track !== undefined ?
+                <Modal.Footer>
+                    <Button onClick={() => store.deleteTrack(track)}>Удалить</Button>
+                </Modal.Footer>
+                :
+                ''
                 }
-            </Modal.Footer>
+            {heading !== '' ?
+                <Modal.Footer>
+                    <Button variant="warning" size="lg" href={'/tracks/'+ heading.substring(5)}>Перейти к треку</Button>
+                </Modal.Footer>
+                :
+                ''
+            }
+                
+           
         </Modal>
     )
 }

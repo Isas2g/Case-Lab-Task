@@ -13,6 +13,7 @@ import Error from './shared/components/Error';
 import UpdateTrack from "./modules/Tracks/components/UpdateTrack";
 import { Main } from './modules/MainPage';
 import { Profile } from './modules/Profile';
+import { TrackDetailPage } from './modules/TrackDetails';
 
 export const App: React.FC = observer(() => {
 
@@ -30,6 +31,7 @@ export const App: React.FC = observer(() => {
           <Route exact path="/tracks/my" component={token ? (my:boolean) => <Tracks my={true} /> : Login} />
           <Route exact path="/tracks/:id" component={token ? GetTrack : Login} />
           <Route exact path="/tracks/edit/:id" component={token ? UpdateTrack : Login} />
+          <Route exact path="/tracks/trackDetail/:id" component={token ? TrackDetailPage : Login} />
           <Route exact path="/login" component={Login} />
           <Route component={token ? Error : Login} />
         </Switch>
