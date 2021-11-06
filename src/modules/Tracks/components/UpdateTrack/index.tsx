@@ -88,7 +88,7 @@ const EditTrack = observer(()=>{
             </label>
             <br />
             <br />
-            <input className="btn btn-primary" type="submit" value="Подтвердить" />
+            <input className="btn btn-primary" type="submit" value="Отправить"></input>
         </form>
 </Div>
     )})
