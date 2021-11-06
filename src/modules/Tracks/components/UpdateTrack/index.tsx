@@ -49,7 +49,7 @@ const EditTrack = observer(()=>{
             <br />
             <br />
             <label>
-                Картинка
+                Обложка трека
                 <input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
             </label>
             <br />
@@ -67,9 +67,9 @@ const EditTrack = observer(()=>{
             <br />
             <br />
             <label>
-                Последовательное прохождение трека
+                Последовательность прохождения трека
                 <select name="mode">
-                    <option value="free">свободный</option>
+                    <option value="free">непоследовательный</option>
                     <option value="consistent">последовательный</option>
                 </select>
                 <br/>

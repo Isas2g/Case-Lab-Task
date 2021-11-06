@@ -54,22 +54,26 @@ const CreateTrack: React.FC = () => {
                 </label>
                 <br />
                 <br />
-                <Div1><label>
+                <Div1>
+                    <label>
                     Дата начала
                     <input required className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
-                </label></Div1>
+                    </label>
+                </Div1>
                 <br />
                 <br />
-                <Div2><label>
+                <Div2>
+                    <label>
                     Дата окончания
                     <input required className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
-                </label></Div2>
+                    </label>
+                </Div2>
                 <br />
                 <br />
                 <label>
-                    Последовательное прохождение трека
+                    Последовательность прохождения трека
                     <select name="mode">
-                        <option value="free">свободный</option>
+                        <option value="free">непоследовательный</option>
                         <option value="consistent">последовательный</option>
                     </select>
                     <br/>
