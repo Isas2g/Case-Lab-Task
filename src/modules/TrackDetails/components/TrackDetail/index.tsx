@@ -52,7 +52,7 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
                 <Card.Text>Закончен: {trackDetail.epilogFinished ? 'да' : 'нет'}</Card.Text>
                 <Card.Text>Обязателен: {trackDetail.data.required ? 'да' : 'нет'}</Card.Text>
                 
-                <Card.Text style={{position: 'absolute', bottom: '15px', left: '15px'}}><IndexLinkContainer to={'/tracks/trackDetail/' + trackDetail.id}><Button>Перейти</Button></IndexLinkContainer></Card.Text>
+                <Card.Text style={{position: 'absolute', bottom: '15px', right: '15px'}}><IndexLinkContainer to={'/tracks/trackDetail/' + trackDetail.id}><Button>Перейти</Button></IndexLinkContainer></Card.Text>
                 
                 <DetailDeleteModal 
                     show={deleteModalShow}
