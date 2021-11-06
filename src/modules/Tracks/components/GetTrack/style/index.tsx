@@ -6,6 +6,7 @@ import store from "../../TrackAssign/store";
 import {ModalComponent} from "../../../../../shared/components/Modal";
 import UserForm from "../../TrackAssign/subcomponents/UserForm";
 import {UserList} from "../../../../Search/Users";
+import {dateFromUnix} from "../../../../../shared/utils/timestampToHumanFormat";
 
 
 const Spoiler = styled.div`
@@ -69,18 +70,16 @@ export const StudentBtn = styled.button`
 `
 
 export const StateList = (props: any) => {
-    const date1 = new Date(props.track.data.dateTimeStart*1000).toUTCString()
-    const date2 = new Date(props.track.data.dateTimeFinish*1000).toUTCString()
-    const duration  = 0;
+    const date1 = dateFromUnix(props.track.data.dateTimeStart)
+    const date2 = dateFromUnix(props.track.data.dateTimeFinish)
+    const duration  = '?';
     return(
         <ul>
             <Li key={'name'}>
                 <H2>{props.track.data.name}</H2>
-                <div>Время трека: {date1} - {date2}</div>
+                <div>Начало трека: {date1}</div>
+                <div>Конец трека: {date2}</div>
                 <div>Продолжительность трека: {duration}</div>
-                <script>
-
-                </script>
             </Li>
             <br/>
             <Spoiler>

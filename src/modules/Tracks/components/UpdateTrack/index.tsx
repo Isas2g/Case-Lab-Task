@@ -4,29 +4,9 @@ import {useHistory} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import TrackService from "../../services/tracksService";
 import styled from "styled-components";
+import {inputDate} from "../../../../shared/utils/timestampToInputFormat";
+import {handleInputs} from "../../../../shared/utils/handleInputsUpdate&Create";
 
-
-const inputDate = (date : number) => new Date(date * 1000).toISOString().slice(0,16)
-
-
-
-const handleInputs = async (event: any) => {
-    const target = event.target;
-    const value = target.type === 'checkbox'
-        ? target.checked
-        : target.type === 'file'
-            ? await TrackService.trackPreview(target.files[0])
-            : target.type === 'datetime-local'
-                ? new Date(target.value).getTime() / 1000
-                : target.value;
-    console.log(value);
-    const name = target.name;
-    new FileReader()
-    store.track.data = {
-        ...store.track.data,
-        [name]: value
-    }
-}
 
 export const Div = styled.div`
   width: 50%;
@@ -84,13 +64,13 @@ const EditTrack = observer(()=>{
             <br />
             <Div1><label>
                 Дата начала
-                <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeStart)} />
+                <input className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeStart)} />
             </label></Div1>
             <br />
             <br />
             <Div2><label>
                 Дата окончания
-                <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeFinish)} />
+                <input className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeFinish)} />
             </label></Div2>
             <br />
             <br />
