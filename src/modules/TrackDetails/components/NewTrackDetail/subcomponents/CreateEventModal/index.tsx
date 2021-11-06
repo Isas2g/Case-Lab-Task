@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalComponent } from "../../../../../../shared/components/Modal"
 import store from "../../../../store";
 

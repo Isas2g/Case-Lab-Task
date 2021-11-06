@@ -12,7 +12,7 @@ const UserForm = () => {
     const [toggleButton, setToggleButton] = useState(true);
 
     store.getDepartments().then();
-    if (department != '')
+    if (department !== '') 
         store.getCompanies(department).then();
 
     const handleForm = (button:any) => {
