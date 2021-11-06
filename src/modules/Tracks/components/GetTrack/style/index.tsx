@@ -6,7 +6,7 @@ import store from "../../TrackAssign/store";
 import {ModalComponent} from "../../../../../shared/components/Modal";
 import UserForm from "../../TrackAssign/subcomponents/UserForm";
 import {UserList} from "../../../../Search/Users";
-
+import {dateFromUnix} from "../../../../../shared/utils/timestampToHumanFormat";
 
 const Spoiler = styled.div`
   border: 1px solid #e0e0e0;
@@ -14,9 +14,15 @@ const Spoiler = styled.div`
  `
 
 const Summary = styled.summary`
-  font-size: 30px;
-  font-family: "Helvetica Neue";
-  
+  font-size: 2vw;
+  font-family: "Roboto", sans-serif;
+  border-top: none !important;
+
+
+&.details[open] div{
+    animation: spoiler 1s;
+}
+
 @keyframes Spoiler {
   0 % {max-height: 0;}
   100 % {max-height: 10em;}
@@ -36,16 +42,18 @@ const Li = styled.li`
 `
 
 const H2 = styled.h2`
-  font-size: 50px;
   font-weight: bold;
   text-align: left;
   vertical-align: middle;
-  height: 300px;
-  width: 600px;
+  font-size: 3.2vw;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  height: 150px;
+  width: 100%;
 `
 
 export const EditButton = styled.button`
-  background-color: darkorange;
+  /* background-color: darkorange; */
   border: 1px solid black;
   border-radius: 10px;
   color: white;
@@ -57,7 +65,7 @@ export const EditButton = styled.button`
 `
 
 export const StudentBtn = styled.button`
-  background-color: darkorange;
+  /* background-color: darkorange; */
   border: 1px solid black;
   border-radius: 10px;
   color: white;
@@ -68,19 +76,31 @@ export const StudentBtn = styled.button`
   font-size: 16px;
 `
 
+
+const Image = styled.img`
+  height: 100px;
+  width: 100%;
+`
+
+const Cross = styled.b`
+    cursor: pointer;
+`
+
+const UlContentTrack = styled.ul`
+  padding-left: 0px;
+`
+
 export const StateList = (props: any) => {
-    const date1 = new Date(props.track.data.dateTimeStart*1000).toUTCString()
-    const date2 = new Date(props.track.data.dateTimeFinish*1000).toUTCString()
-    const duration  = 0;
+    const date1 = dateFromUnix(props.track.data.dateTimeStart)
+    const date2 = dateFromUnix(props.track.data.dateTimeFinish)
+    const duration  = '?';
     return(
-        <ul>
+        <UlContentTrack>
             <Li key={'name'}>
                 <H2>{props.track.data.name}</H2>
-                <div>Время трека: {date1} - {date2}</div>
+                <div>Начало трека: {date1}</div>
+                <div>Конец трека: {date2}</div>
                 <div>Продолжительность трека: {duration}</div>
-                <script>
-
-                </script>
             </Li>
             <br/>
             <Spoiler>
@@ -93,7 +113,7 @@ export const StateList = (props: any) => {
             <Li key={'published'}>Опубликован?  -  {props.track.data.published ? 'Да' : 'Нет'}</Li>
             <Li key={'mode'}>Режим  -  {props.track.data.mode === 'consistent' ? 'Последовательный' : 'Свободный'}</Li>
             <br/>
-        </ul>
+        </UlContentTrack>
     )
 }
 
