@@ -77,7 +77,7 @@ const CreateTrack: React.FC = () => {
                         <option value="consistent">последовательный</option>
                     </select>
                     <br/>
-                    <P>Если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
+                    <P>Чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
                 </label>
                 <br />
                 <br />
@@ -89,7 +89,7 @@ const CreateTrack: React.FC = () => {
                 </label>
                 <br />
                 <br />
-                <input className="btn btn-primary" type="submit" value="Подтвердить" />
+                <input className="btn btn-primary" type="submit" value="Отправить" />
             </form>
         </Div>
         </>
