@@ -7,15 +7,11 @@ import style from "./style.module.scss";
 
 
 export const NewTrack: React.FC = () => {
-
     const history = useHistory();
-
     const moveToNew = () => {
         history.push('/tracks/new');
     }
-
     return(
-
-        <Button className={style.addTrackButton} variant="light"  onClick={moveToNew}><b>Создать трек</b></Button>
-)
+        <Button className={style.addTrackButton} variant="light" onClick={moveToNew}><b>+</b></Button>
+    )
 }

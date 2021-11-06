@@ -6,6 +6,7 @@ import {UserCard} from "../../../shared/components/Header/MainMenu/subcomponents
 import {Bell} from "../../../shared/components/Header/MainMenu/subcomponents/Bell";
 import {useLocation} from "react-router";
 import "./style/style.css"
+import {NewTrack} from "../../../modules/Tracks/components/TrackList/style/NewTrackButton";
 
 type TokenFunc = (str: string) => void;
 
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export const MainMenu:React.FC<Props> = ({token, setToken}) => {
+    const role = localStorage.getItem("role");
     return (
         <Navbar bg="light" expand="lg" sticky="top"className="p-0 navbarShadow">
             <Container className={"containerNavbar"}>
@@ -29,8 +31,8 @@ export const MainMenu:React.FC<Props> = ({token, setToken}) => {
                                 <NavDropdown.Item className="navDropdownItems" href="/tracks">Каталог</NavDropdown.Item>
                                 <NavDropdown.Item className="navDropdownItems" href="/tracks/my">Мои треки</NavDropdown.Item>
                             </div>
-                            
                         </NavDropdown>
+                            <div>{role === "teacher" ? <NewTrack /> : ""}</div>
                         </div>
                     </Nav>
                     <div className="d-flex align-items-center userCardBell">
