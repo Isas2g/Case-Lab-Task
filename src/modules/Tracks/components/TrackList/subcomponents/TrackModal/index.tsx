@@ -14,7 +14,7 @@ interface Props {
 
 export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role}) => {
 
-    store.getTrack(trackId)
+    store.getTrack(trackId).then();
     const track = store.track
 
     const {name, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;

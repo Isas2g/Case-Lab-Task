@@ -12,6 +12,6 @@ export const NewTrack: React.FC = () => {
     }
 
     return(
-        <Button variant="warning"  onClick={moveToNew}><b>+</b></Button>
+        <Button variant="warning"  onClick={moveToNew}><b>Создать трек</b></Button>
 )
 }
