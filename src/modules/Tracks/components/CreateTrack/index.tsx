@@ -54,23 +54,30 @@ const CreateTrack: React.FC = () => {
                 </label>
                 <br />
                 <br />
-                <Div1><label>
+                <Div1>
+                    <label>
                     Дата начала
                     <input required className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
-                </label></Div1>
+                    </label>
+                </Div1>
                 <br />
                 <br />
-                <Div2><label>
+                <Div2>
+                    <label>
                     Дата окончания
                     <input required className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
-                </label></Div2>
+                    </label>
+                </Div2>
                 <br />
                 <br />
                 <label>
-                    Последовательное прохождение трека &nbsp;
-                    <input className="form-check-input" name="published" type="checkbox" defaultChecked={store.track.data.published} onChange={handleInputs} />
+                    Последовательность прохождения трека
+                    <select name="mode">
+                        <option value="free">непоследовательный</option>
+                        <option value="consistent">последовательный</option>
+                    </select>
                     <br/>
-                    <P>Примечание: поставьте галочку, если хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке.</P>
+                    <P>Если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
                 </label>
                 <br />
                 <br />
@@ -78,7 +85,7 @@ const CreateTrack: React.FC = () => {
                     Опубликовать &nbsp;
                     <input className="form-check-input" name="published" type="checkbox" defaultChecked={store.track.data.published} onChange={handleInputs} />
                     <br/>
-                    <P>Примечание: опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
+                    <P>Опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
                 </label>
                 <br />
                 <br />

@@ -1,11 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+/* .navbarCollapse {
+    background-color: #1b1b1b ;
+    color: white;
+} */
+
+/* .navbarShadow {
+    box-shadow: 0 5px 5px -5px rgba(51, 51, 51, 0.25);
+    background-color: #1b1b1b ;
+    color: white;
+} */
+
+.notifications {
+    padding-top: 15px !important;
+    padding-bottom: 14px !important;
+
+}
+
 .itemNav {
-    /* color: red !important; */
     font-size: 1.5vw;
     padding: 0;
     margin: 0;
     height: 63px;
     border-right: 2px solid #2c3034 !important;
 }
+
+.withoutHover :hover {
+    box-shadow: none !important;
+}
+
+/* .drop :hover{
+    color: #1e2125;
+    background-color: #e9ecef !important;
+    box-shadow: none !important;
+} */
 #basic-nav-dropdown::after{
     display: none;
 }
@@ -20,8 +49,27 @@
     margin-top: 0;
 }
 
+.dropdown-menu {
+    font-family: 'Roboto', sans-serif;
+    border-radius: 0 !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 100%;
+}
+
 .nav-link {
+    font-family: 'Roboto', sans-serif;
     padding: 17px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.dropdown-item {
+    width: 100% !important;
+    font-family: 'Roboto', sans-serif;
 }
 
 .dropdown-item{
@@ -49,6 +97,15 @@
     background-color: #2c3034 !important;
     color: #c5c9cc !important;
 }
+
+.userProfileWrapper {
+    min-width: 10rem;
+}
+
+.CardBootstrap {
+    width: 100%;
+}
+
 
 @media (max-width: 977px) {
     .navDropdownItems {
@@ -105,6 +162,8 @@
 
     .NameUserProfile {
         font-size: 2.5vw !important;
+        /* font-weight: 100 !important; */
+        font-family: 'Roboto', sans-serif !important;
     }
 
 }

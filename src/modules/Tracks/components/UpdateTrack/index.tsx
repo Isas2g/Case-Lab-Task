@@ -7,7 +7,6 @@ import styled from "styled-components";
 import {inputDate} from "../../../../shared/utils/timestampToInputFormat";
 import {handleInputs} from "../../../../shared/utils/handleInputsUpdate&Create";
 
-
 export const Div = styled.div`
   width: 50%;
 `
@@ -23,7 +22,7 @@ export const Div2 = styled.div`
 `
 export const P = styled.p`
       font-size: 10px;
-      color: #6c757d;
+      color: darkgray;
     `
 
 const EditTrack = observer(()=>{
@@ -35,7 +34,7 @@ const EditTrack = observer(()=>{
     }
     return(
     <Div className="container">
-    <h4>Настройки трека [{store.track.id}]</h4>
+    <h4>Настройки трека</h4>
         <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
             <label>
                 Название
@@ -50,15 +49,8 @@ const EditTrack = observer(()=>{
             <br />
             <br />
             <label>
-                Картинка
+                Обложка трека
                 <input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
-            </label>
-            <br />
-            <br />
-            <label>
-                Опубликовать &nbsp;
-                <input className="form-check-input" name="published" type="checkbox" checked={store.track.data.published} onChange={handleInputs} />
-                <P>Примечание: опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
             </label>
             <br />
             <br />
@@ -75,12 +67,20 @@ const EditTrack = observer(()=>{
             <br />
             <br />
             <label>
-                Режим
-                <select name="mode" onChange={handleInputs} value={store.track.data.mode}>
-                    <option value="free">свободный</option>
+                Последовательность прохождения трека
+                <select name="mode">
+                    <option value="free">непоследовательный</option>
                     <option value="consistent">последовательный</option>
                 </select>
-                <P>Примечание: если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим "последовательный".</P>
+                <br/>
+                <P>Если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
+            </label>
+            <br />
+            <br />
+            <label>
+                Опубликовать &nbsp;
+                <input className="form-check-input" name="published" type="checkbox" checked={store.track.data.published} onChange={handleInputs} />
+                <P>Опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
             </label>
             <br />
             <br />
