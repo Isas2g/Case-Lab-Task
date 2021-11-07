@@ -72,12 +72,12 @@ const EditTrack = observer(()=>{
             <br />
             <label>
                 Последовательность прохождения трека
-                <select name="mode">
+                <select name="mode" onChange={handleInputs}>
                     <option value="free">непоследовательный</option>
                     <option value="consistent">последовательный</option>
                 </select>
                 <br/>
-                <P>Если Вы хотите, чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
+                <P>Чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
             </label>
             <br />
             <br />
@@ -88,9 +88,9 @@ const EditTrack = observer(()=>{
             </label>
             <br />
             <br />
-            <input className="btn btn-primary" type="submit" value="Подтвердить" />
+            <input className="btn btn-primary" type="submit" value="Отправить"></input>
         </form>
-</Div>
+    </Div>
     )})
 
 const UpdateTrack =  (props: any) => {

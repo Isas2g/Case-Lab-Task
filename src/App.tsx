@@ -32,7 +32,7 @@ export const App: React.FC = observer(() => {
           <Route exact path="/tracks/:id" component={token ? GetTrack : Login} />
           <Route exact path="/tracks/edit/:id" component={token ? UpdateTrack : Login} />
           <Route exact path="/tracks/trackDetail/:id" component={token ? TrackDetailPage : Login} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" component={token ? Error : Login} />
           <Route component={token ? Error : Login} />
         </Switch>
       </main>

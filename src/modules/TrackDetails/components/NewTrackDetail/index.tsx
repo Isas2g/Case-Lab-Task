@@ -4,6 +4,7 @@ import store from "../../store";
 
 import classes from './style/index.module.css';
 import { CreateCourseModal } from "./subcomponents/CreateCourseModal";
+import { CreateEntryTestModal } from "./subcomponents/CreateEntryTestModal";
 import { CreateEventModal } from "./subcomponents/CreateEventModal";
 
 interface Props {
@@ -26,7 +27,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
     
     const [modalCourseShow, setModalCourseShow] = useState(false);
     const [modalEventShow, setModalEventShow] = useState(false);
-    
+    const [modalEntryTestShow, setModalEntryTestShow] = useState(false);
     
     // type: 'course' | 'event' | 'entryTest' | 'pdf';
     // entityId: integer;
@@ -37,7 +38,6 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
       event.preventDefault();
       if (type === 'course' ||
             type === 'event' ||
-            type === 'entryTest' ||
             type === 'pdf'
         ) {
             store.addTrackDetail({
@@ -47,9 +47,21 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
                 required
             }, trackId);
           }
+      if (type === 'entry_test') {
+            store.addTrackDetail({
+                type, 
+                entityId,
+                sortIndex: 0,
+                required
+            }, trackId);
+      }
+    
       setCreateMode(false);
       setMutated(mutated+1);
     }
+    
+    const entryTest = store.details.filter((detail) => detail.data.type === 'entry_test');
+    console.log(entryTest);
     
     return <div>
         <Button onClick={() => setChooseMode(!chooseMode)}>Добавить деталь трека</Button>
@@ -58,6 +70,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
             <div className={classes.chooseType}>
                 <p onClick={() => {setType('course'); setChooseMode(false); setCreateMode(true);}}>Курс</p>
                 <p onClick={() => {setType('event'); setChooseMode(false); setCreateMode(true);}}>Событие</p>
+                {entryTest.length === 0 ? <p onClick={() => {setType('entry_test'); setChooseMode(false); setCreateMode(true);}}>Входное тестирование</p> : ''}
             </div>
             :
             ''
@@ -80,6 +93,15 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
                     <div>
                         <p onClick={() => setModalEventShow(true)} className={classes.createTrackDetailLink}>Выберите мероприятие из доступных</p>
                         <CreateEventModal setEntityId={setEntityId} show={modalEventShow} onHide={() => setModalEventShow(false)} trackId={trackId} />
+                    </div>
+                    :
+                    ''
+                }
+                {
+                    type === 'entry_test' ?
+                    <div>
+                        <p onClick={() => setModalEntryTestShow(true)} className={classes.createTrackDetailLink}>Создайте входное тестирование</p>
+                        <CreateEntryTestModal show={modalEntryTestShow} onHide={() => setModalEntryTestShow(false)} />
                     </div>
                     :
                     ''

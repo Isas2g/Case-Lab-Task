@@ -11,9 +11,9 @@ interface Props {
 }
 
 export const TrackAssign = observer(({trackId}:Props): JSX.Element => {
-
+  
   store.readTrackAssigns(trackId).then();
-
+  
   const [show, setModalShow] = useState(false);
   
   return (

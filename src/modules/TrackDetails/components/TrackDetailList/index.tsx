@@ -99,9 +99,9 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
                   <h3 className={"d-flex p-3"}>Элементы трека</h3>
                   {role === "teacher" ? <NewTrackDetail lastIndex={trackDetails.length} mutated={mutated} setMutated={setMutated} trackId={trackId} /> : ""}
               </div>
-                <SortableContainerJSX onSortEnd={sortEnd}>
-                  { trackDetails ? trackDetails.map((trackDetail:TrackDetail, index: number) => 
-                          <SortableItem index={index} key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
+                <SortableContainerJSX useDragHandle={true} axis="xy" onSortEnd={sortEnd}>
+                  { trackDetails ? trackDetails.map((trackDetail:TrackDetail, index: number) =>
+                          <SortableItem disabled={trackDetail.data.type === 'entry_test' ? true : false} index={index} key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
                       )
                   : '...'}
                 </SortableContainerJSX>
