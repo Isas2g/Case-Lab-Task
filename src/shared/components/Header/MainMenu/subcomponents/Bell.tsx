@@ -1,6 +1,6 @@
 import bell from "../../../../assets/notification-icon.png";
 import React from "react";
-import {BellButton} from "../style"
+import {BellButton} from "../index"
 
 
 export const Bell = () => {

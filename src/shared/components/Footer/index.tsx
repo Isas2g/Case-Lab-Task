@@ -7,11 +7,9 @@ export const Footer = () => {
     <footer className="footer mt-auto">
         <Div>
             <UL>
-                <Li><A href="https://twitter.com/julesforrest">Twitter</A></Li>
-                <Li><A href="https://codepen.io/julesforrest">Codepen</A></Li>
-                <Li><A href="mailto:julesforrest@gmail.com">Email</A></Li>
-                <Li><A href="https://dribbble.com/julesforrest">Dribbble</A></Li>
-                <Li><A href="https://github.com/julesforrest">Github</A></Li>
+                <Li><A href="https://rosatom.ru/">Росатом</A></Li>
+                <Li><A href="https://greenatom.ru">Гринатом</A></Li>
+                <Li><A href="https://github.com/Isas2g/Case-Lab-Task">GitHub</A></Li>
                 <Li>
                     <p>👋</p>
                 </Li>

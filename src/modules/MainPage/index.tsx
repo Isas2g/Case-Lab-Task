@@ -1,4 +1,4 @@
-import "./style/index.scss";
+import "./index.scss";
 import gif1 from "../../shared/assets/1.gif";
 import gif2 from "../../shared/assets/2.gif";
 import gif3 from "../../shared/assets/3.gif";

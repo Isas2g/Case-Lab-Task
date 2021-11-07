@@ -11,7 +11,6 @@ export const UL = styled.ul`
     grid-auto-flow: column;
   }
 `
-
 export const A = styled.a`
   color: white;
   text-decoration: none;
@@ -28,14 +27,13 @@ export const Li = styled.li`
   :hover ~ li p {
     animation: wave-animation 0.3s infinite;
 `
-
-/* below is just for demo styling */
-
 export const Div = styled.div`
   display: flex;
   height: 60px;
   width: 100%;
   background-color: #2c3034 !important;
   line-height: 1.3;
-  font-family: Menlo, monospace;
+  font-family: Raleway, sans-serif;
+  text-transform: lowercase;
+  letter-spacing: 10px;
 `
