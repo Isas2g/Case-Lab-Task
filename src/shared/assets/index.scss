@@ -4,7 +4,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Roboto', ui-sans-serif;
+  font-family: 'Roboto', ui-sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;

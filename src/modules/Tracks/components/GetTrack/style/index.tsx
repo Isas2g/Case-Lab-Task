@@ -7,6 +7,7 @@ import {ModalComponent} from "../../../../../shared/components/Modal";
 import UserForm from "../../TrackAssign/subcomponents/UserForm";
 import {UserList} from "../../../../Search/Users";
 import {dateFromUnix} from "../../../../../shared/utils/timestampToHumanFormat";
+import "./style.module.scss"
 
 const Spoiler = styled.div`
   border: 1px solid #e0e0e0;
@@ -77,7 +78,13 @@ export const StudentBtn = styled.button`
 `
 
 const UlContentTrack = styled.ul`
-  padding-left: 0px;
+  font-size: 22px;
+  padding-left: 0;
+  z-index: 99999;
+  text-shadow: 1px 0 1px #000,
+  0 1px 1px #000,
+  -1px 0 1px #000,
+    0 -1px 1px #000;
 `
 
 export const StateList = (props: any) => {
@@ -85,10 +92,10 @@ export const StateList = (props: any) => {
     const date2 = dateFromUnix(props.track.data.dateTimeFinish)
     const duration  = '?';
     return(
-        <UlContentTrack>
+        <UlContentTrack className={"contrast"} style={{zIndex: 9999}}>
             <Li key={'name'}>
-                <H2>{props.track.data.name}</H2>
-                <div>Начало трека: {date1}</div>
+                <H2 className={"contrast"}>{props.track.data.name}</H2>
+                <div className={"contrast"}>Начало трека: {date1}</div>
                 <div>Конец трека: {date2}</div>
                 <div>Продолжительность трека: {duration}</div>
             </Li>

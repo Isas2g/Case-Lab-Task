@@ -10,8 +10,7 @@ interface Props {
 
 export const DeleteModal: React.FC<Props> = ({show, onHide, title, track}) => {
   return (
-    <ModalComponent track={track} remove={true} title={title} show={show} onHide={onHide} heading="Удаление трека" >
-      <p>Вы уверены, что хотите удалить трек "{track.data.name}"?</p>
+    <ModalComponent track={track} remove={true} title={title} show={show} onHide={onHide} heading="" >
     </ModalComponent>
   )
 }

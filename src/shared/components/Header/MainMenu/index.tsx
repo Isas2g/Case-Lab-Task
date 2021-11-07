@@ -18,18 +18,6 @@ interface Props {
     setToken: TokenFunc;
 }
 
-export const CreateTrack: React.FC = () => {
-    const history = useHistory();
-    return(
-        <Button variant="light" onClick={() => history.push('/tracks/new')}><b>Создать трек</b></Button>
-    )
-}
-
- const Div = styled.div`
-   width: 200px;
-   border-radius: 0 0 10px;
- `
-
 export const MainMenu:React.FC<Props> = ({token, setToken}) => {
     const role = localStorage.getItem('role');
     return (
@@ -57,7 +45,6 @@ export const MainMenu:React.FC<Props> = ({token, setToken}) => {
                                 </IndexLinkContainer>
                         }
                     </Nav>
-                    <Div>{role === "teacher" ? <CreateTrack /> : ""}</Div>
                     <div className="d-flex align-items-center userCardBell">
                         <UserCard token={token} setToken={setToken} />
                         <Bell />

@@ -12,6 +12,7 @@ interface Props {
     setToken: TokenFunc;
 }
 
+
 export const Header:React.FC<Props> = ({token, setToken}) => {
   const location = useLocation();
 

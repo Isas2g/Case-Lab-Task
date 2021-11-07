@@ -5,12 +5,33 @@ import {observer} from "mobx-react-lite";
 import { TrackDetailList } from "../../../TrackDetails/components/TrackDetailList";
 import {ButtonGroup} from "react-bootstrap";
 import styled from "styled-components";
+import "./style/style.module.scss";
 
 const Back = styled.div`
-  background-color: #ECECEC;
+  background-color: #2c3034;
   background-size: cover;
   background-repeat: no-repeat;
   padding:45px;
+  position: relative;
+  width: 100%;
+`
+
+const Shadow = styled.div`
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#2c3034;
+  opacity: 0.3;
+`
+const Overlay = styled.div`
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index: 99999;
+  
 `
 
 const H3 = styled.h3`
@@ -29,17 +50,18 @@ const GetTrack = (props: any) => {
     const role = localStorage.getItem('role');
     return (
         <>
-            <Back className="container bg-image" style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}}>
-                <H3> Трек [id:{props.match.params.id}] </H3>
-                <State/>
-                {role === `teacher`
-                    ? <ButtonGroup>
-                        <EditButton />
-                        <Student trackId={props.match.params.id}/>
-                    </ButtonGroup>
-                    : ''
-                }
-            </Back>
+            <div>
+                <Back className="container contrast" style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}} >
+                        <State/>
+                        {role === `teacher`
+                            ? <ButtonGroup>
+                                <EditButton />
+                                <Student trackId={props.match.params.id}/>
+                            </ButtonGroup>
+                            : ''
+                        }
+                </Back>
+            </div>
             <TrackDetailList trackId={props.match.params.id} />
         </>
     )

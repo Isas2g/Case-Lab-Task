@@ -4,16 +4,17 @@ import style from "./style.module.scss";
 import { TrackModal } from "../subcomponents/TrackModal";
 import { DeleteModal } from "../subcomponents/DeleteTrackModal";
 import {Card, Col} from "react-bootstrap";
+import { BsXLg } from "react-icons/bs";
+import pointEr from "../../../../../shared/assets/pngwing.com.png";
 
 const Cross = styled.b`
-    cursor: pointer;
+    cursor: url(${pointEr}), auto;
     position: absolute;
     top: 0;
     right: 0;
     padding-right: 0.5rem;
     padding-top: 0.25rem;
     color: #575757;
-    /* text-shadow: #FC0 1px 0 10px; */
 
 `
 
@@ -26,14 +27,14 @@ export const ListItem = (props: any) => {
     return (
         <>
             <Col >
-                <Card>
+                <Card bg={"black"} className={style.pointer}>
                     <Card.Img src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={250} onClick={() => setModalShow(true)}/>
                     <div className={style.gradient}> </div>
 
-                    <Card.ImgOverlay onClick={() => setModalShow(true)} className={"d-flex align-items-end"}>
+                    <Card.ImgOverlay onClick={() => setModalShow(true)} className={"d-flex align-items-end gradient"}>
                         <Card.Title className={style.contrast}>{props.track.data.name}</Card.Title>
                     </Card.ImgOverlay>
-                    {role === "teacher" ? <Cross className="close mx-1" onClick={() => setDeleteModalShow(true)}>✖</Cross> : ""}
+                    {role === "teacher" ? <Cross onClick={() => setDeleteModalShow(true)}><BsXLg /></Cross> : ""}
                 </Card>
                 <TrackModal
                     show={modalShow}

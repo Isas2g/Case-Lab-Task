@@ -21,6 +21,7 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            fullscreen={"md-down"}
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
@@ -38,12 +39,11 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
                 :
                 ''
                 }
-            {heading !== '' ?
-                <Modal.Footer>
-                    <Button variant="warning" size="lg" href={'/tracks/'+ heading.substring(5)}>Перейти к треку</Button>
-                </Modal.Footer>
-                :
-                ''
+            {heading !== ''
+                ?   <Modal.Footer>
+                        <Button variant="warning" size="lg" href={'/tracks/'+ heading.substring(5)}>Перейти к треку</Button>
+                    </Modal.Footer>
+                :   ''
             }
                 
            
