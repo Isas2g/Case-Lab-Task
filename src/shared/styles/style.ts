@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const UL = styled.ul`
   list-style-type: none;
@@ -10,7 +10,7 @@ export const UL = styled.ul`
   @media (min-width: 500px) {
     grid-auto-flow: column;
   }
-`
+`;
 export const A = styled.a`
   color: white;
   text-decoration: none;
@@ -18,22 +18,22 @@ export const A = styled.a`
   :hover {
     box-shadow: inset 0 -1.2em 0 hsla(0, 0%, 100%, 0.4);
   }
-`
-export const Li = styled.li`
+`;
+export const LI = styled.li`
   :last-child {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
   }
   :hover ~ li p {
     animation: wave-animation 0.3s infinite;
-`
-export const Div = styled.div`
+`;
+export const DIV = styled.div`
   display: flex;
   height: 60px;
   width: 100%;
   background-color: #2c3034 !important;
   line-height: 1.3;
-  font-family: Raleway, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-transform: lowercase;
   letter-spacing: 10px;
-`
+`;

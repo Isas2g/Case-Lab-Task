@@ -1,19 +1,21 @@
-// import {Card} from "react-bootstrap";
-import avatar from "../../../../assets/user-icon.png";
 import {Link} from "react-router-dom";
 import React from "react";
 import {useHistory} from "react-router";
-import {UserProfileWrapper, CardBootstrap, NameUserProfile} from "../index"
+import {UserProfileWrapper, CardBootstrap} from "../index"
+import styled from "styled-components";
+import { TokenInterface } from "../interfaces";
 
+export const NameUserProfile = styled.div`
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    background-color: #2c3034 !important;
+    line-height: 1.3;
+    text-decoration: none;
+    padding-right: 15px !important;
+    padding-left: 8px;
+`;
 
-type TokenFunc = (str: string) => void;
-
-interface Props {
-    token: string;
-    setToken: TokenFunc;
-}
-
-export const UserCard: React.FC<Props> = ({token, setToken}) => {
+export const UserCard: React.FC<TokenInterface> = ({token, setToken}) => {
     const history = useHistory();
 
     const leave = () => {
@@ -31,7 +33,7 @@ export const UserCard: React.FC<Props> = ({token, setToken}) => {
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <div className="d-flex align-items-center">
                         <div className="image">
-                            <img className="m-1 rounded" height="40" width="40" src={avatar} alt="User's Avatar" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                         </div>
                         <div className="ml-3 w-100">
                             <NameUserProfile className="mb-0 mt-0 NameUserProfile">{localStorage.getItem('role') === "teacher" ? "Учитель" : "Ученик"}</NameUserProfile>
