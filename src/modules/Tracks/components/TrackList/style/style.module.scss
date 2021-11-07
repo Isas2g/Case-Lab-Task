@@ -6,12 +6,41 @@
     0 -1px 1px #000;
 }
 
+@media (max-width: 977px) and (min-width: 753px) {
+    .contrast {
+        transition: .2s;
+        font-size: 1.5vw !important;
+    } 
+
+    .bright {
+        height: 140px !important;
+    }
+}
+@media (max-width: 752px) {
+    .contrast {
+        transition: .2s;
+        font-size: 1.3vw !important;
+    } 
+
+    .bright {
+        height: 110px !important;
+    }
+}
+
+.contrast {
+    transition: .2s;
+    color: white;
+    font-weight: 600;
+    font-size: 1.7vw;
+} 
+
 .bright {
     
     img {
         opacity: .75;
         transition: .2s;
     }
+
     .contrast {
         transition: .2s;
     }
@@ -19,15 +48,25 @@
         img {
             opacity: 0.96;
         }
-        
+        transition: transform 0.3s;
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+        font-size: 2.1vw;
+
+        // filter: blur(1px);
+
+
         .contrast {
             text-shadow: 2px 0 2px #000,
             0 2px 2px #000,
             -2px 0 2px #000,
             0 -2px 2px #000 !important;
+            // filter:blur(0px);
         }
     }
 }
+
 
 
 

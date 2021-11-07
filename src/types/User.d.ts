@@ -1,5 +1,5 @@
 interface User {
-  id: integer;
+  id: number;
   login: string;
   fullName: string;
   data: UserData;

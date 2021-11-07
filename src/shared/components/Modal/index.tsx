@@ -1,17 +1,18 @@
 import { Modal, Button } from "react-bootstrap";
 import React from "react";
+import "./style/style.css"
+import store from "../../../modules/Tracks/store";
 
 interface Props {
     title: string;
     heading: string;
     show: boolean;
     onHide: ModalFunc;
-    trackId: number;
+    remove: boolean;
+    track: Track | undefined;
 }
 
-type ModalFunc = () => void;
-
-export const ModalComponent: React.FC<Props> = ({title, trackId, show, onHide, heading,  children}) => {
+export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  children, remove, track}) => {
     
     return (
         <Modal
@@ -27,12 +28,25 @@ export const ModalComponent: React.FC<Props> = ({title, trackId, show, onHide, h
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>{title}</h4>
-                {children}
+                <h4 className="cardTitle">{title}</h4>
+                <div>{children}</div>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="warning" size="lg" href={'/tracks/'+ trackId}>Перейти к треку</Button>
-            </Modal.Footer>
+            {remove && track !== undefined ?
+                <Modal.Footer>
+                    <Button onClick={() => store.deleteTrack(track)}>Удалить</Button>
+                </Modal.Footer>
+                :
+                ""
+                }
+            {heading !== "" ?
+                <Modal.Footer>
+                    <Button variant="warning" size="lg" href={"/tracks/"+ heading.substring(5)}>Перейти к треку</Button>
+                </Modal.Footer>
+                :
+                ""
+            }
+                
+           
         </Modal>
     )
 }
