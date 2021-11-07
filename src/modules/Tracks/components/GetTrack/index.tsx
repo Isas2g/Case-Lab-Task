@@ -10,11 +10,24 @@ const Back = styled.div`
   background-color: #ECECEC;
   background-size: cover;
   background-repeat: no-repeat;
+  padding:45px;
 `
 
 const H3 = styled.h3`
     font-size: large;
     background: #ECECEC;
+`
+
+const Progress = styled.h5`
+  /* background-color: darkorange; */
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
 `
 const State = observer(() => <StateList track={store.track} />);
 

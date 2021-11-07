@@ -11,14 +11,14 @@ interface Props {
 }
 
 export const TrackAssign = observer(({trackId}:Props): JSX.Element => {
-
+  
   store.readTrackAssigns(trackId).then();
-
+  
   const [show, setModalShow] = useState(false);
   
   return (
     <>
-      <Button onClick={() => setModalShow(true)}>Назначить учеников</Button>
+      <Button className={"btn-primary h-100"} onClick={() => setModalShow(true)}>Назначить учеников</Button>
       
         <ModalComponent show={show} onHide={() => setModalShow(false)} heading="Ученики трека" title="" remove={false} track={undefined}>
           <h4>Список студентов:</h4>

@@ -42,6 +42,10 @@
 html,
 body {
     height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: #171819;
+    color: rgba(255,255,255,0.55);
+
 }
 
 #root {
@@ -52,6 +56,7 @@ body {
 
 main {
     flex: 1 1 auto;
+    background-color: #171819;
 }
 
 

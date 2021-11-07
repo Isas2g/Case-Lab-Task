@@ -11,7 +11,7 @@ interface TrackDetail {
 }
 
 interface TrackDetailData {
-  type: 'course' | 'event' | 'entryTest' | 'pdf';
+  type: 'course' | 'event' | 'entry_test' | 'pdf';
   entityId: integer;
   sortIndex: integer;
   required: boolean;
