@@ -3,7 +3,7 @@ import avatar from "../../../../assets/user-icon.png";
 import {Link} from "react-router-dom";
 import React from "react";
 import {useHistory} from "react-router";
-import {UserProfileWrapper, CardBootstrap, NameUserProfile} from "../style"
+import {UserProfileWrapper, CardBootstrap, NameUserProfile} from "../index"
 
 
 type TokenFunc = (str: string) => void;

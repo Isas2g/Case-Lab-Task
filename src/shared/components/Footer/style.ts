@@ -11,7 +11,6 @@ export const UL = styled.ul`
     grid-auto-flow: column;
   }
 `
-
 export const A = styled.a`
   color: white;
   text-decoration: none;
@@ -28,7 +27,6 @@ export const Li = styled.li`
   :hover ~ li p {
     animation: wave-animation 0.3s infinite;
 `
-
 export const Div = styled.div`
   display: flex;
   height: 60px;
