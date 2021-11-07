@@ -2,16 +2,11 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 import {useHistory} from "react-router-dom";
-import styled from "styled-components";
-import style from "./style.module.scss";
 
 
 export const NewTrack: React.FC = () => {
     const history = useHistory();
-    const moveToNew = () => {
-        history.push('/tracks/new');
-    }
     return(
-        <Button variant="light" onClick={moveToNew}><b>+</b></Button>
+        <Button variant="light" onClick={() => history.push('/tracks/new')}><b>+</b></Button>
     )
 }

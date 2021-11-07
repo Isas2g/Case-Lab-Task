@@ -8,8 +8,8 @@ import {Card, Col} from "react-bootstrap";
 const Cross = styled.b`
     cursor: pointer;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     padding-right: 0.5rem;
     padding-top: 0.25rem;
     color: #575757;
@@ -25,9 +25,9 @@ export const ListItem = (props: any) => {
 
     return (
         <>
-            <Col className="wrapperMiniCard">
-                <Card className={"bg-dark text-white" + style.pointer + ' ' + style.bright} onClick={() => setModalShow(true)}>
-                    <Card.Img className="cardImage" src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={230} />
+            <Col >
+                <Card>
+                    <Card.Img src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={250} onClick={() => setModalShow(true)}/>
                     <div className={style.gradient}> </div>
 
                     <Card.ImgOverlay onClick={() => setModalShow(true)} className={"d-flex align-items-end"}>

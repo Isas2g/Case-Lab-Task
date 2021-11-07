@@ -9,8 +9,6 @@ interface Props {
   trackId: number;
 }
 
-type SetLoaded = (state: boolean) => void;
-
 export const UserList = observer(({trackId}:Props): JSX.Element => {
 
   const [willBeAssignedUsers, setWillBeAssignedUsers] = useState([]); 

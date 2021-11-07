@@ -39,7 +39,7 @@ export const MainMenu:React.FC<Props> = ({token, setToken}) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        {role != "teacher"
+                        {role !== "teacher"
                             ?   <NavDropdown
                                     title={<span className={"text-light"}>Треки <BsChevronDown/></span>}
                                     id="basic-nav-dropdown">

@@ -76,16 +76,6 @@ export const StudentBtn = styled.button`
   font-size: 16px;
 `
 
-
-const Image = styled.img`
-  height: 100px;
-  width: 100%;
-`
-
-const Cross = styled.b`
-    cursor: pointer;
-`
-
 const UlContentTrack = styled.ul`
   padding-left: 0px;
 `

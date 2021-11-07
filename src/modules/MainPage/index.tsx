@@ -26,7 +26,7 @@ export const Main = () => {
                 <div className={"line__2"}><h1>образовательной платформы РЕКОРД|Mobile!</h1></div>
             </div>
             <div className={"d-flex"}>
-                <img src={graphImage[getRandomInt(1,4)]} />
+                <img src={graphImage[getRandomInt(1,4)]} alt={"Анимация абстрактная, геометрическая"}/>
             </div>
         </div>
     )

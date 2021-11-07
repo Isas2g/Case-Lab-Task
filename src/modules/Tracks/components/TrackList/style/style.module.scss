@@ -1,27 +1,18 @@
 .contrast {
-    color: #fff;
     text-shadow: 1px 0 1px #000,
     0 1px 1px #000,
     -1px 0 1px #000,
     0 -1px 1px #000;
-    padding-bottom: 0px;
+    transition: .2s;
+    font-weight: 600;
+    font-size: 1.7vw;
 }
 
 .wrapperMiniCard {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-    background-color: red !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    min-width: 200px;
 }
-
-// .cardImage {
-//     // background-color:rgba(0,0,0,.8);
-//     height:100%;
-//     position:fixed;
-//     width:100%;
-//     top:0;
-//     left:0;
-
-// }
 
 
 
@@ -64,21 +55,13 @@
   );
 }
 
-.contrast {
-    transition: .2s;
-    color: white;
-    font-weight: 600;
-    font-size: 1.7vw;
-} 
-
 .bright {
 
     img {
-        opacity: 1;
+        opacity: 0.75;
         transition: .2s;
     }
-    // background: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0)) !important;
-    color: black;
+    background: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0)) !important;
     .contrast {
         transition: .2s;
         width: 100%;
@@ -99,7 +82,6 @@
             0 2px 2px #000,
             -2px 0 2px #000,
             0 -2px 2px #000 !important;
-            // filter:blur(0px);
         }
     }
 }
@@ -125,8 +107,6 @@
     font-weight: 600;
     margin-bottom: 0;
     color: darkgrey;
-
-
 }
 
 .titleContainer {
