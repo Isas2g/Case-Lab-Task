@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {useHistory} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import store from "../../TrackAssign/store";
+import DetailStore from "../../../../TrackDetails/store";
 import {ModalComponent} from "../../../../../shared/components/Modal";
 import UserForm from "../../TrackAssign/subcomponents/UserForm";
 import {UserList} from "../../../../Search/Users";
@@ -32,8 +33,9 @@ const Summary = styled.summary`
 
 const Details = styled.details`
   padding: 1em 0;
-  border-top: 5px solid darkorange;
-  &.details[open] div{
+  border-top: 5px solid #645c55;
+
+  &.details[open] div {
     animation: spoiler 1s;
   }
 `
@@ -57,24 +59,22 @@ export const EditButton = styled.button`
   /* background-color: darkorange; */
   border: 1px solid black;
   border-radius: 10px;
-  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
 `
 
 export const StudentBtn = styled.button`
   /* background-color: darkorange; */
   border: 1px solid black;
   border-radius: 10px;
-  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
 `
 
 const UlContentTrack = styled.ul`
@@ -87,15 +87,36 @@ const UlContentTrack = styled.ul`
     0 -1px 1px #000;
 `
 
-export const StateList = (props: any) => {
+export const StateList = observer((props: any) => {
     const date1 = dateFromUnix(props.track.data.dateTimeStart)
     const date2 = dateFromUnix(props.track.data.dateTimeFinish)
-    const duration  = '?';
+    const duration  = DetailStore.details.reduce((a, b) => {
+        let arrayA = a.split(" ч ");
+        let arrayB = b.entityDuration.split(" ч ");
+        let hoursA = parseInt(arrayA[0]) || 0;
+        let hoursB = parseInt(arrayB[0]) || 0;
+        let hours = hoursA + hoursB;
+        if (arrayA[1])
+            arrayA = arrayA[1].split(" мин")
+        else arrayA = ['']
+        if (arrayB[1])
+            arrayB = arrayB[1].split(" мин")
+        else arrayB = ['']
+        let minutesA = parseInt(arrayA[0]) || 0;
+        let minutesB = parseInt(arrayB[0]) || 0;
+        let minutes = minutesA + minutesB;
+        if (minutes > 59) {
+            minutes -= 60;
+            hours +=1;
+        }
+        return `${hours} ч ${minutes} мин`;
+    }, '');
     return(
         <UlContentTrack className={"contrast"} style={{zIndex: 9999}}>
             <Li key={'name'}>
-                <H2 className={"contrast"}>{props.track.data.name}</H2>
-                <div className={"contrast"}>Начало трека: {date1}</div>
+                <H2>{props.track.data.name}</H2>
+                <br />
+                <div>Начало трека: {date1}</div>
                 <div>Конец трека: {date2}</div>
                 <div>Продолжительность трека: {duration}</div>
             </Li>
@@ -112,7 +133,7 @@ export const StateList = (props: any) => {
             <br/>
         </UlContentTrack>
     )
-}
+})
 
 export const Edit = (props: any) => {
 
@@ -123,7 +144,7 @@ export const Edit = (props: any) => {
     }
 
     return(
-        <EditButton className="btn btn-primary" onClick={moveToUpdate}> Изменить трек </EditButton>
+        <EditButton className="btn btn-light" onClick={moveToUpdate}> Изменить трек </EditButton>
     )
 }
 
@@ -143,7 +164,7 @@ export const Student = observer(({trackId}:StudentProps): JSX.Element => {
 
     return (
         <>
-            <StudentBtn className="btn" onClick={() => setModalShow(true)}> Ученики трека </StudentBtn>
+            <StudentBtn className="btn btn-light" onClick={() => setModalShow(true)}> Ученики трека </StudentBtn>
 
             <ModalComponent show={show} onHide={() => setModalShow(false)} heading="Ученики трека" title=""
                             remove={false} track={undefined}>

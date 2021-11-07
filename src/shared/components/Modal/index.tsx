@@ -41,7 +41,12 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
                 }
             {heading !== ''
                 ?   <Modal.Footer>
-                        <Button variant="warning" size="lg" href={'/tracks/'+ heading.substring(5)}>Перейти к треку</Button>
+                        <Button
+                            variant="light"
+                            size="lg"
+                            href={'/tracks/'+ heading.substring(5)}
+                            disabled={localStorage.getItem("role") === "student" && !track?.assigned}
+                        >Перейти к треку</Button>
                     </Modal.Footer>
                 :   ''
             }

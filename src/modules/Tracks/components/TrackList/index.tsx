@@ -27,9 +27,9 @@ const TrackListComponent:React.FC<Props> = ({my}) => {
     const role = localStorage.getItem("role");
     return(
             <>
-                <div className={"d-flex align-items-center "}>
+                <div className={"d-flex align-items-center justify-content-between"}>
                     <h3 className={"p-3 " + style.trackTitle}>{my ? "Мои треки" : "Каталог треков"}</h3>
-                    <Div className={"ml-auto"}>{role === "teacher" ? <CreateTrack /> : ""}</Div>
+                    <Div>{role === "teacher" ? <CreateTrack /> : ""}</Div>
                 </div>
                 <TrackList my={my} />
             </>

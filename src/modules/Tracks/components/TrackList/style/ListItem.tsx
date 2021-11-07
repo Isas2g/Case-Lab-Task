@@ -6,6 +6,7 @@ import { DeleteModal } from "../subcomponents/DeleteTrackModal";
 import {Card, Col} from "react-bootstrap";
 import { BsXLg } from "react-icons/bs";
 import pointEr from "../../../../../shared/assets/pngwing.com.png";
+import store from "src/modules/Tracks/store";
 
 const Cross = styled.b`
     cursor: url(${pointEr}), auto;
@@ -20,14 +21,13 @@ const Cross = styled.b`
 
 export const ListItem = (props: any) => {
     const role :string|null = localStorage.getItem("role");
-
     const [modalShow, setModalShow] = React.useState(false);
     const [deleteModalShow, setDeleteModalShow] = React.useState(false);
 
     return (
         <>
-            <Col >
-                <Card bg={"black"} className={style.pointer}>
+            <Col>
+                <Card bg={"black"} className={style.pointer} style={{minWidth: 250}}>
                     <Card.Img src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={250} onClick={() => setModalShow(true)}/>
                     <div className={style.gradient}> </div>
 
@@ -42,6 +42,7 @@ export const ListItem = (props: any) => {
                     data={props.track.data}
                     trackId={props.track.id}
                     role = {role}
+                    track={props.track}
                 />
                 <DeleteModal
                     show={deleteModalShow}

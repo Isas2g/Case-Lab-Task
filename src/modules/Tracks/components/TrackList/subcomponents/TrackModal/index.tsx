@@ -3,6 +3,7 @@ import { ModalComponent } from '../../../../../../shared/components/Modal';
 import "./style/style.css"
 import store from "../../../../store";
 import {dateFromUnix} from "../../../../../../shared/utils/timestampToHumanFormat";
+import {observer} from "mobx-react-lite";
 
 interface Props {
   trackId: number;
@@ -10,13 +11,11 @@ interface Props {
   onHide: ModalFunc;
   data: TrackData;
   role: string|null;
+  track: Track|undefined;
 }
 
 
-export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role}) => {
-
-    store.getTrack(trackId).then();
-    const track = store.track;
+export const TrackModal: React.FC<Props> = observer(({trackId, show, onHide, data, role, track}) => {
 
     const {name, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;
 
@@ -32,4 +31,4 @@ export const TrackModal: React.FC<Props> = ({trackId, show, onHide, data, role})
             {/*<Link to={'/tracks/' + trackId}>See track</Link>*/}
         </ModalComponent>
     )
-};
+})

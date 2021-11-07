@@ -26,11 +26,11 @@ export const TrackList: React.FC<Props> = observer( ({my}) => {
                         <ListItem track={track} key={track.id}/>
                     ))}
                     {trackRow.length < 3
-                        ? <Col key={"col3"}></Col>
+                        ? <Col key={"col3"} />
                         : ''
                     }
                     {trackRow.length < 2
-                        ? <Col key={"col2"}></Col>
+                        ? <Col key={"col2"} />
                         : ''
                     }
                     </Row>

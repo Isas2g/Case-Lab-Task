@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import store from "../../store";
 
-import classes from './style/index.module.css';
+import classes from './style/index.module.scss';
 import { CreateCourseModal } from "./subcomponents/CreateCourseModal";
 import { CreateEntryTestModal } from "./subcomponents/CreateEntryTestModal";
 import { CreateEventModal } from "./subcomponents/CreateEventModal";
@@ -45,7 +45,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
                 entityId,
                 sortIndex: lastIndex,
                 required
-            }, trackId);
+            }, trackId).then();
           }
       if (type === 'entry_test') {
             store.addTrackDetail({
@@ -53,7 +53,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
                 entityId,
                 sortIndex: 0,
                 required
-            }, trackId);
+            }, trackId).then();
       }
     
       setCreateMode(false);
@@ -64,7 +64,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
     console.log(entryTest);
     
     return <div>
-        <Button onClick={() => setChooseMode(!chooseMode)}>Добавить деталь трека</Button>
+        <Button variant="light" onClick={() => setChooseMode(!chooseMode)}>Добавить деталь трека</Button>
         
         {chooseMode ?
             <div className={classes.chooseType}>
