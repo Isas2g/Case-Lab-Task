@@ -12,6 +12,6 @@ export const NewTrack: React.FC = () => {
         history.push('/tracks/new');
     }
     return(
-        <Button className={style.addTrackButton} variant="light" onClick={moveToNew}><b>+</b></Button>
+        <Button variant="light" onClick={moveToNew}><b>+</b></Button>
     )
 }

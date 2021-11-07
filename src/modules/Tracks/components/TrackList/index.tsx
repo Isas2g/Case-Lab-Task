@@ -10,11 +10,10 @@ interface Props {
 }
 
 const TrackListComponent:React.FC<Props> = ({my}) => {
-    store.getTracks();
+    store.getTracks().then();
     const role = localStorage.getItem("role");
     return(
-        <div className={style.trackListContainer}>  
-            {/* <img src={image} className={style.trackImage}/> */}
+        <div className={style.trackListContainer}>
             <div className="w-100">
                 <div className={"container d-flex align-items-center " + style.titleContainer}>
                     <h3 className={"d-flex p-3 " + style.trackTitle}>{my ? "Мои треки" : "Каталог треков"}</h3>

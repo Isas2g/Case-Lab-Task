@@ -8,9 +8,8 @@ import {IndexLinkContainer} from "react-router-bootstrap";
 import {Link, useHistory} from 'react-router-dom';
 import { BsChevronDown } from "react-icons/bs";
 import "./style/style.scss"
-import {NewTrack} from "../../../../modules/Tracks/components/TrackList/style/NewTrackButton";
-import style from "../../../../modules/Tracks/components/TrackList/style/style.module.scss";
 import styled from "styled-components";
+import { Button } from 'react-bootstrap';
 
 type TokenFunc = (str: string) => void;
 
@@ -21,19 +20,14 @@ interface Props {
 
 export const CreateTrack: React.FC = () => {
     const history = useHistory();
-    const moveToNew = () => {
-        history.push('/tracks/new');
-    }
     return(
-        <Button className={style.addTrackButton} variant="light" onClick={moveToNew}><b> Создать трек </b></Button>
+        <Button variant="light" onClick={() => history.push('/tracks/new')}><b>Создать трек</b></Button>
     )
 }
 
  const Div = styled.div`
    width: 200px;
    border-radius: 0 0 10px;
-   
- }
  `
 
 export const MainMenu:React.FC<Props> = ({token, setToken}) => {
@@ -63,7 +57,7 @@ export const MainMenu:React.FC<Props> = ({token, setToken}) => {
                                 </IndexLinkContainer>
                         }
                     </Nav>
-                    <Div>{role === "teacher" ? <CreateTrack></CreateTrack> : ""}</Div>
+                    <Div>{role === "teacher" ? <CreateTrack /> : ""}</Div>
                     <div className="d-flex align-items-center userCardBell">
                         <UserCard token={token} setToken={setToken} />
                         <Bell />

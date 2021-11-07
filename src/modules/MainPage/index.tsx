@@ -20,11 +20,12 @@ export const Main = () => {
     }
 
     return (
-        <div className={"d-flex container justify-content-center"}>
-            <div className="d-flex helloWrapper align-middle mt-auto mb-auto">
-                <h1 className="text-center hello line-1 anim-typewriter">Добро пожаловать на главную страницу образовательной платформы RecordMobile!</h1>
+        <div className={"d-flex container justify-content-center align-items-end align-content-end"}>
+            <div className="d-flex flex-column helloWrapper align-middle mt-auto mb-auto wrapper">
+                <div className={"line__1"}><h1>Добро пожаловать на главную страницу</h1></div>
+                <div className={"line__2"}><h1>образовательной платформы РЕКОРД|Mobile!</h1></div>
             </div>
-            <div className={"d-flex ml-auto"}>
+            <div className={"d-flex"}>
                 <img src={graphImage[getRandomInt(1,4)]} />
             </div>
         </div>
