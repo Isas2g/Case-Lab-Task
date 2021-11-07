@@ -138,9 +138,10 @@ interface StudentProps {
 }
 
 export const Student = observer(({trackId}:StudentProps): JSX.Element => {
-
+    
+    
     store.readTrackAssigns(trackId).then();
-
+    
     const [show, setModalShow] = useState(false);
 
     return (
