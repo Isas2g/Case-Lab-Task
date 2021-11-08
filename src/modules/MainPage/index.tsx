@@ -23,7 +23,7 @@ export const Main = () => {
         <div className={"d-flex container justify-content-center align-items-end align-content-end"}>
             <div className="d-flex flex-column helloWrapper align-middle mt-auto mb-auto wrapper">
                 <div className={"line__1"}><h1>Добро пожаловать на главную страницу</h1></div>
-                <div className={"line__2"}><h1>образовательной платформы <h1-colored>РЕКОРД Mobile!</h1-colored></h1></div>
+                <div className={"line__2"}><h1>образовательной платформы РЕКОРД Mobile!</h1></div>
             </div>
             <div className={"d-flex"}>
                 <img src={graphImage[getRandomInt(1,4)]} alt={"Анимация абстрактная, геометрическая"}/>

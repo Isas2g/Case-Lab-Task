@@ -34,6 +34,4 @@ export const DIV = styled.div`
   background-color: #2c3034 !important;
   line-height: 1.3;
   font-family: 'Open Sans', sans-serif;
-  text-transform: lowercase;
-  letter-spacing: 10px;
 `;
