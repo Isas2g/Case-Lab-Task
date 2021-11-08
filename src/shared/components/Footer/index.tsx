@@ -1,20 +1,20 @@
 import React from "react";
-import {Div, UL, Li, A} from "./style";
+import {DIV, UL, A, LI} from "../../styles/style";
 import "./style.scss";
 
 export const Footer = () => {
   return (
     <footer className="footer mt-auto">
-        <Div>
+        <DIV>
             <UL>
-                <Li><A href="https://rosatom.ru/">Росатом</A></Li>
-                <Li><A href="https://greenatom.ru">Гринатом</A></Li>
-                <Li><A href="https://github.com/Isas2g/Case-Lab-Task">GitHub</A></Li>
-                <Li>
+                <LI><A href="https://rosatom.ru/">Росатом</A></LI>
+                <LI><A href="https://greenatom.ru">Гринатом</A></LI>
+                <LI><A href="https://github.com/Isas2g/Case-Lab-Task">GitHub</A></LI>
+                <LI>
                     <p>👋</p>
-                </Li>
+                </LI>
             </UL>
-        </Div>
+        </DIV>
     </footer>
   )
 }

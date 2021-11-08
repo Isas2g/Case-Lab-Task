@@ -11,12 +11,11 @@
 }
 
 .hello {
-    /* font-family: 'Roboto', sans-serif; */
     position: absolute;
 	top: 140px;
 	left: 0;
 	width: 100%;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding-left: 4rem;
     padding-right: 4rem
 }

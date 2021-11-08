@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap');
+
+h1-colored {
+    color: rgb(208, 90, 80);
+}
+
 .helloWrapper {
     display: flex;
     align-items: center;
@@ -12,12 +18,10 @@
 
 .line__1,
 .line__2 {
-    white-space: nowrap; /* keep text in one line */
-    overflow: hidden; /* hide text behind the cursor */
-    margin: 0.5rem auto;
-    font-family: "Major Mono Display", monospace !important;
-    font-size: 1rem;
-    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif !important;
+    margin-right: auto;
 }
 
 .line__1 {
