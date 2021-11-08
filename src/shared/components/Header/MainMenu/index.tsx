@@ -51,9 +51,13 @@ export const MainMenu: FC<TokenInterface> = ({ token, setToken }) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {role !== "teacher" ? (
-              <NavDropdown title={<span className={"text-light"}>Треки<BsChevronDown /></span>}id="basic-nav-dropdown">
-                <IndexLinkContainer to={"/tracks"}><NavDropdown.Item className={""}>Каталог</NavDropdown.Item></IndexLinkContainer>
-                <IndexLinkContainer to={"/tracks/my"} className={"shadow"}><NavDropdown.Item>Мои треки</NavDropdown.Item></IndexLinkContainer>
+              <NavDropdown title={<span className={"text-light"}>Треки<BsChevronDown /></span>} id="basic-nav-dropdown">
+                <IndexLinkContainer to={"/tracks"}>
+                  <NavDropdown.Item className={""}>Каталог</NavDropdown.Item>
+                </IndexLinkContainer>
+                <IndexLinkContainer to={"/tracks/my"} className={"shadow"}>
+                  <NavDropdown.Item>Мои треки</NavDropdown.Item>
+                </IndexLinkContainer>
               </NavDropdown>
             ) : (
               <IndexLinkContainer to={"/tracks"}><button className="btn fourth">Каталог треков</button></IndexLinkContainer>
