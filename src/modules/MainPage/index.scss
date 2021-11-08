@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap');
 
-h1-colored {
-    color: rgb(255, 206, 71);
-}
-
 .helloWrapper {
     display: flex;
     align-items: center;
@@ -17,7 +13,8 @@ h1-colored {
 }
 
 .line__1,
-.line__2 {
+.line__2,
+.line__3 {
     white-space: nowrap;
     overflow: hidden;
     font-family: 'Open Sans', sans-serif !important;
@@ -31,6 +28,15 @@ h1-colored {
 }
 
 .line__2 {
+    border-right: 2px solid rgba(17, 17, 17, 0.0);
+    animation: animated-text__2 2s steps(44, end) 1s 1 normal both,
+    animated-cursor__2 900ms steps(44, end) infinite;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+}
+
+.line__3 {
+    color:rgb(255, 206, 71);
     border-right: 2px solid rgba(17, 17, 17, 0.0);
     animation: animated-text__2 2s steps(44, end) 1s 1 normal both,
     animated-cursor__2 900ms steps(44, end) infinite;

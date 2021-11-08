@@ -35,3 +35,7 @@ export const DIV = styled.div`
   line-height: 1.3;
   font-family: 'Open Sans', sans-serif;
 `;
+export const H1 = styled.h1`
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+`;
