@@ -23,14 +23,14 @@
 
 .line__1 {
     border-right: 2px solid rgba(17, 17, 17, 0.0);
-    animation: animated-text__1 2s steps(44, end) 1s 1 normal both,
-    animated-cursor__1 900ms steps(44, end) 3;
+    animation: animated-text__1 2s steps(36, end) 1s 1 normal both,
+    animated-cursor__1 500ms steps(36, end) 6;
 }
 
 .line__2 {
     border-right: 2px solid rgba(17, 17, 17, 0.0);
-    animation: animated-text__2 2s steps(44, end) 1s 1 normal both,
-    animated-cursor__2 900ms steps(44, end) infinite;
+    animation: animated-text__2 1.1s steps(27, end) 1s 1 normal both,
+    animated-cursor__2 500ms steps(27, end) 2;
     -webkit-animation-delay: 3s;
     animation-delay: 3s;
 }
@@ -38,10 +38,10 @@
 .line__3 {
     color:rgb(255, 206, 71);
     border-right: 2px solid rgba(17, 17, 17, 0.0);
-    animation: animated-text__2 2s steps(44, end) 1s 1 normal both,
-    animated-cursor__2 900ms steps(44, end) infinite;
-    -webkit-animation-delay: 3s;
-    animation-delay: 3s;
+    animation: animated-text__3 1s steps(14, end) 1s 1 normal both,
+    animated-cursor__3 500ms steps(44, end) 4;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
 }
 
 @keyframes animated-cursor__1 {
@@ -54,6 +54,15 @@
 }
 
 @keyframes animated-cursor__2 {
+    from {
+        border-right-color: rgba(17, 17, 17, 0.0);
+    }
+    to {
+        border-right-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+@keyframes animated-cursor__3 {
     from {
         border-right-color: rgba(17, 17, 17, 0.0);
     }
@@ -76,6 +85,15 @@
         width: 0;
     }
     to {
-        width: 54rem;
+        width: 35rem;
+    }
+}
+
+@keyframes animated-text__3 {
+    from {
+        width: 0;
+    }
+    to {
+        width: 21rem;
     }
 }
