@@ -52,7 +52,7 @@ const DragHandle = SortableHandle(() => (
 const SortableItem = SortableElement(({mutated, setMutated, trackDetail}: TrackDetailSortable) => (
   <div style={{position: 'relative'}}>
     <TrackDetail key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
-    <DragHandle />
+      {localStorage.getItem("role") === "teacher" ? <DragHandle /> : ''}
   </div>
 ));
 
