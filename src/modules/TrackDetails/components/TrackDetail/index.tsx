@@ -53,7 +53,7 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
 
                 <Card.Text style={{position: 'absolute', bottom: '15px', right: '15px'}}>
                     <IndexLinkContainer to={'/tracks/trackDetail/' + trackDetail.id}>
-                        <Button variant={"light"}>Перейти</Button>
+                        <Button variant={"outline"} className={"btn fourth"}>Перейти</Button>
                     </IndexLinkContainer>
                 </Card.Text>
                 

@@ -27,10 +27,9 @@ export const ListItem = (props: any) => {
     return (
         <>
             <Col>
-                <Card bg={"black"} className={style.pointer} style={{minWidth: 250}}>
+                <Card bg={"black"} className={style.pointer} style={{minWidth: 350}}>
                     <Card.Img src={"https://tml10.rosatom.ru/"+props.track.data.previewPicture} alt="Card image" height={250} onClick={() => setModalShow(true)}/>
                     <div className={style.gradient}> </div>
-
                     <Card.ImgOverlay onClick={() => setModalShow(true)} className={"d-flex align-items-end gradient"}>
                         <Card.Title className={style.contrast}>{props.track.data.name}</Card.Title>
                     </Card.ImgOverlay>

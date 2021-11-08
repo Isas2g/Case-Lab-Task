@@ -64,7 +64,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
     console.log(entryTest);
     
     return <div>
-        <Button variant="light" onClick={() => setChooseMode(!chooseMode)}>Добавить деталь трека</Button>
+        <Button variant={"outline"} className={"btn fourth"} onClick={() => setChooseMode(!chooseMode)}>Добавить деталь трека</Button>
         
         {chooseMode ?
             <div className={classes.chooseType}>

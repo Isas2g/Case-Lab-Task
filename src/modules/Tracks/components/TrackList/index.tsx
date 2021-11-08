@@ -6,7 +6,7 @@ import styled from "styled-components";
 import {useHistory} from "react-router-dom";
 import {Button} from "react-bootstrap";
 import { IndexLinkContainer } from "react-router-bootstrap";
-import 'src/shared/styles/style.css'
+import 'src/shared/styles/style.scss'
 import {DIV, H2} from 'src/shared/styles/style'
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 export const CreateTrack: React.FC = () => {
     const history = useHistory();
     return(
-        <IndexLinkContainer to={"/tracks/new"}><button className="btn fourth">Создать трек</button></IndexLinkContainer>
+        <IndexLinkContainer to={"/tracks/new"}><Button variant={"outline"} className={"btn fourth"}>Создать трек</Button></IndexLinkContainer>
     )
 }
 
@@ -27,7 +27,7 @@ const TrackListComponent:React.FC<Props> = ({my}) => {
     return(
             <>
                 <DIV className={"d-flex align-items-center justify-content-between"}>
-                    <H2>{my ? "Мои треки" : ""}</H2>
+                    <H2>{my ? "Мои треки" : "Каталог треков"}</H2>
                     <div>{role === "teacher" ? <CreateTrack /> : ""}</div>
                 </DIV>
                 <TrackList my={my} />

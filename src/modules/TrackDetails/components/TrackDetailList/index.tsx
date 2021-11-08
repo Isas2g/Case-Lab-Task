@@ -65,7 +65,7 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
     const fetchData = async () => {
       setTrackDetails((await store.getTrackDetails(trackId)).sort((a: TrackDetail, b: TrackDetail) => a.data.sortIndex - b.data.sortIndex));
     };
-    fetchData();
+    fetchData().then();
   }, [mutated, trackId]);
   const sortEnd = async( {oldIndex, newIndex}: TrackSortEnd ) => {
     await store.updateTrackDetail({

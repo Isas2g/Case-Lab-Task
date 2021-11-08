@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 import { BsChevronDown } from "react-icons/bs";
 import styled from "styled-components";
 import { TokenInterface } from "./interfaces";
-import "src/shared/styles/style.css";
+import "src/shared/styles/style.scss";
+import { Button } from "react-bootstrap";
 
 export const BellButton = styled.div`
   padding: 10px;
@@ -51,16 +52,16 @@ export const MainMenu: FC<TokenInterface> = ({ token, setToken }) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {role !== "teacher" ? (
-              <NavDropdown title={<span className={"text-light"}>Треки<BsChevronDown /></span>} id="basic-nav-dropdown">
+              <NavDropdown title={<span className={"btn fourth"}>Треки <BsChevronDown /></span>} id="basic-nav-dropdown">
                 <IndexLinkContainer to={"/tracks"}>
-                  <NavDropdown.Item className={""}>Каталог</NavDropdown.Item>
+                  <NavDropdown.Item>Каталог</NavDropdown.Item>
                 </IndexLinkContainer>
-                <IndexLinkContainer to={"/tracks/my"} className={"shadow"}>
+                <IndexLinkContainer to={"/tracks/my"}>
                   <NavDropdown.Item>Мои треки</NavDropdown.Item>
                 </IndexLinkContainer>
               </NavDropdown>
             ) : (
-              <IndexLinkContainer to={"/tracks"}><button className="btn fourth">Каталог треков</button></IndexLinkContainer>
+              <IndexLinkContainer to={"/tracks"}><Button variant={"outline"} className={"btn fourth"}>Каталог треков</Button></IndexLinkContainer>
             )}
           </Nav>
           <div className="d-flex align-items-center userCardBell">

@@ -19,6 +19,7 @@ const Back = styled.div`
 const BackImage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
+  display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -74,7 +75,7 @@ const GetTrack = (props: any) => {
         <>
                 <Back className={"container contrast clearfix"}>
                     <BackImage style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}} />
-                    <div style={{opacity: 1, zIndex: 100, }}>
+                    <div style={{opacity: 1, zIndex: 100, }} className={"clearfix d-inline-block"}>
                         <State/>
                     {role === `teacher`
                         ?   <ButtonGroup>

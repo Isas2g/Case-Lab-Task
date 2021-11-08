@@ -2,6 +2,7 @@ import { Modal, Button } from "react-bootstrap";
 import React from "react";
 import "./style/style.css"
 import store from "../../../modules/Tracks/store";
+import { IndexLinkContainer } from "react-router-bootstrap";
 
 interface Props {
     title: string;
@@ -34,19 +35,21 @@ export const ModalComponent: React.FC<Props> = ({title, show, onHide, heading,  
             </Modal.Body>
             {remove && track !== undefined ?
                 <Modal.Footer>
-                    <Button onClick={() => store.deleteTrack(track)}>Удалить</Button>
+                    <Button variant={"outline"} className={"btn fourth"} onClick={() => store.deleteTrack(track)}>Удалить</Button>
                 </Modal.Footer>
                 :
                 ''
                 }
             {heading !== ''
                 ?   <Modal.Footer>
+                    <IndexLinkContainer to={"/tracks/"+ heading.substring(5)}>
                         <Button
-                            variant="light"
+                            variant={"outline"}
+                            className={"btn fourth"}
                             size="lg"
-                            href={'/tracks/'+ heading.substring(5)}
                             disabled={localStorage.getItem("role") === "student" && !track?.assigned}
                         >Перейти к треку</Button>
+                    </IndexLinkContainer>
                     </Modal.Footer>
                 :   ''
             }
