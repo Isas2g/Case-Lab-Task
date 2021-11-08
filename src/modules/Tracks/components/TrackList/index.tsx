@@ -5,6 +5,9 @@ import style from "./style/style.module.scss";
 import styled from "styled-components";
 import {useHistory} from "react-router-dom";
 import {Button} from "react-bootstrap";
+import { IndexLinkContainer } from "react-router-bootstrap";
+import 'src/shared/styles/style.css'
+import {DIV, H2} from 'src/shared/styles/style'
 
 interface Props {
     my: boolean;
@@ -13,24 +16,20 @@ interface Props {
 export const CreateTrack: React.FC = () => {
     const history = useHistory();
     return(
-        <Button variant="light" onClick={() => history.push('/tracks/new')}><b>Создать трек</b></Button>
+        <IndexLinkContainer to={"/tracks/new"}><button className="btn fourth">Создать трек</button></IndexLinkContainer>
     )
 }
-
-const Div = styled.div`
-   width: 200px;
-   border-radius: 0 0 10px;
- `
 
 const TrackListComponent:React.FC<Props> = ({my}) => {
     store.getTracks().then();
     const role = localStorage.getItem("role");
+    const history = useHistory();
     return(
             <>
-                <div className={"d-flex align-items-center justify-content-between"}>
-                    <h3 className={"p-3 " + style.trackTitle}>{my ? "Мои треки" : "Каталог треков"}</h3>
-                    <Div>{role === "teacher" ? <CreateTrack /> : ""}</Div>
-                </div>
+                <DIV className={"d-flex align-items-center justify-content-between"}>
+                    <H2>{my ? "Мои треки" : ""}</H2>
+                    <div>{role === "teacher" ? <CreateTrack /> : ""}</div>
+                </DIV>
                 <TrackList my={my} />
             </>
 
