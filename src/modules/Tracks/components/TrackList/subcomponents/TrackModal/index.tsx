@@ -4,6 +4,7 @@ import "./style/style.css"
 import store from "../../../../store";
 import {dateFromUnix} from "../../../../../../shared/utils/timestampToHumanFormat";
 import {observer} from "mobx-react-lite";
+import {DIV, P} from 'src/shared/styles/style'
 
 interface Props {
   trackId: number;
@@ -16,19 +17,14 @@ interface Props {
 
 
 export const TrackModal: React.FC<Props> = observer(({trackId, show, onHide, data, role, track}) => {
-
     const {name, previewText, published, dateTimeStart, dateTimeFinish, mode} = data;
-
-
-
     return (
         <ModalComponent show={show} onHide={onHide} title={name} heading={"Трек " + trackId} remove={false} track={track}>
-            <p><b>Описание:</b> {previewText}</p>
-            <p><b>Дата открытия трека:</b> {dateFromUnix(dateTimeStart)}</p>
-            <p><b>Дата закрытия трека:</b> {dateFromUnix(dateTimeFinish)}</p>
-            <p><b>Режим прохождения:</b> {mode === "free" ? "свободный" : "последовательный"}</p>
-            {role === 'teacher' ? <p><b>Опубликовано:</b> {published ? "да" : "нет"}</p> : ''}
-            {/*<Link to={'/tracks/' + trackId}>See track</Link>*/}
+            <P><b>Описание:</b> {previewText}</P>
+            <P><b>Дата открытия трека:</b> {dateFromUnix(dateTimeStart)}</P>
+            <P><b>Дата закрытия трека:</b> {dateFromUnix(dateTimeFinish)}</P>
+            <P><b>Режим прохождения:</b> {mode === "free" ? "свободный" : "последовательный"}</P>
+            {role === 'teacher' ? <P><b>Опубликовано:</b> {published ? "да" : "нет"}</P> : ''}
         </ModalComponent>
     )
 })
