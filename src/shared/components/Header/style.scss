@@ -28,23 +28,21 @@ header {
 }
 
 .dropdown-item{
-  background-color: #232b2f;
-  color: #c5c9cc;
+  background-color: #dadada;
+  color: #232323 !important;
 }
 
 .dropdown-item.active{
-  background-color: #272e34 !important;
+  background-color: #c0c0c0 !important;
 }
 
 .dropdown-menu{
-  background-color: #232b2f;
-  color: #c5c9cc !important;
+  background-color: #dadada;
 }
 
 .dropdown-item:hover {
-  background-color: #2c3034 !important;
+  background-color: #b2b2b2 !important;
   box-shadow: none !important;
-  color: #ffffff;
 }
 
 .aCard {
