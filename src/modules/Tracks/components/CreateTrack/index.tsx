@@ -2,10 +2,8 @@ import React, { FormEvent } from "react";
 import store from "../../store"
 import {useHistory} from "react-router-dom";
 import {handleInputs} from "../../../../shared/utils/handleInputsUpdate&Create";
-import styled from "styled-components";
 import {Div} from "../UpdateTrack";
 import {Button, Form} from "react-bootstrap";
-import {inputDate} from "../../../../shared/utils/timestampToInputFormat";
 
 
 const CreateTrack: React.FC = () => {
@@ -27,10 +25,6 @@ const CreateTrack: React.FC = () => {
         store.addTrack(store.track.data).then();
         history.push('/tracks');
     }
-
-    const Input = styled.input`
-      //visibility: hidden;
-    `
 
     return (
         <Div className={"container align-center"}>
