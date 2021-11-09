@@ -60,7 +60,9 @@ const GetTrack = (props: any) => {
     const role = localStorage.getItem('role');
     return (
         <>
-                <Back className={"container contrast clearfix"}>
+            <div style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`, borderRadius: "25px", backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+                <Back style={{backgroundColor: "rgba(0, 0, 0, 0.65)"}} className={"container contrast clearfix"}>
+                    
                     <div style={{opacity: 1, zIndex: 100, }} className={"clearfix d-inline-block"}>
                         <State/>
                     {role === `teacher`
@@ -77,8 +79,10 @@ const GetTrack = (props: any) => {
                         :   ''
                     }
                     </div>
-                    <BackImage style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}} />
+                    
+                    {/* <BackImage style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}} /> */}
                 </Back>
+            </div>
             <TrackDetailList trackId={props.match.params.id} />
             
             <Button onClick={() => setIsSuccess(true)}>Пройти трек.</Button>
