@@ -18,7 +18,7 @@ export const TrackDetailPage: React.FC = (props: any) => {
         </div>
       </div>
       
-      <Button onClick={goBack}>Вернуться к треку</Button>
+      <Button variant={"outline"} className={"btn fourth"} onClick={goBack}>Вернуться к треку</Button>
     </Container>
   )
 }
