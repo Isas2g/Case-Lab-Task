@@ -50,41 +50,46 @@ const State = observer(() => <StateList track={store.track} />);
 const EditButton = observer(() => <Edit track={store.track} />);
 
 const GetTrack = (props: any) => {
-  const [trackDetails] = useState([]);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const finishedCount = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.finished).length;
-  const progressValue = (finishedCount / trackDetails.length) * 100 || 0;
-  const [previewPic, setPreviewPic] = useState("");
-  store.getTrack(props.match.params.id).then(() => setPreviewPic(store.track.data.previewPicture));
-  const role = localStorage.getItem("role");
-  return (
-    <>
-      <Back className={"container contrast clearfix"}>
-        <div style={{ opacity: 1, zIndex: 100 }} className={"clearfix d-inline-block"}>
-          <State />
-          {role === `teacher` ? (
-            <ButtonGroup>
-              <EditButton />
-              <Student trackId={props.match.params.id} />
-            </ButtonGroup>
-          ) : (
-            ""
-          )}
-          {role === "student" ? (
-            <Progress className="row float-end mt-auto">Прогресс трека: {progressValue}%</Progress>
-          ) : (
-            ""
-          )}
-        </div>
-        <BackImage style={{ backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')` }} />
-      </Back>
-      <TrackDetailList trackId={props.match.params.id} />
+    const [trackDetails] = useState([]);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const finishedCount = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.finished).length;
+    const progressValue = (finishedCount / trackDetails.length) * 100 || 0;
+    const [previewPic, setPreviewPic] = useState('');
+    store.getTrack(props.match.params.id).then(() => setPreviewPic(store.track.data.previewPicture));
+    const role = localStorage.getItem('role');
+    return (
+        <>
+            <div style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`, borderRadius: "25px", backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+                <Back style={{backgroundColor: "rgba(0, 0, 0, 0.65)"}} className={"container contrast clearfix"}>
 
-      <Button onClick={() => setIsSuccess(true)}>Пройти трек.</Button>
+                    <div style={{opacity: 1, zIndex: 100, }} className={"clearfix d-inline-block"}>
+                        <State/>
+                    {role === `teacher`
+                        ?   <ButtonGroup>
+                                <EditButton />
+                                <Student trackId={props.match.params.id}/>
+                            </ButtonGroup>
+                        :   ''
+                    }
+                    {role === 'student'
+                        ?   <Progress className="row float-end mt-auto">
+                                Прогресс трека: {progressValue}%
+                            </Progress>
+                        :   ''
+                    }
+                    </div>
 
-      <SuccessModal data={store.track.data} show={isSuccess} onHide={() => setIsSuccess(false)} />
-    </>
-  );
-};
+                    {/* <BackImage style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}} /> */}
+                </Back>
+            </div>
+            <TrackDetailList trackId={props.match.params.id} />
+
+            <Button onClick={() => setIsSuccess(true)}>Пройти трек.</Button>
+
+            <SuccessModal data={store.track.data} show={isSuccess} onHide={() => setIsSuccess(false)} />
+
+        </>
+    )
+}
 
 export default GetTrack;
