@@ -6,6 +6,7 @@ import classes from './style/index.module.scss';
 import { CreateCourseModal } from "./subcomponents/CreateCourseModal";
 import { CreateEntryTestModal } from "./subcomponents/CreateEntryTestModal";
 import { CreateEventModal } from "./subcomponents/CreateEventModal";
+import { CreatePdfModal } from "./subcomponents/CreatePdfModal";
 
 interface Props {
   trackId: number;
@@ -28,8 +29,9 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
     const [modalCourseShow, setModalCourseShow] = useState(false);
     const [modalEventShow, setModalEventShow] = useState(false);
     const [modalEntryTestShow, setModalEntryTestShow] = useState(false);
+    const [modalPdfShow, setModalPdfShow] = useState(false);
     
-    // type: 'course' | 'event' | 'entryTest' | 'pdf';
+    // type: 'course' | 'event' | 'entry_test' | 'pdf';
     // entityId: integer;
     // sortIndex: integer;
     // required: boolean;
@@ -70,6 +72,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
                 <p onClick={() => {setType('course'); setChooseMode(false); setCreateMode(true);}}>Курс</p>
                 <p onClick={() => {setType('event'); setChooseMode(false); setCreateMode(true);}}>Событие</p>
                 {entryTest.length === 0 ? <p onClick={() => {setType('entry_test'); setChooseMode(false); setCreateMode(true);}}>Входное тестирование</p> : ''}
+                <p onClick={() => {setType('pdf'); setChooseMode(false); setCreateMode(true);}}>PDF-документ</p>
             </div>
             :
             ''
@@ -101,6 +104,15 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
                     <div>
                         <p onClick={() => setModalEntryTestShow(true)} className={classes.createTrackDetailLink}>Создайте входное тестирование</p>
                         <CreateEntryTestModal show={modalEntryTestShow} onHide={() => setModalEntryTestShow(false)} />
+                    </div>
+                    :
+                    ''
+                }
+                {
+                    type === 'pdf' ?
+                    <div>
+                        <p onClick={() => setModalPdfShow(true)} className={classes.createTrackDetailLink}>Создайте pdf документ</p>
+                        <CreatePdfModal show={modalPdfShow} onHide={() => setModalPdfShow(false)} />
                     </div>
                     :
                     ''
