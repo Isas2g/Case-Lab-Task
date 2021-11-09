@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap");
 
 .fourth {
-    font-family: 'Open Sans', sans-serif;
-    border-color: rgb(255, 206, 71) !important;
-    color: #fff;
-    background-image: -webkit-linear-gradient(45deg, rgb(255, 206, 71) 50%, transparent 50%) !important;
-    background-image: linear-gradient(45deg, rgb(255, 206, 71) 50%, transparent 50%) !important;
-    background-position: 100%;
-    background-size: 400%;
-    -webkit-transition: background 300ms ease-in-out, color 300ms ease-in-out;
-    transition: background 300ms ease-in-out, color 300ms ease-in-out;
+  font-family: "Open Sans", sans-serif;
+  border-color: rgb(255, 206, 71) !important;
+  color: #fff;
+  background-image: -webkit-linear-gradient(45deg, rgb(255, 206, 71) 50%, transparent 50%) !important;
+  background-image: linear-gradient(45deg, rgb(255, 206, 71) 50%, transparent 50%) !important;
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out, color 300ms ease-in-out;
+  transition: background 300ms ease-in-out, color 300ms ease-in-out;
 }
 .fourth:hover {
+  background-position: 0;
+  color: #000;
+}
+.dropdown.show {
+  .fourth {
     background-position: 0;
     color: #000;
-}
-.dropdown.show{
-    .fourth{
-        background-position: 0;
-        color: #000;
-    }
+  }
 }

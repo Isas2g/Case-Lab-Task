@@ -1,9 +1,7 @@
 import DetailService from "../../../services/detailsService";
 
 const getTrackDetail = async (id: number) => {
-    let trackDetail: TrackDetail;
-    trackDetail = await DetailService.trackDetailGet(id);
-    return trackDetail;
-}
+  return await DetailService.trackDetailGet(id);
+};
 
 export default getTrackDetail;

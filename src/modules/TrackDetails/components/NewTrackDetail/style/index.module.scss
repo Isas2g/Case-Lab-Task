@@ -2,12 +2,12 @@
   background: #1c1a1a;
   border-radius: 0 0 10px 10px;
   text-align: center;
-  
+
   p {
     cursor: pointer;
     padding: 5px;
-    transition: .2s;
-    
+    transition: 0.2s;
+
     &:hover {
       background: #4b4a4a;
     }
@@ -16,14 +16,14 @@
 
 .searchItem {
   cursor: pointer;
-  transition: .2s;
-  
+  transition: 0.2s;
+
   &:hover {
     background: #000;
   }
 }
 
-.createTrackDetailLink{
+.createTrackDetailLink {
   cursor: pointer;
   text-decoration: underline;
 }

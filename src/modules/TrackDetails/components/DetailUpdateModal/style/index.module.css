@@ -1,1 +1,7 @@
-.searchItem{cursor:pointer;transition:.2s}.searchItem:hover{background:#000}
+.searchItem {
+  cursor: pointer;
+  transition: 0.2s;
+}
+.searchItem:hover {
+  background: #000;
+}

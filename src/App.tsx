@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
-import  { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./shared/assets/App.scss";
 
 import { Header } from "./shared/components/Header";
@@ -16,7 +16,7 @@ import { Profile } from "./modules/Profile";
 import { TrackDetailPage } from "./modules/TrackDetails";
 
 export const App: React.FC = observer(() => {
-  const [token, setToken]:any = useState(localStorage.getItem("token") ? localStorage.getItem("token") : "");
+  const [token, setToken] = useState<string>(localStorage.getItem("token") || "");
   return (
     <Router>
       <Header token={token} setToken={setToken} />
@@ -24,9 +24,9 @@ export const App: React.FC = observer(() => {
         <Switch>
           <Route exact path="/" component={token ? Main : Login} />
           <Route exact path="/profile" component={token ? Profile : Login} />
-          <Route exact path="/tracks" component={token ? (my:boolean) => <Tracks my={false} /> : Login} />
+          <Route exact path="/tracks" component={token ? () => <Tracks my={false} /> : Login} />
           <Route exact path="/tracks/new" component={token ? CreateTrack : Login} />
-          <Route exact path="/tracks/my" component={token ? (my:boolean) => <Tracks my={true} /> : Login} />
+          <Route exact path="/tracks/my" component={token ? () => <Tracks my={true} /> : Login} />
           <Route exact path="/tracks/:id" component={token ? GetTrack : Login} />
           <Route exact path="/tracks/edit/:id" component={token ? UpdateTrack : Login} />
           <Route exact path="/tracks/trackDetail/:id" component={token ? TrackDetailPage : Login} />
@@ -37,4 +37,4 @@ export const App: React.FC = observer(() => {
       <Footer />
     </Router>
   );
-})
+});

@@ -2,10 +2,10 @@ interface Track {
   id: integer;
   status: Status;
   assigned: boolean;
-  data: TrackData; 
+  data: TrackData;
 }
 
-type Status = 'not_started' | 'processed' | 'finished';
+type Status = "not_started" | "processed" | "finished";
 
 interface TrackData {
   name: string;
@@ -14,5 +14,5 @@ interface TrackData {
   published: boolean;
   dateTimeStart: number;
   dateTimeFinish: number;
-  mode: 'free' | 'consistent';
+  mode: "free" | "consistent";
 }

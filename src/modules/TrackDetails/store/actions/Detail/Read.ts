@@ -1,21 +1,15 @@
 import DetailService from "../../../services/detailsService";
 
-const getTrackDetails = async (id:number) => {
-    let trackDetails: Array<TrackDetail>;
-    trackDetails = await DetailService.trackDetails(id);
-    return trackDetails;
-}
+const getTrackDetails = async (id: number) => {
+  return await DetailService.trackDetails(id);
+};
 
 export const getTrackDetailCourses = async (searchQuery: string) => {
-    let courses: Array<Course>;
-    courses = await DetailService.trackDetailCoursesGet(searchQuery);
-    return courses;
-}
+  return await DetailService.trackDetailCoursesGet(searchQuery);
+};
 
 export const getTrackDetailEvents = async (searchQuery: string) => {
-    let events: Array<Event>;
-    events = await DetailService.trackDetailEventsGet(searchQuery);
-    return events;
-}
+  return await DetailService.trackDetailEventsGet(searchQuery);
+};
 
 export default getTrackDetails;

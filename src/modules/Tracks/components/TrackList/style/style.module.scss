@@ -1,47 +1,42 @@
 .contrast {
-    text-shadow: 1px 0 1px #000,
-    0 1px 1px #000,
-    -1px 0 1px #000,
-    0 -1px 1px #000;
-    transition: .2s;
-    font-weight: 600;
-    font-size: 1.7vw;
+  text-shadow: 1px 0 1px #000, 0 1px 1px #000, -1px 0 1px #000, 0 -1px 1px #000;
+  transition: 0.2s;
+  font-weight: 600;
+  font-size: 1.7vw;
 }
 
 .wrapperMiniCard {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    min-width: 200px;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  min-width: 200px;
 }
-
-
 
 @media (max-width: 977px) and (min-width: 753px) {
-    .contrast {
-        transition: .2s;
-        font-size: 1.5vw !important;
-    } 
+  .contrast {
+    transition: 0.2s;
+    font-size: 1.5vw !important;
+  }
 
-    .bright {
-        height: 140px !important;
-    }
+  .bright {
+    height: 140px !important;
+  }
 }
 @media (max-width: 752px) {
-    .contrast {
-        transition: .2s;
-        font-size: 1.3vw !important;
-    } 
+  .contrast {
+    transition: 0.2s;
+    font-size: 1.3vw !important;
+  }
 
-    .bright {
-        height: 110px !important;
-    }
+  .bright {
+    height: 110px !important;
+  }
 }
 
 .gradient {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
     180deg,
     hsla(0, 0%, 35.29%, 0.05) 0%,
     hsla(0, 0%, 34.53%, 0.134375) 16.36%,
@@ -56,93 +51,85 @@
 }
 
 .bright {
-
+  img {
+    opacity: 0.75;
+    transition: 0.2s;
+  }
+  background: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0)) !important;
+  .contrast {
+    transition: 0.2s;
+    width: 100%;
+  }
+  &:hover {
     img {
-        opacity: 0.75;
-        transition: .2s;
+      opacity: 1;
     }
-    background: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0)) !important;
-    .contrast {
-        transition: .2s;
-        width: 100%;
-    }
-    &:hover  {
-        img {
-            opacity: 1;
-            
-        }
-        background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
-        transition: transform 0.3s;
-        -webkit-transform: scale(1.02);
-        -ms-transform: scale(1.02);
-        transform: scale(1.02);        
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+    transition: transform 0.3s;
+    -webkit-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    transform: scale(1.02);
 
-        .contrast {
-            text-shadow: 2px 0 2px #000,
-            0 2px 2px #000,
-            -2px 0 2px #000,
-            0 -2px 2px #000 !important;
-        }
+    .contrast {
+      text-shadow: 2px 0 2px #000, 0 2px 2px #000, -2px 0 2px #000, 0 -2px 2px #000 !important;
     }
+  }
 }
 
-
-
-
 .pointer {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
 
 .trackListContainer {
-    display: flex;
-    flex-direction: row;
-    background-color: #171a1d;;
+  display: flex;
+  flex-direction: row;
+  background-color: #171a1d;
 }
 
 .trackImage {
-    width: 20%;
+  width: 20%;
 }
 
 .trackTitle {
-    font-weight: 600;
-    margin-bottom: 0;
-    color: darkgrey;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: darkgrey;
 }
 
 .titleContainer {
-    padding-left: 0;
-    background-color: #171a1d;;
-    margin-top: 70px;
+  padding-left: 0;
+  background-color: #171a1d;
+  margin-top: 70px;
 }
 
 .addTrackButton {
-    margin-left: 2%;
-    width: 5%;
-    background-color: #1d202400;
-    border: 4px solid #c0c1c424;
-    border-radius: 10px;
-    color: #c0c1c424;
-    font-size: 2.2vw;
-    padding: 0px;
-    &:hover {
-        background-color: #c0c1c424;
-        border: 4px solid #f7f9ff28;
-        color:#f7f9ff71;
-    }
+  margin-left: 2%;
+  width: 5%;
+  background-color: #1d202400;
+  border: 4px solid #c0c1c424;
+  border-radius: 10px;
+  color: #c0c1c424;
+  font-size: 2.2vw;
+  padding: 0px;
+  &:hover {
+    background-color: #c0c1c424;
+    border: 4px solid #f7f9ff28;
+    color: #f7f9ff71;
+  }
 
-    &:focus {
-        background-color: #c0c1c424;
-        border: 4px solid #f7f9ff28;
-        color:#f7f9ff71;
-    }
+  &:focus {
+    background-color: #c0c1c424;
+    border: 4px solid #f7f9ff28;
+    color: #f7f9ff71;
+  }
 }
 
 .rowT {
-    margin-right: 4rem;
-    margin-left: 2rem;
-    margin-top: 2rem;
+  margin-right: 4rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
 }
 
 .cardBody {
-    height: 2rem;
+  height: 2rem;
 }

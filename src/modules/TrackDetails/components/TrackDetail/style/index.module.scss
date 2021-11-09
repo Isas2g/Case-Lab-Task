@@ -1,11 +1,11 @@
 .edit-btn {
-    cursor: pointer;
-    opacity: 0;
-    transition: .2s;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.2s;
 }
 
 .edit-trackDetail {
-  &:hover .edit-btn{
+  &:hover .edit-btn {
     opacity: 1;
   }
 }

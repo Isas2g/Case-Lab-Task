@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import logo from "../../../assets/banner-white.png";
@@ -52,7 +52,14 @@ export const MainMenu: FC<TokenInterface> = ({ token, setToken }) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {role !== "teacher" ? (
-              <NavDropdown title={<span className={"btn fourth"}>Треки <BsChevronDown /></span>} id="basic-nav-dropdown">
+              <NavDropdown
+                title={
+                  <span className={"btn fourth"}>
+                    Треки <BsChevronDown />
+                  </span>
+                }
+                id="basic-nav-dropdown"
+              >
                 <IndexLinkContainer to={"/tracks"}>
                   <NavDropdown.Item>Каталог</NavDropdown.Item>
                 </IndexLinkContainer>
@@ -61,7 +68,11 @@ export const MainMenu: FC<TokenInterface> = ({ token, setToken }) => {
                 </IndexLinkContainer>
               </NavDropdown>
             ) : (
-              <IndexLinkContainer to={"/tracks"}><Button variant={"outline"} className={"btn fourth"}>Каталог треков</Button></IndexLinkContainer>
+              <IndexLinkContainer to={"/tracks"}>
+                <Button variant={"outline"} className={"btn fourth"}>
+                  Каталог треков
+                </Button>
+              </IndexLinkContainer>
             )}
           </Nav>
           <div className="d-flex align-items-center userCardBell">
@@ -73,5 +84,3 @@ export const MainMenu: FC<TokenInterface> = ({ token, setToken }) => {
     </Navbar>
   );
 };
-
-

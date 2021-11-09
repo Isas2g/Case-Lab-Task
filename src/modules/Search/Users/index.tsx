@@ -1,6 +1,6 @@
 import store from "./store";
 import { UserItem } from "./components/UserItem";
-import {observer} from "mobx-react-lite";
+import { observer } from "mobx-react-lite";
 import { Table } from "react-bootstrap";
 import { useState } from "react";
 import { WillBeAssignedUserItem } from "./components/WillBeAssignedUserItem";
@@ -9,10 +9,9 @@ interface Props {
   trackId: number;
 }
 
-export const UserList = observer(({trackId}:Props): JSX.Element => {
+export const UserList = observer(({ trackId }: Props): JSX.Element => {
+  const [willBeAssignedUsers, setWillBeAssignedUsers] = useState([]);
 
-  const [willBeAssignedUsers, setWillBeAssignedUsers] = useState([]); 
-  
   return (
     <div>
       <Table>
@@ -24,11 +23,17 @@ export const UserList = observer(({trackId}:Props): JSX.Element => {
             <th>Запись пользователя</th>
           </tr>
         </thead>
-        {
-          store.users.map( (user: User) => <UserItem willBeAssignedUsers={willBeAssignedUsers} setWillBeAssignedUsers={setWillBeAssignedUsers} user={user} trackId={trackId} key={user.id} />)
-        }
+        {store.users.map((user: User) => (
+          <UserItem
+            willBeAssignedUsers={willBeAssignedUsers}
+            setWillBeAssignedUsers={setWillBeAssignedUsers}
+            user={user}
+            trackId={trackId}
+            key={user.id}
+          />
+        ))}
       </Table>
-        <br />
+      <br />
       <h3>Будут подписаны</h3>
       <Table>
         <thead>
@@ -38,10 +43,10 @@ export const UserList = observer(({trackId}:Props): JSX.Element => {
             <th>Предприятие</th>
           </tr>
         </thead>
-        {
-          willBeAssignedUsers.map( (user: User) => <WillBeAssignedUserItem user={user} key={user.id} />)
-        }
+        {willBeAssignedUsers.map((user: User) => (
+          <WillBeAssignedUserItem user={user} key={user.id} />
+        ))}
       </Table>
     </div>
-  )
-})
+  );
+});

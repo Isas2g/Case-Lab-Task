@@ -1,9 +1,9 @@
-interface TrackAssigns{
-    id: number;
-    trackId: number;
-    data: TrackAssignData;
+interface TrackAssigns {
+  id: number;
+  trackId: number;
+  data: TrackAssignData;
 }
 
-interface TrackAssignData{
-    userId: number;
+interface TrackAssignData {
+  userId: number;
 }
