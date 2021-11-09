@@ -7,10 +7,10 @@ export const handleInputs = async (event: any) => {
         'checkbox': target.checked,
         'datetime-local' : new Date(target.value).getTime() / 1000,
     }
-    let value: any = actions[target.type] || target.value;
+    let value: any = actions[target.type] !== undefined ? actions[target.type] : target.value;
     if (target.type === "file")
         value = await TrackService.trackPreview(target.files[0]);
-    console.log(value);
+    //console.log(target.name);
     const name = target.name;
     new FileReader()
     store.track.data = {

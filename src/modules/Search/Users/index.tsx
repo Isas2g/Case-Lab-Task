@@ -28,6 +28,7 @@ export const UserList = observer(({trackId}:Props): JSX.Element => {
           store.users.map( (user: User) => <UserItem willBeAssignedUsers={willBeAssignedUsers} setWillBeAssignedUsers={setWillBeAssignedUsers} user={user} trackId={trackId} key={user.id} />)
         }
       </Table>
+        <br />
       <h3>Будут подписаны</h3>
       <Table>
         <thead>

@@ -3,7 +3,9 @@ import store from "../../store"
 import {useHistory} from "react-router-dom";
 import {handleInputs} from "../../../../shared/utils/handleInputsUpdate&Create";
 import styled from "styled-components";
-import {Div, Div1, Div2, P} from "../UpdateTrack";
+import {Div} from "../UpdateTrack";
+import {Button, Form} from "react-bootstrap";
+import {inputDate} from "../../../../shared/utils/timestampToInputFormat";
 
 
 const CreateTrack: React.FC = () => {
@@ -31,68 +33,56 @@ const CreateTrack: React.FC = () => {
     `
 
     return (
-        <>
-        <Div className="container align-center">
-            <h4>Создание трека</h4>
-            <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
-                <label>
-                    Название
-                    <input required className="form-control" name="name" type="text" onChange={handleInputs} />
-                </label>
+        <Div className={"container align-center"}>
+        <h4>Создание трека</h4>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Label>Название</Form.Label>
+                    <Form.Control required name="name" type="text" onChange={handleInputs} />
+                </Form.Group>
                 <br />
+                <Form.Group>
+                    <Form.Label>Описание</Form.Label>
+                    <Form.Control as="textarea" rows={5} required name="previewText" onChange={handleInputs} />
+                </Form.Group>
                 <br />
-                <label>
-                    Описание
-                    <textarea required className="form-control" name="previewText" onChange={handleInputs} />
-                </label>
+                <Form.Group>
+                    <Form.Label>Обложка трека</Form.Label>
+                    <Form.Control name="previewPicture" type="file" onChange={handleInputs} />
+                </Form.Group>
                 <br />
-                <br />
-                <label>
-                    Обложка трека
-                    <br/>
-                    <Input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
-                </label>
-                <br />
-                <br />
-                <Div1>
-                    <label>
-                    Дата начала
+                <Form.Group>
+                    <Form.Label>Дата начала</Form.Label>
                     <input required className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} />
-                    </label>
-                </Div1>
+                </Form.Group>
                 <br />
-                <br />
-                <Div2>
-                    <label>
-                    Дата окончания
+                <Form.Group>
+                    <Form.Label>Дата окончания</Form.Label>
                     <input required className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} />
-                    </label>
-                </Div2>
+                </Form.Group>
                 <br />
-                <br />
-                <label>
-                    Последовательность прохождения трека
-                    <select name="mode" onChange={handleInputs}>
-                        <option value="free">непоследовательный</option>
+                <Form.Group>
+                    <Form.Label>Последовательность прохождения трека</Form.Label>
+                    <Form.Select name="mode" onChange={handleInputs}>
+                        <option value="free">свободный</option>
                         <option value="consistent">последовательный</option>
-                    </select>
-                    <br/>
-                    <P>Чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
-                </label>
+                    </Form.Select>
+                    <Form.Text className="text-muted">
+                        Чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».
+                    </Form.Text>
+                </Form.Group>
                 <br />
+                <Form.Group>
+                    <Form.Label>Опубликовать &nbsp;</Form.Label>
+                    <Form.Switch name="published" onChange={handleInputs} />
+                    <Form.Text className="text-muted">
+                        Опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.
+                    </Form.Text>
+                </Form.Group>
                 <br />
-                <label>
-                    Опубликовать &nbsp;
-                    <input className="form-check-input" name="published" type="checkbox" defaultChecked={store.track.data.published} onChange={handleInputs} />
-                    <br/>
-                    <P>Опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
-                </label>
-                <br />
-                <br />
-                <input className="btn btn-primary" type="submit" value="Отправить" />
-            </form>
+                <Button variant={"outline"} type="submit" className={"btn fourth"}>Отправить</Button>
+            </Form>
         </Div>
-        </>
     );
 };
 

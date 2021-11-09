@@ -4,12 +4,16 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Roboto', ui-sans-serif !important;
+  font-family: "Open Sans", ui-sans-serif, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   background-color: #2c3034 !important;
-  color: #c5c9cc;
+  color: #c5c9cc !important;
+}
+
+table {
+  color: #c5c9cc !important;
 }
 
 code {

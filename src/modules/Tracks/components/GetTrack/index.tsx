@@ -1,5 +1,5 @@
 import store from "../../store"
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import { Edit, StateList, Student } from "./style";
 import {observer} from "mobx-react-lite";
 import { TrackDetailList } from "../../../TrackDetails/components/TrackDetailList";
@@ -29,16 +29,7 @@ const BackImage = styled.div`
   border-radius: 25px;
   filter: blur(3px);
   z-index: 10;
-`
-
-const Shadow = styled.div`
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-color:#2c3034;
-  opacity: 0.3;
+  pointer-events: none;
 `
 
 const Progress = styled.div`
@@ -52,29 +43,22 @@ const Progress = styled.div`
       background: rgb(45, 44, 45);
       background: linear-gradient(90deg, rgb(59, 56, 56) 0%, rgb(68, 68, 66) 50%, rgb(67, 70, 67) 100%);
       background-position: 25%;
-    `
-
-const H3 = styled.h3`
-    font-size: large;
-    background: #ECECEC;
 `
+
 const State = observer(() => <StateList track={store.track} />);
 
 const EditButton = observer(() => <Edit track={store.track} />);
 
 const GetTrack = (props: any) => {
-    const [trackDetails, setTrackDetails]:any = useState([]);
+    const [trackDetails] = useState([]);
     const finishedCount = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.finished).length;
-
     const progressValue = (finishedCount / trackDetails.length) * 100 || 0;
-
     const [previewPic, setPreviewPic] = useState('');
     store.getTrack(props.match.params.id).then(() => setPreviewPic(store.track.data.previewPicture));
     const role = localStorage.getItem('role');
     return (
         <>
                 <Back className={"container contrast clearfix"}>
-                    <BackImage style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}} />
                     <div style={{opacity: 1, zIndex: 100, }} className={"clearfix d-inline-block"}>
                         <State/>
                     {role === `teacher`
@@ -91,6 +75,7 @@ const GetTrack = (props: any) => {
                         :   ''
                     }
                     </div>
+                    <BackImage style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}} />
                 </Back>
             <TrackDetailList trackId={props.match.params.id} />
         </>

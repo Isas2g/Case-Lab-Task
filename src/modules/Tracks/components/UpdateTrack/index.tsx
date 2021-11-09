@@ -5,24 +5,12 @@ import {observer} from "mobx-react-lite";
 import styled from "styled-components";
 import {inputDate} from "../../../../shared/utils/timestampToInputFormat";
 import {handleInputs} from "../../../../shared/utils/handleInputsUpdate&Create";
+import { Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export const Div = styled.div`
-  width: 50%;
+  width: 70%;
 `
-
-export const Div1 = styled.div`
-  float: left;
-  width: 25%;
-`
-
-export const Div2 = styled.div`
-  float: right;
-  width: 25%;
-`
-export const P = styled.p`
-  font-size: 10px;
-  color: darkgray;
-    `
 
 const EditTrack = observer(()=>{
     const history = useHistory();
@@ -32,64 +20,56 @@ const EditTrack = observer(()=>{
         history.push(`/tracks/${store.track.id}`);
     }
     return(
-    <Div className="container">
+        <Div className={"container align-center"}>
     <h4>Настройки трека</h4>
-        <form className="form-group d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
-            <label>
-                Название
-                <input required className="form-control" name="name" type="text" onChange={handleInputs} value={store.track.data.name} />
-            </label>
+        <Form onSubmit={handleSubmit}>
+            <Form.Group>
+                <Form.Label>Название</Form.Label>
+                <Form.Control required name="name" type="text" onChange={handleInputs} value={store.track.data.name} />
+            </Form.Group>
             <br />
+            <Form.Group>
+                <Form.Label>Описание</Form.Label>
+                <Form.Control as="textarea" rows={5} required name="previewText" onChange={handleInputs} value={store.track.data.previewText} />
+            </Form.Group>
             <br />
-            <label>
-                Описание
-                <textarea required className="form-control" name="previewText" onChange={handleInputs} value={store.track.data.previewText} />
-            </label>
+            <Form.Group>
+                <Form.Label>Обложка трека</Form.Label>
+                <Form.Control name="previewPicture" type="file" onChange={handleInputs} />
+            </Form.Group>
             <br />
+                <Form.Group>
+                    <Form.Label>Дата начала</Form.Label>
+                    <input required className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeStart)} />
+                </Form.Group>
             <br />
-            <label>
-                Обложка трека
-                <input className="form-control" name="previewPicture" type="file" onChange={handleInputs} />
-            </label>
+                <Form.Group>
+                    <Form.Label>Дата окончания</Form.Label>
+                    <input required className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} value={inputDate(store.track.data.dateTimeFinish)} />
+                </Form.Group>
             <br />
-            <br />
-            <Div1>
-                <label>
-                Дата начала
-                <input required className="form-control" name="dateTimeStart" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeStart)} />
-                </label>
-            </Div1>
-            <br />
-            <br />
-            <Div2>
-                <label>
-                Дата окончания
-                <input required className="form-control" name="dateTimeFinish" type="datetime-local" onChange={handleInputs} defaultValue={inputDate(store.track.data.dateTimeFinish)} />
-                </label>
-            </Div2>
-            <br />
-            <br />
-            <label>
-                Последовательность прохождения трека
-                <select name="mode" onChange={handleInputs}>
-                    <option value="free">непоследовательный</option>
+            <Form.Group>
+                <Form.Label>Последовательность прохождения трека</Form.Label>
+                <Form.Select name="mode" onChange={handleInputs} value={store.track.data.mode}>
+                    <option value="free">свободный</option>
                     <option value="consistent">последовательный</option>
-                </select>
-                <br/>
-                <P>Чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».</P>
-            </label>
+                </Form.Select>
+                <Form.Text className="text-muted">
+                    Чтобы элементы трека были доступны студентам для прохождения в обязательном последовательном порядке, выберите режим «последовательный».
+                </Form.Text>
+            </Form.Group>
             <br />
+            <Form.Group>
+                <Form.Label>Опубликовать &nbsp;</Form.Label>
+                    <Form.Switch name="published" checked={store.track.data.published} onChange={handleInputs} />
+                    <Form.Text className="text-muted">
+                        Опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.
+                    </Form.Text>
+            </Form.Group>
             <br />
-            <label>
-                Опубликовать &nbsp;
-                <input className="form-check-input" name="published" type="checkbox" checked={store.track.data.published} onChange={handleInputs} />
-                <P>Опубликованный трек станет доступен в каталоге. Если Вы хотите продолжить редактирование курса, не ставьте галочку.</P>
-            </label>
-            <br />
-            <br />
-            <input className="btn btn-primary" type="submit" value="Отправить"></input>
-        </form>
-    </Div>
+            <Button variant={"outline"} type="submit" className={"btn fourth"}>Отправить</Button>
+        </Form>
+        </Div>
     )})
 
 const UpdateTrack =  (props: any) => {

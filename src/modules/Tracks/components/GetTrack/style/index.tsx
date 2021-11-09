@@ -144,7 +144,7 @@ export const Edit = (props: any) => {
     }
 
     return(
-        <EditButton className="btn btn-light" onClick={moveToUpdate}> Изменить трек </EditButton>
+        <EditButton className="btn fourth" onClick={moveToUpdate}> Изменить трек </EditButton>
     )
 }
 
@@ -164,7 +164,7 @@ export const Student = observer(({trackId}:StudentProps): JSX.Element => {
 
     return (
         <>
-            <StudentBtn className="btn btn-light" onClick={() => setModalShow(true)}> Ученики трека </StudentBtn>
+            <StudentBtn className="btn fourth" onClick={() => setModalShow(true)}> Ученики трека </StudentBtn>
 
             <ModalComponent show={show} onHide={() => setModalShow(false)} heading="Ученики трека" title=""
                             remove={false} track={undefined}>

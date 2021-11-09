@@ -2,7 +2,6 @@ import { TrackDetail } from '../TrackDetail';
 import store from "../../store";
 import {  useEffect, useState } from 'react';
 import { NewTrackDetail } from '../NewTrackDetail';
-import styled from "styled-components";
 
 import {
   SortableContainer,

@@ -1,10 +1,9 @@
 import React from "react";
 import { ModalComponent } from '../../../../../../shared/components/Modal';
 import "./style/style.css"
-import store from "../../../../store";
 import {dateFromUnix} from "../../../../../../shared/utils/timestampToHumanFormat";
 import {observer} from "mobx-react-lite";
-import {DIV, P} from 'src/shared/styles/style'
+import {P} from 'src/shared/styles/style'
 
 interface Props {
   trackId: number;

@@ -6,7 +6,6 @@ import { DeleteModal } from "../subcomponents/DeleteTrackModal";
 import {Card, Col} from "react-bootstrap";
 import { BsXLg } from "react-icons/bs";
 import pointEr from "../../../../../shared/assets/pngwing.com.png";
-import store from "src/modules/Tracks/store";
 
 const Cross = styled.b`
     cursor: url(${pointEr}), auto;
