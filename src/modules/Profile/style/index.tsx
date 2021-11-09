@@ -14,10 +14,9 @@ const AvatarImage = styled.img`
 const AvatarDiv = styled.div`
   width: 200px;
   height: 200px;
-  background: #f0f0f0;
 `
 const Role = styled.p`
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: 'Roboto', sans-serif; 
   color: black;
   
   

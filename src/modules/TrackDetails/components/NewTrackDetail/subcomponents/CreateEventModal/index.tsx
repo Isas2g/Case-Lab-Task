@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
-import { ModalComponent } from "../../../../../../shared/components/Modal"
+import { ModalComponent } from "../../../../../../shared/components/Modal";
+import style from "../../style/index.module.css";
 import store from "../../../../store";
 
 interface Props {
@@ -28,7 +29,7 @@ export const CreateEventModal = observer(({show, onHide, trackId, setEntityId}: 
         <input type="text" onChange={({target}) => setSearchQuery(target.value)} />
         
         {events.map((event: Event) => 
-          <p onClick={() => {setEntityId(event.id); onHide();}}>{event.id} {event.name}</p>
+          <p className={style.searchItem} onClick={() => {setEntityId(event.id); onHide();}}>{event.id} {event.name}</p>
         )}
         
     </ModalComponent> 

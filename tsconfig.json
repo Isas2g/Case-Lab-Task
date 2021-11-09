@@ -27,17 +27,25 @@
     "emitDecoratorMetadata": true,
     "allowJs": true,
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "noEmit": true,
+    "baseUrl": "./",
     "jsx": "react-jsx"
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx"
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js"
   ]
 }

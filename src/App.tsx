@@ -20,7 +20,7 @@ export const App: React.FC = observer(() => {
   return (
     <Router>
       <Header token={token} setToken={setToken} />
-      <main className="flex-shrink-0">
+      <main className="align-middle mt-auto mb-auto container">
         <Switch>
           <Route exact path="/" component={token ? Main : Login} />
           <Route exact path="/profile" component={token ? Profile : Login} />
@@ -30,7 +30,7 @@ export const App: React.FC = observer(() => {
           <Route exact path="/tracks/:id" component={token ? GetTrack : Login} />
           <Route exact path="/tracks/edit/:id" component={token ? UpdateTrack : Login} />
           <Route exact path="/tracks/trackDetail/:id" component={token ? TrackDetailPage : Login} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" component={token ? Error : Login} />
           <Route component={token ? Error : Login} />
         </Switch>
       </main>

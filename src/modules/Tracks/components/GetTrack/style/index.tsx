@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import {useHistory} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import store from "../../TrackAssign/store";
+import DetailStore from "../../../../TrackDetails/store";
 import {ModalComponent} from "../../../../../shared/components/Modal";
 import UserForm from "../../TrackAssign/subcomponents/UserForm";
 import {UserList} from "../../../../Search/Users";
-
+import {dateFromUnix} from "../../../../../shared/utils/timestampToHumanFormat";
+import "./style.module.scss"
 
 const Spoiler = styled.div`
   border: 1px solid #e0e0e0;
@@ -14,9 +16,15 @@ const Spoiler = styled.div`
  `
 
 const Summary = styled.summary`
-  font-size: 30px;
-  font-family: "Helvetica Neue";
-  
+  font-size: 2vw;
+  font-family: "Roboto", sans-serif;
+  border-top: none !important;
+
+
+&.details[open] div{
+    animation: spoiler 1s;
+}
+
 @keyframes Spoiler {
   0 % {max-height: 0;}
   100 % {max-height: 10em;}
@@ -25,8 +33,9 @@ const Summary = styled.summary`
 
 const Details = styled.details`
   padding: 1em 0;
-  border-top: 5px solid darkorange;
-  &.details[open] div{
+  border-top: 5px solid #645c55;
+
+  &.details[open] div {
     animation: spoiler 1s;
   }
 `
@@ -36,51 +45,80 @@ const Li = styled.li`
 `
 
 const H2 = styled.h2`
-  font-size: 50px;
   font-weight: bold;
   text-align: left;
   vertical-align: middle;
-  height: 300px;
-  width: 600px;
+  font-size: 3.2vw;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  height: 150px;
+  width: 100%;
 `
 
 export const EditButton = styled.button`
-  background-color: darkorange;
+  /* background-color: darkorange; */
   border: 1px solid black;
   border-radius: 10px;
-  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
 `
 
 export const StudentBtn = styled.button`
-  background-color: darkorange;
+  /* background-color: darkorange; */
   border: 1px solid black;
   border-radius: 10px;
-  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
 `
 
-export const StateList = (props: any) => {
-    const date1 = new Date(props.track.data.dateTimeStart*1000).toUTCString()
-    const date2 = new Date(props.track.data.dateTimeFinish*1000).toUTCString()
-    const duration  = 0;
-    return(
-        <ul>
-            <Li key={"name"}>
-                <H2>{props.track.data.name}</H2>
-                <div>Время трека: {date1} - {date2}</div>
-                <div>Продолжительность трека: {duration}</div>
-                <script>
+const UlContentTrack = styled.ul`
+  font-size: 22px;
+  padding-left: 0;
+  z-index: 99999;
+  text-shadow: 1px 0 1px #000,
+  0 1px 1px #000,
+  -1px 0 1px #000,
+    0 -1px 1px #000;
+`
 
-                </script>
+export const StateList = observer((props: any) => {
+    const date1 = dateFromUnix(props.track.data.dateTimeStart)
+    const date2 = dateFromUnix(props.track.data.dateTimeFinish)
+    const duration  = DetailStore.details.reduce((a, b) => {
+        let arrayA = a.split(" ч ");
+        let arrayB = b.entityDuration.split(" ч ");
+        let hoursA = parseInt(arrayA[0]) || 0;
+        let hoursB = parseInt(arrayB[0]) || 0;
+        let hours = hoursA + hoursB;
+        if (arrayA[1])
+            arrayA = arrayA[1].split(" мин")
+        else arrayA = ['']
+        if (arrayB[1])
+            arrayB = arrayB[1].split(" мин")
+        else arrayB = ['']
+        let minutesA = parseInt(arrayA[0]) || 0;
+        let minutesB = parseInt(arrayB[0]) || 0;
+        let minutes = minutesA + minutesB;
+        if (minutes > 59) {
+            minutes -= 60;
+            hours +=1;
+        }
+        return `${hours} ч ${minutes} мин`;
+    }, '');
+    return(
+        <UlContentTrack className={"contrast"} style={{zIndex: 9999}}>
+            <Li key={'name'}>
+                <H2>{props.track.data.name}</H2>
+                <br />
+                <div>Начало трека: {date1}</div>
+                <div>Конец трека: {date2}</div>
+                <div>Продолжительность трека: {duration}</div>
             </Li>
             <br/>
             <Spoiler>
@@ -93,9 +131,9 @@ export const StateList = (props: any) => {
             <Li key={"published"}>Опубликован?  -  {props.track.data.published ? "Да" : "Нет"}</Li>
             <Li key={"mode"}>Режим  -  {props.track.data.mode === "consistent" ? "Последовательный" : "Свободный"}</Li>
             <br/>
-        </ul>
+        </UlContentTrack>
     )
-}
+})
 
 export const Edit = (props: any) => {
 
@@ -106,7 +144,7 @@ export const Edit = (props: any) => {
     }
 
     return(
-        <EditButton className="btn btn-primary" onClick={moveToUpdate}> Изменить трек </EditButton>
+        <EditButton className="btn fourth" onClick={moveToUpdate}> Изменить трек </EditButton>
     )
 }
 
@@ -118,14 +156,15 @@ interface StudentProps {
 }
 
 export const Student = observer(({trackId}:StudentProps): JSX.Element => {
-
+    
+    
     store.readTrackAssigns(trackId).then();
-
+    
     const [show, setModalShow] = useState(false);
 
     return (
         <>
-            <StudentBtn className="btn" onClick={() => setModalShow(true)}> Ученики трека </StudentBtn>
+            <StudentBtn className="btn fourth" onClick={() => setModalShow(true)}> Ученики трека </StudentBtn>
 
             <ModalComponent show={show} onHide={() => setModalShow(false)} heading="Ученики трека" title=""
                             remove={false} track={undefined}>

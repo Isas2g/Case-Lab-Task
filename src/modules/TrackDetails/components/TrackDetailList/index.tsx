@@ -1,12 +1,63 @@
 import { TrackDetail } from "../TrackDetail";
 import store from "../../store";
-import { useEffect, useState } from "react";
-import { NewTrackDetail } from "../NewTrackDetail";
-import styled from "styled-components";
+import {  useEffect, useState } from 'react';
+import { NewTrackDetail } from '../NewTrackDetail';
+
+import style from "./style/index.module.css";
+
+import {
+  SortableContainer,
+  SortableElement,
+  SortableHandle
+} from "react-sortable-hoc";
+import { BsArrowsMove } from 'react-icons/bs';
 
 interface TrackDetailListProps {
   trackId: number;
 }
+
+interface TrackDetailSortable {
+  mutated: number;
+  setMutated: (num: number) => void;
+  trackDetail: TrackDetail;
+  className: string;
+}
+
+interface TrackSortEnd {
+  oldIndex: number;
+  newIndex: number;
+}
+
+type Children = JSX.ElementChildrenAttribute;
+
+const SortableContainerJSX = SortableContainer(({children}: Children) =>
+  <div className="d-flex justify-content-center align-items-center flex-wrap">
+    {children}
+  </div>
+);
+
+//Drag handler
+const DragHandle = SortableHandle(() => (
+  <div style={{
+    display: 'block',
+    position: 'absolute',
+    height: '30px',
+    width: '30px',
+    color: "white",
+    cursor: 'grab',
+    bottom: 30,
+    left: 30
+  }} > <BsArrowsMove size={30}/> </div>
+));
+
+//Draggable elements
+const SortableItem = SortableElement(({mutated, setMutated, trackDetail, className}: TrackDetailSortable) => (
+  <div style={{position: 'relative'}}>
+    <TrackDetail key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
+      {localStorage.getItem("role") === "teacher" ? <DragHandle /> : ''}
+    <div className={className}></div>
+  </div>
+));
 
 export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element => {
   const [trackDetails, setTrackDetails]:any = useState([]);
@@ -17,44 +68,35 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
     const fetchData = async () => {
       setTrackDetails((await store.getTrackDetails(trackId)).sort((a: TrackDetail, b: TrackDetail) => a.data.sortIndex - b.data.sortIndex));
     };
-    fetchData();
+    fetchData().then();
   }, [mutated, trackId]);
+  const sortEnd = async( {oldIndex, newIndex}: TrackSortEnd ) => {
+    await store.updateTrackDetail({
+      ...trackDetails[oldIndex].data,
+      sortIndex: newIndex
+    }, trackDetails[oldIndex].id);
+    await store.updateTrackDetail({
+      ...trackDetails[newIndex].data,
+      sortIndex: oldIndex
+    }, trackDetails[newIndex].id);
+    setMutated(mutated+1);
+  };
 
-    const finishedCount = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.finished).length;
-
-    const progressValue = (finishedCount / trackDetails.length) * 100;
-
-    const Progress = styled.div`
-  border: 1px solid black;
-  border-radius: 10px;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-      background: rgb(250,5,15);
-      background: linear-gradient(90deg, rgba(250,5,15,1) 0%, rgba(250,242,20,1) 50%, rgba(96,255,0,1) 100%);
-      background-position: 25%;
-`
-
-
-
+  const conditionToBlockTrackDetail = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.data.type === "entry_test").length !== 0 && role === 'student';
+  
+  
   return (
       <div className="container">
-          {role === "student" ?
-            <Progress className="row">
-                Прогресс трека: {progressValue}%
-            </Progress> : ""}
-              <div className="container d-flex align-items-center">
+              <div className="container d-flex align-items-center justify-content-between">
                   <h3 className={"d-flex p-3"}>Элементы трека</h3>
                   {role === "teacher" ? <NewTrackDetail lastIndex={trackDetails.length} mutated={mutated} setMutated={setMutated} trackId={trackId} /> : ""}
               </div>
-              <div className="d-flex justify-content-center align-items-center flex-wrap">
-                { trackDetails ? trackDetails.map((trackDetail:TrackDetail) => 
-                        <TrackDetail key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
-                    )
-                  : "..."}
-              </div>
+                <SortableContainerJSX useDragHandle={true} axis="xy" onSortEnd={sortEnd}>
+                  { trackDetails ? trackDetails.map((trackDetail:TrackDetail, index: number) =>
+                          <SortableItem className={trackDetail.data.type !== 'entry_test' && conditionToBlockTrackDetail ?  style.shadow : 'no'} collection={trackDetail.data.type === 'entry_test' ? 0 : 1} disabled={trackDetail.data.type === 'entry_test'} index={index} key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
+                      )
+                  : '...'}
+                </SortableContainerJSX>
       </div>
   )
 }

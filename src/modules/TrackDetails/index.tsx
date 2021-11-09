@@ -1,6 +1,16 @@
+import { Button, Container } from "react-bootstrap";
+import { useHistory } from "react-router"
+
 export const TrackDetailPage: React.FC = (props: any) => {
+  
+  const history = useHistory();
+  
+  const goBack = () => {
+    history.goBack();
+  }
+  
   return (
-    <div>
+    <Container>
       Это элемент трека с номером(не порядковым) - {props.match.params.id}
       
       <div className="d-flex justify-content-center">
@@ -8,6 +18,7 @@ export const TrackDetailPage: React.FC = (props: any) => {
         </div>
       </div>
       
-    </div>
+      <Button variant={"outline"} className={"btn fourth"} onClick={goBack}>Вернуться к треку</Button>
+    </Container>
   )
 }

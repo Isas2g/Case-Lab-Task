@@ -2,3 +2,7 @@
     padding-left: 25px;
     padding-right: 25px;
 }
+
+.modal-content {
+    background-color: #2c3034;
+}

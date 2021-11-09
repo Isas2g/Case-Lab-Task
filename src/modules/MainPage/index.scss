@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap');
+
+.helloWrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.wrapper {
+    margin-top: 5%;
+    width: 100%;
+    height: 100%;
+}
+
+.line__1,
+.line__2,
+.line__3 {
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif !important;
+    margin-right: auto;
+}
+
+.line__1 {
+    border-right: 2px solid rgba(17, 17, 17, 0.0);
+    animation: animated-text__1 2s steps(36, end) 1s 1 normal both,
+    animated-cursor__1 500ms steps(36, end) 6;
+}
+
+.line__2 {
+    border-right: 2px solid rgba(17, 17, 17, 0.0);
+    animation: animated-text__2 1.1s steps(27, end) 1s 1 normal both,
+    animated-cursor__2 500ms steps(27, end) 2;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+}
+
+.line__3 {
+    color:rgb(255, 206, 71);
+    border-right: 2px solid rgba(17, 17, 17, 0.0);
+    animation: animated-text__3 1s steps(14, end) 1s 1 normal both,
+    animated-cursor__3 500ms steps(44, end) 4;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+}
+
+@keyframes animated-cursor__1 {
+    from {
+        border-right-color: rgba(17, 17, 17, 0.0);
+    }
+    to {
+        border-right-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+@keyframes animated-cursor__2 {
+    from {
+        border-right-color: rgba(17, 17, 17, 0.0);
+    }
+    to {
+        border-right-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+@keyframes animated-cursor__3 {
+    from {
+        border-right-color: rgba(17, 17, 17, 0.0);
+    }
+    to {
+        border-right-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+@keyframes animated-text__1 {
+    from {
+        width: 0;
+    }
+    to {
+        width: 48rem;
+    }
+}
+
+@keyframes animated-text__2 {
+    from {
+        width: 0;
+    }
+    to {
+        width: 35rem;
+    }
+}
+
+@keyframes animated-text__3 {
+    from {
+        width: 0;
+    }
+    to {
+        width: 21rem;
+    }
+}

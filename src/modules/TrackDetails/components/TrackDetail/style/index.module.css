@@ -1,1 +1,27 @@
-.edit-btn{cursor:pointer;opacity:0;transition:.2s}.edit-trackDetail:hover .edit-btn{opacity:1}
+.edit-btn {
+    cursor:pointer;
+    opacity:0;
+    transition:.2s
+}
+
+.edit-trackDetail:hover .edit-btn {
+    opacity:1
+}
+
+.detailCard {
+    width: 18rem;
+    padding: 20px;
+    background-color: #212529;
+    color: white;
+}
+
+.detailTextTitle {
+    margin-bottom: 10px;
+}
+/* {
+    width: "18rem", 
+    padding: "20px"
+} */
+/* .detailText {
+    padding:
+} */
