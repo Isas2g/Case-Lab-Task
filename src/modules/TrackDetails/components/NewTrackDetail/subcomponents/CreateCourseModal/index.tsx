@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import { ModalComponent } from "../../../../../../shared/components/Modal"
 import store from "../../../../store";
+import style from "../../style/index.module.css";
 
 interface Props {
     show: boolean;
@@ -28,7 +29,7 @@ export const CreateCourseModal = observer(({show, onHide, trackId, setEntityId}:
         <input type="text" onChange={({target}) => setSearchQuery(target.value)} />
         
         {courses.map((course: Course) => 
-          <p onClick={() => {setEntityId(course.id); onHide();}}>{course.id} {course.name} {course.duration}</p>
+          <p className={style.searchItem} onClick={() => {setEntityId(course.id); onHide();}}>{course.id} {course.name} {course.duration}</p>
         )}
         
     </ModalComponent> 

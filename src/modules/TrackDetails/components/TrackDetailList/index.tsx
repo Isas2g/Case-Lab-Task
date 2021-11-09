@@ -3,6 +3,8 @@ import store from "../../store";
 import {  useEffect, useState } from 'react';
 import { NewTrackDetail } from '../NewTrackDetail';
 
+import style from "./style/index.module.css";
+
 import {
   SortableContainer,
   SortableElement,
@@ -18,6 +20,7 @@ interface TrackDetailSortable {
   mutated: number;
   setMutated: (num: number) => void;
   trackDetail: TrackDetail;
+  className: string;
 }
 
 interface TrackSortEnd {
@@ -48,10 +51,11 @@ const DragHandle = SortableHandle(() => (
 ));
 
 //Draggable elements
-const SortableItem = SortableElement(({mutated, setMutated, trackDetail}: TrackDetailSortable) => (
+const SortableItem = SortableElement(({mutated, setMutated, trackDetail, className}: TrackDetailSortable) => (
   <div style={{position: 'relative'}}>
     <TrackDetail key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
       {localStorage.getItem("role") === "teacher" ? <DragHandle /> : ''}
+    <div className={className}></div>
   </div>
 ));
 
@@ -77,11 +81,10 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
     }, trackDetails[newIndex].id);
     setMutated(mutated+1);
   };
+
+  const conditionToBlockTrackDetail = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.data.type === "entry_test").length !== 0 && role === 'student';
   
-
-
-
-
+  
   return (
       <div className="container">
               <div className="container d-flex align-items-center justify-content-between">
@@ -90,7 +93,7 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
               </div>
                 <SortableContainerJSX useDragHandle={true} axis="xy" onSortEnd={sortEnd}>
                   { trackDetails ? trackDetails.map((trackDetail:TrackDetail, index: number) =>
-                          <SortableItem collection={trackDetail.data.type === 'entry_test' ? 0 : 1} disabled={trackDetail.data.type === 'entry_test'} index={index} key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
+                          <SortableItem className={trackDetail.data.type !== 'entry_test' && conditionToBlockTrackDetail ?  style.shadow : 'no'} collection={trackDetail.data.type === 'entry_test' ? 0 : 1} disabled={trackDetail.data.type === 'entry_test'} index={index} key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
                       )
                   : '...'}
                 </SortableContainerJSX>

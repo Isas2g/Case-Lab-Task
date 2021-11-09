@@ -14,6 +14,15 @@
   }
 }
 
+.searchItem {
+  cursor: pointer;
+  transition: .2s;
+  
+  &:hover {
+    background: #000;
+  }
+}
+
 .createTrackDetailLink{
   cursor: pointer;
   text-decoration: underline;
