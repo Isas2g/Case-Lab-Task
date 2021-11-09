@@ -3,10 +3,11 @@ import React, {useState} from "react";
 import { Edit, StateList, Student } from "./style";
 import {observer} from "mobx-react-lite";
 import { TrackDetailList } from "../../../TrackDetails/components/TrackDetailList";
-import {ButtonGroup} from "react-bootstrap";
+import {Button, ButtonGroup} from "react-bootstrap";
 import styled from "styled-components";
 import "./style/style.module.scss";
 import {TrackDetail} from "../../../TrackDetails/components/TrackDetail";
+import { SuccessModal } from "./subcomponents/SuccessModal";
 
 const Back = styled.div`
   background-color: #2c3034;
@@ -51,6 +52,7 @@ const EditButton = observer(() => <Edit track={store.track} />);
 
 const GetTrack = (props: any) => {
     const [trackDetails] = useState([]);
+    const [isSuccess, setIsSuccess] = useState(false);
     const finishedCount = trackDetails.filter((trackDetail: TrackDetail) => trackDetail.finished).length;
     const progressValue = (finishedCount / trackDetails.length) * 100 || 0;
     const [previewPic, setPreviewPic] = useState('');
@@ -78,6 +80,11 @@ const GetTrack = (props: any) => {
                     <BackImage style={{backgroundImage: `url('https://tml10.rosatom.ru/${previewPic}')`,}} />
                 </Back>
             <TrackDetailList trackId={props.match.params.id} />
+            
+            <Button onClick={() => setIsSuccess(true)}>Пройти трек.</Button>
+            
+            <SuccessModal data={store.track.data} show={isSuccess} onHide={() => setIsSuccess(false)} />
+            
         </>
     )
 }
