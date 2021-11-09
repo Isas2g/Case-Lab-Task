@@ -31,28 +31,16 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
     const [modalEntryTestShow, setModalEntryTestShow] = useState(false);
     const [modalPdfShow, setModalPdfShow] = useState(false);
     
-<<<<<<< HEAD
-    
-    // type: "course" | "event" | "entryTest" | "pdf";
-=======
     // type: 'course' | 'event' | 'entry_test' | 'pdf';
->>>>>>> develop
     // entityId: integer;
     // sortIndex: integer;
     // required: boolean;
     
     const createDetail = (event: FormEvent) => {
       event.preventDefault();
-<<<<<<< HEAD
-      if (type === "course" ||
-            type === "event" ||
-            type === "entryTest" ||
-            type === "pdf"
-=======
       if (type === 'course' ||
             type === 'event' ||
             type === 'pdf'
->>>>>>> develop
         ) {
             store.addTrackDetail({
                 type, 
@@ -81,15 +69,10 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
         
         {chooseMode ?
             <div className={classes.chooseType}>
-<<<<<<< HEAD
-                <p onClick={() => {setType("course"); setChooseMode(false); setCreateMode(true);}}>Курс</p>
-                <p onClick={() => {setType("event"); setChooseMode(false); setCreateMode(true);}}>Событие</p>
-=======
                 <p onClick={() => {setType('course'); setChooseMode(false); setCreateMode(true);}}>Курс</p>
                 <p onClick={() => {setType('event'); setChooseMode(false); setCreateMode(true);}}>Событие</p>
                 {entryTest.length === 0 ? <p onClick={() => {setType('entry_test'); setChooseMode(false); setCreateMode(true);}}>Входное тестирование</p> : ''}
                 <p onClick={() => {setType('pdf'); setChooseMode(false); setCreateMode(true);}}>PDF-документ</p>
->>>>>>> develop
             </div>
             :
             ""
