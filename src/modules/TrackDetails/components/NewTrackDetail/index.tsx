@@ -45,7 +45,7 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
                 entityId,
                 sortIndex: lastIndex,
                 required
-            }, trackId).then();
+            }, trackId).then(() => setMutated(mutated+1));
           }
       if (type === 'entry_test') {
             store.addTrackDetail({
@@ -53,15 +53,14 @@ export const NewTrackDetail: React.FC<Props> = ({trackId, mutated, setMutated, l
                 entityId,
                 sortIndex: 0,
                 required
-            }, trackId).then();
+            }, trackId).then(() => setMutated(mutated+1));
       }
     
       setCreateMode(false);
-      setMutated(mutated+1);
+      
     }
     
     const entryTest = store.details.filter((detail) => detail.data.type === 'entry_test');
-    console.log(entryTest);
     
     return <div>
         <Button variant={"outline"} className={"btn fourth"} onClick={() => setChooseMode(!chooseMode)}>Добавить деталь трека</Button>

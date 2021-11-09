@@ -90,7 +90,7 @@ export const TrackDetailList = ({trackId} : TrackDetailListProps): JSX.Element =
               </div>
                 <SortableContainerJSX useDragHandle={true} axis="xy" onSortEnd={sortEnd}>
                   { trackDetails ? trackDetails.map((trackDetail:TrackDetail, index: number) =>
-                          <SortableItem disabled={trackDetail.data.type === 'entry_test'} index={index} key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
+                          <SortableItem collection={trackDetail.data.type === 'entry_test' ? 0 : 1} disabled={trackDetail.data.type === 'entry_test'} index={index} key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
                       )
                   : '...'}
                 </SortableContainerJSX>
