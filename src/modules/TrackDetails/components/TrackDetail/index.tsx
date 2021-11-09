@@ -60,8 +60,10 @@ export const TrackDetail: React.FC<Props> = ({trackDetail, setMutated, mutated})
                 </Card.Title>
                 <Card.Text>Номер: {trackDetail.id}</Card.Text>
                 <Card.Text>Продолжительность: {trackDetail.entityDuration}</Card.Text>
-                <Card.Text>Тип: {trackDetail.data.type}
-                    
+                <Card.Text>Тип: {trackDetail.data.type === 'course' ? 'курс' : ''}
+                                {trackDetail.data.type === 'entry_test' ? 'входное тестирование' : ''}
+                                {trackDetail.data.type === 'event' ? 'мероприятие' : ''}
+                                {trackDetail.data.type === 'pdf' ? 'pdf-файл' : ''}
                 </Card.Text>
                 <Card.Text>Закончен: {trackDetail.epilogFinished ? 'да' : 'нет'}</Card.Text>
                 <Card.Text>Обязателен: {trackDetail.data.required ? 'да' : 'нет'}</Card.Text>
