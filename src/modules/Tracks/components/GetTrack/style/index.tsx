@@ -36,7 +36,6 @@ const Summary = styled.summary`
 
 const Details = styled.details`
   padding: 1em 0;
-  border-top: 5px solid #645c55;
 
   &.details[open] div {
     animation: spoiler 1s;
