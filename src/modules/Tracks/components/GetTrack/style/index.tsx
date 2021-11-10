@@ -169,8 +169,8 @@ export const Student = observer(({ trackId }: StudentProps): JSX.Element => {
       <ModalComponent
         show={show}
         onHide={() => setModalShow(false)}
-        heading="Ученики трека"
-        title=""
+        heading=""
+        title="Ученики трека"
         remove={false}
         track={undefined}
       >

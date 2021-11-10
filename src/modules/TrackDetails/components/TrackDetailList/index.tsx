@@ -44,8 +44,7 @@ const DragHandle = SortableHandle(() => (
       left: 30,
     }}
   >
-    {" "}
-    <BsArrowsMove size={30} />{" "}
+    <BsArrowsMove size={30} />
   </div>
 ));
 
@@ -53,7 +52,7 @@ const DragHandle = SortableHandle(() => (
 const SortableItem = SortableElement(({ mutated, setMutated, trackDetail, className }: TrackDetailSortable) => (
   <div style={{ position: "relative" }}>
     <TrackDetail key={trackDetail.id} mutated={mutated} setMutated={setMutated} trackDetail={trackDetail} />
-    {localStorage.getItem("role") === "teacher" ? <DragHandle /> : ""}
+    {localStorage.getItem("role") === "teacher" && trackDetail.data.type !== "entry_test" ? <DragHandle /> : ""}
     <div className={className} />
   </div>
 ));

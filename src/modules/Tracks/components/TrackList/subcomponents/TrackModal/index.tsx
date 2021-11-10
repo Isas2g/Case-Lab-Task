@@ -21,6 +21,7 @@ export const TrackModal: React.FC<Props> = observer(({ trackId, show, onHide, da
       <P>
         <b>Описание:</b> {previewText}
       </P>
+      <br />
       <P>
         <b>Дата открытия трека:</b> {dateFromUnix(dateTimeStart)}
       </P>

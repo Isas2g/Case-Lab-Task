@@ -5,6 +5,7 @@ import { IndexLinkContainer } from "react-router-bootstrap";
 import style from "./style/index.module.css";
 import { DetailDeleteModal } from "../DetailDeleteModal";
 import { DetailUpdateModal } from "../DetailUpdateModal";
+import { BsXLg } from "react-icons/bs";
 
 const Cross = styled.b`
   cursor: pointer;
@@ -47,7 +48,7 @@ export const TrackDetail: React.FC<Props> = ({ trackDetail, setMutated, mutated 
     >
       {role === "teacher" ? (
         <Cross className="close" onClick={() => setDeleteModalShow(true)}>
-          ✖
+          <BsXLg />
         </Cross>
       ) : (
         ""

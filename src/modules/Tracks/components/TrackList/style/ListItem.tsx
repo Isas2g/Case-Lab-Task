@@ -38,7 +38,7 @@ export const ListItem = (props: any) => {
           </Card.ImgOverlay>
           {role === "teacher" ? (
             <Cross onClick={() => setDeleteModalShow(true)}>
-              <BsXLg />
+              <BsXLg stroke={"#c7c7c7"} strokeWidth={1} strokeLinecap={"round"} size={20} color={"#000"} />
             </Cross>
           ) : (
             ""
@@ -55,7 +55,7 @@ export const ListItem = (props: any) => {
         <DeleteModal
           show={deleteModalShow}
           onHide={() => setDeleteModalShow(false)}
-          title={`Удалить трек ${props.track.data.name}?`}
+          title={`Удалить трек "${props.track.data.name}"`}
           track={props.track}
         />
       </Col>

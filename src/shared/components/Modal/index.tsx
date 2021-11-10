@@ -24,10 +24,9 @@ export const ModalComponent: React.FC<Props> = ({ title, show, onHide, heading, 
       fullscreen={"md-down"}
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">{heading}</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4 className="cardTitle">{title}</h4>
         <div>{children}</div>
       </Modal.Body>
       {remove && track !== undefined ? (
@@ -41,7 +40,7 @@ export const ModalComponent: React.FC<Props> = ({ title, show, onHide, heading, 
       )}
       {heading !== "" ? (
         <Modal.Footer>
-          <IndexLinkContainer to={"/tracks/" + heading.substring(5)}>
+          <IndexLinkContainer to={"/tracks/" + track?.id}>
             <Button
               variant={"outline"}
               className={"btn fourth"}

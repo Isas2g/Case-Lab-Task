@@ -1,4 +1,4 @@
-export const dateFromUnix = (timestamp: number) => {
+export const dateFromUnix = (timestamp: number): string => {
   const date: Date = new Date(timestamp * 1000);
   const month: number = date.getMonth();
   const monthDict: { [name: number]: string } = {
